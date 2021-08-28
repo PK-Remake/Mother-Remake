@@ -1,0 +1,15 @@
+import ebpp
+import ebpp_std
+
+command false_goto(target) "[1B 02 {long target}]"
+
+command true_goto(target) "[1B 03 {long target}]"
+
+command fullsave "[1B 06][19 26 00][1F B0]"
+
+command input_num (n) "[1F 52 {byte n}]"
+//n is the number of digits
+
+command inst_pack_loc (target) "[{byte[2] target} {byte[0] target} {byte[1] target}]"
+
+command adr16(a) "[{byte[0] a} {byte[1] a}]"

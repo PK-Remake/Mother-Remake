@@ -1,0 +1,136 @@
+import ebpp
+import ebpp_std
+import Commands
+
+Debug_Menu:
+window_closeall
+window_open (52)
+menu 5 {
+	"Sound": {
+		goto (Sound)
+	}
+	"Save": {
+		goto (Save)
+	}
+	"Test": {
+		goto (Test)
+	}
+}
+window_closeall
+eob
+
+Return:
+window_closeall
+goto (Debug_Menu)
+eob
+
+Sound:
+window_closeall
+window_open (2)
+"@What do you want to listen to?"
+newline
+menu 1 {
+	"Music": {
+		goto (Music)
+	}
+	"Sound Effects": {
+		goto (Sound_Effects)
+	}
+}
+goto (Return)
+
+Save:
+window_clear
+fullsave
+"@Game saved." end
+
+
+Test:
+window_clear
+menu 2 {
+	"Always Loaded Songs": {
+		goto (ALTest)
+	}
+	"Blank": {
+		eob
+	}
+}
+goto (Return)
+
+
+Music:
+window_clear
+"@Enter the music number:" newline
+
+Music2:
+text_pos (2, 1)
+input_num (3)
+clearline
+false_goto (Return)
+swap
+music (0)
+goto (Music2)
+
+Sound_Effects:
+window_clear
+"@Enter the sound effect number:" newline
+
+Sound_Effects2:
+text_pos (2, 1)
+input_num (3)
+clearline
+false_goto (Return)
+swap
+sound (0)
+goto (Sound_Effects2)
+
+
+// Plays all the "always loaded" songs in order
+ALTest:
+window_clear
+"@You Win!"
+music (5)
+next
+"@You Win! vs Boss"
+music (184)
+next
+"@Instant Win"
+music (183)
+next
+"@Level Up"
+music (6)
+next
+"@Boss Swirl"
+music (8)
+next
+"@Battle Swirl (Ambushed)"
+music (9)
+next
+"@Battle Swirl"
+music (176)
+next
+"@Party Member Joined"
+music (11)
+next
+"@Restful Sleep"
+music (12)
+next
+"@Teleport Start"
+music (13)
+next
+"@Teleport Fail"
+music (14)
+next
+"@Teleport End"
+music (135)
+next
+"@Phone Ring"
+music (115)
+next
+"@Fanfare"
+music (123)
+end
+
+
+Finished:
+eob
