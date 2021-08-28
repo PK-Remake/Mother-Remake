@@ -1,0 +1,40 @@
+	Pack 15
+Based on pack 15
+Added stairs instrument as instrument 1D
+Original 1D and 1E moved up by 1
+
+
+	Pack 1B
+Based on pack 1B
+Added stairs instrument as instrument 1D
+Original 1D and 1E moved up by 1
+
+
+	Pack 28
+Based on pack 54
+Added cash register instrument as instruments 1A and 1B
+Added stairs instrument as instrument 1D
+Instruments 1D-21 moved up by 1
+
+
+	Pack 2F
+Based on pack 2F
+Added instrument 1E from pack 32 as instrument 20
+Added instrument 1F from pack 08 as instrument 21
+Added instrument 20 from pack 2A as instrument 22
+Moved instrument 20 to 23
+
+
+	Pack 54
+Based on pack 54
+Added instrument 1A from pack 74 as instrument 21
+Added instrument 1B from pack 74 as instrument 22
+Added instrument 1C from pack 74 as instrument 23
+Moved instrument 21 to 24
+
+
+	Pack 7C
+Based on pack 7C
+Added door instrument as instrument 1C
+Added stairs instrument as instrument 1D
+Instruments 1C-1F moved up by 1

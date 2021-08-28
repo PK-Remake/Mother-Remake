@@ -1,0 +1,16 @@
+This zip file contains all the .ebm files currently available for the Mother Remake project.  Feel free to look through these songs and see if you want to make any improvements to them.  Note that most of the songs contain echo effects (which can't be heard in ebmused), so make sure to test them out in-game to see how they really sound.  Also keep in mind that echo effects tend to increase the volume of the affected channels.
+
+My current plan for the overworld music for this game involves the following setup.  There will be two settings.  On the first setting, each town will have a unique overworld song.  These songs might be remixes of other songs, or original songs.  On the second setting, the overworld music will follow the same rules as the original game.  That is, it'll play either Pollyanna or Bein' Friends, depending on how many characters are in your party.  I plan to make it so the player can switch between one setting and the other from in-game.
+
+Currently, the only areas lacking in music are the Swamp and the Halloween Suburbs.  This ties into the following paragraph.
+
+Included in this zip are some music files created by forum user MrEverdred.  These were custom songs originally created for the Swamp and Halloween Suburbs area, though they haven't been created in ebmused yet.  The Swamp midi file is an earlier version of the swamp song, but it might be useful in creating the song in ebmused.  The Halloween Suburbs song doesn't have a midi version available.  MrEverdred said that's because he wasn't fully satisfied with the song, and was still making tweaks to it.  Unfortunately, I lost contact with him after that, so the music file included in this zip is the latest version I have.
+
+Of course, we don't have to use these particular songs for the Swamp or Halloween Suburbs.  If anyone comes up with something better, we could use that instead.
+
+"Always Loaded Songs" contains the short, always loaded songs that have to be manually inserted with a hex editor.  If you want to edit these songs, keep in mind that they all have to use instrument pack 05 as the primary instrument pack, and have no secondary instrument pack (which is represented as instrument pack FF).  They also have to fit in the same space as the original songs, but there's a bit more space there than you might think.
+
+If you get bored, here's some additional song ideas I had:
+Variations of the Eight Melodies from the final battle (current song is "Eight Melodies (Vocal)"), each one sung in a one of the player character's "voice".  This would require that each version of Eight Melodies used in the final battle would use the same instrument pack as Giygas's battle music (pack 1B), to prevent lag when switching songs.  We could possible add more instruments to pack 1B, though.
+
+Full-length songs based off of the vocal versions from the soundtrack.  These would be available to listen on the sound player.
