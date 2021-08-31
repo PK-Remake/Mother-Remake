@@ -1,0 +1,3811 @@
+//This is a work-in-progress attempt at CCScript-ifying Tomato's M1+2 script (http://mother12.earthboundcentral.com/)
+//Everything's out of order, as well, so I'm trying to group stuff into sections and scenes.
+//None of this has been tested or compiled into a ROM.
+
+define localization = flag 0x15d
+
+partyLeader:
+  "(insert code to print the party leader's name here)" eob
+
+favoriteFood:
+  "(insert code to print the favorite food here)" eob
+
+podunk:
+  if localization
+    "Podunk" eob
+  else
+    "Mother's Day" eob
+
+merrysville:
+  if localization
+    "Merrysville" eob
+  else
+    "Thanksgiving" eob
+
+unionStation:
+  if localization
+    "Union Station" eob
+  else
+    "Santa Claus Station" eob
+
+spookane:
+  if localization
+    "Spookane" eob
+  else
+    "Halloween" eob
+
+youngtown:
+  if localization
+    "Youngtown" eob
+  else
+    "Easter" eob
+
+yuccaDesert:
+  if localization
+    "Yucca Desert" eob
+  else
+    "Advent Desert" eob
+
+ellay:
+  if localization
+    "Ellay" eob
+  else
+    "Valentine" eob
+
+mtItoi:
+  if localization
+    "Mt. Itoi" eob
+  else
+    "Holy Loly Mountain" eob
+
+giegue:
+  if localization
+    "Giegue" eob
+  else
+    "Giygas" eob
+
+//SECTION: NINTEN'S HOME
+001: 
+  "@Brother! I'm so scared!" next
+  "@My lamp suddenly starting going crazy!" end
+  
+002:
+  "@Brother! It's like our house is about to fall apart!" end
+003:
+  "@Waah!" end
+005:
+  "@Eek! My doll is going crazy!" end
+222:
+  "@The mysterious phenomenon has stopped, for now..." end
+006:
+  "@Whew, that was scary." next
+  "@Oh! I think I see something inside the doll!" end
+32C:
+  "@There's an old music box hidden inside the doll." next
+  "@{call(partyLeader)} opened the music box." next
+  "@A broken melody began to play." end
+009:
+  "@Are you okay, {name(1)}?" next
+  "@What on earth is happening to our home?" next
+  "  I'm so scared..." next
+  "@If only your father were here now..."
+004:
+  "@Here's some juice, big brother!" next
+  "  You must be pretty thirsty." end
+008:
+  "@I'm Mimmie. Don't mix me up with Minnie!" end
+00A:
+  "@You're much braver than I ever imagined." next
+  "@...But I can't send you on a journey so famished."
+00B:
+  "@Oh, my! You're hurt!"
+224:
+  "@I'll make you some {call(favoriteFood)}, {name(1)}." next
+  "@Eat some and scoot up to bed." end
+
+
+
+//SECTION: DAD & SAVING
+339:
+  "@{call(partyLeader)} picked up the telephone." end
+
+00E:
+  "@Hmm, I see." next
+  "@Sounds like it must be a poltergeist of some sort." next
+  "@I'm not sure what to do about it, either." next
+  "@But your great-grandfather did study PSI at one point." next
+  "@Perhaps there's something in the basement that could help make sense of things." next
+  "@I know I put the basement key somewhere..." next
+  "  but I can't remember where." next
+  "@Anyway, you're our only hope. Now is the time for an adventure." next
+  "  Go forth, {name(1)}! Protect us all!" end
+
+014:
+  "@{name(1)}? It's your dad." end
+00C:
+  "@Let's see... To get to the next level, you need..."
+00D:
+  "@Come back home whenever you want some more {call(favoriteFood)}." //favorite food
+013:
+  "@(Click! Beep-beep-beep...)" end
+015:
+  "@I've deposited $[03 18] into your bank account." next
+  "@Taking away what you've spent, you should now have $[03 19] in the bank." next
+  "@Use it wisely." end
+016:
+  "@I realize this isn't any of my business, but why don't you take a little break?" end
+017:
+  "@I see. Then I'll make a record of your progress." end
+018:
+  "@I see. Well, I guess the Earth IS in danger and all." end
+01B:
+  "@Okay." next
+  "@Your dear old dad was also thinking about hitting the hay for the night." next
+  "@I've created a record of your adventure to this point." next
+  "@Good night, sleep tight." end
+01C:
+  "@We're a great team, aren't we?" next
+  "@Well, you should turn the power OFF now." next
+  "@All right?" end
+01D:
+  "@{name(1)}, you've got a great work ethic, just like your mother." next
+  "@But, I don't think it's good to work too hard." end
+01E:
+  "@Anyway, what do you need from me?" end
+021:
+  "@Good luck!" end
+
+188:
+  "@Say, could I speak to the person playing this game?" end
+189:
+  "@It's really important." end
+18A:
+  "@Hello, this is {name(1)}'s father. Thank you for always looking after him." next
+  "@I thought it would be nice to at least know your name." next
+  "@So, if you could tell me, that'd be great." end
+18B:
+  "@Thank you for your time." next
+  "@I'm a busy man myself, so I must be going now. Goodbye!" end
+18C:
+  "@{name(1)}... right?" end
+18D:
+  "@Come on, quit joking around." end
+1EE:
+  "@Please give my {name(1)} all the help you can." end
+1F4:
+  "@Hello, this is your dad." next
+  "@I don't mean to butt in or anything..." next
+  "But what's your problem?!" next
+  "@Just press the A Button already!" end
+
+
+
+//EARLY PODUNK. PIPPI & ZOMBIES
+2AF:
+  "@You understand animal talk, right?" next
+  "@Then I'll give you a hint: try checking me." next
+  "@Woof!" end
+35C:
+  "@If something ever seems strange, be sure to <Check> all around." end
+
+228:
+  "@Oh me, oh my!  Oh me, oh my!   Oh me, oh my!" next
+  "@My dear Pippi's gotten lost." next
+  "@If you're going into town, please tell the mayor for me, okay?" next
+  "(sniffle sniffle sob sob)" end
+
+023:
+  "@Hello." next
+  "@Pippi and I are feeling just dandy now!" end
+024:
+  "@You didn't come from the cemetery to the south, did you?" next
+  "  Please tell me you didn't!" end
+025:
+  "@You're really amazing." end
+026:
+  "@Please tell me you're not a zombie!" next
+  "  ...Are you?" end
+027:
+  "@Oh, yeah? W-w-well..." next
+  "  You're a big stupid zombie head! Waaaah! Eek!" end
+028:
+  "@Are you really a human?" end
+029:
+  "@I'm amazed you made it this far." end
+02A:
+  "@I knew it..." end
+02B:
+  "@I'm so scared I'm about to wet my pants..." end
+02C:
+  "@Boy, that was scary..." end
+02D:
+  "@ZOMBIE!" end
+02E:
+  "@Heheheh...! You get to be a zombie too!" end
+02F:
+  "@There must be someone controlling the dead..." end
+030:
+  "@Not too shabby, youngster!" end
+031:
+  "@Are the zombies going to take over our town too?" end
+036:
+  "@The town mayor is looking for someone brave to help him." end
+037:
+  "@I heard a little girl got lost in the cemetery." next
+  "I wonder if she's been rescued yet..." end
+038:
+  "@Say... You're not honestly thinking of going to the cemetery, are you?" end
+039:
+  "@I thought you were a sensible boy." end
+03A:
+  "@Animals have suddenly turned violent," next
+  "  and the dead have have come back as zombies to attack us..." next
+  "@What are we supposed to do? I'm so scared I can hardly breathe... (gasp gasp)" end
+03B:
+  "@You're so awesome!" end
+03D:
+  "@Did a poltergeist attack your house?" next
+  "  It tore mine apart." end
+03F:
+  "@Bread is great for when you're hungry," next
+  "  but I bet you could also use its crumbs to mark your trail." next
+  "@...I guess it's really none of my business, though." end
+040:
+  "@I don't know, this task might be too much for you to handle," next
+  "  but I still have high hopes for you anyway."  end
+041:
+  "@Well, you see..." next
+  "@A child has strayed into the cemetery." next
+  "@And, as luck would have it, I'm up for re-election soon." next
+  "@So... please help me!"  end
+042:
+  "@Oh! You'll do it?!" next
+  "@You'll go and rescue her?!"  end
+
+065:
+  "@I'm Pippi. I'm lost. You're really brave, huh?" end
+066:
+  "@You're such a goofball! Hahaha!" end
+067:
+  "@You're really brave. I hope we meet again sometime, don't you?" end
+068:
+  "@Oh, I'm so happy!" next
+  "@Here, this badge can be a symbol of our bond." next
+  "  Take it with you." end
+069:
+  "@I guess you already have a special someone, huh..." end
+06A:
+  "@Well, I guess this is bye for now." next
+  "@Come by my house later to pick up an item of mine." next
+  if(localization)
+  {
+    "@By the way...|do you think my stockings are...|long enough?" end
+  }
+  else
+  {
+    "@By the way...|do you think my socks are too short?" end
+  }
+
+06C:
+  "@Oh, you didn't have to answer." next
+  "  You're such a cutie..." end
+  
+043:
+  "@Oh, is this Pippi, the girl who got lost?" next
+  "@Stunning work, lad!" next
+  "@I knew from the start that you showed promise!" next
+  "  (clap clap applause)" next
+  "@You're so lucky, Pippi. Adorable, too." next
+  "@Now remember to tell your mother that the mayor rescued you." next
+  "@And for you, {name(1)}... A $[03 1E] reward. Here."  end
+056:
+  "@Teehee." end
+057:
+  "@Stupid head!" end
+058:
+  "@Welcome! Do you need to return any items?" end
+05A:
+  "@Whew, what a relief." end
+05B:
+  "@Please visit us again for all your shopping needs! (giggle)" end
+05C:
+  "@It's nice that there's a machine on the first floor of the department store" next
+  "  that lets you withdraw cash from your bank account," next
+  "  but you need a PTA card or something to use it." next
+  "@That's not very convenient, if you ask me." end
+
+05E:
+  "@It's such nice weather out." next
+  "But what does it matter?" end
+  
+  
+//SECTION: ZOO AND CANARY SIDEQUESTS
+03E:
+  "@I hear they locked the zoo up to keep any more animals from escaping." next
+  "@They've all gone berserk, you see..." end
+046:
+  "@Say, since you're here and everything, won't you help with the zoo problem too?"  end
+047:
+  "@Oh, you'll go check it out? That's wonderful!" next
+  "@{name(1)}, you certainly do love to play games!" next
+  "@Have my assistant Abbot give you a key to the zoo." end
+048:
+  "@Here you go. This is the key to the zoo." end
+  
+049:
+  "@Come back alive and you'll be a hero!" next
+  "@I'd go with you, but I'm, umm, not feeling well..." end
+
+06D:
+  "@Kyakyakya! (You're a big doo-doo head!)" end
+  
+362: "  The world's only singing monkey!" next
+  if (localization)
+  {
+    "  Right here at the Podunk City Zoo!" end
+  }
+  else
+  {
+    "  Right here at Cream Puff Zoo!" end
+  }
+35D:
+  "@The singing monkey sang with passion." end
+  
+04A:
+  "@Oh, it's {name(1)}, the hero!" next
+  "@You have tiger droppings all over your clothes, you know." next
+  "@Oh, I'm just kidding!" next
+  "@Sorry, I don't have anything to give you this time..." next
+  "  Wahahaha!" end
+04B:
+  "@Everyone's talking about a girl with special powers. Have you heard about her?" next
+  "@I bet she'd be a great help to you on your journey." end
+04C:
+  "@I have plenty of extra zoo keys." next
+  "@Here, have another." end
+
+054:
+  "@I'm almost certain that something is controlling all the animals..." end
+055:
+  "@Animals are so cute. Don't you agree?" end
+04D:
+  "@As you can see, all our animals have escaped." end
+04E:
+  "@All we have left is this canary chick." next
+  "Interested in buying it?" end
+04F:
+  "@Then how about for $[03 1E]?" end
+050:
+  "@Yeah, I don't blame you." next
+  "It doesn't even know any songs." end
+051:
+  "@Thanks! Take extra good care of it!" end
+052:
+  "@How about for free, then? C'mon, take it." end
+053:
+  "@Say, how's that canary doing?" end
+
+032:
+  "@Oh, that's a baby canary." next
+  "  Did you find it in Canary Village?" end
+033:
+  "@Hmm. You don't say." end
+034:
+  "@The birds of Canary Village do sing such lovely songs." end
+035:
+  "@I really admire the man living in Canary Village." end
+
+05F:
+  "@Oh, that canary is Laura the songbird's baby!" next
+  "@Go take it to her!" end
+060:
+  "@You seem to have forgotten something important about life." next
+  "How sad." end
+061:
+  "@Now where did I last see Laura...?" end
+062:
+  "@It sounds like Laura the songbird has remembered her song." next
+  "@Have you learned her melody, too?" end
+063:
+  "@Well, that's no good." end
+064:
+  "@In song there is strength." next
+  "True words, indeed." end
+
+//SECTION: MARTIAL LAW
+0F5:
+  "@By mayor's orders, no one's to cross this bridge until martial law is lifted." next
+  "@I suggest you use the bridge to the east of the zoo instead." end
+0FD:
+  "@I heard they lifted the order for martial law over in {call(podunk)}." next
+  "@Which means we can cross that bridge now..." next
+  "@Get my drift?" end
+3B9:
+  "@They finally lifted the orders for martial law." next
+  "@They overreacted a little bit, if you ask me." end
+370:
+  "@No one's allowed past here until the incident at the zoo is resolved." next
+  "@Those were the mayor's orders." next
+  "@It's kind of a heavy-handed way of doing things though, if you ask me." end
+371:
+  "@There's a strange rock in a mountain cave past here." next
+  "@In fact, it's so strange that you should go check it out." end
+372:
+  "@Say... You know how to use telepathy or whatever, right?" next
+  "@Everyone's talking about you, you know!" next
+  "@You're a real celebrity!" end
+
+
+//SECTION: WARPING TO MAGICANT
+059:
+  "@Something is speaking into {name(1)}'s mind." end
+06E:
+  "@{name(1)} heard a voice..." next
+  "@<Where is the god's tail?>" end
+22B:
+  "@{name(1)} took out his great-grandfather's diary and read these words aloud:" next
+  "<...That which was left behind by the ship that soars the heavens.>" end
+
+
+//SECTION: MAGICANT TOWNSFOLK
+06F:
+  "@Whoa, those are some weird clothes you have on there." next
+  "@I bet you'll attract monsters dressed like that!" end
+
+071:
+  "@Happiness won't just walk into your life on its own." next
+  "@But neither will unhappiness." next
+  "@Wouldn't you agree?" end
+072:
+  "@So if you don't want trouble in your life..." next
+  "  then you'd best stay still and never move a muscle." end
+073:
+  "@Really? Unhappiness CAN walk?" next
+  "I had no idea." end
+074:
+  "@So, you admit I have good taste?" next
+  "@Then I take it you want a cool nickname, too?" end
+075:
+  "@Okay, I got it." next
+  "@From now on, your name will be Stupid Face {name(1)}." next
+  "@It just oozes class." end
+076:
+  "@Oh, that's too bad." end
+077:
+  "@Heya, Stupid Face {name(1)}!" end
+078:
+  "@Have you met the guy who philosophizes about happiness?" end
+079:
+  "@He's a master nicknamer. He's got a real knack for names." end
+07A:
+  "@People cannot part if they have not yet met." end
+07B:
+  "@Have you met a guy who talks about how you can't part if you haven't met?" end
+07C:
+  "@I agree with him, actually." end
+07D:
+  "@You really should meet him. You'll be a better person for it!" end
+07E:
+  "@I feel completely refreshed after stopping by Queen Mary's fountain!" end
+07F:
+  "@Gettng to Queen Mary's fountain is really tough." next
+  "Not only is it far away, but it's hard to find, too." end
+080:
+  "@I'm going to take this broken earring to the fountain to turn it into a magic earring." end
+081:
+  "@I feel so relaxed just listening to the mysterious sound of the fountain." end
+082:
+  "@Oh, are you lost? Just keep going south." next
+  "@Oops, sorry. I thought you were looking for a restroom." next
+  "@If you're looking for Queen Mary's fountain, then just go west from the castle." end
+
+084:
+  "@I bent my spoon, and now it's hard to eat with." next
+  "@Can you bend it back for me?" end
+085:
+  "@Please hurry." next
+  "@({name(1)} used the power of PSI to fix the spoon.)" next
+  "@Thanks! (munch munch chomp chomp)" next
+  "@Do you wanna stay the night here tonight?" end
+086:
+  "@Why not?!" end
+087:
+  "@You're very strange, you know that?" next
+  "But I also think I might like you..." end
+088:
+  "@Great!" end
+089:
+  "@Waaah! You're supposed to accept people's kindness!" end
+08A:
+  "@Oh, a traveler! Why don't you eat with us?" next
+  "@Here, can you guess what we're having today?" end
+08B:
+  "@Huh? Why can't you tell? You're really suspicious!" end
+08C:
+  "@That's right, {call(favoriteFood)}." next
+  "@I read your mind and decided to make {call(favoriteFood)}." next
+  "@How does it taste? Do you like it?" end
+
+08F:
+  "@I used to run a musical instrument store, but the ocarina I ordered never arrived." next
+  "@So I've given up." end
+090:
+  "@Oh. I see." end
+091:
+  "@Thanks!" next
+  "@Your bed is ready. Pleasant dreams!" end
+092:
+  "@Stop by again anytime!" end
+093:
+  "@You don't fit in with this place, you know that?" end
+094:
+  "@I finished the Ocarina of Hope." next
+  "@It can play the melodies that you know." next
+  "@Do you want it?" end
+
+096:
+  "@Ahahaha. You're a real straightforward guy." next
+  "@Here you go." end
+097:
+  "@Ahahaha! <I want it!> is written all over your face." next
+  "@Go ahead, take it with you." end
+098:
+  "@Hi, kid! How's it going?" end
+099:
+  "@Leave Magicant? That'd be the day!" next
+  "@Ahahaha!" end
+09A:
+  "@Outside?" next
+  "What is this <outside> you speak of?" end
+09B:
+  "@I'm so embarrassed I wish I could crawl into a hole." next
+  "@If only there were holes to crawl into..." end
+09C:
+  "@I am the mysterious goods-keeper." next
+  "@Can I help you?" end //call mimmie
+09D:
+  "@I'm great at impressions, you know!" end //call dad
+
+0DC:
+  "@Need something?" end
+// this is used by the Magicant fountain guy and by a monkey in the monkey caves
+0DD:
+  "@Oh, okay. Goodbye." end
+0DE:
+  "@Do you need money?" end
+0DF:
+  "@How is it? Are you finding it helpful?" end
+0E0:
+  "@I see." next
+  "@You seem to have $[03 19] in your account." next
+  "@How much will you withdraw?" end
+0E1:
+  "@Hocus-pocus, allakazam!" next
+  "@Use it wisely. Goodbye." end
+0E2:
+  "@You can't withdraw that much." next
+  "@You'll have to try again. Goodbye." end
+
+09E:
+  "@There's a whole bunch of holes east of town." next
+  "@I'm not sure which hole it is, but you can hear otherworldly sounds coming from one." end
+0A1:
+  "@If you pull out a Red Weed and put it in the fountain," next
+  "  it'll turn into a Magic Herb... just like magic!" end
+
+0A2:
+  "@Could I interest you in a Big Bag?" end
+0A3:
+  "@In that case, could I borrow your ATM Card for a short while?" end
+0A4:
+  "@It has 30 Magic Herbs inside it, in case you didn't know." end
+0A5:
+  "@Thanks. I promise I'll give it back." next
+  "@It just seems... really cool." end
+0A6:
+  "@You don't trust others." next
+  "@That might be for the best. Well, maybe..." end
+0A7:
+  "@Oh, right, I need to return your ATM Card." end
+
+0B3:
+  "@Deep in the forest is a guitar player who loves solitude." next
+  "@He's kind of handsome... and a great poet, too." end
+0B4:
+  "@I've heard about a man who was forgotten..." next
+  "@But I forget what his story was." end
+0BC:
+  "@Just once, I'd like to go inside the castle and see what Queen Mary looks like." end
+0CF:
+  "@I had a dream that Magicant vanished into thin air." next
+  "@My heart's still pounding, even now." end
+0D9:
+  "@If you need to see the helpful old man, go to Mary's Fountain." next
+  "@He'll come if he hears a cry from the heart." next
+  "@Remember, a cry from the heart!" end
+
+
+
+//SECTION: STRANGE CATS SWIMMING IN PONDS DISTRIBUTING EQUIPPABLE ITEMS
+0D1:
+  "@I'm a cat that swims in the ground." next
+  "@Can you guess what I'm holding in my paw?" end
+0D2:
+  "@Did you see what I'm holding in my paw?" next
+  "@That's right. A ribbon." next
+  "@This ribbon is overflowing with a special power." end
+0D3:
+  "@I'll only give this Magic Ribbon to a girl." end
+0BE:
+  "@But it's for girls only." end
+0D4:
+  "@I'm a swimming cat." next
+  "@Have you heard of a candy that gives courage and strength to weaklings?" end
+0D5:
+  "@I see. But you're a strong boy, so I doubt you would need any." end
+0D6:
+  "@That boy with the glasses seems pretty weak. I'll give the candy to him." end
+
+0D8:
+  "@Pretty tasty candy, huh?" end
+
+//SECTION: QUEEN MARY'S CASTLE
+0A8:
+  "@The queen isn't feeling very well right now..." end
+0A9:
+  "@You look suspicious." next
+  "@But I'll let you through if you can solve my little riddle..." end
+0AA:
+  "@That's right. The answer is <two alligators>." next
+  "@I haven't thought up the question yet, though." next
+  "  Heheh." end
+0AB:
+  "@Take care!" end
+
+0AD:
+  "@I wish I could hear the queen's song again..." end
+  
+0BD:
+  "@Queen Mary often has nightmares." next
+  "@She talks like she's punishing a naughty child" next
+  "and then cries out about being afraid." next
+  "@Then she starts to sing a song, but only a short bit of it." next
+  "@The fact she can't remember it seems to bring her pain." next
+  "@Then she wakes up covered in sweat." next
+  "@Something really sad must've happened to Queen Mary a long time ago..." end
+
+0BF:
+  "@Zzzzz..." end
+0C1:
+  "@You rotten liar!" end
+0C2:
+  "@We all know you're not from here, but we consider you one of us just the same." next
+  "@With the Onyx Hook, you can come back here any time." end
+0C3:
+  "@Don't hesitate to come visit us again whenever you're having a hard time." next
+  "@Everyone here loves you." end
+0C4:
+  "@Welcome, {name(1)}." next
+  "@Here in the land of Magicant, everyone is your friend" next
+  "and you can have as much as you like of whatever you want." next
+  "@Oh? You want to hear my song?" next
+  "@I'm sorry. I don't know why, but I just can't seem to remember it." next
+  "@I'm sure I'll be able to remember it someday..." next
+  "@If I can just sing it again, something will happen..." next
+  "I just know it." end
+
+0CA:
+  "@......" end
+0CB:
+  "@Let me hear the melodies you've learned..." end
+0CC:
+  "@Yes... That's it... That's the song..." end
+0CD:
+  "@Oh... {call(giegue)}..." end
+3D3:
+  "@I had loved him as if he were my own child, too..." end
+3D4:
+  "@He would always wag his tail as a baby..." next
+  "@I would sing him a lullaby, but then..." end
+3D5:
+  "@Oh, George!" next
+  "This is your wife, Maria." next
+  "@I know you've been waiting..." next
+  "I'm on my way to join you in heaven now..." end
+3D6:
+  "@PLEASE INSERT ATM CARD" end
+
+
+//SECTION: MAGICANT GUITAR MAN
+0AE:
+  "@Oh, hello!" next
+  "@I was just in the middle of pondering philosophical questions." next
+  "@It's hard for me to focus with all this guitar music, though." next
+  "@Oh! Whoops!" next
+  "  I didn't realize I was the one playing the guitar! How careless of me!" next
+  "@..." wait
+  "@.|.|." wait
+  "@This is a secret between just you and me: come back here when you're stronger." next
+  "@You should probably make a note of this now so you don't forget later." end
+
+0B0:
+  "@You tried to ignore me, didn't you?" next
+  "@I get so lonely, being out here all by myself." next
+  "@If there's anything I can do, I'll do it." next
+  "@Here!" end
+0B1:
+  "@I'm so happy you came!" next
+  "@I know just what you want." next
+  "@Here you go!" end
+0B2:
+  "@I finally wrote a song! Give it a listen, you music-loving adventurer!" next
+  "@Oh, baby doll, why do you weep?" next
+  "  The saddened canary won't utter a peep." next
+  "  The monkey can sing, the piano - it chimes." next
+  "  Though ghosts will play out on its keyboard sometimes." next
+  "  Each night in the desert, the lone cactus croons." next
+  "  The dragon, when beaten, will carry some tunes." next
+  "  While scaling the mountain, EVE sings along." next
+  "  Will Queen Mary ever hear the XX Stone's last song?" next
+  "  Lalala, what a mysterious lullaby." next
+  "  Lullaby, bye-bye, and goodbye." next
+  "@What do you think? Nice song, huh?" next
+  "@It is, isn't it?" end
+
+0B8:
+  "@I'm an unsinging monkey." next
+  "@But monkeys don't normally sing, anyway." next
+  "@Any questions?" end
+0B9:
+  "@I'm sure it's a dumb question, too." end
+0BA:
+  "@Whew, what a relief." next
+  "@I was worried you were going to ask me something tough." next
+  "@Say, you look kind of like Queen Mary." next
+  "@I wonder why that is." end
+
+//SECTION: HOTELS
+315:
+  "@Welcome. @It's $[03 1E] per night here." next
+  "@Will you be staying?" end
+316:
+  "@Oh, that's too bad." next
+  "@Well, come back again." end
+317:
+  "@Pleasant dreams!" end
+318:
+  "@Good morning." next
+  "@Please come back again. We look forward to it." end
+
+//SECTION: HEALERS & HOSPITALS
+
+0B5:
+  "@Though you may not believe it, I'm a healer." next
+  "@I can restore your PP or heal friends turned to stone." next
+  "@So, what can I do for you?" end
+0B6:
+  "@...That's what I figured." end
+0B7:
+  "@Don't carry so much cash with you." next
+  "@Go think things over. See you later." end
+// context?
+
+30B:
+  "@I'm so glad that you recovered, [03 1B]." next
+  "@Come back any time you need." end
+30C:
+  "@Oh, isn't that your friend, though?" next
+  "@They really could die, you know..." end
+30D:
+  "@Yes, yes." next
+  "@I can examine you for $[03 1E] per person." next
+  "@Is that agreeable with you?" end
+30E:
+  "@You really don't need treatment?" next
+  "@All right, then." end
+30F:
+  "@I can find nothing wrong with that person." end
+310:
+  "@There, all better!" end
+
+312:
+  "@Though you may not believe it, I'm a healer." next
+  "@What do you want me to do?" end
+313:
+  "@Oh, okay. If you say so." end
+314:
+  "@I need to charge you $[03 1E]. Okay?" end
+
+319:
+  "@[03 1B] was just brought in, and is still unconscious." next
+  "@Please pay $[03 1E] for the doctor's fee." end
+31A:
+  "@Who are you here to see?" end
+
+0EE: 
+  "  Welcome to the town of {call(merrysville)}!!" next
+  "  Advertisement: Cheap, fast, and handsome!" next
+  "  Big Ben Casey can heal what ails you!" next
+  "  Visit now for a super-discount checkup!" next
+  "  Protect your life... to the death!" end
+// this is a reference to the Ben Casey American TV drama from the 1960s
+
+0F1:
+  "@First show me some money. Then I'll heal you." next
+  "@Otherwise I'll have to charge you my own price." next
+  "@I can heal you for $[03 1E]." next
+  "@This is my special deal just for you. I'm actually losing money doing this." end
+0F3:
+  "@Thanks for the $[03 1E]." next
+  "@Okay, you're all better now." next
+  "@Please come back sometime. I'll give you another nice deal." end
+0F4:
+  "@Oh, I see." next
+  "@In that case, I'll call a mortician and give them advance notice." end
+
+
+//SECTION: LIVE SHOW
+//move lower eventually
+0DB:
+  "@(The crowd grows restless.)" next
+  "@We didn't come to see no lousy rocks with hats on 'em!" next
+  "Boo! Boo!" end
+22F:
+  "@(The audience is unhappy.)" next
+  "@You said there'd be a trio! There ain't three people here!" next
+  "Boo! Boo!" end
+
+//SECTION: MAGICANT UNDERGROUND
+
+0E3:
+  "@I'm a forgotten man. I might as well not exist." next
+  "@You didn't have to notice me, you know..." next
+  "@Just go ahead and ignore me." end
+0E4:
+  "@I'm a nowhere man." next
+  "@It's best if you don't give me words of kindness." next
+  "@I can't live on like this if I start to miss people..." end
+// check
+0E5:
+  "@My conversations are always a monologue." next
+  "@I've always been alone, from the moment I was born." end
+0E6:
+  "@Good luck, bad luck.." next
+  "None of it makes a difference to me." next
+  "@Sometimes just breathing is almost too much for me to handle." end
+0E7:
+  "@Why do you insist on talking to me?" next
+  "@Are you a forgotten man, too?" end
+0E8:
+  "@Liar! I know there's a girl waiting for you!" next
+  "Just leave me alone and go back to her!" end
+0E9:
+  "@Yeah. That's what I figured. Yep." next
+  "@Now just hurry and ignore me already." end
+0EA:
+  "@Good. Thanks." end
+
+//SECTION: TOO MUCH STUFF
+0EB:
+  "@You seem to be holding too much stuff." next
+  "@Come back for it later." end
+6DC:
+  "@Oh, it looks like you can't carry any more stuff." end
+397:
+  "@[03 1B] can't hold any more stuff." end
+33C:
+  "@This is only my humble opinion, but you probably shouldn't carry any more things." end
+39D:
+  "@But you can't hold any more stuff." end  
+1C7:
+  "@Aww, man. I can't give it to you. You're holding too much stuff." end
+3DD:
+  "@It looks like you can't carry any more stuff." next
+  "@Should I give this to someone else?" end
+266:
+  "@You can't hold any more stuff..." next
+  "@Come get it later, then. Don't forget!" end
+249:
+  "@Oh, no. It looks like you can't carry any more items." next
+  "@That's too bad." end
+24A:
+  "@You can't carry any more stuff?" next
+  "@That's too bad." end
+24B:
+  "@Looks like you can't carry any. Come by later when you can." end
+20D:
+  "@Surely it must be hard carrying so much stuff..." end
+213:
+  "@You still have some stuff left here, so come get it later." end
+
+//SECTION: MERRYSVILLE
+0EC:
+  "@I heard some really weird stuff is happening over in {call(podunk)}...?" end
+0ED:
+  "@Something about a kidnapped zombie and animals doing something or other..." next
+  "It sounds absolutely nuts." end
+0FB:
+  "@Some really strong monsters beat me up." next
+  "@If you're headed for the train station, I'd watch out if I were you..." end
+0F6:
+  "@Hey, why aren't you in school, kid?" next
+  "@I'm pretty sure today's a school day." end
+
+//SECTION: DUNCAN'S FACTORY
+0F7:
+  "@I swiped a battery from Duncan's Factory north of here." end
+0F8:
+  "@This factory is Mr. Duncan's private property." next
+  "@Do you have a pass?" end
+0F9:
+  "@Sorry, but this is expired, kid." next
+  "@You swiped it, didn't you?" next
+  "@You're suspicious..." next
+  "@Look me in the eye!" end
+
+//SECTION: TWINKLE ELEMENTARY SCHOOL
+100:
+  "@I was teasing that wimp {name(3)} just now, but he got away." end
+101:
+  "@Hey, you weakling, stinkling {name(3)}!" end
+// connects to a line in MOTHER 3's script
+102:
+  "@You've been picking on that weakling {name(3)}, haven't you?" end
+103:
+  "@What?! That was just a joke?!" end
+// check
+104:
+  "@I heard that {name(3)} ran off with some explosives." next
+  "@He's in big trouble if a teacher finds him..." end
+105:
+  "@{name(3)}. Your glasses are slipping." end
+106:
+  "@I'm Suzy. I won the Miss Middle of Nowhere pageant. Do you think I'm pretty?" end
+107:
+  "@You're really cute, too." end
+108:
+  "@You're way uglier than me!" next
+  "@Stupid Face is what they should call you!" end
+// this connects with what the nicknamer in Magicant calls you
+109:
+  "@The door to the roof is locked." next
+  "@I was plannin' to ditch class and listen to the radio on the roof, too!" next
+  "Weren't you?!" end
+10A:
+  "@Geez, you don't talk much, do you?" end
+10B:
+  "@The gym teacher hit me." next
+  "@Maybe I should drop out and become a thug..." end
+10C:
+  "@Getting lost in your own school..." next
+  "@Can you get any more lame?!" end
+10D:
+  "@Oh, the door to the roof is locked?" end
+10F:
+  "@All she does is get fatter and fatter." next
+  "@Isn't she a terrible woman?" end
+110:
+  "@A kid like you wouldn't understand the sorrows of life..." end
+111:
+  "@How dare you talk about my wife like that!" next
+  "@Get out!" end
+112:
+  "@She was pretty when she was young." next
+  "@Yeah, come to think of it, she has her good points, too." next
+  "@Say, how about some tea?" end
+114:
+  "@You're a pretty smart kid." next
+  "@Oh, that's right, you want to go up to the roof." next
+  "@All right, then. Follow me." end
+115:
+  "@Cherish your elders or you'll be sorry when YOU grow old!" end
+116:
+  "@Hold on. What are you doing with something as dangerous as that?" next
+  "@I think I'LL hold on to this for you." end
+117:
+  "@Say, you should stay a while and have some tea." end
+118:
+  "@No running in the halls!" end
+119:
+  "@Hey! I haven't seen you before, kid!" next
+  "@Do you even go to this school?" end
+11A:
+  "@Oh, okay. Just don't run in the halls." end
+11B:
+  "@Show me what you have." next
+  "@You better not be carrying anything dangerous..." end
+11D:
+  "@Who's there?!" next
+  "@I'm not coming out!" next
+  "@You're just gonna pick on me if I do!" end
+11E:
+  "@You want to be my friend?!" next
+  "@Then do you promise not to tell that I took explosives from the science lab?" end
+11F:
+  "@I'm coming out now." end
+120:
+  "@I'm {name(3)}." next
+  "@I heard they make Bottle Rockets at the Sweet Little Factory south of here..." next
+  "I wanna launch one really bad!" end
+121:
+  "@You must be exhausted. You should stay the night!" end
+123:
+  "@Wow!" next
+  "@So this is a Bottle Rocket! I heard so much about them!" next
+  "@I should be able to make more of these now." next
+  "@Come with me to the science lab." end
+124:
+  "@{name(3)}: OK! Now I just flip this switch and... Oh!" end
+125:
+  "@{name(3)}: I may be a wimp, but now it's my turn to fight!" next
+  "@{name(4)}! You can take it easy in here." end
+126:
+  "@I'm a weird teacher who secretly lives in this school." next
+  "Yes, I admit I'm weird." next
+  "@I need funding for my research." next
+  "@Would you be willing to buy one of my inventions?" end
+127: 
+128:
+  "@Then have a look at my goods." end
+129:
+  "@Come on, you gotta have at least SOME allowance money..." end
+12A: 
+12B:
+  "@Come back anytime." next
+  "@I'll have some more nice stuff ready for you." end
+12C:
+  "@I haven't made any progress with my inventions since your last visit." next
+  "@Would you like to see my older items?" end
+12D:
+  "@I heard on the radio just now that major panics are breaking out everywhere." next
+  "@I WILL protect this train station, no matter what!" end
+
+12F:
+  "@I can't guarantee this train'll go very far, but you'll still need to pay." next
+  "@Are you gonna ride the train?" end
+130:
+  "@({call(partyLeader)}'s weapon was confiscated.)" end
+
+134:
+  "@That'll be $[03 1E], then." end
+
+137:
+  "@It looks like that hat you have belongs to a girl named {name(2)} in Snowman." next
+  "@You should go and return it to her." end
+138:
+  "@May you live a long life." end
+139:
+  "@I was on my way to the town of {call(youngtown)} to find my wife." next
+  "@But with the train tracks busted, I have no way to get there now..." end
+13A:
+  "@Poking your nose into other people's business is what makes playing games so fun!" end
+
+13C:
+  "@Here you go." end
+13D:
+  "@Have you seen a man with a sinister mustache?" end
+13E:
+  "@Sounds like he got away." next
+  "@Guess I'll just go and catch me some more parking violators then." end
+13F:
+  "@He's a big-time scam artist." next
+  "@If you see him, let me know immediately!" end
+140:
+  "@Whoa, hey, kid!" next
+  "Hold on to this money for me, will ya?" next
+  "@If you run into any cops, act like you never saw me." end
+141:
+  "@Don't run off with it, now!" end
+142:
+  "@You'll do what I say!" end
+143:
+  "@Quit bugging me!" next
+  "I'm trying to make a getaway here!" end
+144:
+  "@Have you seen a man with a huge gut?" end
+145:
+  "@Looks like he got away." next
+  "@Guess I'll just go and catch some speeders then..." end
+146:
+  "@He ate five orders of {call(favoriteFood)} and then ran off without paying." next
+  "@If you see him, let me know immediately!" end
+147:
+  "@Oof, my stomach's so full. (belch)" end
+148:
+  "@Things've gotten mighty dangerous in this town." next
+  "@But it's still a whole lot better than the city of {call(ellay)}, that's for sure." end
+149:
+  "@Oh, yeah!! You feelin' it?!" end
+14A:
+  "@Right on!" next
+  "You wanna hear me sing?!" end
+14B:
+  "@I'm feelin' glum." end
+14C:
+  "@It's time to say goodbye already?" end
+14D: 
+14E:
+  "@Have you heard the dragon's lullaby?" end
+14F:
+  "@I heard that there's a h-h-haunted house in the town of {call(spookane)}." next
+  "@I dunno about you, but I'd never go anywhere near that place!" end
+
+151:
+  "@Give me something. Anything." next
+  "@Gimme." next
+  "@Please." next
+  "@Pretty please?" end
+152:
+  "@I'll give you something in return, of course." end
+153:
+  "@I was gonna give you something good in return, too..." end
+154:
+  "@What will you give me?" end
+155:
+  "@Thanks. In return, here are some fleas and lice." next
+  "@Take them with you." end
+156:
+  "@A cold's been going around lately..." next
+  "@Achoo!" next
+  "@Argh! This sucks!" end
+157:
+  "@I heard there's a prophetic old man in the mountains" next
+  "  who's lived for 300 years without ever catching a cold." end
+158:
+  "@A aann aak eey ell iiow ma ennas." end
+159:
+  "@Not even I can hold a normal conversation with him like this..." end
+15A:
+  "@Oh! In exchange for finding my dentures," next
+  "  I'll share with you my secret to living a long life." next
+  "@And that secret is..." next
+  "  ...to gargle all the time." next
+  "@If you catch a cold, go and gargle until it's gone." next
+  "@Here. Take some of my special mouthwash with you." end
+15B: 
+15C:
+  "@Oh, you want more mouthwash?" next
+  "@All right, here you go." next
+  "@From now on, it'll cost you $[03 1E], though." next
+  "  (gargle gargle spit)" end
+15D:
+  "@I've heard that some people have died from catching a cold." next
+  "Just a cold!" end
+15E:
+  if localization
+    "@Have you heard about the haunted house in {call(spookane)}?" end
+  else
+    "@Have you heard about {call(spookane)}'s haunted house?" end
+15F:
+  "@They say you can hear a piano melody coming from inside," next
+  "  even though the house is empty." end
+160:
+  "@In that case, it's best that you don't know." end
+161:
+  "@Heh heh heh heh." end
+162:
+  "@No one's home. Keeheehee..." end
+// this laugh is like the ghosts in Mother 3
+163:
+  "@This is a nightmare." next
+  "@A bad dream you'll never, ever wake from..." next
+  "@Hee hee hee..." end
+164:
+  "@G O  B A C K" end
+165:
+  "@Gyaaaa!" end
+166:
+  "@{call(partyLeader)}..." next
+  "@You're going to die." next
+  "@Heeheehee hehehe!" next
+  ".|.|.|Keeheeheehee!" end
+167:
+  "@A suspicious rat... I am not." next
+  "@The room with the piano..." next
+  "@Heheheh...!" end
+168:
+  "@The haunted house belongs to the Rosemarys." end
+169:
+  "@A ghost started showing up at my house, too." next
+  "@It finally left 'cause it hated how cramped it was." end
+16A:
+  "@I'm more like a game assistant than a citizen of this town." next
+  "@Surely there are things you've forgotten to jot down notes about, right?" next
+  "@I can give you a hint for $[03 1E]. What do you say?" end
+16B: 
+16C:
+  "@Oh. You're really confident about yourself." next
+  "@Then I'll make sure we never meet again." end
+16D:
+  "@I can give you up to three hints." next
+  "@Everything else is a S-E-C-R-E-T." end
+16E:
+  "@I'm the most upbeat person here in {call(spookane)}." next
+  "@Everyone else seems so gloomy, wouldn't you say?" end
+16F:
+  "@Yeah, huh." next
+  "@To be honest, I'm not that cheerful a person either..." end 
+170:
+  "@I dunno." next
+  "@Maybe I'M actually the gloomy one." end
+171:
+  "@Our home turned into a hive for ghosts and monsters..." next
+  "@So now we live out here." end
+172:
+  "@{name(3)}: I can use the fuel from your rocket and..." next
+  "Then, if I use it with this..." next
+  "@Pretty cool, huh?" next
+  "Ahh!" end
+
+174:
+  "@It's too dark to see much, but aren't you that girl from the church in Snowman?" next
+  "@{name(2)}, was it?" next
+  "@Your mom is being held in a room in the back." next
+  "@But you can't save us right now." next
+  "@You gotta find a way to deal with the mothership first..." end
+175:
+  "@Oh! It flew off into outer space." next
+  "@A great success... sort of." end
+176:
+  "@Oh! You're such a charming boy!" next
+  "@Why, I could just gaze at you forever..." next
+  "@If anyone can turn our mansion back to normal, I'm sure it's you." next
+  "@Here. This is the key to get in." next
+  "(giggle)" end
+177:
+  "@My name is {name(1)}." next
+  "@It used to be Bugerror Rosemary, though." end
+178:
+  "@{name(1)}! You big dummy!" next
+  "@Oh, sorry, I was talking to my son, not you." end
+179:
+  "@The ghosts haven't quite left yet, but you're such a brave boy!" next
+  "@In fact, I even renamed my son after you." end
+17A:
+  "@This is Snowman Station, the last stop." end
+17B:
+  "@I heard all the citizens of {call(youngtown)} were spirited away." end
+17C:
+  if localization
+    "@My mommy's in the town of Easter." next
+  else
+    "@My mommy went to Youngtown." next
+  "@We haven't heard from her in days," next
+  "so Daddy and I are going there to look for her." end
+17D:
+  "@Have you been to the haunted house in {call(spookane)}?" end
+17E:
+  "@You HAVE to tell me all about it sometime." next
+  "@I just love scary stories!" end
+17F:
+  "@I don't wanna visit it, but you probably should." end
+180:
+  "@It's freezing here in Snowman. Be careful not to catch a cold." next
+  "@And be sure to brush your teeth, too." next
+  "@(cough cough)" end
+
+182:
+  "@Life is a game." next
+  "@Sometimes it's important to rest and pick up where you left off later." end
+183:
+  "@{name(2)} hasn't been at school lately." next
+  "I'm really worried." end
+184:
+  "@I'm so worried about {name(2)} that I can't sleep at night." end
+
+186:
+  "@You don't have enough money." end
+187:
+  "@Oh, my! Your nose is running!" end
+18E:
+  "@I've been waiting for you." next
+  "@I need your help to find my mom." next
+  "@Let's start by seeing what's happening in the town of {call(youngtown)}." end
+  
+18F:
+  "@You know, I had a dream about someone who looked just like you..." end
+190:
+  "@{name(1)}... Please stay with me." end
+191:
+  "@No! Stay with me..." next
+  "Please..." end
+192:
+  "@It's so quiet here." next
+  "@Would you like to dance?" end
+193:
+  "@...You're right. This isn't the time for that." next
+  "I'm sorry for asking." end
+194:
+  "@{name(1)}..." next
+  "@Do you like me?" end
+195:
+  "@What's wrong, {name(3)}?" end
+196:
+  "@The dragon is asleep." next
+  "@{name(1)} can't wake it up just yet." end
+197:
+  "@The dragon sensed {name(1)}'s presence and awoke." next
+  "@<NO ONE WEAKER THAN ME CAN HAVE THIS SHEET MUSIC.>" end
+232:
+  "@The dragon was in a very deep sleep." end
+233:
+  "@([03 3E] looked over the sheet music.)" end
+
+
+199:
+  "@My daughter {name(2)} is timid, but she has a kind heart and mysterious power." end
+19A:
+  "@You children WILL be victorious." next
+  "@I have faith that our prayers will be heard soon." next
+  "@For now, get some rest." end
+19B:
+  "@{name(1)} found a pass that someone dropped." end
+19C:
+  "@They climbed into the rocket." end
+19D:
+  "@My grandpa lives in the {call(yuccaDesert)}." next
+  "@If you see him, tell him I say hi." end
+19E:
+  "@I'm a nice guy's corpse." next
+  "@So don't worry, I won't attack you or anything like that." end
+19F:
+  "@I make a useful signpost, wouldn't you say?" end
+1A0:
+  "@You're one gutsy kid, talking to dead bodies..." end
+1A1:
+  "@I'm a camel's bones." next
+  "@Would you like some tips for walking through the desert?" end
+1A2:
+  "@Move your left foot before your right foot sinks." next
+  "@Move your right foot before your left foot sinks." next
+  "@It took me 100 years to figure this out." end
+1A3:
+  "@Oh, but I wanna tell you." next
+  "@Wouldn't you like to know?" end
+1A4:
+  "@The {call(yuccaDesert)} is the most boring part of this game." next
+  "@But watch out for land mines..." end
+1A5:
+  "  <{call(yuccaDesert)}>" next
+  "  Why not take a sightseeing flight?" end
+1A6:
+  "@I laid land mines in this desert during the war before last." next
+  "@I thought I dug 'em all up, but I just can't seem to find the last one." next
+  "@Best be careful out there." end
+1A7:
+  "@Oh, do you want to ride in my plane?" end
+1A8:
+  "@Then it'll cost $[03 1E] for the lot of ya." next
+  "@Be sure to hang on to your ticket stubs." next
+  "@Collect ten of 'em and you'll earn a ride in my tank!" next
+  "@Hahaha! You sure seem happy to hear that!" end
+1A9:
+  "@It IS rather pricey, so I I can't say I blame ya." end
+1AA:
+  "@Oh! You collected ten ticket stubs!" next
+  "@All right, then! I'll lend you my tank!" next
+  "@Hahaha! You sure seem happy to hear that!" end
+1AB:
+  "@You wrecked my tank. My precious, precious tank... (weep)" next
+  "@You better pay me the money to have it fixed." next
+  "@It comes to $[03 1E]." next
+  "@Will you pay right now?" end
+
+1AD:
+  "@Oh, that's great. Well, be seein' ya!" end
+1AE:
+  "@Now I'm mad! Grrrrrrr..." end
+
+1B0:
+  "@Mommy and Daddy are gone." end
+1B1:
+  "@I gard this gate." next
+  "Hoo goes there?!" end
+// this is supposed to be kiddy-ish and have wrong spelling
+1B2:
+  "@Y-you're suspishus!" next
+  "D-don't make me beet you up...! (shiver shiver)" end
+1B3:
+  "@The Garricksons' baby is weird. Like, REALLY weird." end
+1B4:
+  "@Let's see... Two plus three is five." next
+  "Eight minus four is four..." next
+  "I study all the time." end
+1B5:
+  "@Mommy! I miss you!" end
+1B6:
+  "@Daddy! I miss you!" end
+1B7:
+  "@A big flying ship took all the grownups away." end
+1B8:
+  "@It's great having no grownups around!" next
+  "(sniffle sob)" end
+1B9:
+  "@I want milk!" end
+1BA:
+  "@I want milk, too!" end
+1BB:
+  "@Milk!" end
+1BC:
+  "@Bring my mommy and daddy back. Please." end
+1BD:
+  "@Oh, hello there. My name is Tom Garrickson." next
+  "@Introducing myself is my hobby." end
+1BE:
+  "@Mommy told me this baby has a special power." end
+
+1C0:
+  "@Gaga googoo." end
+1C1:
+  "@I am this baby's consciousness." next
+  "@I have psychic powers, just as you do." next
+  "@I possess the ability to teleport." next
+  "@With it, you can return to anywhere you've been before." next
+  "@(The baby's mind taught {name(1)} how to use teleportation PSI.)" end
+
+1C6:
+  "@I think I heard the voices of my dad and the others coming from the mountains." next
+  if localization
+    "@But the mountains are way past the town of Valentine." next
+  else
+    "@But the mountains are way past Ellay..."
+  "@It's too far away for me to go there." end
+  
+1C8:
+  "@Time has passed, but you're still underage." end
+1C9:
+  "@You really oughtta watch where you're walking." next
+  "@Heheheh..." end
+1CA:
+  "@Oh, that blasted Black Blood Gang..." end
+1CB:
+  "@<Black Blood Gang> is a long name, so everyone just calls it the BB Gang." end
+1CC:
+  "@You're not with the BB Gang, I hope..." end
+1CD:
+  "@Everything's been nuts ever since black clouds appeared over the mountains." next
+  "The town and its people have all started to go crazy." end
+1CE:
+  "@Hey! You!" next
+  "@You two, there! Are you two sweethearts?" end
+1CF:
+  "@You love each other? Hurray!" end
+1D0:
+  "@I dunno, are you sure love isn't budding deep inside your hearts?" end
+1D1:
+  "@Hey, I got concert tickets." next
+  "@They cost $[03 1E]. Want some?" end
+1D2:
+  "@Here you go!" next
+  "@You're lucky. They're all sold out at the department store." end
+1D3:
+  "@Geez, you kids are cheap." end
+1D4:
+  "@I have some secret info you might find interesting." next
+  "@Want to hear it?" end
+1D5:
+  "@The BB Gang's boss's full name is {name(4)} Junior the 3rd." next
+  "@It's only a rumor, though." end
+1D6:
+  "@I'm sure you'll regret it later." end
+1D7:
+  "@No peeking in the dressing room." next
+  "@You'll wind up in a world of trouble if you do." end
+
+1D9:
+  "@You're so cute." next
+  "@Oh, your name is {call(partyLeader)}?" next
+  "@Here, this beer's on me. Drink up!" end
+1DA:
+  "@Oh, you're still a kid?" next
+  "@Come back when you're older, then." end
+1DB:
+  "@Forget it. No more drinks from me." end
+1DC:
+  "@Now do you regret what you did?" end
+1DD:
+  "@If you promise not to do it again, then you can go." next
+  "@But I think I'll hold on to your dangerous items." end
+1DE:
+  "@Then you can spend another day in there to cool off." end
+1DF:
+  "@Heheheh." next
+  "@I got my hands on some [03 1D]s the other day." next
+  "@Want one for $[03 1E]?" end
+1E0:
+  "@You don't got enough money." next
+  "@Grrrr..." end
+1E1:
+  "@{name(4)}'s parents were killed by monsters in the mountains." next
+  "@He had always been such a nice boy before then." end
+1E2:
+  "@I wish {name(4)} would go back to his old, gentle self." end
+1E3:
+  "@You gonna sing too?" end
+1E4:
+  "@All right! Do something with lots of pizzaz!" end
+1E5:
+  "@I guess you're a shy kid, huh?" end
+1E6: 
+1E7:
+  "@{name(2)}!" next
+  "@Oh, nothing. I saw your name written on your hat, that's all." end
+1E8:
+  "@That girl you brought with you sure was cute." end
+1E9:
+  "@Thanks, that was a great song." next
+  "@Say, are you the guys who've been messin' with my buddies?" end
+1EA:
+  "@You're goin' down!" end
+1EB:
+  "@I know it was you!" end
+1EC:
+  "@Ahahaha, you're really somethin'!" next
+  "@{name(1)}, was it?" next
+  "@Whaddaya say we call it a draw?" next
+  "@I really wanna avenge my parents." next
+  "@How about we go to the mountains together?" end
+1EF:
+  "@[03 3E] used the Phone Card." end
+1F0:
+  "@Great! I'm sure we'll make a great team of punks! Cheers!" end
+1F1: 
+1F2: 
+1F3:
+  "@Please! I know I can help you guys!" end
+1F5:
+  "@Hey, you. Four-eyes." next
+  "@You're not cut out for fightin'." next
+  "@Rest here and take it easy." next
+  "@I'll take your stuff, too." end
+1F6: 
+1F7:
+  "@There's no way we can beat 'em with brute strength alone." next
+  "@But we CAN bring peace back to the world." next
+  "@I just know it." end
+1F8:
+  "@{name(4)}: What're you two blushin' for?" next
+  "@Let's get goin' already!" end
+1F9:
+  "@I'm changing my clothes! You pervert!" end
+1FA:
+  "@I'm {name(3)}'s father." next
+  "@{name(1)}'s dad asked for your name earlier. Did you give him the right name?" end
+1FB:
+  "@Okay, great." next
+  "@Please keep {name(3)} safe, okay?" next
+  "@He IS a weakling, after all..." end
+1FC:
+  "@Then let's go through the process again." end
+1FD:
+  "@You should visit the harbor before you go to {call(mtItoi)}." next
+  "@I really mean it." end
+1FE: //TODO: look at how the menu works in-game and use that to bring the next few lines into this one
+  if (localization)
+  {
+    "@...Have you ever had Trout Yogurt before?" end
+  }
+  else
+  {
+    "@...Have you ever had strawberry-flavored tofu before?" end
+  }
+  
+1FF:
+  "@If you ever find any more, could you bring it to me?" next
+  "I'll give you something nice in return." end
+200:
+  "@Oh. I wish they'd start selling it out here..." end
+201:
+  if (localization)
+  {
+    "@Oh, Trout Yogurt! Thank you!" next
+  }
+  else
+  {
+    "@Oh, strawberry-flavored tofu! Thank you!" next
+  }
+  "@Now let me give you a nice gift in return." end
+
+204:
+  "@Stop by if you ever get hurt." next
+  "@It's not much, but I have food, medicine, and some plain beds here." end
+
+206:
+  "@Say, {name(3)}." next
+  "@Looks like it's finally time to use what little courage you have." end
+207:
+  "@Hello, kids." next
+  "@What do you need?" end
+208:
+  "@MY NAME IS EVE." wait
+  "  I HAVE BEEN WAITING FOR YOU." wait
+  "@MY FATHER WAS GEORGE." wait
+  "  HE WAS TAKEN TO THE ENDS OF THE UNIVERSE," wait
+  "  AND THEN HE RETURNED HERE." wait
+  "@MY DUTY IS TO PROTECT YOU." end
+
+20E:
+  "@{name(1)}! {name(1)}!" next
+  "@It looks like you got your head handed to you." next
+  "@So, how about giving it another shot?" end
+// line from EarthBound
+20F:
+  "@{name(1)} decided to return after summoning all the courage and energy he had." next
+  "@Good luck, {name(1)}!" end
+210:
+  "@{name(1)} realized it had only been a bad dream." next
+  "@Good luck, {name(1)}!" end
+211:
+  "@Give to who?" end
+212:
+  "@That person can't carry any more stuff." next
+  "@Give it to someone else?" end
+215:
+  "@Has that weakling {name(3)} kicked the bucket?" end
+216: 
+  "  Welcome to {call(podunk)}" end
+  
+217: 
+  if (localization)
+    "  City Zoo" linebreak
+  else
+    "  Cream Puff Zoo" linebreak
+  "  Manager's Office" end
+  
+  
+218: "Ocean Overlook"
+219:
+  "@I don't think there's anyone here by that name," next
+  "but perhaps I'm mistaken..." end
+21A:
+  "@After being placed in the fountain," next
+  "the Red Weed turned into a very energizing Magic Herb." end
+21B:
+  "@There's no one like that here!" end
+// possible hospital text?
+21C:
+  "@[03 1D], right?" next
+  "Thanks! I really appreciate it!" end
+21D:
+  "@It is easy to lose items in the vicinity of this sign, so please be careful." end
+21E:
+  "@Incredibly enough, you found dentures under the sign!" end
+21F:
+  "@Hi there! Not feeling well, are we?" next
+  "@Then I can heal you up in a jiffy!" end
+220:
+  "@Come to the science lab." end
+223:
+  "@Listen closely, now. I'm going to explain how to use this." next
+  "@All right. Whatever you do, don't press..." next
+  "@Oh, crap! I pressed it!" end
+
+//SECTION: CAPITALISM
+306:
+  "@Welcome." next
+  "@What can I get you?" end
+307:
+  "@I'm very sorry. That item is currently sold out." end
+308:
+  "@Oh, you've changed your mind?" next
+  "@That's too bad, but I hope you'll come back soon!" end
+309:
+  "@Thank you." next
+  "@Please come again." end
+30A:
+  "@Oh, you've changed your mind?" next
+  "@Well, please come again." end
+  
+229:
+  "@What would you like to sell?" end
+22A:
+  "@I can buy that for $[03 1E]." next
+  "@Is that okay with you?" end
+
+22E:
+  "@You're lying." next
+  "@I can see right through your tricks." end
+234:
+  "@Can I help you?" end
+
+//SECTION: MIMMIE & GOODSKEEPER
+230:
+  "@Which item will you leave with me?" end
+236:
+  "@Your [03 1D]?" next
+  "@I'll take good care of it." next
+  "@Do you want me to hold on to anything else?" end
+237:
+  "@Okay, then. Be careful out there." end
+238:
+  "@Your [03 1D]?" next
+  "@Sure thing. Take good care of it, okay?" next
+  "@Is there anything else you want to take with you?" end
+214:
+  "@Are you a friend of {name(1)}?" next
+  "@Really? I see." next
+  "@But these items belong to {name(1)}," next
+  "so I can't give them to anyone else." end
+
+323:
+  "@You don't have any items." end
+324:
+  "@You haven't left any items with me." end
+325:
+  "@Hold on..." next
+  "@The storeroom is full," next
+  "so I can't store any more stuff." end
+
+
+239:
+  "@There was a landslide up by {call(unionStation)}, so the train can't get through." end
+  
+23A:
+  "@The [03 1D], yes?" end
+23B:
+  "@It looks you can't hold any more items." end
+23C: 
+23D:
+  "@Oh. You don't seem to have enough money." end
+23E:
+  "@Oh, my. It looks like you can't hold any more items." end
+23F:
+  "@You don't have enough money." next
+  "@Come back again when you do." end
+240:
+  "@Bye! Take care!" end
+241: 
+242:
+  "@Oh, my. You can't carry any more things." next
+  "@In that case, I'll give it to you the next time I see you." end
+243:
+  "@Here you go! Medicine!" end
+244:
+  "@Okey-doke! Good night!" end
+248:
+  "@Okay! Let's go back to town now!" end
+24D:
+  "@Which course would you like?" end
+250:
+  "@I can't talk very well without my dentures." end
+251:
+  "@Looks like you still don't have enough." end
+258:
+  "@You seem to be having a tough time..." next
+  "I'm so worried..." end
+259:
+  "@Good luck!" end
+25A:
+  "@Who's your leader?!" next
+  "I'm gonna teach 'im a lesson!!" end
+25B:
+  "@The BB Gang members are doing just fine." end
+// context?
+
+25D:
+  "@Please don't make me angry." end
+25E:
+  "@[03 3E] secretly pocketed it." end
+25F:
+  "@Oh, you don't seem to have enough money." end
+260:
+  "@Oh, it looks like you can't carry any more things." end
+261:
+  "@I am the professor's Assistant A." next
+  if (localization)
+  {
+    "@I, too, would love to try some Trout Yogurt." end
+  }
+  else
+  {
+    "@I, too, would love to try some strawberry-flavored tofu." end
+  }
+  
+262:
+  "@Oh, it looks so good!" next
+  "@Thanks, I appreciate it." next
+  "As a token of my gratitude, I'll share some information I heard." next
+  "@There's an amazing robot at the bottom of a lake on {call(mtItoi)}." next
+  "@I bet it still works, too!" end
+263:
+  "@I realize I look like Assistant A, but I'm actually Assistant B." next
+  if (localization)
+  {
+    "@I really, truly want some Trout Yogurt too." end
+  }
+  else
+  {
+    "@I really, truly want to try strawberry-flavored tofu too." end
+  }
+  
+264:
+  "@Oh! Oh! I'm so happy!" next
+  "@Please, take these Curse Words with you." end
+267:
+  "@You're here for your Big Bag, right?" next
+  "I've been expecting you." end
+268:
+  "@Here, this is for you. It's a Big Bag." end
+269:
+  "@It's no big deal." next
+  "@The real problem is my wife." next
+  "@She sleeps until noon every day and she never packs me a lunch." next
+  "@Isn't that just terrible?" end
+26A:
+  "@Oh! {name(2)} is dead!" end
+26B:
+  "@Thank you for everything." next
+  "@As a token of my gratitude..." next
+  "I'll be praying for your success." end
+26C:
+  "@I'm Laura." end
+
+270:
+  "@Oh, my! It's {name(1)}, the hero!" next
+  "I never expected you to return all alone..." next
+  "@Are you taking a break?" end
+271:
+  "@Oh, little girl." next
+  "@This is no place for a child like you." end
+272: 
+273:
+  "@Oh, {name(1)}! How are you doing?" end
+274:
+  "@Good morning. It looks like you slept well." end
+275:
+  "@Please come again, okay? Promise?" end
+276:
+  "@Good morning!" end
+277:
+  "@Be careful. A lot of the monkeys here like to lie." end
+278:
+  "@Heheh. Do I look like a monkey?" end
+279:
+  if (localization)
+  {
+    "@...I'm actually a racoon in disguise." end
+  }
+  else
+  {
+    "@...I'm actually a tanuki, also known as a racoon dog." next
+    "@I'm in disguise." end
+  }
+  
+27A:
+  "@Darn." next
+  "@You have really good eyes, you know that?" end
+27B:
+  "@You should quit playing." end
+// check context
+27C:
+  "@Are you really sure about that?" end
+27D:
+  "@Oh. Oh, well, then." end
+27E:
+  "@You managed to catch me." next
+  "You're really something." next
+  "@Here's something nice for you." end
+27F:
+  "@Turn right and then left to find something nice." end
+280:
+  "@It seems peaceful in here, but it's also way too dark." end
+281:
+  "@Straight! Just walk straight!" next
+  "The truth is somewhere straight ahead." end
+282:
+  "@I'm a lady, you know." next
+  "@You shouldn't walk up to a lady so casually and start talking." next
+  "Don't you agree?" end
+283:
+  "@Actually, I'm a man." end
+
+285:
+  "@La-la la la-la, la la la la la..." next
+  "@Oh, don't pay any attention to this melody." end
+286:
+  "@How long has it taken you to get this far?" next
+  "@Oh, I just thought I'd ask." end
+287:
+  "@I got some good information for you. You interested?" end
+288:
+  "@Well, basically... Treasure your friends." next
+  "@That's all I have to say." end
+289:
+  "@Fine, then!" next
+  "@You have no intellectual curiousity at all!" end
+28A:
+  "@Stop! You must not go this way!" end
+28B:
+  "@I don't trust any of the monkeys here." next
+  "All they ever do is lie." next
+  "@Go right, left, left, and then right." end
+28C:
+  "@Turn back!" next
+  "@Or, if you don't feel like turning back, then just keep going!" end
+28D:
+  "@I think you'll meet a new friend in a city with an ocean view." end
+28E:
+  "@I'm a shy monkey." next
+  "@Talking isn't really my thing." next
+  "@......Okay?" next
+  "@......" end
+28F:
+  "@Hubba hubba. Heaven must be missing an angel." end
+290:
+  "@Don't assume that all monkeys are liars." end
+291:
+  "@I'm the boss monkey. It annoys me how the others lie all the time." next
+  "@Go straight ahead and you'll find the exit to your right." end
+292:
+  "@Boy, did I mess up..." next
+  "@I must've made a serious mistake to wind up here." end
+293:
+  "@Help!" end
+294:
+  "@Oh, the phone! Could you get it, {name(1)}?" end
+295:
+  "@I'm Abbot, the mayor...'s assistant." next
+  "@The mayor is right over there." end
+296:
+  "@I have a secret to share with you later." end
+297:
+  "@Oh, you came to stay the night again?" end
+298:
+  "@Oh, a traveler!" end
+299:
+  "@If you think you're supposed to bust the ghosts in the haunted house..." next
+  "you're gravely mistaken." next
+  "@No, there's actually a melody there." end
+29A: 
+29B:
+  "@I have faith that {name(2)} is doing well somewhere out there." end
+29C:
+  "@Hey, you're underage. I'm taking you into custody." end
+29D: 
+29E: 
+29F:
+  "@Say, I heard you stepped on a land mine." next
+  "@I stepped in dog crap once myself." end
+2A0:
+  "@I heard you stepped in dog crap in some place called the {call(yuccaDesert)}." next
+  "@Could you get any lamer?!" end
+2A1: 
+  "  -- Certificate --" next
+  "  This hereby certifies that: [03 14]" next
+  "  has stepped on the land mine in the {call(yuccaDesert)}." next
+  "  Please keep this location a secret from other players." next
+  "    -Shigesato Itoi" end
+  
+2A2:
+  "@It looks like you slept well." next
+  "@Where are you off to today?" next
+  "@Well, take care!" end
+2A3:
+  "@Oh, you're not here to visit someone?" next
+  "@If you are the patient, come into the back room." end
+// from eb
+2A4:
+  "@We don't have anyone named that in our hospital. 
+// eb quote but also slightly fixed up" end
+2A5:
+  "@The cold this year is especially bad." next
+  "@It's made me so scrawny..." end
+2A6:
+  "@I don't have a cold." next
+  "Cough cough." next
+  "@Oh, that wasn't a cough." next
+  "it's just something I say out of habit." next
+  "@Cough cough." end
+2A7:
+  "@Exhausted? Go to the hotel." next
+  "@Sleepy? Go to the hotel." next
+  "@That's all there is to say, really." end
+2A8:
+  "@Oh, hi. Heh heh." end
+2A9:
+  "@This is a restaurant, tra-la-la!" next
+  "@A happy restaurant, ha-ha-ha!" next
+  "@Are you feeling happy?" end
+2AA:
+  "@Are restaurant owners everywhere so musical, I wonder?" end
+2AB:
+  "@I think {call(favoriteFood)} is great, too." end
+2AC:
+  "@The hotels around here are really no different from the ones in {call(podunk)}," next
+  "yet they cost so much more." next
+  "(mutter grumble)" end
+2AD:
+  "@This hotel is cheap." next
+  "@But that's about the only thing it has going for it." end
+2AE:
+  "@There was a landslide and now big rocks are blocking the railroad tracks." next
+  "@The train can't get through." end
+  
+0BB:
+  "@I wanted to tell you this as soon as I saw you..." next
+  "@The train tracks have been fixed, so the train can run through here again." end
+
+
+2B0:
+  "@You don't have enough money. That's too bad." next
+  "@Please come again some other time." end
+// from eb, possible hospital text?
+2B1:
+  "@Welcome!" next
+  "Please have a look at our menu." end
+2B2:
+  "@Thank you." next
+  "One order of [03 1D] to go!" end
+
+2B5:
+  "@He..." next
+  "  ...might never come again." end
+2B6:
+  "@Have fun!" end
+2B7:
+  "@Hey, waiter! Where's the wine list I asked for?" end
+2B8:
+  "@I want to try some {call(favoriteFood)}." end
+
+2BB:
+  "@I'd like to help the zombies become friendly by teaching them about God." next
+  "@But... Zombies freak me out!" end
+2BC:
+  "@It's me, Pippi!" next
+  "@We really did meet again, {name(1)}!" next
+  "@I went out to play again. That's why I'm here." next
+  "Don't tell my mom, though." end
+2BD:
+  "@Oh, aren't you {name(1)}, that snot-nose kid who sat next to me in kindergarten?" next
+  "@Or are you someone else?" end
+2BE:
+  "@Please don't dine-and-dash." next
+  "  Sorry if that comes off as distrustful..." end
+2BF:
+  "@You know, you look like you have a big appetite." end
+2C0: 
+2C1:
+  "@With the tracks ruined, the train has stopped running." next
+  "@Quit with all the pesky questions, will ya?" next
+  "@Geez, you're persistent." next
+  "@You're gonna make me cry with all your questions." end
+2C2:
+  "@Don't just stand there! Get moving!" end
+2C3:
+  "@You look like you've been through a lot." next
+  "@Well, now you can sit back, relax, and regret it all." end
+2C4:
+  "@I've heard about all the great things you've been up to." next
+  "@You must really be brave, huh?" end
+2C5:
+  "@Canary Village is north and west of here." next
+  "@You should definitely go visit it - admission is free!" end
+2C6:
+  "@There's this really pretty secretary at the town hall." next
+  "@She's the first floor receptionist." end
+2C7:
+  "@I'm starving." end
+2C8:
+  "@It's like I told my son, <If you have time to play Nintendo games..." next
+  "  then you should be studying instead!>" end
+2C9:
+  "@You have a really cheerful look on your face." end
+2CA:
+  "@Duncan is trying to open a strip club in this town." next
+  "@I'm absolutely against it!" end
+2CB:
+  "@Someday I wanna be a doctor so I can help people." next
+  "@And so I can make loads of money." end
+2CC:
+  "@Huh? Really?" next
+  "This is a respectable survey, though..." end
+2CD:
+  "@Go to school, you!" next
+  "@You're a student, aren't you?!" end
+2CE:
+  "@How are we going to get the rocks off the train tracks?" next
+  "@If we let city hall take care of it, they'll be there well into next year!" end
+2CF:
+  "@I heard there's a gigantic rocket in the Duncan Factory way up north." end
+2D0:
+  "@Don't assume I'm just an ordinary old guy." next
+  "@Although I actually am." end
+2D1:
+  "@You know..." next
+  "@If it were up to me..." next
+  "@I'd probably use a Duncan Factory rocket to blow up the rocks on the tracks." end
+2D2:
+  "@My husband is an important man at Twinkle Elementary School." next
+  "@He's so important that he doesn't eat packed lunches from home." end
+2D3:
+  "@Have you been to the Sweet Little Factory?" end
+2D4:
+  "@You know how there are scary monsters all outside town?" next
+  "@I'm worried to death that they'll steal my money." end
+2D5:
+  "@La-la-laaa..." next
+  "Into the wide blue sky..." next
+  "dandelion fuzz does fly..." next
+  "La-la-laaa!" next
+  "@I love music more than anything else!" end
+2D6:
+  "@The school janitor has the key to the roof," next
+  "but he won't give it to anyone." end
+2D7:
+  "@The old fortunetelling man on top of the mountain is really friendly." next
+  "@He'll give you as much stuff as you can possibly carry!" end
+2D8:
+  "@I walked through the tunnel once when I was young." next
+  "@I went to see a dead body." end
+2D9:
+  "@This is a residental area." next
+  "Try to keep the noise level down when you're walking around." end
+2DA:
+  "@I bet you've thrown food into the fields to get rid of it, huh?" next
+  "@Well, I guess it can't be helped, since this IS a game and all." end
+2DB:
+  "@Whoa...!!!" next
+  "@I'm... doing research about baths." next
+  "@It's for a university project." next
+  "@...It's the truth! I swear!" end
+2DC:
+  "@Man, having a bike would be so convenient." end
+2DD:
+  "@I'm starving..." next
+  "...Is what you expected me to say, huh?" next
+  "@Well, don't worry, I won't." next
+  "I AM starving, though." end
+2DE:
+  "@I love the city." next
+  "@I love the trendy, fashionable lifestyle." end
+2DF:
+  "@I don't believe in psychic powers at all." end
+2E0:
+  "@I'm an overshadowed man." next
+  "@Sometimes it even seems like I've disappeared completely." end
+2E1:
+  "@I love this town." next
+  "@{call(spookane)}, the next town over, is scary, though." end
+2E2:
+  "@Do you believe in God?" end
+2E3:
+  "@If you have really strong cold medicine, they'll buy it for a lot at the store." end
+2E4:
+  "@I'm a cheery mailman, la-la-la!" next
+  "@Do you know where the Rosemarys moved to, la-la-la?" end
+2E5:
+  "@The mailman's trying to find the Rosemarys' new address." next
+  "@If you see him, tell them they live much further to the east." next
+  "@La-la-la!" end
+2E6:
+  "@That Rosemary girl gives me the creeps!" end
+2E7:
+  "@The whole downtown area was so full of monsters that everyone fled here." end
+2E8:
+  "@Can I help you?" end
+2E9:
+  "@I'm a fortuneteller in training." next
+  "@I can see you returning to {call(unionStation)} from this train station." next
+  "@I'm not 100 percent sure about that, though." end
+  
+2EA:
+  "@{name(2)} lives in a temple... Err, I mean a church." next
+  "@Oh, you already knew that?" end
+2EB:
+  "@There's a church in the mountains further to the east." next
+  "@(cough... cough...) " //inflict cold
+  end
+2EC:
+  "@You kids sure are energetic and carefree, wearing such light clothes out here!" next
+  "(cough... cough...) " //inflict cold
+  end
+2ED:
+  "@If you run into some camel bones in the {call(yuccaDesert)}, tell them I say hi." next
+  "@That camel and I go way back." end
+2EE:
+  "@I can treat minor injuries here." next
+  "@But if you're sick, you'll need to visit an actual hospital, okay?" end
+  
+2EF:
+  "@I bet {name(3)} will have a computer-related job in the future." end
+2F0:
+  "@Shh! Keep quiet in the library!" next
+  "@A-a-a-CHOO!" end
+2F1:
+  "@Oh, you must be here because you heard I'm the world's greatest fisherman." next
+  "@Well, I wouldn't say I'm THAT great, but..." next
+  "@Oh, how about I tell you about some of my great exploits for an hour or so?" end
+2F2:
+  "@Get outta my face, twerps!" end
+2F3:
+  "@Hey, you!" end
+2F4:
+  "@My HP may be low, but I'm gonna give this everything I got!" end
+2F5:
+  "@In a fight between you and me..." next
+  "I'm pretty sure I would lose." end
+2F6:
+  "@I'm tough." next
+  "@But I'm mostly all talk." end
+2F7:
+  "@Our boss {name(4)} could totally beat you with just his pinkie if he wanted to!" end
+2F8:
+  "@Did you make sure to read the sign?" end
+2F9:
+  "@If you ever come across a cactus with a face on it in a desert somewhere..." next
+  "...that would be utterly terrifying." end
+2FA:
+  "@Talk to the fisherman and he'll wind up talking your ears off." end
+2FB:
+  "@Any first-grader can do a cartwheel, wouldn't you say?" end
+2FC:
+  "@Please take this elevator up to the observation deck." end
+2FD:
+  "@I saw smoke rising from an island you can see from the observation deck." next
+  "@I wonder if someone lives there." next
+  "@Man, if only I'd looked through the telescope..." end
+2FE:
+  "@I can't do a cartwheel." end
+2FF:
+  "@I still don't really know how to carry numbers in subtraction." end
+300:
+  if (localization)
+  {
+    "@I hear Trout Yogurt is all the rage in big cities." next
+  }
+  else
+  {
+    "@I hear strawberry-flavored tofu is all the rage in big cities." next
+  }
+  "@I'd love to try some." end
+  
+301:
+  "@I'm hungry." end
+302:
+  "@Don't assume I'm an ordinary old guy." next
+  "@...Is what my dad likes to say all the time." end
+303:
+  "@You're late for class!" end
+304:
+  "@Did you see a strange teacher in the science lab?" next
+  "@...Because I did." end
+305:
+  if (localization)
+  {
+    "@Have you played Super Mario Bros. 7?" next
+  }
+  else
+  {
+    "@Have you played Dragon Quest 4?" next
+  }
+  "@I'm still having a hard time with the third one." end
+  
+
+/////MOVE TO YOUNGTOWN
+31C:
+  "@Dad's not home." next
+  "@I don't understand money, but I can do other stuff." next
+  "@So don't worry. You can stay here tonight if you want." end
+31D:
+  "@Good morning." next
+  "@Stay again sometime, okay?" next
+  "@It gets lonely here all by myself." end
+31E:
+  "@Oh? You're not going to stay?" next
+  "@But I can do this work just fine even when Dad's gone..." end
+31F:
+  "@Oh, I can't let you in without tickets." end
+320:
+  "@But... There was nothing there." end
+32D:
+  "@ ???" end
+32E:
+  "@Thank you." end 
+32F:
+  "@I have a great source for weapons." next
+  "@One of these days, I might get ahold of some really amazing ones..." end
+
+331:
+  "@{name(1)}'s party won the battle." end
+  
+//SECTION: ATM MACHINE
+332:
+  "  WITHDRAW  DEPOSIT"
+333:
+  "@CURRENT BALANCE: $[03 19]" end
+326:
+  "@WELCOME" end
+246:
+  "@WITHDRAW HOW MUCH?" end
+247:
+  "@DEPOSIT HOW MUCH?" end
+327:
+  "@INSUFFICIENT FUNDS" end
+329:
+  "@NOT ENOUGH MONEY" end
+32A:
+  "@SORRY, BUT YOUR WITHDRAWAL AMOUNT HAS EXCEEDED YOUR ACCOUNT BALANCE" end
+32B:
+  "@THANK YOU" end
+
+
+334:
+  "@It's locked." end
+335:
+  "@The key doesn't fit." end
+336:
+  "@{call(partyLeader)} unlocked the door and went inside." end
+33A:
+  "@I'm sorry, but you don't seem to have enough money." end
+33B:
+  "@Oh, I'm so sorry. You don't have enough money." end
+
+33D:
+  "@Okay! All better!" next
+  "@Amazing, huh?" end
+33E:
+  "@I'm very sorry. I can't buy your [03 1D]." end
+33F:
+  "@Laura the songbird was so happy to see her baby again that she began singing." end
+340:
+  "@{name(1)} learned the melody." end
+341:
+  "@The canary is singing." end
+342:
+  "@The monkey stole the Zoo Key." end
+343:
+  "@The robot is old and rusted." end
+344:
+  "@The instant it sensed {name(1)}, the robot sprang to life." end
+345:
+  "@[03 1B]: [03 1E] EXP." end
+346:
+  "@Good luck." end
+347: 
+348:
+  "@Touching the fountain's water revitalized you." end
+
+34A:
+  "@Pippi!" next
+  "@Oh, thank goodness! She's all right!" next
+  "@I think the mayor is looking for her too." next
+  "@You should probably go and see him." end
+34B:
+  "@Someone's in here! ...Wait, this isn't a bathroom." next
+  "@I have my hands full at the moment. Come back later." end
+34C:
+  "@Who's been poisoned?" end
+34D:
+  "@Who shall I soften?" end
+34E:
+  "@They haven't been poisoned!" end
+34F:
+  "@Wait, they haven't been turned to stone!" end
+350:
+  "@They used to make loads of Bottle Rockets there." end
+351:
+  "@My wife was the very first Miss Middle of Nowhere." end
+352:
+  "@Okay, I unlocked the door." next
+  "@The view from the roof is really nice, by the way." end
+353:
+  "@Let's go visit Duncan's Factory later." next
+  "@I hear there's a really incredible rocket there." end
+354:
+  "@I bet people have been spreading rumors about how I'm a <weakling stinkling> or a <stupid head>..." end
+355:
+  "@Oh... It's morning now." end
+356:
+  "@Cherish your elders, you hear?" next
+  "(cough cough)" end
+357:
+  "@Hey, pipsqueak!" next
+  "Who said you could talk to me?!" end
+358:
+  if (localization)
+  {
+    "@I heard there's an NES game called <EarthBound Beginnings.>" next
+    "@It's tough... But it's aged way better than Dragon Warrior if you ask me." end
+  }
+  else
+  {
+    "@I heard there's a Famicom game called <MOTHER> now." next
+    "@They totally copied that from John Lennon, didn't they?" end
+  }
+  
+35A:
+  "@An old lady at the Reindeer train station has something very important to give you." next
+  "@Have you met her yet?" end
+35B:
+  "@This is my final hint." next
+  "@You know the guitar player in Magicant?" next
+  "Be sure you listen to his song!" end
+
+//SECTION: MELODIES
+35E:
+  "@The cactus sang." next
+  "@For some reason, it sang." next
+  "@It continued to sing with emotion." end
+35F:
+  "@The keys on the piano began to play all by themselves." end
+360:
+  "@With no hesitation at all, the dragon showed its old sheet music." next
+  "@The song went like this..." end
+361:
+  "@EVE was destroyed and ceased functioning." next
+  "@Music began to emanate from EVE's chest area." end
+
+  
+363:
+  "@There's a big lock on the door at the top of the stairs." end
+364:
+  "@I'm going to stay here and help the people of Snowman." next
+  "Please be careful on your way..." end
+365:
+  "@You don't have enough money." end
+366:
+  "@I'm too scared." next
+  "@You lead the way, {name(1)}." end
+367:
+  "@Upon closer look, the gate's lock was broken." next
+  "@{call(partyLeader)} opened the gate." end
+368:
+  "@Oh! {name(4)}! What's up?" end
+369:
+  "@You better hurry and get {name(4)} back on his feet!" end
+36A:
+  "@Oh, whoops." next
+  "@I can't hold on to your [03 1D]." next
+  "@I'm selfish like that." end
+36B: 
+  "Here rests Flying Man, " next 
+  "  the courageous warrior and eternal servant to {name(1)}." end
+36C: 
+  "Here rests Flying Man," next 
+  "  the courageous warrior and inner strength of {name(1)}." end
+36D: 
+  "Here rests Flying Man," next 
+  "  the courageous warrior and virtuous heart of {name(1)}." end
+36E: 
+  "Here rests Flying Man," next 
+  "  the courageous warrior and great sorrow of {name(1)}." end
+36F: 
+  "Here rests Flying Man," next 
+  "  the courageous warrior and flesh and blood of {name(1)}." end
+373:
+  "@By any chance are you on your way to Snowman?" end
+374:
+  "@I found this hat. I think it belongs to a girl in Snowman." next
+  "@Deliver it to her, if you'd be so kind." end
+375:
+  "@Oh, that's too bad. I was hoping to ask you a favor." end
+376:
+  "@The cool boy sang a very... unique song." next
+  "@Not even {name(1)} could learn this melody." end
+377:
+  "@I'm sorry to bother you, but could I ask you some survey questions?" end
+
+379:
+  "@Do you feel that train tickets are too expensive?" end
+37A:
+  "@Have you ever used a Megaphone?" end //replace this with itemname()
+37B:
+  "@Thank you for your cooperation." next
+  "@For your time, please take this Phone Card." end //also this
+37C:
+  "@I'm sorry to bother you, but... could you..." next
+  "@Oh! You've already taken the survey, haven't you?" end
+37D:
+  "@Hearing the cries from your heart, a helpful old man appeared." end
+37E:
+  "@[03 3E] opened the coffin." next
+  "@Inside the casket was...!!" end
+37F:
+  "@{call(partyLeader)} peered into the telescope." end
+380:
+  "@The ocean was beautiful." end
+381:
+  "@Something sparkled on the island in the distance!" end
+382:
+  "@Something leapt out of the capsule!" end
+383:
+  "@{name(2)}: Dad... Goodbye for now..." next
+  "The next time I see you, Mom will be with me!" next
+  "...Please pray for us." end
+
+385:
+  "@Who are you talking to?" end
+386:
+  "@What?" end
+387:
+  "@No problem here." end
+
+38B:
+  "@If you're looking for a weapon, check these out!" end
+38C:
+  "@Thank you!" end
+
+//SECTION: DO NOT USE, ALREADY IN THE VANILLA ROM
+38E:
+  "@[03 1A] used the [03 1C]." end
+38F:
+  "@[03 1A] can't use the [03 1C]." end
+390:
+  "@Please don't do that." end
+391:
+  "@[03 1A] equipped the [03 1C]." end
+392:
+  "@[03 1A] can't equip the [03 1C]." end
+393:
+  "@[03 1A] threw away the [03 1C]." end
+394:
+  "@You shouldn't throw away the [03 1C]." end 
+395:
+  "@[03 1A] gave the [03 1C] to [03 1B]." end
+396:
+  "@The [03 1C] can't be given away." end
+398:
+  "@Nothing happened." end
+399:
+  "@[03 3E] opened the present." end
+39A:
+  "@Found [03 1D]." end
+39B:
+  "@[03 16][03 17] took it." end
+
+3A1:
+  "@It's empty..." end
+  
+  
+
+3A3: 
+  if (localization)
+    "  North: City Zoo" linebreak
+  else
+    "  North: Cream Puff Zoo" linebreak
+  "  South: {call(podunk)}" end
+  
+3A4: 
+  "  Canary Village Wildlife Refuge ahead - Let's nurture nature together!" end
+  
+3A5: 
+  "  {call(podunk)} Town Hall" end
+  
+3A6:
+  "  West: Ocean Observatory" linebreak 
+  "  North: {call(ellay)} Harbor" next
+  "  Keep our ocean clean!" end
+  
+3A7: 
+  "West: {call(ellay)}" linebreak
+  "East: {call(mtItoi)}" end
+  
+3A8: 
+  "  West: Healer's House" linebreak
+  "  Bridge Path: Cemetery" next
+  "  Walking alone is dangerous!" end
+3A9: 
+  "West: {call(podunk)}" linebreak
+  "East: {call(merrysville)}" end
+  
+3AA: 
+  if (localization)
+    "  Podunk City Zoo - 700 meters west" end
+  else
+    "  Cream Puff Zoo - 700 meters west" end
+  
+3AB: 
+  "  Snowman Church ahead" end
+3AC: 
+  "  West: {call(ellay)}" linebreak
+  "  South: Swamp" end
+  
+3AD: 
+  "  {call(merrysville)} Main Street" linebreak
+  "  South: Twinkle Elementary School" end
+  
+3AE: 
+  "  {name(1)}'s house" end
+3AF: 
+  "  Welcome to {call(merrysville)}!" linebreak
+  "  West: {call(podunk)}" linebreak
+  "  North: {call(unionStation)}" end
+  
+3B0: 
+  "  West: Healer's House" linebreak
+  "  East: Reindeer Station" linebreak
+  "  South: Reindeer" end
+  
+3B1: 
+  "West: Downtown {call(spookane)}" linebreak
+  "East: {call(spookane)} Residential" end
+  
+3B2: 
+  "  East: Swamp" end
+3B3: 
+  "  Private property of the Rosemary family" end
+3B4: 
+  if (localization)
+    "  Ellay PD" end //pun on LAPD
+  else
+    "  Valentine Police Department" end
+  
+3B5: 
+  if (localization)
+  {
+    "  Coming this fall:" newline
+    "  Duncan’s Debutantery" next
+    "  Financing by," newline
+    "  Architectural by," newline
+    "  Construction by," next
+    "  Duncan Works Co. LLC" end
+  }
+  else
+  {
+    "  Coming soon: Strip Theater" linebreak
+    "  -Duncan Construction" end
+  }
+  
+3B6:
+  "@I HEARD MY BROTHER FELL HONORABLY IN COMBAT." next
+  "@HE WAS BURIED AND GIVEN A HEARTFELT FUNERAL." next
+  "@IT'S MY TURN NEXT." end
+3B7:
+  "@I CAN'T WAIT TO SERVE YOU." end
+3B8:
+  "@I AM Flying Man." next
+  "@I WILL BE YOUR STRENGTH." next
+  "THAT IS WHY I WAS BORN." end
+// his name is supposed to be written in different case like that
+3BA:
+  "@There's an old rocket here." end
+3BB:
+  "@You came to get your items, right?" next
+  "@Okay, here you go!" end
+3BC:
+  "@I gave you all your items." next
+  "  But come seem me again sometime!" end
+3BD:
+  "@I'm Minnie." end
+3BE: "  Refresh   Soften" end
+3BF:
+  "@{name(4)}: You two probably wanna be alone, huh?" next
+  "I'll just be catchin' some Zs over here, then." end
+3C0:
+  "@Oh no! I'm too late!" end
+3C1:
+  "@...I'm so glad." end
+3C2:
+  "@{name(4)}: Whoa! What the heck was that sound?!" end
+3C3:
+  "@{name(4)}: You gotta be kiddin' me!" end
+3C4:
+  "@The boat's engine seems to be in poor condition." end
+3C5:
+  "@{call(partyLeader)} can't get it to work." end
+3C6:
+  "@But {name(3)} fired it right up." end
+3C7:
+  "@The [03 1D], right?" next
+  "@I'll be sure to send it to {name(1)}'s house." next
+  "@Is there anything else you want to store?" end
+3C8:
+  "@What are we trapped inside these cramped things for?" next
+  "@What's going to happen to us?" end
+3C9: "  Sweet Little Factory" end
+3CA:
+  "@The mothership brought us to the top of the mountain," next
+  "and when we came to, we were stuck in these things..." next
+  "@Please, do something!" end
+3CB:
+  "@Are you sure it's spelled right?" end
+3CC:
+  "@The strange sound driving the animals crazy stopped." next
+  "@The zoo is safe once more." end
+3CD: 
+3CE:
+  "@This tank is my prized possession. Try not to break it, okay?" end
+3CF:
+  "@A key to the basement is hanging from the dog's collar." end
+3D0:
+  "@Heh heh heh! I'm a meddlesome mouse!" next
+  "@In towns, there are some houses you can go inside and some you can't." next
+  "@Houses with round doors or signs on them are the ones you can go into." next
+  "@If you try to go into any of the other ones, you'll just hit your head." next
+  "@Well, bye!" end
+3D1: 
+3D2:
+  "@Remember, teleportation isn't something to be toyed with." end
+3D7:
+  "@You shouldn't carry around that much cash." end
+3D8:
+  "@This'll return you back to your previous save data. Is that all right?" end
+3D9:
+  "@You said yes, but you don't have a save file!" next
+  "Ahahaha!" end
+3DA:
+  "@His breathing is rough. He looks like he's in pain." end
+3DB:
+  "@You don't have any friends to give items to yet." end
+3DC:
+  "@Oh, the [03 1D]?" next
+  "@Here you go. Take good care of it." next
+  "@Is there anything else you want to take with you?" end
+
+3DE:
+  "@The storeroom is full." end
+3DF:
+  "@Once Queen Mary finished speaking to {name(1)}, she disappeared into the wind." next
+  "  And then the land of Magicant itself vanished without a trace." next
+  "@Magicant had actually been an illusion born of Mary's conciousness." end
+3E0:
+  "@It was I who called you here." next
+  "@{name(1)}!" next
+  "  {name(2)}!" next
+  "  {name(3)}!" next
+  "  {name(4)}!" next
+  "@And all courageous children out there..." next
+  "@The time is now!" end
+3E1:
+  "@Shh! I'm just like you! I'm from the other world!" next
+  "@For some money, I'll share some souvenirs of Magicant with you." next
+  "@Hee hee hee!" end
+3E2:
+  "@You'll end up like me if you don't take the train..." end
+3E3:
+  "@Do you need anything else?" end
+3E4:
+  "@Welcome, {name(1)}..." next
+  "@I always had faith that you would make it this far." next
+  "@Long ago, your great-grandmother Maria filled her eight melodies" next
+  "  with all the love she could and scattered them around as gifts for you," next
+  "  even though she had never seen you before..." end
+
+3E5:
+  "@Bathed in the glow of the crystal, everyone was completely healed!" end
+
+//3E9: Big Bag
+//3EA: Phone Card
+//3EB: BreadCrumbs
+//3EC: Repel Ring
+//3ED: ITEM 05
+//3EE: Memory Chip
+
+//3F2: Knife
+//3F3: Surv. Knife
+//3F4: Basic Sword
+//3F5: Katana
+//3F6: Stun Gun
+//3F7: Toy Air Gun
+//3F8: Cracked Bat
+//3F9: Teeball Bat
+//3FA: Sandlot Bat
+//3FB: HallFameBat
+//3FC: Frypan
+//3FD: DX Frypan
+//3FE: Best Frypan
+//3FF: Slingshot
+//400: Boomerang
+//401: Bug Spray
+//402: Super Spray
+//403: Flea Bomb
+//404: Love Words
+//405: Curse Words
+//406: Slime Gen.
+//407: Flashdark
+//408: Stone Spray
+//409: Stinger
+//40A: Flamethrowr
+//40B: Bomb
+//40C: Super Bomb
+//40D: Laser Beam
+//40E: Death Beam
+//40F: ITEM 39
+//410: Rope
+
+//415: Peace Coin
+//416: ProtectCoin
+//417: Magic Coin
+//418: Fairy Brace
+//419: Angel Brace
+//41A: GoddessBrac
+//41B: RainPendant
+//41C: FlamePendnt
+//41D: EarthPendnt
+//41E: Sea Pendant
+//41F: Easy Ring
+//420: Item 56
+//421: Item 57
+
+//424: OrangeJuice
+//425: FrenchFries
+//426: Magic Herb
+//427: Hamburger
+//428: SportsDrink
+//429: Medicine
+//42A: AsthmaSpray
+//42B: Antidote
+//42C: Mouthwash
+//42D: Berry Tofu
+//42E: Item 70
+//42F: Bread
+//430: Angel Seed
+//431: PSI Stone
+
+//433: MagicRibbon
+//434: Magic Candy
+//435: Item 77
+//436: SpeedCapsul
+//437: Wis.Capsule
+//438: Str.Capsule
+//439: ForceCapsul
+//43A: FightCapsul
+
+//43D: BasementKey
+//43E: Zoo Key
+//43F: Haunted Key
+//440: GGF's Diary
+//441: Pass
+//442: Show Ticket
+
+//447: Baby Canary
+//448: ITEM 96
+//449: BottlRocket
+//44A: Hat
+//44B: Dentures
+//44C: Ticket Stub
+//44D: IC Chip
+//44E: Ocarina
+//44F: Item 103
+//450: Frank.Badge
+//451: Friend Ring
+//452: Item 106
+//453: Onyx Hook
+//454: Ult. Weapon
+//455: Ruler
+//456: ATM Card
+//457: Red Weed
+//458: Megaphone
+//459: Map
+
+//467: Coords.
+
+//469: Telepathy
+//46A: Teleport
+
+//470: Lifeup [ALPHA]
+//471: Lifeup [BETA]
+//472: Lifeup [GAMMA]
+//473: Lifeup [PIZ]
+//474: Lifeup [OMEGA]
+//475:00:00
+//476:00:00
+//477:00:00
+//478: Healing [ALPHA]
+//479: Healing [BETA]
+//47A: Healing [GAMMA]
+//47B: Healing [PIZ]
+//47C: Super Heal
+//47D: PSI Shield[ALPHA]
+//47E: PSI Shield[BETA]
+//47F: PowerShield
+//480: Brainshock
+//481: BrainCyclon
+//482: Hypnosis
+//483: Paralysis
+//484: Darkness
+//485: PSI Magnet
+//486: Shield Off
+//487: PSI Block
+//488: Offense Up
+//489: Def. Up [ALPHA]
+//48A: Def. Up [BETA]
+//48B: Quick Up
+//48C: Def. Down [ALPHA]
+//48D: Def. Down [BETA]
+//48E: Dimens.Warp
+//48F: Hypnosis
+//490: PK Freeze [ALPHA]
+//491: PK Freeze [BETA]
+//492: PK Freeze [GAMMA]
+//493: PK Freeze [OMEGA]
+//494: PK Fire [ALPHA]
+//495: PK Fire [BETA]
+//496: PK Fire [GAMMA]
+//497: PK Fire [OMEGA]
+//498: PK Beam [ALPHA]
+//499: PK Beam [BETA]
+//49A: PK Beam [GAMMA]
+//49B: PK Beam [OMEGA]
+//49C: PK Thunder[ALPHA]
+//49D: PK Thunder[BETA]
+//49E: PK Thunder[GAMMA]
+
+//4A8: Uncon.
+//4A9:  Stone
+//4AA: Paral.
+//4AB: Asleep
+//4AC: Flust.
+//4AD: Confus
+//4AE: Poison
+//4AF:   Cold
+
+//4B1: Course A
+//4B2: Course B
+//4B3: Course C
+//4B4: Hint 1
+//4B5: Hint 2
+//4B6: Hint 3
+//4B7: Antidote
+//4B8: Antidote
+//4B9: Antidote
+//4BA: Antidote
+//4BB: Real Rocket
+//4BC: Time Machine
+
+//4CF: Home
+//4D0: Mother'sDay
+//4D1: Thanksgiv.
+//4D2: Reindeer
+//4D3: Halloween
+//4D4: Snowman
+//4D5: Easter
+//4D6: Valentine
+//4D7: Santa Claus
+
+515: "  Should you fight it? Or should you run from it?" end
+516: "  It appears to be holding a very important secret." end
+517: "  Is there actually any way to defeat this thing?" end
+518: "  Sometimes it'll slam you with its heavy body or attack with its long trunk!" end
+519: "  Someone ate its food, and it's not happy at all!" end
+51A: "  Shocked? It really does exist!" end
+51B: "  Watch out for its exhaust! It can cause an asthma attack!" end
+51C: "  Hypnosis probably doesn't work on robots, does it?" end
+51D: "  It's wearing special armor to protect itself from PSI attacks." end
+51E: "  This has the power to turn people into stone." end
+51F: "  Creatures like this shouldn't exist on Earth, but..." end
+520: "  This is no time to be getting caught up with a punk ape like this!" end
+521: "  The only one not afraid of this thing's face is its own mother." end
+522: "  Just look at those terrifying eyes!" end
+523: "  Whoa, there's no one in the driver's seat!" end
+524: "  He has strong friends." end
+525: "  This thing's shell is unbelievably hard." end
+526: "  Watch out. It'll use hypnosis on you." end
+528: "  This animal is as swift as they come." end
+529: "  Watch out for those pearly whites!" end
+52A: "  You dirty thief!" end
+52B: "  Always turn down an alligator's dinner invitation." end
+52C: "  It's a walking fuel tank." end
+52D: "  It appears to be protecting something." end
+52E: "  This guy is at the very top of the FBI's most-wanted list." end
+52F: "  Deep down, he might actually be a nice guy." end
+530: "  A malnourished robot?" end
+531: "  Don't be fooled by her smile!" end
+532: "  A man from a distant star." end
+533: "  This creature does not exist in the real world." end
+534: "  A mobile brain that is the result of an evil science experiment." end
+535: "  This creature is a master of many kinds of PSI." end
+536: "  It'd be nice to have some armor of your own." end
+537: "  A strange, mobile tree." end
+538: "  He looks bad-tempered, so be careful." end
+539: "  You could probably plant flowers in his hair and they'd grow." end
+53A: "  She has a body like a refrigerator and a heart of ice." end
+53B: "  Beating the punks' leader will probably set them all straight." end
+53C: "  His heart is as warped as his face is." end
+53E: "  Watch out for this guy's SMAAAASH hits!" end
+53F: "  Watch out for this guy's constant sneak attacks!" end
+540: "  Watch your items! This guy is a thief..." end
+541: "  It isn't poisonous. Hopefully, anyway..." end
+542: "  He who laughs last laughs best." end
+543: "  This animal is quite a bit different from your ordinary pet cat." end
+544: "  Kill it with bug spray!" end
+545: "  Aaaachoo!!" end
+546: "  Bug spray works wonders on it!" end
+547: "  Why not try using bug spray on it?" end
+548: "  It's poisonous, but you can kill it with bug spray." end
+549: "  Try not to get tied up." end
+54A: "  It's almost like this guy escaped from a comic book or something." end
+54B: "  This guy's face is the easiest to draw." end
+54C: "  If this guy put a mask on, it'd be impossible to tell who he is." end
+54D: "  A rather run-of-the-mill ghost." end
+54E: "  It's about as big as a dinner plate..." end
+54F: "  Apparently, life is like a puzzle to him." end
+550: "  It may be small, but it's clearly an alien." end
+551: "  Hold your nose!" end
+552: "  It looks scary on the outside, but its final attack is even scarier." end
+553: "  A big rat with a long tail." end
+554: "  It looks like an egg but is harder than one." end
+556: "  It glares at you from afar..." end
+557: "  It's flying all around!" end
+55A: "  It was apparently given a powerful poison at a lab somewhere." end
+55B: "  Watch out for its poison and petrifying attacks!" end
+55E: "  Don't let it get away! It's a good source of experience points!" end
+55F: "  It apparently doesn't have any friends at all." end
+560: "  Its chair broke and now it's in a REALLY bad mood!" end
+565: "  Happen to have any Antidotes handy?" end
+566: "  Poison Pois on Poi Sonnnn" end
+567: "  Don't smile back at this alligator." end
+569: "  Even this thing's own father is scared of its face." end
+56B: "  Be careful not to get petrified..." end
+56C: "  This thing better not have fleas..." end
+56D: "  Hypnosis probably doesn't work on cars, does it?" end
+56E: "  Hypnosis probably doesn't work on trucks, does it?" end
+56F: "  How will it come at you next?! Straight-on, or in a zig-zag?!" end
+570: "  Watch out, it'll call for friends if it's alarmed!" end
+572: "  The favorite of optometrists everywhere." end
+573: "  Don't let your guard down. This daddy is always watching you..." end
+574: "  This mommy can see through all your tricks!" end
+577: "  This thing will do anything for its friends!" end
+579: "  He only seems to use PK Beam..." end
+57A: "  This thing is devilishly strong." end
+57B: "  It may look like a hunk of junk, but don't underestimate it!" end
+57C: "  A cutting-edge, mass-produced robot." end
+57D: "  It's about as big as a manhole cover..." end
+57E: "  Don't let her beauty fool you..." end
+57F: "  It carries bombs... and often uses them." end
+580: "  This robot has large amounts of fuel stored inside its body." end
+581: "  Watch out! She won't hesitate to use powerful PSI attacks!" end
+582: "  His mission is to keep anyone from getting through the caves..." end
+583: "  Prefers to use PK Freeze." end
+584: "  If you can beat this thing, you're incredible." end
+585: "  It doesn't just use PSI - it also likes to steal things!" end
+587: "  Watch out for its Brainshock attacks!" end
+588: "  A violent guy who comes out swinging the first chance he gets." end
+589: "  Its beautiful silver coat glistens in the light." end
+58A: "  This thing is HUGE!" end
+58B: "  Don't ever sleep in this guy's bed, no matter how tired you are!" end
+58C: "  This robot has been remodeled to be even stronger now!" end
+58D: "  The strongest Starman of all." end
+
+//5DD: Territ. Oak
+//5DE: Dragon
+//5DF: R-7038
+//5E0: Elephant
+//5E1: Bear
+//5E2: Bigfoot
+//5E3: Mad Truck
+//5E4: Old Robot
+//5E5: Mega-Borg
+//5E6: Gargoyle
+//5E7: Gabilan
+//5E8: Gorilla
+//5E9: Bison
+//5EA: Tiger
+//5EB: Mad Car
+//5EC: Raeb Yddet
+//5ED: Magisnail
+//5EE: Titany
+//5EF: Giygas
+//5F0: Eagle
+//5F1: Wolf
+//5F2: Gull Bandit
+//5F3: Crocodile
+//5F4: Atomic Robot
+//5F5: Cave Master
+//5F6: Fugitive
+//5F7: BB Gang Boss
+//5F8: Barbot
+//5F9: Jane
+//5FA: Starman
+//5FB: Ulrich
+//5FC: Brainger
+//5FD: Mook
+//5FE: Armor
+//5FF: Oak
+//600: Redneck
+//601: Hippie
+//602: Bag Lady
+//603: Gang Member
+//604: Dr. Distorto
+//605:00:00
+//606: Gang Zombie
+//607: PseudoZombie
+//608: Crow
+//609: Snake
+//60A: Hyena
+//60B: Lynx
+//60C: Centipede
+//60D: Dust Ghost
+//60E: Fly
+//60F: Arachnid!
+//610: Scorpion
+//611: Rope
+//612: Fireball
+//613: Swoosh
+//614: Bonus Swoosh
+//615: Ghost
+//616: Li'l Saucer
+//617: Mr. Batty
+//618: Starman Jr.
+//619: Skunk
+//61A: BloodyZombie
+//61B: Rat
+//61C: Bomber
+//61D: 
+//61E: Doll
+//61F: Lamp
+//620:00:00
+//621:00:00
+//622: Biopede
+//623: Bio-Scorpion
+//624:00:00
+//625:00:00
+//626: Red Snake
+//627: Lone Wolf
+//628: Polar Bear
+//629:00:00
+//62A: 
+//62B: 
+//62C: 
+//62D: Rattlesnake
+//62E: Tarantula
+//62F: Tough Croc
+//630:00:00
+//631: Buffalo
+//632:00:00
+//633: Bio-Bat
+//634: Stray Dog
+//635: Devil Car
+//636: Devil Truck
+//637: Death Truck
+//638: Alarm Ghost
+//639:00:00
+//63A: Woosh Swoosh
+//63B: Papa Swoosh
+//63C: Swooshette
+//63D: 
+//63E: 
+//63F: Sky Yddet
+//640:00:00
+//641: Giga-Borg
+//642: Last Borg
+//643: Scrapper
+//644: Death Barbot
+//645: Omega Saucer
+//646: Caroline
+//647: Star Miner
+//648: NuclearRobot
+//649: Suzie
+//64A: Blue Starman
+//64B: Satania
+//64C: Titanian
+//64D: Mook Senior
+//64E: 
+//64F: Zombie
+//650: Mean Zombie
+//651: Silver Wolf
+//652: R-7037
+//653: Grizzly
+//654: R-7038XX
+//655: Last Starman
+
+6A5:
+  "@[03 1A] decided not to hand over any items." end
+6A6:
+  "@[03 1A] gave the [03 1C] to [03 1B]." end
+6A7:
+  "@[03 1A] put the [03 1C] in [03 1B]'s bag." end
+6A8:
+  "@[03 1B] took the [03 1C] from [03 1A]'s bag." end
+6A9:
+  "@[03 3E] threw out the [03 1C] that was in [03 1A]'s bag." end
+6AA:
+  "@[03 3E] took the [03 1C] out of [03 1A]'s bag" next
+  "and put it in [03 1B]'s bag." end
+6AE:
+  "@[03 1A] swallowed the [03 1C]." end
+6AF:
+  "@[03 1A] ate the [03 1C]." end
+6B0:
+  "@[03 1A] drank the [03 1C]." end
+6B1: "was recovered by [03 1E]." end
+6B2: "went up [03 1E]." end
+6B3:
+  "@[03 1A]'s HP" end
+6B4:
+  "@[03 1A]'s PP" end
+6B5:
+  "@[03 1A]'s Fight" end
+6B6:
+  "@[03 1A]'s Speed" end
+6B7:
+  "@[03 1A]'s Wisdom" end
+6B8:
+  "@[03 1A]'s Strength" end
+6B9:
+  "@[03 1A]'s Force" end
+6BA:
+  "@[03 1A] took a Magic Herb from the Big Bag and used it." end
+6BB:
+  "@[03 1A] broke the bread into crumbs and started a trail out of them." end
+6BC:
+  "@You need to throw out your old bread crumbs before you can use other bread." end
+6BD:
+  "@{call(partyLeader)} followed the trail of bread crumbs back to where it started." end
+6BE:
+  "@{name(2)} put the ribbon in her hair." end
+6BF:
+  "@<Just turn the power off!>" end
+6C0:
+  "@You were able to figure out the lengths of many things." end
+6C1:
+  "@The Big Bag disappeared after being emptied." end
+6C2:
+  "@You used up all the calls on your Phone Card." end
+6C3:
+  "@The poison was removed from [03 1A]'s body." end
+6C4:
+  "@[03 1A]'s cold went away." end
+6C5:
+  "@[03 1A] gripped the PSI Stone." end
+6C6:
+  "@The PSI Stone turned into an ordinary rock." end
+6C7:
+  "@[03 1A] tried [03 1C]." end
+6C8:
+  "@You don't have enough power left to try that." end
+6C9:
+  "@[03 1A] was revived!" end
+6CA:
+  "@Most of the diary is unreadable, but one part did stand out:" next
+  "@<The password...>" next
+  "  Where is the god's tail," next
+  "  that which was left behind by the ship that soars the heavens?" end
+6CB:
+  "@[03 1A]'s body became soft again." end
+6CC:
+  "@You played the Ocarina of Hope." end
+6CD:
+  "@Did you catch that?" end
+6CE:
+  "@This location is not on the map." end
+6CF:
+  "@{call(partyLeader)} checked the map." end
+6D0:
+  "@Some sort of force is pushing [03 16][03 17] back." end
+6D1:
+  "@The Repel Ring's mysterious power wore off." end
+6D6:
+  "@[03 1A] took out the [03 1C] and then put it away again." end
+6D7:
+  "@[03 1A] is unconcious." end
+6D8:
+  "@The entire party was healed!" end
+6D9:
+  "@{name(1)} sensed a faint memory of his great-grandfather!" end
+6DA:
+  "@Huh? There still seems to be something inside EVE's body..." end
+6DB:
+  "@I found your ATM Card on the floor in your room." end
+
+6E0:
+  "@Danger seems to be lurking nearby... " end //not needed 'cause no random battles in EB engine
+6E1:
+  "@Things are going crazy!" end
+
+6F5: "Copyrights of Game[03 3F] Scenario[03 3F]  Music[03 3F] but excluding the  copyright of Music composed by  Keiichi Suzuki[03 3F] reserved by  SHIGESATO ITOI and NINTENDO.  Copyright of Program reserved  by NINTENDO."
+
+6FF: "  {name(2)} is reunited with her mother as the rest of the freed people exit the cave." end
+700: "  {name(4)}, his health fully recovered, is now a popular singer at the Live House." end
+701: "  The abducted grownups return to their children in {call(youngtown)}. You did great, kids!" end
+702: "  {name(2)}: I promise I'll never forget you. So I won't say say goodbye... Just, <'Til we meet again!>" end
+703: "  {name(3)} returns to a hero's welcome at Twinkle Elementary School." end
+704: "  Welcome home, {name(1)}! We're so glad you made it back safe and sound. You must be famished!" end
+705: "  Oh, a letter from {name(1)}. I miss him so much. I hope we can get together again soon..." end
+706: "  Well, now that the Earth's crisis is finally over, I think I'll just lie down for a moment and... Zzzzzzz..." end
+707: "@Oh, this is your dad. I hate to wake you, but it might be just a little too soon to rest easy..." end
+
+//SECTION: ITEM HELP TEXT
+//TODO: make a "print item name" command to use in this section that just calls itemname with <> quotes around it
+
+709:
+  "<Big Bag>" newline
+  "@A bag filled with lots of Magic Herbs." end
+70A:
+  "<Phone Card>" newline
+  "@You can make 50 calls on public phones with this." end
+70B:
+  "<Bread Crumbs>" newline
+  "@With these, you can return to the exact spot where you began spreading crumbs." end
+70C:
+  "<Repel Ring>"newline
+  "@When used, this item will ward off weak enemies for a short while." end
+70E:
+  "<Memory Chip>" newline
+  "@Part of Great Grandfather George's memory is stored on this." next
+  "@{name(1)} can use it to return to EVE's location." end
+712:
+  "<Knife>" newline
+  "@A weapon that {name(4)} can skillfully use." end
+713:
+  "Survival Knife" newline
+  "@A weapon for {name(4)}. It looks stronger than a regular knife." end
+714:
+  "Basic Sword" newline
+  "@Probably only a select few can master using this." end
+715:
+  "Katana" newline
+  "@{name(4)} can use this Japanese sword." next
+  "@It's the strongest weapon of all." end
+716:
+  "Stun Gun" newline
+  "@{name(3)} can probably use this." end
+717:
+  "Toy Air Gun" newline
+  "@This is a very strong weapon, but only {name(3)} can use it." end
+718:
+  "Cracked Bat" newline
+  "@{name(1)}! Try using this as a weapon!" end
+719:
+  "Teeball Bat" newline
+  "@This should work well against weak enemies, {name(1)}." end
+71A:
+  "Sandlot Bat" newline
+  "@With this, {name(1)} can fight against strong enemies." end
+71B:
+  "Hall of Fame Bat" newline
+  "@A spectacular bat with a famous athlete's autograph on it." end
+71C:
+  "Frypan" newline
+  "@{name(2)} can use this as a weapon." end
+71D:
+  "Deluxe Frypan" newline
+  "@This frypan doesn't burn food," next
+  "and {name(2)} can also use it as a weapon." end
+71E:
+  "Best Frypan" newline
+  "@Not even tough baddies can withstand a hit from this heavy frypan." end
+71F:
+  "Slingshot" newline
+  "@A simple weapon that anyone can use." end
+720:
+  "Boomerang" newline
+  "@Handle with care. This is not a toy." next
+  "Anyone can use this weapon." end
+721:
+  "Bug Spray" newline
+  "@Somewhat effective on insects and such." end
+722:
+  "Super Spray" newline
+  "@A new and powerful bug spray." end
+723:
+  "Flea Bomb" newline
+  "@Filled with fleas and lice. Throw it at the enemy and see what happens!" end
+724:
+  "Love Words" newline
+  "@???" end
+725:
+  "Curse Words" newline
+  "@???" end
+726:
+  "Slime Generator" newline
+  "@It *seems* like it could be useful in battle, but..." end
+727:
+  "Flashdark" newline
+  "@This is the exact opposite of a flashlight." end
+72A:
+  "Flamethrower" newline
+  "@Burns enemies to a crisp, but only {name(3)} can use it." end
+72B:
+  "Bomb" newline
+  "@Probably only {name(3)} can use this." end
+72C:
+  "Super Bomb" newline
+  "@<Danger! Explosive!> is written on it." next
+  "@Leave this in {name(3)}'s hands." end
+72D:
+  "<Laser Beam>" newline
+  "@If that weakling {name(3)} were to wield this..." end
+72E:
+  "<Death Beam>" newline
+  "@If that cowardly {name(3)} were to wield this, he'd really be something." end
+730:
+  "<Rope>" newline
+  "@Use this to tie up the enemy." end
+735:
+  "<Peace Coin>" newline
+  "@Raises your Defense slightly when equipped." end
+736:
+  "<Protect Coin>" newline
+  "@Raises your Defense somewhat when equipped." end
+737:
+  "<Magic Coin>" newline
+  "@Raises your Defense quite a bit when equipped." end
+738:
+  "<Fairy Bracelet>" newline
+  "@Raises your Defense a tiny bit when equipped." end
+739:
+  "<Angel Bracelet>" newline
+  "@Raises your Defense a nice amount when equipped." end
+73A:
+  "<Goddess Bracelet>" newline
+  "@Raises your Defense a whole lot when equipped." end
+73B:
+  "<Rain Pendant>" newline
+  "@Reduces damage from PK Fire when equipped." end
+73C:
+  "<Flame Pendant>" newline
+  "@Reduces damage from PK Freeze when equipped." end
+73D:
+  "<Earth Pendant>" newline
+  "@Reduces damage from PK Thunder when equipped." end
+73E:
+  "<Sea Pendant>" newline
+  "@Reduces damage from PK Fire, PK Freeze, and PK Thunder when equipped." end
+744:
+  "Orange Juice" newline
+  "@Rich with Vitamin C. Restores a little HP." end
+745:
+  "French Fries" newline
+  "@Restores HP with or without ketchup." end
+746:
+  "Magic Herb" newline
+  "@Please use this when you're exhausted or hurt." end
+747:
+  "Hamburger" newline
+  "@Fast food for restoring HP quickly." end
+748:
+  "Sports Drink" newline
+  "@Drink this to feel refreshed, no matter how exhausted you are." end
+749:
+  "Medicine" newline
+  "@Use this to heal wounds." end
+74A:
+  "Asthma Spray" newline
+  "@If {name(1)} starts to have an asthma attack, this will stop it." end
+74B:
+  "Antidote" newline
+  "@Quickly counteracts poison." end
+74C:
+  "Mouthwash" newline
+  "@Gargle with this to get over a cold." end
+74D:
+  //a Sandhop-name localization would need to change item_configuration_table as well
+  "Strawberry Tofu" newline
+  "@Wouldn't you like to try some for real?" end
+74F:
+  "Bread" newline
+  "@It's good to eat," next
+  "  but you can use its crumbs to mark a trail that you can retrace later." end
+750:
+  "Angel Seed" newline
+  "@Lifts the curse of a Demon Seed." end
+751:
+  "PSI Power Stone" newline
+  "@PSI power is hidden inside this stone." end
+753:
+  "Magic Ribbon" newline
+  "@Raises Force a little bit when tied into a girl's hair."
+754:
+  "Magic Candy" newline
+  "@Raises Fight a little bit when a weakling eats it." end
+756:
+  "Speed Capsule" newline
+  "@Raises Speed." end
+757:
+  "Wisdom Capsule" newline
+  "@Raises Wisdom." end
+758:
+  "Strength Capsule" newline
+  "@Raises Strength." end
+759:
+  "Force Capsule" newline
+  "@Raises Force." end
+75A:
+  "Fight Capsule" newline
+  "@Raises Fight." end
+75D:
+  "Basement Key" newline
+  "@Needed to enter the basement." end
+75E:
+  "Zoo Key" newline
+  "@This should open the front gate of the zoo." end
+75F:
+  "Haunted House Key" newline
+  "@The key to the Rosemarys' mansion." end
+760:
+  "Great-Grandfather's Diary" newline
+  "@The diary of {name(1)}'s great-grandfather." next
+  "@It's filled with writing, but it's in such bad shape that it's mostly illegible." end
+761:
+  "Pass" newline
+  "@<Duncan Factory Employee> is written on it." end
+762:
+  "Show Ticket" 
+  "@<Every Day All Night Rock 'n' Roll Live Show> is written on it."
+767:
+  "Baby Canary" 
+  "@It has a lonely look in its eyes."
+769:
+  "Bottle Rocket" 
+  "@{name(3)} should know what to do with use this."
+76A:
+  "Hat" 
+  "@A pretty hat with the name <{name(2)}> embroided on it."
+76B:
+  "Dentures" 
+  "@Unnecessary if you make sure to take care of your teeth and brush regularly."
+76C:
+  "Ticket Stub" 
+  "@<Collect 10 ticket stubs for a tank ride!> is written on it."
+76D: 
+76E:
+  "Ocarina of Hope" 
+  "@You can use this to hear the melodies you've collected so far."
+76F: 
+770:
+  "Franklin Badge" 
+  "@It's said Ben Franklin wore this as protection during his lightning experiments."
+773:
+  "Onyx Hook" 
+  "@You can return to Magicant from anywhere using this."
+774:
+  "Ultimate Weapon" 
+  "@???"
+775:
+  "Ruler" 
+  "@A 12-inch (approx. 30 cm) ruler."
+776:
+  "ATM Card" 
+  "@Use this to access your bank account and make deposits or withdrawals."
+777:
+  "Red Weed" 
+  "@At first glance, it looks like an ordinary weed, but..."
+778:
+  "Magic Megaphone" 
+  "@Use this to scare enemies with your loud voice."
+
+78B: "SHIGESATO ITOI"
+78C: "MIYUKI KURE"
+78D: "AKIO OHMORI"
+78E: "RITSUO KAMIMURA"
+78F: "KEIICHI SUZUKI"
+790: "HIROKAZU TANAKA"
+791: "SHINBO MINAMI"
+792: "TATSUYA ISHII"
+793: "TOTTORI"
+794: "KAZUYA NAKATANI"
+795: "TAKAYUKI ONODERA"
+796: "MOTOO YASUMA"
+797: "MASAYUKI KAMEYAMA"
+798: "HIDEO KON"
+799: "KATSUTOMO MAEIWA"
+79A: "KUNIKO SAKURAI"
+79B: "MASAHIRO TATEMOTO"
+79C: "TAKASHI KAWAGUCHI"
+79D: "KEIZOH KATOH"
+79E: "MOTOHIRO ISHII"
+79F: "AKIHITO TODA"
+7A0: "YUKARI SAITOH"
+7A1: "PHIL SANDHOP"
+7A2: "TOSHIKO WATSON"
+7A3: "YUKA NAKATA"
+7A4: "HIROKO FAULKNER"
+7A5: "TONY HARMAN"
+7A6: "DAYV BROOKS"
+7A7: "NORIYUKI MINAMI"
+7A8: "BIN OHGAWARA"
+7A9: "YOSHIHISA WADA"
+7AA: "HIKONORI SUZUKI"
+7AB: "TAKAO SHIMIZU"
+7AC: "SHIGERU MIYAMOTO"
+7AD: "HIROSHI YAMAUCHI"
+
+7D3: "[03 20] suddenly attacked!" eob
+7D4: "[03 20] attacks!" eob
+7D5: "[03 20] fired the tank cannon!" eob
+7D6: "[03 21] dodged quickly!" eob
+7D7: "Combo attack!" eob
+7D8: "[03 20] bit [03 21]!" eob
+7D9: "[03 20] scratched [03 21]!" eob
+7DA: "[03 20] bore down on [03 21]!" eob
+7DB: "[03 2C]" eob
+7DC: "[03 21] took [03 23] damage!" eob
+7DD: "          YOU WON!" eob
+7DE: " [03 16][03 17] was defeated... " eob
+7DF: "Defeated the [03 21]!" eob
+7E0: "[03 21] got tired and collapsed..." eob
+7E1: "But [03 21] was already gone." eob
+7E2: "No effect on [03 21]!" eob
+7E3: "[03 20] went berserk!" eob
+7E4: "[03 20] ran out of strength!" eob
+7E5: "[03 20]'s final desperation attack!!!" eob
+7E6: "You can't grasp the form of [03 20]'s attack!" eob
+7E7: "[03 21] was enveloped in a barrier!" eob
+7E8:  "You're a disgrace to your mom!" eob
+7E9: "[03 21] turned to stone!" eob
+7EA: "[03 20] spewed a a sticky substance!" eob
+7EB: "[03 21] was blinded!" eob
+7EC: "[03 20] is tied up..." eob
+7ED: "[03 20] let out a strange howl!" eob
+7EE: "[03 20] exploded!" eob
+7EF: "[03 20] burst into flames!" eob
+7F0: "[03 21]'s Offense went up by [03 23]!" eob
+7F1: "[03 21]'s Offense went down by [03 23]!" eob
+7F2: "[03 21]'s Defense went up by [03 23]!" eob
+7F3: "[03 21]'s Speed went went up by [03 23]!" eob
+7F4: "[03 3C] Offense [03 23]" eob
+7F5: "[03 3C] Defense [03 23]" eob
+7F6: "[03 21]'s Fight went down by [03 23]!" eob
+7F7: "[03 21]'s Defense went down by [03 23]!" eob
+7F8: "[03 20] smiled boldly!" eob
+7F9: "[03 21]'s Fight went up by [03 23]!" eob
+7FA: "[03 20] flew into a rage!" eob
+7FB: "[03 21]'s Speed went down by [03 23]!" eob
+7FC: "[03 20] did something disturbing!" eob
+7FD: "[03 20] called for help!" eob
+7FE: "[03 20] sowed some seeds!" eob
+7FF: "For some reason, [03 21]'s experience points went up!" eob
+800: "[03 20] burst into laughter!" eob
+801: "The tank was scrapped..." eob
+802: "[03 20] said something scary!" eob
+803: "[03 20] said something nasty!" eob
+804: "[03 20] is trying to play dead..." eob
+805: "It was effective!" eob
+806: "It wasn't very convincing." eob
+807: "[03 21] became angry!" eob
+808: "[03 21] fell into a critical state!" eob
+809: "[03 21] lost all sense of the situation!" eob
+80A: "[03 20] has lost sense of the situation." eob
+80B: "[03 21] fell asleep!" eob
+80C: "[03 20] is asleep..." eob
+80D: "[03 21] recovered [03 23] PP!" eob
+80E: "[03 21] recovered [03 23] HP!" eob
+80F: "[03 20] replenished energy!" eob
+810: "But nobody came." eob
+811: "(silence...)" eob
+812: "[03 21] joined the battle!" eob
+813: "[03 20] ran away!" eob
+814: "...It didn't work out." eob
+815: "[03 20] tripped and fell!" eob
+816: "[03 20] can't move..." eob
+817: "[03 20] has been petrified..." eob
+818: "Stole [03 23] PP from [03 21]!" eob
+819: "[03 21] is immobilized!" eob
+81A: "[03 20] vented exhaust fumes!" eob
+81B: "[03 21] was poisoned!" eob
+81C: "[03 21] was dehydrated!" eob
+81D: "[03 21]'s powers were blocked!" eob
+81E: "[03 21] was tied up with rope!" eob
+81F: "[03 21] was enveloped by a shield!" eob
+820: "Missed!" eob
+821: "But the PSI was blocked!" eob
+822: "But [03 21]'s Franklin Badge reflected the beam back!" eob
+823: "[03 21] reflected the attack back!" eob
+824: "Not enough PP!" eob
+825: "There was no effect on [03 21]!" eob
+826: "[03 20] had an asthma attack! ...(cough cough cough)" eob
+827: "[03 20] is praying!" eob
+828: "[03 20] greeted everyone politely and left." eob
+829: "[03 20] is in a defensive stance!" eob
+82A: "[03 20] sang!" eob
+82B: "[03 20] is guarding." eob
+82C: "[03 20] edged closer!" eob
+82D: "The poison disappeared from [03 21]'s body!" eob
+82E: "[03 21] went back to normal!" eob
+82F: "[03 21] writhed around in itchy pain!" eob
+830: "[03 21] is able to move again!" eob
+831: "[03 21] woke up!" eob
+832: "[03 21] was revived!!!" eob
+833: "[03 20] used [03 F0][03 22]!" eob
+834: "[03 20] tried [03 22]!" eob
+835: "[03 20] can't use [03 22]!" eob
+836: "[03 20] is sizing up the situation..." eob
+837: "[03 20] did something strange!" eob
+838: "[03 20] is spacing out." eob
+839: "[03 21]'s shield was destroyed!" eob
+83A: "[03 20] checked [03 21]!" eob
+83B: "[03 3C] Strong against heat" eob
+83C: "[03 3C] Strong against cold" eob
+83D: "[03 3C] Strong against thunder" eob
+83E: "[03 3C] Strong against light" eob
+83F: "[03 3C] Strong against sprays" eob
+840: "[03 21]'s asthma attack went away!" eob
+841: "[03 21] softened!" eob
+842: "I like you!" eob
+843: "I hate you!" eob
+844: "[03 21] had an asthma attack!" eob
+845: "The [03 22] broke..." eob
+846: "[03 20] used a Demon Seed!" eob
+847: "[03 20] used paralysis gas!" eob
+848: "The [03 22] turned into an ordinary stone..." eob
+849: "[03 21] went back to normal!" eob
+84A: "[03 21] became tame!" eob
+84B: "[03 21] was defeated!" eob
+84C: "[03 21] was destroyed!" eob
+84D: "[03 21] returned to the dust of the earth!" eob
+84E: "[03 21] stopped moving!" eob
+84F: "[03 21] was scrapped!" eob
+850: "[03 21] disappeared into thin air!" eob
+851: "[03 20] stole [03 21]'s [03 22]!" eob
+852: "[03 20] leveled up!" next
+  "[03 01]" eob
+853: "[03 20] learned a new PSI in battle!" next
+  "[03 01]" eob
+854: "Max HP went up [03 23]!" next
+  "[03 01]" eob
+855: "Max PP went up [03 23]!" next
+  "[03 01]" eob
+856: "Fight went up [03 23]!" next
+  "[03 01]" eob
+857: "Speed went up [03 23]!" next
+  "[03 01]" eob
+858: "Wisdom went up [03 23]!" next
+  "[03 01]" eob
+859: "Strength went up [03 23]!" next
+  "[03 01]" eob
+85A: "Force went up [03 23]!" next
+  "[03 01]" eob
+85B: "[03 20] escaped from the rope!" eob
+85C: "Picked up [03 F1][03 1D]!" next
+  "[03 01]"
+85D: "[03 21]'s confusion went away!" eob
+85E: "[03 20] woke up!" eob
+85F: "[03 20] tore a hole through space! " eob
+860: "But there was no effect!" eob
+861: "The [03 22] was fully emptied..." eob
+862: "No end to the battle is in sight... " eob
+863: 
+  "  (From somewhere," next
+  "  {name(1)} heard Queen Mary's voice...)" next
+  "  You can't beat {call(giegue)} with brute strength..." next
+  "  I doubt any weapon can defeat him..." next
+  "  But the lullaby..." next
+  "  Maybe the song I used to sing to him can stop him!" next
+  "  [03 01]" eob
+864: "[03 21] recovered completely!" eob
+
+866:
+  "{name(1)}! I owe a great deal to your family line!" end
+867:
+  "Maria, George's wife, raised me" next
+  "when I was very young..." end
+868:
+  "While George himself stole vital information" next
+  "from our planet and tried to turn against us..." end
+869:
+  "And now their descendant" next
+  "is bent on hindering our plan again..." next
+  "[03 10]! I am referring to you!" end
+86A:
+  "Now leave!" next
+  "May you be destroyed" next
+  "with the rest of the disgusting Earth people!" end
+86B:
+  "You are too weak to do anything!" next
+  "You are mere insects to me!" end
+86C:
+  "{name(1)}..." next
+  "I'm willing to let you, and only you, live." next
+  "Board the mothership with me." end
+86D:
+  "...Then you can perish here with your friends" next
+  "and all the other hideous Earth people!" end
+86E:
+  "Stop singing!" end
+86F:
+  "Stop... singing...!" end
+870:
+  "S-stop singing!" end
+871:
+  "Stop singing!" end
+872:
+  "You Earth insects! Shut up! Stop singing!" end
+873:
+  "Stop..." end
+874:
+  "...singing!" end
+875:
+  "!!!" end
+876:
+  "Stop..." end
+877:
+  "!!!" end
+878:
+  "........." end
+879:
+  "HOW COULD I BE DEFEATED BY THIS SONG...?" end
+87A:
+  "SOMEDAY I WILL RETURN... AND... MAKE YOU..." end
+87B:
+  "[03 10]! We will meet again!" end
