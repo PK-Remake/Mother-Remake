@@ -561,7 +561,7 @@ MonkeyMelody:
   helpers.Remember(3)
   eob
   
-04A: 
+MayorDoesntCare:
   //This should be called to from the other mayor lines,
   //but it should display based on a flag that doesn't exist yet,
   //for whether or not you've beaten the Starman Jr. at the zoo.
@@ -577,12 +577,12 @@ MonkeyMelody:
 055:
   "@Animals are so cute. Don't you agree?" end
   
-CanarySalesman:
+AnimalSalesman:
   if not flags.hasCanaryChick
   {
     "@As you can see, all our animals have escaped." next
     "@All we have left is this canary chick." next
-    "Interested in buying it?" newline
+    "  Interested in buying it?" newline
     menu 2 {
       "Yes": {
         "@Then how about for $85?" newline
@@ -591,21 +591,19 @@ CanarySalesman:
           "Yes": {
             if hasmoney(85)
             {
+              call(GiveCanary) //todo: make sure that if there's too much stuff, it doesn't take money anyways :/
               takemoney(85)
-              //sound(kaching)
+              sound(12) //ka-ching
+              "@Thanks! {pause(30)}Take extra good care of it!" wait
             }
             else
               goto(YouCantAffordTheCanary)
-            
-            call(CanarySalesmanThanks)
           }
           "No": {
             call(YouCantAffordTheCanary)
           }
         }
-        give(1, numbers.BabyCanary)
-        helpers.itemGetSound()
-        set(flags.hasCanaryChick)
+        
       }
       "No": {
         "@Yeah, I don't blame you." next
@@ -617,16 +615,22 @@ CanarySalesman:
     "@Say, how's that canary doing?" wait
   eob
 
-CanarySalesmanThanks:
-  "@Thanks! Take extra good care of it!" eob
 YouCantAffordTheCanary:
-  "@How about for free, then? C'mon, take it." eob
+  "@How about for free, then? {pause(30)}C'mon, take it." 
+  call(GiveCanary)
+  eob
+  
+GiveCanary:
+  helpers.give2(numbers.BabyCanary, insert_toomuchstuff_label_here)
+  helpers.itemGetSound()
+  set(flags.hasCanaryChick)
+  eob
 
 05F:
   "@Oh, that canary is Laura the songbird's baby!" next
   "@Go take it to her!" newline
   menu 2 {
-    "Of course!": {
+    "Yes": {
       "@Now where did I last see Laura...?" wait
     }
     "No": {

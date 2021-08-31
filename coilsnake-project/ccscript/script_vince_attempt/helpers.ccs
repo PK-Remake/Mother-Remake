@@ -1,4 +1,4 @@
-command give2(item, failLabel)
+command give2(item, failLabel) //TODO: rewrite this so it uses less hex and more command-y versions of that hex
 {
     //Give an item to the party.
     //Takes into account the inventory being full!
