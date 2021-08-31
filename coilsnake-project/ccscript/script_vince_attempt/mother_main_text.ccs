@@ -1,7 +1,9 @@
 //This is a work-in-progress attempt at CCScript-ifying Tomato's M1+2 script (http://mother12.earthboundcentral.com/)
 //Everything's out of order, as well, so I'm trying to group stuff into sections and scenes.
 //None of this has been tested or compiled into a ROM.
+//--vince94
 
+//SECTION: COOL STRINGS
 partyLeader:
   "(insert code to print the party leader's name here)" eob
 
@@ -35,35 +37,64 @@ mtItoi:
 giegue:
   helpers.PrintLocalizedText("Giegue", "Giygas") eob
 
-
+moneyEarned:
+  "$(money earned)" //TODO: figure out how to print this value
+  
+moneyTotal:
+  "$(money total)" //TODO: figure out how to print this value
 
 //SECTION: NINTEN'S HOME
+NintensDoor:
+  if flags.startOfGame
+  {
+    set(flags.poltergeistIsAttacking)
+    //play the Poltergeist theme
+    //Movement code with the lamp
+    //battle command
+    unset(flags.startOfGame)
+  }
+  else
+  {
+    //warp to the next room
+  }
+  eob
+
 001: 
   "@Brother! I'm so scared!" next
   "@My lamp suddenly starting going crazy!" end
-  
 002:
   "@Brother! It's like our house is about to fall apart!" end
 003:
   "@Waah!" end
 005:
   "@Eek! My doll is going crazy!" end
-222:
+
+DollFight:
+  //insert battle command here
+  music_stop
+  unset(flags.poltergeistIsAttacking)
   "@The mysterious phenomenon has stopped, for now..." end
+
 006:
   "@Whew, that was scary." next
   "@Oh! I think I see something inside the doll!" end
 32C:
   "@There's an old music box hidden inside the doll." next
-  "@{call(partyLeader)} opened the music box." next
-  "@A broken melody began to play." end
-009:
+  "@{name(1)} opened the music box." next
+  "@A broken melody began to play." wait
+  //insert music command here
+  helpers.Remember(1)
+  eob
+
+MomFirstLines:
   "@Are you okay, {name(1)}?" next
   "@What on earth is happening to our home?" next
   "  I'm so scared..." next
-  "@If only your father were here now..." end
-294:
-  "@Oh, the phone! Could you get it, {name(1)}?" end
+  "@If only your father were here now..." next
+  music(115) //phone ringing
+  "@Oh, the phone! Could you get it, {name(1)}?" wait
+  eob
+  
 004:
   "@Here's some juice, big brother!" next
   "  You must be pretty thirsty." end
@@ -83,10 +114,21 @@ giegue:
 
 
 //SECTION: DAD & SAVING
-339:
+PhoneDad:
+  sound(11) //phone pickup sound
+  if flags.poltergeistIsAttacking
+    music_stop //stop ringing!!
+  
   "@{call(partyLeader)} picked up the telephone." next
+  
+  //TODO: is there anything interesting that happens if ninten is dead and other party members are first?
+  
   if not flags.dadTalkedAboutBasement
   {
+    if flags.poltergeistIsAttacking
+    {
+      music(numbers.poltergeistTheme) //this is what the original game does if you dash past the doll and grab the phone
+    }
     "@Hmm, I see." next
     "@Sounds like it must be a poltergeist of some sort." next
     "@I'm not sure what to do about it, either." next
@@ -98,50 +140,53 @@ giegue:
     "  Go forth, {name(1)}! Protect us all!" wait
     set(flags.dadTalkedAboutBasement)
   }
-  else
+  else //continue with normal saving stuff
+  {
     "@{name(1)}? It's your dad." next
-    //TODO: if you earned money, then...
     call(YouEarnedMoney)
-    //TODO: if you earned experience, then...
     call(YouEarnedExperience)
   
-  "@Anyway, what do you need from me?" linebreak
-  menu 2 {
-    "Save": {
-      call(DadSavesTheGame)
-    }
-    "Nothing": {
-      "@Good luck!" wait
-      call(PhoneSlam)
+    "@Anyway, what do you need from me?" linebreak
+    menu 2 {
+      "Save": {
+        call(DadSavesTheGame)
+      }
+      "Nothing": {
+        "@Good luck!" wait
+      }
     }
   }
+  call(PhoneSlam)
   end
 
 PhoneSlam:
-  "@(Click! Beep-beep-beep...)" end
+  "@(Click! Beep-beep-beep...)" eob
+
 YouEarnedMoney:
-  "@I've deposited $[03 18] into your bank account." next
-  "@Taking away what you've spent, you should now have $[03 19] in the bank." next
+  //TODO: a check that looks at if you've earned money or not
+  "@I've deposited {call(moneyEarned)} into your bank account." next
+  "@Taking away what you've spent, you should now have {call(moneyTotal)} in the bank." next
   "@Use it wisely." next
   eob
 
 YouEarnedExperience:
-   "@Let's see... To get to the next level, you need..." next
-   //TODO: find out how to print the level up stuff
+  //TODO: a check that looks at if you've earned any experience or not
+  "@Let's see... To get to the next level, you need..." next
+  //TODO: find out how to print the level up stuff
    
-016:
+StopBuggingMeDad:
   "@I realize this isn't any of my business, but why don't you take a little break?" linebreak
   menu 2 {
     "Yes": {
-      save
-      "@I see. Then I'll make a record of your progress."
+      "@I see. {save}Then I'll make a record of your progress." wait
       //TODO: save and reset the game here
       //Also look at what the original game does to see if any of the other lines go here too
     }
     "No": {
-      "@I see. Well, I guess the Earth IS in danger and all." 
+      "@I see. Well, I guess the Earth IS in danger and all." wait
     }
   }
+  call(PhoneSlam)
   end
 
 DadSavesTheGame:
@@ -158,11 +203,11 @@ DadSavesTheGame:
       "@We're a great team, aren't we?" next
       "@Well, you should turn the power OFF now." next
       "@All right?" wait
-      "  TODO: LOCK PLAYER INPUT" end
+      //TODO: lock player input
     }
+    goto(YouKeepPlaying) //B Button default
   }
-  goto(YouKeepPlaying)
-  end
+  eob
   
 YouKeepPlaying:
   "@{name(1)}, you've got a great work ethic, just like your mother." next
@@ -194,12 +239,35 @@ YouKeepPlaying:
   "@Just press the A Button already!" end
 
 //EARLY PODUNK. PIPPI & ZOMBIES
-2AF:
-  "@You understand animal talk, right?" next
-  "@Then I'll give you a hint: try checking me." next
-  "@Woof!" end
-35C:
-  "@If something ever seems strange, be sure to <Check> all around." end
+
+Doggy:
+  if not flags.dogCheck
+  {
+    "@You understand animal talk, right?" next
+    "@Then I'll give you a hint: try checking me." next
+    "@Woof!" wait
+  }
+  else
+  {
+    "@If something ever seems strange, be sure to <Check> all around." wait
+  }
+  eob
+  
+GotTheBasementKey:
+  if not flags.dogCheck
+  {
+    "@A key to the basement is hanging from the dog's collar." wait
+    helpers.give2(numbers.BasementKey, insert_toomuchstuff_label_here)
+    set(flags.dogCheck)
+  }
+  else
+  {
+    //what does it say if you check him again?
+    "@You pet the dog." wait
+  }
+  eob
+
+
 /////////////////
 PippiMom:
   if flags.pippiIsMissing
@@ -220,7 +288,7 @@ PippiMom:
   else
   {
     "@Hello." next
-    "@Pippi and I are feeling just dandy now!" wait
+    "@Pippi and I are feeling just dandy now!" wait //TODO: make sure this line is supposed to be here
   }
   eob
   
@@ -393,8 +461,8 @@ PippiLongstockingJoke:
 Abbot:
   if not flags.zooSidequestTime
   {
-    "@I'm Abbot, the mayor...'s assistant." next
-    "@The mayor is right over there." end
+    "@I'm Abbot, the mayor..." next
+    "  ...'s assistant. {pause(30)}The mayor is right over there." end
   }
   else
   {
@@ -482,20 +550,21 @@ MonkeyZooGuard:
   }
   eob
   
-362: "  The world's only singing monkey!" next
-  if (flags.localization)
-  {
+MonkeySign: "  The world's only singing monkey!" next
+  if flags.localization
     "  Right here at the Podunk City Zoo!" end
-  }
   else
-  {
     "  Right here at Cream Puff Zoo!" end
-  }
 
-35D:
-  "@The singing monkey sang with passion." end
+MonkeyMelody:
+  "@The singing monkey sang with passion." 
+  helpers.Remember(3)
+  eob
   
-04A:
+04A: 
+  //This should be called to from the other mayor lines,
+  //but it should display based on a flag that doesn't exist yet,
+  //for whether or not you've beaten the Starman Jr. at the zoo.
   "@Oh, it's {name(1)}, the hero!" next
   "@You have tiger droppings all over your clothes, you know." next
   "@Oh, I'm just kidding!" next
@@ -837,7 +906,7 @@ OcarinaGuy:
   "@How is it? Are you finding it helpful?" end
 0E0:
   "@I see." next
-  "@You seem to have $[03 19] in your account." next
+  "@You seem to have {call(moneyTotal)} in your account." next
   "@How much will you withdraw?" end
 0E1:
   "@Hocus-pocus, allakazam!" next
@@ -2613,7 +2682,7 @@ CastleGuardTelepathy:
 332:
   "  WITHDRAW  DEPOSIT"
 333:
-  "@CURRENT BALANCE: $[03 19]" end
+  "@CURRENT BALANCE: {call(moneyTotal)}" end
 326:
   "@WELCOME" end
 246:
@@ -2646,9 +2715,6 @@ CastleGuardTelepathy:
   "@Amazing, huh?" end
 33E:
   "@I'm very sorry. I can't buy your [03 1D]." end
-
-LearnedTheMelody:
-  "@{name(1)} learned the melody." end
 
 343:
   "@The robot is old and rusted." end
@@ -3002,8 +3068,7 @@ StartBoat:
 3CD: 
 3CE:
   "@This tank is my prized possession. Try not to break it, okay?" end
-3CF:
-  "@A key to the basement is hanging from the dog's collar." end
+
 3D0:
   "@Heh heh heh! I'm a meddlesome mouse!" next
   "@In towns, there are some houses you can go inside and some you can't." next

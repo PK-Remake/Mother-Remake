@@ -45,3 +45,58 @@ command PrintLocalizedText(textJP, textUSA)
   else
     textJP
 }
+
+command Remember(melodynum)
+{
+  if melodynum == 1
+  {
+    music(32)
+    set(flags.melodyDoll)
+  }
+  if melodynum == 2
+  {
+    music(33)
+    set(flags.melodyCanary)
+  }
+  if melodynum == 3
+  {
+    music(34)
+    set(flags.melodyMonkey)
+  }
+  if melodynum == 4
+  {
+    music(35)
+    set(flags.melodyPiano)
+  }
+  if melodynum == 5
+  {
+    music(36)
+    set(flags.melodyCactus)
+  }
+  if melodynum == 6
+  {
+    music(37)
+    set(flags.melodyDragon)
+  }
+  if melodynum == 7
+  {
+    music(38)
+    set(flags.melodyEVE)
+  }
+  if melodynum == 8
+  {
+    music(39)
+    set(flags.melodyGeorge)
+  }
+
+  pause(60) //or however long these songs take
+  
+  if flags.localization
+    "@{name(1)} remembered the tune." wait
+  else
+    "@{name(1)} learned the melody." wait
+    
+  music_resume //will this work like that? How do you get the previous song to play?
+  //if it doesn't, then maybe it'd be necessary to pass in the music number of the song to resume back to
+  eob
+}

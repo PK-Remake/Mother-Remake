@@ -97,3 +97,5 @@ define ATMCard = 0xFF
 define RedWeed = 0xFF
 define Megaphone = 0xFF
 define Map = 0xFF
+
+define poltergeistTheme = 0xFF
