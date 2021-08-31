@@ -133,11 +133,18 @@ giegue:
   "@Taking away what you've spent, you should now have $[03 19] in the bank." next
   "@Use it wisely." end
 016:
-  "@I realize this isn't any of my business, but why don't you take a little break?" end
-017:
-  "@I see. Then I'll make a record of your progress." end
-018:
-  "@I see. Well, I guess the Earth IS in danger and all." end
+  "@I realize this isn't any of my business, but why don't you take a little break?" linebreak
+  menu 2 {
+    "Yes": {
+      "@I see. Then I'll make a record of your progress." end 
+      //TODO: save and reset the game here
+      //Also look at what the original game does to see if any of the other lines go here too
+    }
+    "No": {
+      "@I see. Well, I guess the Earth IS in danger and all." end
+    }
+  }
+  
 01B:
   "@Okay." next
   "@Your dear old dad was also thinking about hitting the hay for the night." next

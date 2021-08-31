@@ -1,0 +1,10 @@
+define melody1 = flag 0x19
+define melody2 = flag 0x1A
+define melody3 = flag 0x1B
+define melody4 = flag 0x1C
+define melody5 = flag 0x1D
+define melody6 = flag 0x1E
+define melody7 = flag 0x1F
+define melody8 = flag 0x20
+
+
