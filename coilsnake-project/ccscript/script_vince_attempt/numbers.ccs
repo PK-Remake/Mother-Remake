@@ -1,0 +1,99 @@
+//These are referred to in the script
+//Once they're in item_configuration_table, update this so the script automagically works! :D
+
+define BigBag = 0xFF
+define PhoneCard = 0xFF
+define BreadCrumbs = 0xFF
+define RepelRing = 0xFF
+//ITEM 05
+define MemoryChip = 0xFF
+define Knife = 0xFF
+define SurvivalKnife = 0xFF
+define BasicSword = 0xFF
+define Katana = 0xFF
+define StunGun = 0xFF
+define ToyAirGun = 0xFF
+define CrackedBat = 0xFF
+define TeeballBat = 0xFF
+define SandlotBat = 0xFF
+define HallOfFameBat = 0xFF
+define Frypan = 0xFF
+define DXFrypan = 0xFF
+define BestFrypan = 0xFF
+define Slingshot = 0xFF
+define Boomerang = 0xFF
+define BugSpray = 0xFF
+define SuperSpray = 0xFF
+define FleaBomb = 0xFF
+define LoveWords = 0xFF
+define CurseWords = 0xFF
+define SlimeGenerator = 0xFF
+define Flashdark = 0xFF
+define Stone Spray = 0xFF
+define Stinger = 0xFF
+define Flamethrower = 0xFF
+define Bomb = 0xFF
+define SuperBomb = 0xFF
+define LaserBeam = 0xFF
+define DeathBeam = 0xFF
+//ITEM 39
+define Rope = 0xFF
+define PeaceCoin = 0xFF
+define ProtectCoin = 0xFF
+define MagicCoin = 0xFF
+define FairyBracelet = 0xFF
+define AngelBracelet = 0xFF
+define GoddessBracelet = 0xFF
+define RainPendant = 0xFF
+define FlamePendant = 0xFF
+define EarthPendant = 0xFF
+define SeaPendant = 0xFF
+//Item 56
+//Item 57
+define OrangeJuice = 0xFF
+define FrenchFries = 0xFF
+define MagicHerb = 0xFF
+define Hamburger = 0xFF
+define SportsDrink = 0xFF
+define Medicine = 0xFF
+define AsthmaSpray = 0xFF
+define Antidote = 0xFF
+define Mouthwash = 0xFF
+define TroutYogurt = 0xFF
+//Item 70
+define Bread = 0xFF
+define AngelSeed = 0xFF
+define PSIStone = 0xFF
+define MagicRibbon = 0xFF
+define MagicCandy = 0xFF
+//Item 77
+define SpeedCapsule = 0xFF
+define WisdomCapsule = 0xFF
+define StrengthCapsule = 0xFF
+define ForceCapsule = 0xFF
+define FightCapsule = 0xFF
+define BasementKey = 0xFF
+define zookey = 0xFF
+define HauntedKey = 0xFF
+define GGFsDiary = 0xFF
+define Pass = 0xFF
+define ShowTicket = 0xFF
+define BabyCanary = 0xFF
+//ITEM 96
+define BottleRocket = 0xFF
+define Hat = 0xFF
+define Dentures = 0xFF
+define TicketStub = 0xFF
+define IC Chip = 0xFF
+define Ocarina = 0xFF
+//Item 103
+define FranklinBadge = 0xFF
+define FriendRing = 0xFF
+//Item 106
+define OnyxHook = 0xFF
+define UltWeapon = 0xFF
+define Ruler = 0xFF
+define ATMCard = 0xFF
+define RedWeed = 0xFF
+define Megaphone = 0xFF
+define Map = 0xFF

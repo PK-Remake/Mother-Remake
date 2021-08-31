@@ -1,0 +1,47 @@
+command give2(item, failLabel)
+{
+    //Give an item to the party.
+    //Takes into account the inventory being full!
+    "[1D 03 FF]"
+    "[1B 02]" adr24(failLabel) "[00]"
+    "[1D 0E 00]" item
+    call(0xc7dccf)
+    "[13]"
+    //Usage example:
+    //--------------
+    //pizzaguy:
+    //"@Hey, take this pizza." next
+    //give2(95, pizzaguy_noroom)
+    //eob
+    //
+    //pizzaguy_noroom:
+    //"@Oh... it won't fit." next
+    //"@Make some room in your bag and come back later." end
+}
+
+command itemGetSound()
+{
+  sound(102)
+  pause(48)
+}
+
+command menuNoChoice(YesText, NoText, labelToJumpTo)
+{
+  menu 2 {
+    YesText: {
+      goto(labelToJumpTo)
+    }
+    NoText: {
+      goto(labelToJumpTo)
+    }
+  }
+  goto(labelToJumpTo)
+}
+
+command PrintLocalizedText(textJP, textUSA)
+{
+  if flags.localization
+    textUSA
+  else
+    textJP
+}

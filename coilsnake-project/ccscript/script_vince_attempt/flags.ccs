@@ -7,10 +7,28 @@ define melody6 = flag 0x1E
 define melody7 = flag 0x1F
 define melody8 = flag 0x20
 
-define poltergeistIsAttacking = flag 0x21
-define dadTalkedAboutBasement = flag 0x22
-define pippiIsMissing = flag 0x23
-define pippiSavedByTheMayor = flag 0x24
-define guyThinksYoureAZombie = flag 0x25
-define hasCanaryChick = flag 0x26
+define pippiInParty = flag 0x18
+define anaInParty = flag 0x21
+define lloydInParty = flag 0x22
+define teddyInParty = flag 0x23
+
+define localization = flag 0x24
+
+define poltergeistIsAttacking = flag 0x25
+define dadTalkedAboutBasement = flag 0x26
+define pippiIsMissing = flag 0x27 //initialize to true, set false when she joins the party in the cemetary
+define pippiGaveFranklinBadge = flag 0x28 //initialize to false, set when she gives it to you
+define pippiSavedByTheMayor = flag 0x29
+define guyThinksYoureAZombie = flag 0x2A //hides the sprite
+define hasCanaryChick = flag 0x2B //initialize to false, gets set when you buy the canary
+define zooSidequestTime = flag 0x2C //controls whether abbot gives you the zoo keys or not
+define abbotGaveYouAZooKey = flag 0x2D //alternate dialogue for if you talk to him again
+define zooUnlocked = flag 0x2E
+
+define nintenHasNickname = flag 0x2F //initialize to false
+define nintenBentTheSpoon = flag 0x30 //initialize to false
+define nintenHasTheOcarina = flag 0x31 //initialize to false
+define youGotTheBigBag = flag 0x32 //initialize to false
+define bigBagGuyHasYourATMCard = flag 0x33 //initialize to false
+define youImpressedTheCastleGuard = flag 0x34 //initialize to false
 

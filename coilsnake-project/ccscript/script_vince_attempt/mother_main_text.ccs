@@ -2,8 +2,6 @@
 //Everything's out of order, as well, so I'm trying to group stuff into sections and scenes.
 //None of this has been tested or compiled into a ROM.
 
-define localization = flag 0x15d
-
 partyLeader:
   "(insert code to print the party leader's name here)" eob
 
@@ -11,58 +9,33 @@ favoriteFood:
   "(insert code to print the favorite food here)" eob
 
 podunk:
-  if localization
-    "Podunk" eob
-  else
-    "Mother's Day" eob
+  helpers.PrintLocalizedText("Podunk", "Mother's Day") eob
 
 merrysville:
-  if localization
-    "Merrysville" eob
-  else
-    "Thanksgiving" eob
+  helpers.PrintLocalizedText("Merrysville", "Thanksgiving") eob
 
 unionStation:
-  if localization
-    "Union Station" eob
-  else
-    "Santa Claus Station" eob
+  helpers.PrintLocalizedText("Union Station", "Santa Claus Station") eob
 
 spookane:
-  if localization
-    "Spookane" eob
-  else
-    "Halloween" eob
+  helpers.PrintLocalizedText("Spookane", "Halloween") eob
 
 youngtown:
-  if localization
-    "Youngtown" eob
-  else
-    "Easter" eob
+  helpers.PrintLocalizedText("Youngtown", "Easter") eob
 
 yuccaDesert:
-  if localization
-    "Yucca Desert" eob
-  else
-    "Advent Desert" eob
+  helpers.PrintLocalizedText("Yucca Desert", "Advent Desert") eob
 
 ellay:
-  if localization
-    "Ellay" eob
-  else
-    "Valentine" eob
+  helpers.PrintLocalizedText("Ellay", "Valentine") eob
 
 mtItoi:
-  if localization
-    "Mt. Itoi" eob
-  else
-    "Holy Loly Mountain" eob
+  helpers.PrintLocalizedText("Mt. Itoi", "Holy Loly Mountain") eob
 
 giegue:
-  if localization
-    "Giegue" eob
-  else
-    "Giygas" eob
+  helpers.PrintLocalizedText("Giegue", "Giygas") eob
+
+
 
 //SECTION: NINTEN'S HOME
 001: 
@@ -88,7 +61,9 @@ giegue:
   "@Are you okay, {name(1)}?" next
   "@What on earth is happening to our home?" next
   "  I'm so scared..." next
-  "@If only your father were here now..."
+  "@If only your father were here now..." end
+294:
+  "@Oh, the phone! Could you get it, {name(1)}?" end
 004:
   "@Here's some juice, big brother!" next
   "  You must be pretty thirsty." end
@@ -265,7 +240,6 @@ PippiMom:
 031:
   "@Are the zombies going to take over our town too?" end
   
-/////////////
 025:
   "@You're really amazing." end
 026:
@@ -273,10 +247,10 @@ PippiMom:
   "  ...Are you?" linebreak
   menu 2 {
     "Yes": {
-      set(flags.guyThinksYoureAZombie)
       "@Oh, yeah? W-w-well..." next
       "@You're a big stupid zombie head! Waaaah! Eek!" wait
       //TODO: movement code of the guy running offscreen, then disable the sprite
+      set(flags.guyThinksYoureAZombie)
     }
     "No": {
       "@Are you really a human?" linebreak
@@ -318,9 +292,28 @@ DowntownCanaryEnjoyer:
     "@I really admire the man living in Canary Village." wait
   }
   eob
-  
 
+03F:
+  "@Bread is great for when you're hungry," next
+  "  but I bet you could also use its crumbs to mark your trail." next
+  "@...I guess it's really none of my business, though." end
   
+2C6:
+  "@There's this really pretty secretary at the town hall." next
+  "@She's the first floor receptionist." end
+
+036:
+  "@The town mayor is looking for someone brave to help him." end
+
+//SECTION: THE MAYOR
+TemporarySecretary:
+  if not flags.pippiSavedByTheMayor
+    "@I have a secret to share with you later." wait
+  else
+    "@Everyone's talking about a girl with special powers. Have you heard about her?" next
+    "@I bet she'd be a great help to you on your journey." end
+  end
+
 02C:
   "@Boy, that was scary..." end
 02D:
@@ -330,37 +323,40 @@ DowntownCanaryEnjoyer:
 030:
   "@Not too shabby, youngster!" end
 
-036:
-  "@The town mayor is looking for someone brave to help him." end
 037:
   "@I heard a little girl got lost in the cemetery." next
   "I wonder if she's been rescued yet..." end
 038:
-  "@Say... You're not honestly thinking of going to the cemetery, are you?" end
-039:
-  "@I thought you were a sensible boy." end
-
+  "@Say... You're not honestly thinking of going to the cemetery, are you?" newline
+  helpers.menuNoChoice("Yes", "No", SensibleChild)
+  eob
+SensibleChild:
+  "@I thought you were a sensible child." wait
+  eob
 03B:
   "@You're so awesome!" end
 03D:
   "@Did a poltergeist attack your house?" next
   "  It tore mine apart." end
-03F:
-  "@Bread is great for when you're hungry," next
-  "  but I bet you could also use its crumbs to mark your trail." next
-  "@...I guess it's really none of my business, though." end
 040:
   "@I don't know, this task might be too much for you to handle," next
-  "  but I still have high hopes for you anyway."  end
-041:
+  "  but I still have high hopes for you anyway." end
+
+MayorPippiRequest:
   "@Well, you see..." next
   "@A child has strayed into the cemetery." next
   "@And, as luck would have it, I'm up for re-election soon." next
-  "@So... please help me!"  end
-042:
-  "@Oh! You'll do it?!" next
-  "@You'll go and rescue her?!"  end
+  "@So... please help me!" newline
+  helpers.menuNoChoice("Yes", "No", MayorPippiOrder)
+  eob
 
+MayorPippiOrder:
+  "@Oh! You'll do it?!" next
+  "@You'll go and rescue her?!" end
+  //TODO: there's other lines after this, right?
+
+//SECTION: PIPPI
+//TODO: menu this
 065:
   "@I'm Pippi. I'm lost. You're really brave, huh?" end
 066:
@@ -370,33 +366,56 @@ DowntownCanaryEnjoyer:
 068:
   "@Oh, I'm so happy!" next
   "@Here, this badge can be a symbol of our bond." next
-  "  Take it with you." end
+  "  Take it with you." wait
+  //helpers.give2(insert_item_num_here, insert_the_right_toomuchstuff_label)
+  eob
 069:
   "@I guess you already have a special someone, huh..." end
-06A:
+
+PippiGoodbye:
   "@Well, I guess this is bye for now." next
   "@Come by my house later to pick up an item of mine." next
-  if(localization)
+  if(flags.localization)
   {
-    "@By the way...|do you think my stockings are...|long enough?" end
+    "@By the way...|do you think my stockings are...|long enough?" linebreak
   }
   else
   {
-    "@By the way...|do you think my socks are too short?" end
+    "@By the way...|do you think my socks are too short?" linebreak
   }
+  helpers.menuNoChoice("Yes", "No", PippiLongstockingJoke)
+  eob
 
-06C:
+PippiLongstockingJoke:
   "@Oh, you didn't have to answer." next
   "  You're such a cutie..." end
-  
-043:
+
+Abbot:
+  if not flags.zooSidequestTime
+  {
+    "@I'm Abbot, the mayor...'s assistant." next
+    "@The mayor is right over there." end
+  }
+  else
+  {
+    goto(AbbotZooKeys)
+  }
+
+MayorPippiIsFound:
   "@Oh, is this Pippi, the girl who got lost?" next
   "@Stunning work, lad!" next
   "@I knew from the start that you showed promise!" next
   "  (clap clap applause)" next
   "@You're so lucky, Pippi. Adorable, too." next
   "@Now remember to tell your mother that the mayor rescued you." next
-  "@And for you, {name(1)}... A $[03 1E] reward. Here."  end
+  "@And for you, {name(1)}... {pause(40)}{open_wallet}A $[03 1E] reward. Here." wait
+  //TODO: movement code - mayor walks down to the table, and the party goes to the other side
+  givemoney(100)
+  //TODO: sound effect for getting money
+  set(flags.pippiSavedByTheMayor)
+  goto(MayorZooRequest)
+  eob
+  
 056:
   "@Teehee." end
 057:
@@ -408,34 +427,63 @@ DowntownCanaryEnjoyer:
 05B:
   "@Please visit us again for all your shopping needs! (giggle)" end
 
-
 05E:
   "@It's such nice weather out." next
   "But what does it matter?" end
-  
-  
+
+
 //SECTION: ZOO AND CANARY SIDEQUESTS
 03E:
   "@I hear they locked the zoo up to keep any more animals from escaping." next
-  "@They've all gone berserk, you see..." end
-046:
-  "@Say, since you're here and everything, won't you help with the zoo problem too?"  end
-047:
-  "@Oh, you'll go check it out? That's wonderful!" next
+  "@They've all gone berserk, you see..." wait
+  eob
+
+MayorZooRequest:
+  "@Say, since you're here and everything, won't you help with the zoo problem too?" linebreak
+  helpers.menuNoChoice("Yes", "No", MayorZooOrder)
+  eob
+
+MayorZooOrder:
+  set(flags.zooSidequestTime)
+  "@Oh, you'll go check it out? {pause(48)}That's wonderful!" next
   "@{name(1)}, you certainly do love to play games!" next
-  "@Have my assistant Abbot give you a key to the zoo." end
-048:
-  "@Here you go. This is the key to the zoo." end
+  "@Have my assistant Abbot give you a key to the zoo." wait
+  //TODO: remove pippi from the party
+  eob
+
   
-049:
+AbbotZooKeys:
+  if not flags.abbotGaveYouAZooKey
+  {
+    "@Here you go. This is the key to the zoo." wait
+  }
+  else
+  {
+    "@I have plenty of extra zoo keys." next
+    "@Here, have another." end
+  }
+  set(flags.abbotGaveYouAZooKey)
+  helpers.give2(numbers.zookey, 24B)
+  helpers.itemGetSound()
+  eob
+
+MayorIsCowardly:
   "@Come back alive and you'll be a hero!" next
   "@I'd go with you, but I'm, umm, not feeling well..." end
 
-06D:
-  "@Kyakyakya! (You're a big doo-doo head!)" end
+MonkeyZooGuard:
+  "@Kyakyakya! (You're a big doo-doo head!)" wait
+  if hasitem(1, numbers.zookey)
+  {
+    //movement code, monkey runs up
+    "@The monkey stole the {itemname(numbers.zookey)}." wait
+    set(flags.zooUnlocked)
+    take(0xFF, numbers.zookey)
+  }
+  eob
   
 362: "  The world's only singing monkey!" next
-  if (localization)
+  if (flags.localization)
   {
     "  Right here at the Podunk City Zoo!" end
   }
@@ -443,6 +491,7 @@ DowntownCanaryEnjoyer:
   {
     "  Right here at Cream Puff Zoo!" end
   }
+
 35D:
   "@The singing monkey sang with passion." end
   
@@ -452,62 +501,96 @@ DowntownCanaryEnjoyer:
   "@Oh, I'm just kidding!" next
   "@Sorry, I don't have anything to give you this time..." next
   "  Wahahaha!" end
-04B:
-  "@Everyone's talking about a girl with special powers. Have you heard about her?" next
-  "@I bet she'd be a great help to you on your journey." end
-04C:
-  "@I have plenty of extra zoo keys." next
-  "@Here, have another." end
+
 
 054:
   "@I'm almost certain that something is controlling all the animals..." end
 055:
   "@Animals are so cute. Don't you agree?" end
-04D:
-  "@As you can see, all our animals have escaped." end
-04E:
-  "@All we have left is this canary chick." next
-  "Interested in buying it?" end
-04F:
-  "@Then how about for $[03 1E]?" end
-050:
-  "@Yeah, I don't blame you." next
-  "It doesn't even know any songs." end
-051:
-  "@Thanks! Take extra good care of it!" end
-052:
-  "@How about for free, then? C'mon, take it." end
-053:
-  "@Say, how's that canary doing?" end
+  
+CanarySalesman:
+  if not flags.hasCanaryChick
+  {
+    "@As you can see, all our animals have escaped." next
+    "@All we have left is this canary chick." next
+    "Interested in buying it?" newline
+    menu 2 {
+      "Yes": {
+        "@Then how about for $85?" newline
+        open_wallet
+        menu 2 {
+          "Yes": {
+            if hasmoney(85)
+            {
+              takemoney(85)
+              //sound(kaching)
+            }
+            else
+              goto(YouCantAffordTheCanary)
+            
+            call(CanarySalesmanThanks)
+          }
+          "No": {
+            call(YouCantAffordTheCanary)
+          }
+        }
+        give(1, numbers.BabyCanary)
+        helpers.itemGetSound()
+        set(flags.hasCanaryChick)
+      }
+      "No": {
+        "@Yeah, I don't blame you." next
+        "  It doesn't even know any songs." wait
+      }
+    }
+  }
+  else
+    "@Say, how's that canary doing?" wait
+  eob
+
+CanarySalesmanThanks:
+  "@Thanks! Take extra good care of it!" eob
+YouCantAffordTheCanary:
+  "@How about for free, then? C'mon, take it." eob
 
 05F:
   "@Oh, that canary is Laura the songbird's baby!" next
-  "@Go take it to her!" end
-060:
-  "@You seem to have forgotten something important about life." next
-  "How sad." end
-061:
-  "@Now where did I last see Laura...?" end
+  "@Go take it to her!" newline
+  menu 2 {
+    "Of course!": {
+      "@Now where did I last see Laura...?" wait
+    }
+    "No": {
+      "@You seem to have forgotten something important about life." next
+      "How sad." wait
+    }
+  }
+  eob
+  
 062:
   "@It sounds like Laura the songbird has remembered her song." next
   "@Have you learned her melody, too?" linebreak
   menu 2 {
     "Yes": {
-      "@Well, that's no good."
-    }
-    "No": {
       "@In song there is strength." next
       "  True words, indeed."
     }
+    "No": {
+      "@Well, that's no good."
+    }
   }
   end
-  
-063:
-  
-064:
-  
+
+26C:
+  "@I'm Laura." end
+33F:
+  "@Laura the songbird was so happy to see her baby again that she began singing." end
+341:
+  "@The canary is singing." end
+
 
 //SECTION: MARTIAL LAW
+//this'll need to be all controlled with flags and such
 0F5:
   "@By mayor's orders, no one's to cross this bridge until martial law is lifted." next
   "@I suggest you use the bridge to the east of the zoo instead." end
@@ -532,15 +615,22 @@ DowntownCanaryEnjoyer:
 
 
 //SECTION: WARPING TO MAGICANT
-059:
+MagicantTailCheck:
   "@Something is speaking into {name(1)}'s mind." end
-06E:
+  
+MagicantTailTelepathy:
   "@{name(1)} heard a voice..." next
-  "@<Where is the god's tail?>" end
-22B:
-  "@{name(1)} took out his great-grandfather's diary and read these words aloud:" next
-  "<...That which was left behind by the ship that soars the heavens.>" end
-
+  "@<Where is the god's tail?>" wait
+  window_clear
+  if hasitem(0xFF, numbers.GGFsDiary)
+  {
+    "@{name(1)} took out his great-grandfather's diary and read these words aloud:" next
+    "<...That which was left behind by the ship that soars the heavens.>" wait
+  }
+  //magicant warp music
+  //pause a bunch of times to let the song play
+  //warp to magicant, using the warp style that fades to white
+  eob
 
 //SECTION: MAGICANT TOWNSFOLK
 06F:
@@ -550,24 +640,46 @@ DowntownCanaryEnjoyer:
 071:
   "@Happiness won't just walk into your life on its own." next
   "@But neither will unhappiness." next
-  "@Wouldn't you agree?" end
+  "@Wouldn't you agree?" newline
+  menu 2 {
+    "Yes": {
+      //todo: play through this bit and check where to put the next two lines
+    }
+    "No": {
+      
+    }
+  }
+  eob
+  
 072:
   "@So if you don't want trouble in your life..." next
   "  then you'd best stay still and never move a muscle." end
 073:
   "@Really? Unhappiness CAN walk?" next
   "I had no idea." end
-074:
-  "@So, you admit I have good taste?" next
-  "@Then I take it you want a cool nickname, too?" end
-075:
-  "@Okay, I got it." next
-  "@From now on, your name will be Stupid Face {name(1)}." next
-  "@It just oozes class." end
-076:
-  "@Oh, that's too bad." end
-077:
-  "@Heya, Stupid Face {name(1)}!" end
+  
+
+Nicknamer:
+  if not flags.nintenHasNickname
+  {
+    "@So, you admit I have good taste?" next
+    "@Then I take it you want a cool nickname, too?" newline
+    menu 2 {
+      "Yes": {
+        "@Okay, I got it." next
+        set(flags.nintenHasNickname)
+        "@From now on, your name will be Stupid Face {name(1)}." next
+        "@It just oozes class." wait
+      }
+      "No": {
+        "@Oh, that's too bad." wait
+      }
+    }
+  }
+  else
+    "@Heya, Stupid Face {name(1)}!" wait
+  eob
+  
 078:
   "@Have you met the guy who philosophizes about happiness?" end
 079:
@@ -575,11 +687,17 @@ DowntownCanaryEnjoyer:
 07A:
   "@People cannot part if they have not yet met." end
 07B:
-  "@Have you met a guy who talks about how you can't part if you haven't met?" end
-07C:
-  "@I agree with him, actually." end
-07D:
-  "@You really should meet him. You'll be a better person for it!" end
+  "@Have you met a guy who talks about how you can't part if you haven't met?" newline
+  menu 2 {
+    "Yes": {
+      "@I agree with him, actually." wait
+    }
+    "No": {
+      "@You really should meet him. You'll be a better person for it!" wait
+    }
+  }
+  eob
+  
 07E:
   "@I feel completely refreshed after stopping by Queen Mary's fountain!" end
 07F:
@@ -594,14 +712,39 @@ DowntownCanaryEnjoyer:
   "@Oops, sorry. I thought you were looking for a restroom." next
   "@If you're looking for Queen Mary's fountain, then just go west from the castle." end
 
-084:
-  "@I bent my spoon, and now it's hard to eat with." next
-  "@Can you bend it back for me?" end
-085:
-  "@Please hurry." next
-  "@({name(1)} used the power of PSI to fix the spoon.)" next
-  "@Thanks! (munch munch chomp chomp)" next
-  "@Do you wanna stay the night here tonight?" end
+SpoonGuy:
+  if not flags.nintenBentTheSpoon
+  {
+    "@I bent my spoon, and now it's hard to eat with." next
+    "@Can you bend it back for me?" newline
+    menu 2 {
+      "Yes": {
+        "@Please hurry." next
+        set(flags.nintenBentTheSpoon)
+        sound(29) //psi sound
+        "@({name(1)} used the power of PSI to fix the spoon.)" next
+        "@Thanks! (munch munch chomp chomp)" next
+      }
+      "No": {
+        //TODO: play up to here and see which one of the lines he says here
+      }
+    }
+  }
+  
+  goto(SpoonGuyBed)
+  eob
+  
+SpoonGuyBed:
+  "@Do you wanna stay the night here tonight?" newline
+  menu 2 {
+    "Yes": {
+      //TODO: play up to here and see which one of the lines he says here
+    }
+    "No": {
+      //TODO: play up to here and see which one of the lines he says here
+    }
+  }
+  
 086:
   "@Why not?!" end
 087:
@@ -611,15 +754,25 @@ DowntownCanaryEnjoyer:
   "@Great!" end
 089:
   "@Waaah! You're supposed to accept people's kindness!" end
-08A:
+
+MagicDinner:
   "@Oh, a traveler! Why don't you eat with us?" next
-  "@Here, can you guess what we're having today?" end
-08B:
-  "@Huh? Why can't you tell? You're really suspicious!" end
-08C:
-  "@That's right, {call(favoriteFood)}." next
-  "@I read your mind and decided to make {call(favoriteFood)}." next
-  "@How does it taste? Do you like it?" end
+  "@Here, can you guess what we're having today?" newline
+  menu 2 {
+    "Of course!": {
+      "@That's right, {call(favoriteFood)}." next
+      "@I read your mind and decided to make {call(favoriteFood)}." next
+      "@How does it taste? Do you like it?" wait
+    }
+    "Nope": {
+      goto(DoesntKnowFood)
+    }
+  }
+  goto(DoesntKnowFood)
+  
+DoesntKnowFood:
+  "@Huh? Why can't you tell? You're really suspicious!" wait
+  eob
 
 08F:
   "@I used to run a musical instrument store, but the ocarina I ordered never arrived." next
@@ -633,19 +786,31 @@ DowntownCanaryEnjoyer:
   "@Stop by again anytime!" end
 093:
   "@You don't fit in with this place, you know that?" end
-094:
-  "@I finished the Ocarina of Hope." next
-  "@It can play the melodies that you know." next
-  "@Do you want it?" end
 
-096:
-  "@Ahahaha. You're a real straightforward guy." next
-  "@Here you go." end
-097:
-  "@Ahahaha! <I want it!> is written all over your face." next
-  "@Go ahead, take it with you." end
-098:
-  "@Hi, kid! How's it going?" end
+OcarinaGuy:
+  if not flags.nintenHasTheOcarina
+  {
+    "@I finished the Ocarina of Hope." next
+    "@It can play the melodies that you know." next
+    "@Do you want it?" newline
+    menu 2 {
+      "Yes": {
+        "@Ahahaha. You're a real straightforward guy." next
+        "@Here you go." wait
+      }
+      "No": {
+        "@Ahahaha! <I want it!> is written all over your face." next
+        "@Go ahead, take it with you." wait
+      }
+      helpers.give2(numbers.Ocarina, insert_too_much_stuff_label_here)
+      helpers.itemGetSound()
+      set(flags.nintenHasTheOcarina)
+    }
+  }
+  else
+    "@Hi, kid! How's it going?" wait
+  eob
+
 099:
   "@Leave Magicant? That'd be the day!" next
   "@Ahahaha!" end
@@ -680,7 +845,6 @@ DowntownCanaryEnjoyer:
 0E2:
   "@You can't withdraw that much." next
   "@You'll have to try again. Goodbye." end
-
 09E:
   "@There's a whole bunch of holes east of town." next
   "@I'm not sure which hole it is, but you can hear otherworldly sounds coming from one." end
@@ -688,20 +852,60 @@ DowntownCanaryEnjoyer:
   "@If you pull out a Red Weed and put it in the fountain," next
   "  it'll turn into a Magic Herb... just like magic!" end
 
-0A2:
-  "@Could I interest you in a Big Bag?" end
-0A3:
-  "@In that case, could I borrow your ATM Card for a short while?" end
-0A4:
-  "@It has 30 Magic Herbs inside it, in case you didn't know." end
-0A5:
-  "@Thanks. I promise I'll give it back." next
-  "@It just seems... really cool." end
-0A6:
-  "@You don't trust others." next
-  "@That might be for the best. Well, maybe..." end
-0A7:
-  "@Oh, right, I need to return your ATM Card." end
+BigBagGuy:
+  if not flags.youGotTheBigBag
+  {
+    if not flags.bigBagGuyHasYourATMCard
+    {
+      "@Could I interest you in a Big Bag?" newline
+      menu 2 {
+        "Yes": {
+          "@In that case, could I borrow your ATM Card for a short while?" newline
+          menu 2 {
+            "Yes": {
+              if hasitem(1, numbers.ATMCard)
+              {
+                take(1, numbers.ATMCard)
+                set(flags.bigBagGuyHasYourATMCard)
+                give(1, numbers.BigBag) //we just took an item, so his inventory can't possibly be full
+                "@Thanks. I promise I'll give it back." next
+                "@It just seems... really cool." wait
+              }
+              else
+              {
+                //TODO: what happens if someone else is holding the ATM Card?
+              }
+            }
+            "No": {
+              "@You don't trust others." next
+              "@That might be for the best. Well, maybe..." wait
+            }
+          }
+        }
+        "No": {
+          goto(BigBagNo)
+        }
+        goto(BigBagNo) //B Button cancel
+      }
+    }
+    else
+    {
+      "@Oh, right, I need to return your ATM Card." wait
+      helpers.give2(numbers.ATMCard, insert_toomuchstuff_label)
+      unset(flags.bigBagGuyHasYourATMCard)
+    }
+    
+  }
+  else
+  {
+    //TODO: play up to here and see what they say after you get the bag
+  }
+  eob
+  
+BigBagNo:
+  "@It has 30 Magic Herbs inside it, in case you didn't know." wait
+  eob
+  
 
 0B3:
   "@Deep in the forest is a guitar player who loves solitude." next
@@ -714,10 +918,22 @@ DowntownCanaryEnjoyer:
 0CF:
   "@I had a dream that Magicant vanished into thin air." next
   "@My heart's still pounding, even now." end
-0D9:
-  "@If you need to see the helpful old man, go to Mary's Fountain." next
-  "@He'll come if he hears a cry from the heart." next
-  "@Remember, a cry from the heart!" end
+
+FountainAdvisor:
+  if localization
+  {
+    "@If you need to see the benevolent old man, go to Queen Mary's fountain." next
+    "@He'll hear your soulful cry and come to your aid." next
+    "@Remember, a soulful cry!" wait
+  }
+  else
+  {
+    "@If you need to see the helpful old man, go to Mary's Fountain." next
+    "@He'll come if he hears a cry from the heart." next
+    "@Remember, a cry from the heart!" wait
+  }
+  eob
+  
 
 
 
@@ -745,17 +961,26 @@ DowntownCanaryEnjoyer:
   "@Pretty tasty candy, huh?" end
 
 //SECTION: QUEEN MARY'S CASTLE
-0A8:
-  "@The queen isn't feeling very well right now..." end
-0A9:
-  "@You look suspicious." next
-  "@But I'll let you through if you can solve my little riddle..." end
-0AA:
+CastleGuard:
+  if not flags.youImpressedTheCastleGuard
+  {
+    "@You look suspicious." next
+    "@But I'll let you through if you can solve my little riddle..." end
+  }
+  else
+  {
+    "@Take care!" end
+  }
+  
+CastleGuardTelepathy:
   "@That's right. The answer is <two alligators>." next
   "@I haven't thought up the question yet, though." next
-  "  Heheh." end
-0AB:
-  "@Take care!" end
+  "  Heheh." wait
+  set(flags.youImpressedTheCastleGuard)
+  eob
+
+0A8:
+  "@The queen isn't feeling very well right now..." end
 
 0AD:
   "@I wish I could hear the queen's song again..." end
@@ -807,8 +1032,6 @@ DowntownCanaryEnjoyer:
   "This is your wife, Maria." next
   "@I know you've been waiting..." next
   "I'm on my way to join you in heaven now..." end
-3D6:
-  "@PLEASE INSERT ATM CARD" end
 
 
 //SECTION: MAGICANT GUITAR MAN
@@ -1267,7 +1490,7 @@ DowntownCanaryEnjoyer:
   "@I've heard that some people have died from catching a cold." next
   "Just a cold!" end
 15E:
-  if localization
+  if flags.localization
     "@Have you heard about the haunted house in {call(spookane)}?" end
   else
     "@Have you heard about {call(spookane)}'s haunted house?" end
@@ -1361,7 +1584,7 @@ DowntownCanaryEnjoyer:
 17B:
   "@I heard all the citizens of {call(youngtown)} were spirited away." end
 17C:
-  if localization
+  if flags.localization
     "@My mommy's in the town of Easter." next
   else
     "@My mommy went to Youngtown." next
@@ -1540,7 +1763,7 @@ DowntownCanaryEnjoyer:
 
 1C6:
   "@I think I heard the voices of my dad and the others coming from the mountains." next
-  if localization
+  if flags.localization
     "@But the mountains are way past the town of Valentine." next
   else
     "@But the mountains are way past Ellay..."
@@ -1676,7 +1899,7 @@ DowntownCanaryEnjoyer:
   "@You should visit the harbor before you go to {call(mtItoi)}." next
   "@I really mean it." end
 1FE: //TODO: look at how the menu works in-game and use that to bring the next few lines into this one
-  if (localization)
+  if (flags.localization)
   {
     "@...Have you ever had Trout Yogurt before?" end
   }
@@ -1691,7 +1914,7 @@ DowntownCanaryEnjoyer:
 200:
   "@Oh. I wish they'd start selling it out here..." end
 201:
-  if (localization)
+  if (flags.localization)
   {
     "@Oh, Trout Yogurt! Thank you!" next
   }
@@ -1741,7 +1964,7 @@ DowntownCanaryEnjoyer:
   "  Welcome to {call(podunk)}" end
   
 217: 
-  if (localization)
+  if (flags.localization)
     "  City Zoo" linebreak
   else
     "  Cream Puff Zoo" linebreak
@@ -1887,7 +2110,7 @@ DowntownCanaryEnjoyer:
   "@Oh, it looks like you can't carry any more things." end
 261:
   "@I am the professor's Assistant A." next
-  if (localization)
+  if (flags.localization)
   {
     "@I, too, would love to try some Trout Yogurt." end
   }
@@ -1904,7 +2127,7 @@ DowntownCanaryEnjoyer:
   "@I bet it still works, too!" end
 263:
   "@I realize I look like Assistant A, but I'm actually Assistant B." next
-  if (localization)
+  if (flags.localization)
   {
     "@I really, truly want some Trout Yogurt too." end
   }
@@ -1932,9 +2155,6 @@ DowntownCanaryEnjoyer:
   "@Thank you for everything." next
   "@As a token of my gratitude..." next
   "I'll be praying for your success." end
-26C:
-  "@I'm Laura." end
-
 270:
   "@Oh, my! It's {name(1)}, the hero!" next
   "I never expected you to return all alone..." next
@@ -1956,7 +2176,7 @@ DowntownCanaryEnjoyer:
 278:
   "@Heheh. Do I look like a monkey?" end
 279:
-  if (localization)
+  if (flags.localization)
   {
     "@...I'm actually a racoon in disguise." end
   }
@@ -2022,7 +2242,7 @@ DowntownCanaryEnjoyer:
 28E:
   "@I'm a shy monkey." next
   "@Talking isn't really my thing." next
-  "@......Okay?" next
+  "@...Okay?" next
   "@......" end
 28F:
   "@Hubba hubba. Heaven must be missing an angel." end
@@ -2036,13 +2256,6 @@ DowntownCanaryEnjoyer:
   "@I must've made a serious mistake to wind up here." end
 293:
   "@Help!" end
-294:
-  "@Oh, the phone! Could you get it, {name(1)}?" end
-295:
-  "@I'm Abbot, the mayor...'s assistant." next
-  "@The mayor is right over there." end
-296:
-  "@I have a secret to share with you later." end
 297:
   "@Oh, you came to stay the night again?" end
 298:
@@ -2051,13 +2264,10 @@ DowntownCanaryEnjoyer:
   "@If you think you're supposed to bust the ghosts in the haunted house..." next
   "you're gravely mistaken." next
   "@No, there's actually a melody there." end
-29A: 
 29B:
   "@I have faith that {name(2)} is doing well somewhere out there." end
 29C:
   "@Hey, you're underage. I'm taking you into custody." end
-29D: 
-29E: 
 29F:
   "@Say, I heard you stepped on a land mine." next
   "@I stepped in dog crap once myself." end
@@ -2158,7 +2368,6 @@ DowntownCanaryEnjoyer:
   "  Sorry if that comes off as distrustful..." end
 2BF:
   "@You know, you look like you have a big appetite." end
-2C0: 
 2C1:
   "@With the tracks ruined, the train has stopped running." next
   "@Quit with all the pesky questions, will ya?" next
@@ -2173,9 +2382,6 @@ DowntownCanaryEnjoyer:
   "@I've heard about all the great things you've been up to." next
   "@You must really be brave, huh?" end
 
-2C6:
-  "@There's this really pretty secretary at the town hall." next
-  "@She's the first floor receptionist." end
 2C7:
   "@I'm starving." end
 2C8:
@@ -2342,7 +2548,7 @@ DowntownCanaryEnjoyer:
 2FF:
   "@I still don't really know how to carry numbers in subtraction." end
 300:
-  if (localization)
+  if (flags.localization)
   {
     "@I hear Trout Yogurt is all the rage in big cities." next
   }
@@ -2363,7 +2569,7 @@ DowntownCanaryEnjoyer:
   "@Did you see a strange teacher in the science lab?" next
   "@...Because I did." end
 305:
-  if (localization)
+  if (flags.localization)
   {
     "@Have you played Super Mario Bros. 7?" next
   }
@@ -2401,7 +2607,9 @@ DowntownCanaryEnjoyer:
 331:
   "@{name(1)}'s party won the battle." end
   
-//SECTION: ATM MACHINE
+//SECTION: PODUNK ATM MACHINE EEPROM DUMP
+3D6:
+  "@PLEASE INSERT ATM CARD" end
 332:
   "  WITHDRAW  DEPOSIT"
 333:
@@ -2438,14 +2646,10 @@ DowntownCanaryEnjoyer:
   "@Amazing, huh?" end
 33E:
   "@I'm very sorry. I can't buy your [03 1D]." end
-33F:
-  "@Laura the songbird was so happy to see her baby again that she began singing." end
-340:
+
+LearnedTheMelody:
   "@{name(1)} learned the melody." end
-341:
-  "@The canary is singing." end
-342:
-  "@The monkey stole the Zoo Key." end
+
 343:
   "@The robot is old and rusted." end
 344:
@@ -2489,7 +2693,7 @@ DowntownCanaryEnjoyer:
   "@Hey, pipsqueak!" next
   "Who said you could talk to me?!" end
 358:
-  if (localization)
+  if (flags.localization)
   {
     "@I heard there's an NES game called <EarthBound Beginnings.>" next
     "@It's tough... But it's aged way better than Dragon Warrior if you ask me." end
@@ -2646,7 +2850,7 @@ DowntownCanaryEnjoyer:
   
 
 3A3: 
-  if (localization)
+  if (flags.localization)
     "  North: City Zoo" linebreak
   else
     "  North: Cream Puff Zoo" linebreak
@@ -2676,7 +2880,7 @@ DowntownCanaryEnjoyer:
   "East: {call(merrysville)}" end
   
 3AA: 
-  if (localization)
+  if (flags.localization)
     "  Podunk City Zoo - 700 meters west" end
   else
     "  Cream Puff Zoo - 700 meters west" end
@@ -2712,17 +2916,17 @@ DowntownCanaryEnjoyer:
 3B3: 
   "  Private property of the Rosemary family" end
 3B4: 
-  if (localization)
+  if (flags.localization)
     "  Ellay PD" end //pun on LAPD
   else
     "  Valentine Police Department" end
   
 3B5: 
-  if (localization)
+  if (flags.localization)
   {
     "  Coming this fall:" newline
-    "  Duncan’s Debutantery" next
-    "  Financing by," newline
+    "  Duncan’s Debutantery" next  //I love how this line doesn't staight-up say
+    "  Financing by," newline      //"stip club" yet it still evokes sexiness
     "  Architectural by," newline
     "  Construction by," next
     "  Duncan Works Co. LLC" end
@@ -2754,7 +2958,6 @@ DowntownCanaryEnjoyer:
   "  But come seem me again sometime!" end
 3BD:
   "@I'm Minnie." end
-3BE: "  Refresh   Soften" end
 3BF:
   "@{name(4)}: You two probably wanna be alone, huh?" next
   "I'll just be catchin' some Zs over here, then." end
@@ -2762,16 +2965,23 @@ DowntownCanaryEnjoyer:
   "@Oh no! I'm too late!" end
 3C1:
   "@...I'm so glad." end
+//TODO: move to a section about the dance scene
 3C2:
   "@{name(4)}: Whoa! What the heck was that sound?!" end
 3C3:
   "@{name(4)}: You gotta be kiddin' me!" end
-3C4:
+
+StartBoat:
   "@The boat's engine seems to be in poor condition." end
-3C5:
-  "@{call(partyLeader)} can't get it to work." end
-3C6:
-  "@But {name(3)} fired it right up." end
+  if not flags.lloydInParty
+    "@{call(partyLeader)} can't get it to work." end
+  else
+  {
+    "@But {name(3)} fired it right up." wait
+    //TODO: movement code for the boat sailing, then being sucked underwater
+  }
+  eob
+  
 3C7:
   "@The [03 1D], right?" next
   "@I'll be sure to send it to {name(1)}'s house." next
@@ -2849,111 +3059,11 @@ DowntownCanaryEnjoyer:
   "  even though she had never seen you before..." end
 
 3E5:
-  "@Bathed in the glow of the crystal, everyone was completely healed!" end
-
-//3E9: Big Bag
-//3EA: Phone Card
-//3EB: BreadCrumbs
-//3EC: Repel Ring
-//3ED: ITEM 05
-//3EE: Memory Chip
-
-//3F2: Knife
-//3F3: Surv. Knife
-//3F4: Basic Sword
-//3F5: Katana
-//3F6: Stun Gun
-//3F7: Toy Air Gun
-//3F8: Cracked Bat
-//3F9: Teeball Bat
-//3FA: Sandlot Bat
-//3FB: HallFameBat
-//3FC: Frypan
-//3FD: DX Frypan
-//3FE: Best Frypan
-//3FF: Slingshot
-//400: Boomerang
-//401: Bug Spray
-//402: Super Spray
-//403: Flea Bomb
-//404: Love Words
-//405: Curse Words
-//406: Slime Gen.
-//407: Flashdark
-//408: Stone Spray
-//409: Stinger
-//40A: Flamethrowr
-//40B: Bomb
-//40C: Super Bomb
-//40D: Laser Beam
-//40E: Death Beam
-//40F: ITEM 39
-//410: Rope
-
-//415: Peace Coin
-//416: ProtectCoin
-//417: Magic Coin
-//418: Fairy Brace
-//419: Angel Brace
-//41A: GoddessBrac
-//41B: RainPendant
-//41C: FlamePendnt
-//41D: EarthPendnt
-//41E: Sea Pendant
-//41F: Easy Ring
-//420: Item 56
-//421: Item 57
-
-//424: OrangeJuice
-//425: FrenchFries
-//426: Magic Herb
-//427: Hamburger
-//428: SportsDrink
-//429: Medicine
-//42A: AsthmaSpray
-//42B: Antidote
-//42C: Mouthwash
-//42D: Berry Tofu
-//42E: Item 70
-//42F: Bread
-//430: Angel Seed
-//431: PSI Stone
-
-//433: MagicRibbon
-//434: Magic Candy
-//435: Item 77
-//436: SpeedCapsul
-//437: Wis.Capsule
-//438: Str.Capsule
-//439: ForceCapsul
-//43A: FightCapsul
-
-//43D: BasementKey
-//43E: Zoo Key
-//43F: Haunted Key
-//440: GGF's Diary
-//441: Pass
-//442: Show Ticket
-
-//447: Baby Canary
-//448: ITEM 96
-//449: BottlRocket
-//44A: Hat
-//44B: Dentures
-//44C: Ticket Stub
-//44D: IC Chip
-//44E: Ocarina
-//44F: Item 103
-//450: Frank.Badge
-//451: Friend Ring
-//452: Item 106
-//453: Onyx Hook
-//454: Ult. Weapon
-//455: Ruler
-//456: ATM Card
-//457: Red Weed
-//458: Megaphone
-//459: Map
+  "@Bathed in the glow of the crystal, everyone was completely healed!"
+  //sound for healing
+  healall
+  wait
+  eob
 
 //467: Coords.
 
@@ -3040,6 +3150,7 @@ DowntownCanaryEnjoyer:
 //4D6: Valentine
 //4D7: Santa Claus
 
+//SECTION: ENEMY CHECK TEXT
 515: "  Should you fight it? Or should you run from it?" end
 516: "  It appears to be holding a very important secret." end
 517: "  Is there actually any way to defeat this thing?" end
@@ -3385,299 +3496,305 @@ DowntownCanaryEnjoyer:
 //SECTION: ITEM HELP TEXT
 //TODO: make a "print item name" command to use in this section that just calls itemname with <> quotes around it
 
+command itemname_with_quotes(num)
+{
+  "<{itemname(num)}>" newline
+}
+
 709:
-  "<Big Bag>" newline
+  itemname_with_quotes(numbers.BigBag)
   "@A bag filled with lots of Magic Herbs." end
 70A:
-  "<Phone Card>" newline
+  itemname_with_quotes(numbers.PhoneCard)
   "@You can make 50 calls on public phones with this." end
 70B:
-  "<Bread Crumbs>" newline
+  itemname_with_quotes(numbers.BreadCrumbs)
   "@With these, you can return to the exact spot where you began spreading crumbs." end
 70C:
-  "<Repel Ring>"newline
+  itemname_with_quotes(numbers.RepelRing)
   "@When used, this item will ward off weak enemies for a short while." end
 70E:
-  "<Memory Chip>" newline
+  itemname_with_quotes(numbers.MemoryChip)
   "@Part of Great Grandfather George's memory is stored on this." next
   "@{name(1)} can use it to return to EVE's location." end
 712:
-  "<Knife>" newline
+  itemname_with_quotes(numbers.Knife)
   "@A weapon that {name(4)} can skillfully use." end
 713:
-  "Survival Knife" newline
+  itemname_with_quotes(numbers.SurvivalKnife)
   "@A weapon for {name(4)}. It looks stronger than a regular knife." end
 714:
-  "Basic Sword" newline
+  itemname_with_quotes(numbers.BasicSword)
   "@Probably only a select few can master using this." end
 715:
-  "Katana" newline
+  itemname_with_quotes(numbers.Katana)
   "@{name(4)} can use this Japanese sword." next
   "@It's the strongest weapon of all." end
 716:
-  "Stun Gun" newline
+  itemname_with_quotes(numbers.StunGun)
   "@{name(3)} can probably use this." end
 717:
-  "Toy Air Gun" newline
+  itemname_with_quotes(numbers.ToyAirGun)
   "@This is a very strong weapon, but only {name(3)} can use it." end
 718:
-  "Cracked Bat" newline
+  itemname_with_quotes(numbers.CrackedBat)
   "@{name(1)}! Try using this as a weapon!" end
 719:
-  "Teeball Bat" newline
+  itemname_with_quotes(numbers.TeeballBat)
   "@This should work well against weak enemies, {name(1)}." end
 71A:
-  "Sandlot Bat" newline
+  itemname_with_quotes(numbers.SandlotBat)
   "@With this, {name(1)} can fight against strong enemies." end
 71B:
-  "Hall of Fame Bat" newline
+  itemname_with_quotes(numbers.HallOfFameBat)
   "@A spectacular bat with a famous athlete's autograph on it." end
 71C:
-  "Frypan" newline
+  itemname_with_quotes(numbers.Frypan)
   "@{name(2)} can use this as a weapon." end
 71D:
-  "Deluxe Frypan" newline
+  itemname_with_quotes(numbers.DXFrypan)
   "@This frypan doesn't burn food," next
   "and {name(2)} can also use it as a weapon." end
 71E:
-  "Best Frypan" newline
+  itemname_with_quotes(numbers.BestFrypan)
   "@Not even tough baddies can withstand a hit from this heavy frypan." end
 71F:
-  "Slingshot" newline
+  itemname_with_quotes(numbers.Slingshot)
   "@A simple weapon that anyone can use." end
 720:
-  "Boomerang" newline
+  itemname_with_quotes(numbers.Boomerang)
   "@Handle with care. This is not a toy." next
   "Anyone can use this weapon." end
 721:
-  "Bug Spray" newline
+  itemname_with_quotes(numbers.BugSpray)
   "@Somewhat effective on insects and such." end
 722:
-  "Super Spray" newline
+  itemname_with_quotes(numbers.SuperSpray)
   "@A new and powerful bug spray." end
 723:
-  "Flea Bomb" newline
+  itemname_with_quotes(numbers.FleaBomb)
   "@Filled with fleas and lice. Throw it at the enemy and see what happens!" end
 724:
-  "Love Words" newline
+  itemname_with_quotes(numbers.LoveWords)
   "@???" end
 725:
-  "Curse Words" newline
+  itemname_with_quotes(numbers.CurseWords)
   "@???" end
 726:
-  "Slime Generator" newline
+  itemname_with_quotes(numbers.SlimeGenerator)
   "@It *seems* like it could be useful in battle, but..." end
 727:
-  "Flashdark" newline
+  itemname_with_quotes(numbers.Flashdark)
   "@This is the exact opposite of a flashlight." end
 72A:
-  "Flamethrower" newline
+  itemname_with_quotes(numbers.Flamethrower)
   "@Burns enemies to a crisp, but only {name(3)} can use it." end
 72B:
-  "Bomb" newline
+  itemname_with_quotes(numbers.Bomb)
   "@Probably only {name(3)} can use this." end
 72C:
-  "Super Bomb" newline
+  itemname_with_quotes(numbers.SuperBomb)
   "@<Danger! Explosive!> is written on it." next
   "@Leave this in {name(3)}'s hands." end
 72D:
-  "<Laser Beam>" newline
+  itemname_with_quotes(numbers.LaserBeam)
   "@If that weakling {name(3)} were to wield this..." end
 72E:
-  "<Death Beam>" newline
+  itemname_with_quotes(numbers.DeathBeam)
   "@If that cowardly {name(3)} were to wield this, he'd really be something." end
 730:
-  "<Rope>" newline
+  itemname_with_quotes(numbers.Rope)
   "@Use this to tie up the enemy." end
 735:
-  "<Peace Coin>" newline
+  itemname_with_quotes(numbers.PeaceCoin)
   "@Raises your Defense slightly when equipped." end
 736:
-  "<Protect Coin>" newline
+  itemname_with_quotes(numbers.ProtectCoin)
   "@Raises your Defense somewhat when equipped." end
 737:
-  "<Magic Coin>" newline
+  itemname_with_quotes(numbers.MagicCoin)
   "@Raises your Defense quite a bit when equipped." end
 738:
-  "<Fairy Bracelet>" newline
+  itemname_with_quotes(numbers.FairyBracelet)
   "@Raises your Defense a tiny bit when equipped." end
 739:
-  "<Angel Bracelet>" newline
+  itemname_with_quotes(numbers.AngelBracelet)
   "@Raises your Defense a nice amount when equipped." end
 73A:
-  "<Goddess Bracelet>" newline
+  itemname_with_quotes(numbers.GoddessBracelet)
   "@Raises your Defense a whole lot when equipped." end
 73B:
-  "<Rain Pendant>" newline
+  itemname_with_quotes(numbers.RainPendant)
   "@Reduces damage from PK Fire when equipped." end
 73C:
-  "<Flame Pendant>" newline
+  itemname_with_quotes(numbers.FlamePendant)
   "@Reduces damage from PK Freeze when equipped." end
 73D:
-  "<Earth Pendant>" newline
+  itemname_with_quotes(numbers.EarthPendant)
   "@Reduces damage from PK Thunder when equipped." end
 73E:
-  "<Sea Pendant>" newline
+  itemname_with_quotes(numbers.SeaPendant)
   "@Reduces damage from PK Fire, PK Freeze, and PK Thunder when equipped." end
 744:
-  "Orange Juice" newline
+  itemname_with_quotes(numbers.OrangeJuice)
   "@Rich with Vitamin C. Restores a little HP." end
 745:
-  "French Fries" newline
+  itemname_with_quotes(numbers.FrenchFries)
   "@Restores HP with or without ketchup." end
 746:
-  "Magic Herb" newline
+  itemname_with_quotes(numbers.MagicHerb)
   "@Please use this when you're exhausted or hurt." end
 747:
-  "Hamburger" newline
+  itemname_with_quotes(numbers.Hamburger)
   "@Fast food for restoring HP quickly." end
 748:
-  "Sports Drink" newline
+  itemname_with_quotes(numbers.SportsDrink)
   "@Drink this to feel refreshed, no matter how exhausted you are." end
 749:
-  "Medicine" newline
+  itemname_with_quotes(numbers.Medicine)
   "@Use this to heal wounds." end
 74A:
-  "Asthma Spray" newline
+  itemname_with_quotes(numbers.AsthmaSpray)
   "@If {name(1)} starts to have an asthma attack, this will stop it." end
 74B:
-  "Antidote" newline
+  itemname_with_quotes(numbers.Antidote)
   "@Quickly counteracts poison." end
 74C:
-  "Mouthwash" newline
+  itemname_with_quotes(numbers.Mouthwash)
   "@Gargle with this to get over a cold." end
 74D:
   //a Sandhop-name localization would need to change item_configuration_table as well
-  "Strawberry Tofu" newline
+  itemname_with_quotes(numbers.TroutYogurt)
   "@Wouldn't you like to try some for real?" end
 74F:
-  "Bread" newline
+  itemname_with_quotes(numbers.Bread)
   "@It's good to eat," next
   "  but you can use its crumbs to mark a trail that you can retrace later." end
 750:
-  "Angel Seed" newline
+  itemname_with_quotes(numbers.AngelSeed)
   "@Lifts the curse of a Demon Seed." end
 751:
-  "PSI Power Stone" newline
+  itemname_with_quotes(numbers.PSIStone)
   "@PSI power is hidden inside this stone." end
 753:
-  "Magic Ribbon" newline
+  itemname_with_quotes(numbers.MagicRibbon)
   "@Raises Force a little bit when tied into a girl's hair."
 754:
+  itemname_with_quotes(numbers.MagicCandy)
   "Magic Candy" newline
   "@Raises Fight a little bit when a weakling eats it." end
 756:
-  "Speed Capsule" newline
+  itemname_with_quotes(numbers.SpeedCapsule)
   "@Raises Speed." end
 757:
-  "Wisdom Capsule" newline
+  itemname_with_quotes(numbers.WisdomCapsule)
   "@Raises Wisdom." end
 758:
-  "Strength Capsule" newline
+  itemname_with_quotes(numbers.StrengthCapsule)
   "@Raises Strength." end
 759:
-  "Force Capsule" newline
+  itemname_with_quotes(numbers.ForceCapsule)
   "@Raises Force." end
 75A:
-  "Fight Capsule" newline
+  itemname_with_quotes(numbers.FightCapsule)
   "@Raises Fight." end
 75D:
-  "Basement Key" newline
+  itemname_with_quotes(numbers.BasementKey)
   "@Needed to enter the basement." end
 75E:
-  "Zoo Key" newline
+  itemname_with_quotes(numbers.zookey)
   "@This should open the front gate of the zoo." end
 75F:
-  "Haunted House Key" newline
+  itemname_with_quotes(numbers.HauntedKey)
   "@The key to the Rosemarys' mansion." end
 760:
-  "Great-Grandfather's Diary" newline
+  itemname_with_quotes(numbers.GGFsDiary)
   "@The diary of {name(1)}'s great-grandfather." next
   "@It's filled with writing, but it's in such bad shape that it's mostly illegible." end
 761:
-  "Pass" newline
+  itemname_with_quotes(numbers.Pass)
   "@<Duncan Factory Employee> is written on it." end
 762:
-  "Show Ticket" 
+  itemname_with_quotes(numbers.ShowTicket)
   "@<Every Day All Night Rock 'n' Roll Live Show> is written on it."
 767:
-  "Baby Canary" 
+  itemname_with_quotes(numbers.BabyCanary)
   "@It has a lonely look in its eyes."
 769:
-  "Bottle Rocket" 
+  itemname_with_quotes(numbers.BottleRocket)
   "@{name(3)} should know what to do with use this."
 76A:
-  "Hat" 
+  itemname_with_quotes(numbers.Hat)
   "@A pretty hat with the name <{name(2)}> embroided on it."
 76B:
-  "Dentures" 
+  itemname_with_quotes(numbers.Dentures)
   "@Unnecessary if you make sure to take care of your teeth and brush regularly."
 76C:
-  "Ticket Stub" 
+  itemname_with_quotes(numbers.TicketStub)
   "@<Collect 10 ticket stubs for a tank ride!> is written on it."
-76D: 
 76E:
+  itemname_with_quotes(numbers.Ocarina)
   "Ocarina of Hope" 
   "@You can use this to hear the melodies you've collected so far."
-76F: 
 770:
-  "Franklin Badge" 
+  itemname_with_quotes(numbers.FranklinBadge)
   "@It's said Ben Franklin wore this as protection during his lightning experiments."
 773:
-  "Onyx Hook" 
+  itemname_with_quotes(numbers.OnyxHook)
   "@You can return to Magicant from anywhere using this."
 774:
-  "Ultimate Weapon" 
+  itemname_with_quotes(numbers.UltWeapon)
   "@???"
 775:
-  "Ruler" 
+  itemname_with_quotes(numbers.Ruler)
   "@A 12-inch (approx. 30 cm) ruler."
 776:
-  "ATM Card" 
+  itemname_with_quotes(numbers.ATMCard)
   "@Use this to access your bank account and make deposits or withdrawals."
 777:
-  "Red Weed" 
+  itemname_with_quotes(numbers.RedWeed)
   "@At first glance, it looks like an ordinary weed, but..."
 778:
-  "Magic Megaphone" 
+  itemname_with_quotes(numbers.Megaphone)
   "@Use this to scare enemies with your loud voice."
 
-78B: "SHIGESATO ITOI"
-78C: "MIYUKI KURE"
-78D: "AKIO OHMORI"
-78E: "RITSUO KAMIMURA"
-78F: "KEIICHI SUZUKI"
-790: "HIROKAZU TANAKA"
-791: "SHINBO MINAMI"
-792: "TATSUYA ISHII"
-793: "TOTTORI"
-794: "KAZUYA NAKATANI"
-795: "TAKAYUKI ONODERA"
-796: "MOTOO YASUMA"
-797: "MASAYUKI KAMEYAMA"
-798: "HIDEO KON"
-799: "KATSUTOMO MAEIWA"
-79A: "KUNIKO SAKURAI"
-79B: "MASAHIRO TATEMOTO"
-79C: "TAKASHI KAWAGUCHI"
-79D: "KEIZOH KATOH"
-79E: "MOTOHIRO ISHII"
-79F: "AKIHITO TODA"
-7A0: "YUKARI SAITOH"
-7A1: "PHIL SANDHOP"
-7A2: "TOSHIKO WATSON"
-7A3: "YUKA NAKATA"
-7A4: "HIROKO FAULKNER"
-7A5: "TONY HARMAN"
-7A6: "DAYV BROOKS"
-7A7: "NORIYUKI MINAMI"
-7A8: "BIN OHGAWARA"
-7A9: "YOSHIHISA WADA"
-7AA: "HIKONORI SUZUKI"
-7AB: "TAKAO SHIMIZU"
-7AC: "SHIGERU MIYAMOTO"
-7AD: "HIROSHI YAMAUCHI"
+StaffCredits1: "SHIGESATO ITOI"
+StaffCredits2: "MIYUKI KURE"
+StaffCredits3: "AKIO OHMORI"
+StaffCredits4: "RITSUO KAMIMURA"
+StaffCredits5: "KEIICHI SUZUKI"
+StaffCredits6: "HIROKAZU TANAKA"
+StaffCredits7: "SHINBO MINAMI"
+StaffCredits8: "TATSUYA ISHII"
+StaffCredits9: "TOTTORI"
+StaffCredits10: "KAZUYA NAKATANI"
+StaffCredits11: "TAKAYUKI ONODERA"
+StaffCredits12: "MOTOO YASUMA"
+StaffCredits13: "MASAYUKI KAMEYAMA"
+StaffCredits14: "HIDEO KON"
+StaffCredits15: "KATSUTOMO MAEIWA"
+StaffCredits16: "KUNIKO SAKURAI"
+StaffCredits17: "MASAHIRO TATEMOTO"
+StaffCredits18: "TAKASHI KAWAGUCHI"
+StaffCredits19: "KEIZOH KATOH"
+StaffCredits20: "MOTOHIRO ISHII"
+StaffCredits21: "AKIHITO TODA"
+StaffCredits22: "YUKARI SAITOH"
+StaffCredits23: "PHIL SANDHOP"
+StaffCredits24: "TOSHIKO WATSON"
+StaffCredits25: "YUKA NAKATA"
+StaffCredits26: "HIROKO FAULKNER"
+StaffCredits27: "TONY HARMAN"
+StaffCredits28: "DAYV BROOKS"
+StaffCredits29: "NORIYUKI MINAMI"
+StaffCredits30: "BIN OHGAWARA"
+StaffCredits31: "YOSHIHISA WADA"
+StaffCredits32: "HIKONORI SUZUKI"
+StaffCredits33: "TAKAO SHIMIZU"
+StaffCredits34: "SHIGERU MIYAMOTO"
+StaffCredits35: "HIROSHI YAMAUCHI"
 
+//SECTION: Battle text. Probably deserves to be its own CCScript file
 7D3: "[03 20] suddenly attacked!" eob
 7D4: "[03 20] attacks!" eob
 7D5: "[03 20] fired the tank cannon!" eob
