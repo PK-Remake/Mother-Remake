@@ -7,4 +7,10 @@ define melody6 = flag 0x1E
 define melody7 = flag 0x1F
 define melody8 = flag 0x20
 
+define poltergeistIsAttacking = flag 0x21
+define dadTalkedAboutBasement = flag 0x22
+define pippiIsMissing = flag 0x23
+define pippiSavedByTheMayor = flag 0x24
+define guyThinksYoureAZombie = flag 0x25
+define hasCanaryChick = flag 0x26
 

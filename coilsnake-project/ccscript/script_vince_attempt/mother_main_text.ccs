@@ -98,69 +98,102 @@ giegue:
   "@You're much braver than I ever imagined." next
   "@...But I can't send you on a journey so famished."
 00B:
-  "@Oh, my! You're hurt!"
+  "@Oh, my! You're hurt!" next
 224:
   "@I'll make you some {call(favoriteFood)}, {name(1)}." next
-  "@Eat some and scoot up to bed." end
-
+  "@Eat some and scoot up to bed." wait
+  healall
+  "  TODO: FADE TO BLACK AND PLAY SONG" next
+  "@Come back home whenever you want some more {call(favoriteFood)}." end
 
 
 //SECTION: DAD & SAVING
 339:
-  "@{call(partyLeader)} picked up the telephone." end
+  "@{call(partyLeader)} picked up the telephone." next
+  if not flags.dadTalkedAboutBasement
+  {
+    "@Hmm, I see." next
+    "@Sounds like it must be a poltergeist of some sort." next
+    "@I'm not sure what to do about it, either." next
+    "@But your great-grandfather did study PSI at one point." next
+    "@Perhaps there's something in the basement that could help make sense of things." next
+    "@I know I put the basement key somewhere..." next
+    "  but I can't remember where." next
+    "@Anyway, you're our only hope. Now is the time for an adventure." next
+    "  Go forth, {name(1)}! Protect us all!" wait
+    set(flags.dadTalkedAboutBasement)
+  }
+  else
+    "@{name(1)}? It's your dad." next
+    //TODO: if you earned money, then...
+    call(YouEarnedMoney)
+    //TODO: if you earned experience, then...
+    call(YouEarnedExperience)
+  
+  "@Anyway, what do you need from me?" linebreak
+  menu 2 {
+    "Save": {
+      call(DadSavesTheGame)
+    }
+    "Nothing": {
+      "@Good luck!" wait
+      call(PhoneSlam)
+    }
+  }
+  end
 
-00E:
-  "@Hmm, I see." next
-  "@Sounds like it must be a poltergeist of some sort." next
-  "@I'm not sure what to do about it, either." next
-  "@But your great-grandfather did study PSI at one point." next
-  "@Perhaps there's something in the basement that could help make sense of things." next
-  "@I know I put the basement key somewhere..." next
-  "  but I can't remember where." next
-  "@Anyway, you're our only hope. Now is the time for an adventure." next
-  "  Go forth, {name(1)}! Protect us all!" end
-
-014:
-  "@{name(1)}? It's your dad." end
-00C:
-  "@Let's see... To get to the next level, you need..."
-00D:
-  "@Come back home whenever you want some more {call(favoriteFood)}." //favorite food
-013:
+PhoneSlam:
   "@(Click! Beep-beep-beep...)" end
-015:
+YouEarnedMoney:
   "@I've deposited $[03 18] into your bank account." next
   "@Taking away what you've spent, you should now have $[03 19] in the bank." next
-  "@Use it wisely." end
+  "@Use it wisely." next
+  eob
+
+YouEarnedExperience:
+   "@Let's see... To get to the next level, you need..." next
+   //TODO: find out how to print the level up stuff
+   
 016:
   "@I realize this isn't any of my business, but why don't you take a little break?" linebreak
   menu 2 {
     "Yes": {
-      "@I see. Then I'll make a record of your progress." end 
+      save
+      "@I see. Then I'll make a record of your progress."
       //TODO: save and reset the game here
       //Also look at what the original game does to see if any of the other lines go here too
     }
     "No": {
-      "@I see. Well, I guess the Earth IS in danger and all." end
+      "@I see. Well, I guess the Earth IS in danger and all." 
     }
   }
-  
-01B:
+  end
+
+DadSavesTheGame:
+  save
   "@Okay." next
   "@Your dear old dad was also thinking about hitting the hay for the night." next
   "@I've created a record of your adventure to this point." next
-  "@Good night, sleep tight." end
-01C:
-  "@We're a great team, aren't we?" next
-  "@Well, you should turn the power OFF now." next
-  "@All right?" end
-01D:
+  "@Good night, sleep tight." linebreak
+  menu 2 {
+    "Continue": {
+      goto(YouKeepPlaying)
+    }
+    "Rest": {
+      "@We're a great team, aren't we?" next
+      "@Well, you should turn the power OFF now." next
+      "@All right?" wait
+      "  TODO: LOCK PLAYER INPUT" end
+    }
+  }
+  goto(YouKeepPlaying)
+  end
+  
+YouKeepPlaying:
   "@{name(1)}, you've got a great work ethic, just like your mother." next
   "@But, I don't think it's good to work too hard." end
-01E:
-  "@Anyway, what do you need from me?" end
-021:
-  "@Good luck!" end
+  call(PhoneSlam)
+  end
 
 188:
   "@Say, could I speak to the person playing this game?" end
@@ -185,8 +218,6 @@ giegue:
   "But what's your problem?!" next
   "@Just press the A Button already!" end
 
-
-
 //EARLY PODUNK. PIPPI & ZOMBIES
 2AF:
   "@You understand animal talk, right?" next
@@ -194,47 +225,111 @@ giegue:
   "@Woof!" end
 35C:
   "@If something ever seems strange, be sure to <Check> all around." end
+/////////////////
+PippiMom:
+  if flags.pippiIsMissing
+  {
+    "@Oh me, oh my!  Oh me, oh my!   Oh me, oh my!" next
+    "@My dear Pippi's gotten lost." next
+    "@If you're going into town, please tell the mayor for me, okay?" next
+    "(sniffle sniffle sob sob)" wait
+  }
+  
+  if not flags.pippiSavedByTheMayor
+  {
+    "@Pippi!" next
+    "@Oh, thank goodness! She's all right!" next
+    "@I think the mayor is looking for her too." next
+    "@You should probably go and see him." wait
+  }
+  else
+  {
+    "@Hello." next
+    "@Pippi and I are feeling just dandy now!" wait
+  }
+  eob
+  
 
-228:
-  "@Oh me, oh my!  Oh me, oh my!   Oh me, oh my!" next
-  "@My dear Pippi's gotten lost." next
-  "@If you're going into town, please tell the mayor for me, okay?" next
-  "(sniffle sniffle sob sob)" end
-
-023:
-  "@Hello." next
-  "@Pippi and I are feeling just dandy now!" end
 024:
   "@You didn't come from the cemetery to the south, did you?" next
   "  Please tell me you didn't!" end
+02F:
+  "@There must be someone controlling the dead..." end
+2C5:
+  "@Canary Village is north and west of here." next
+  "@You should definitely go visit it - admission is free!" end
+03A:
+  "@Animals have suddenly turned violent," next
+  "  and the dead have have come back as zombies to attack us..." next
+  "@What are we supposed to do? I'm so scared I can hardly breathe... (gasp gasp)" end
+031:
+  "@Are the zombies going to take over our town too?" end
+  
+/////////////
 025:
   "@You're really amazing." end
 026:
   "@Please tell me you're not a zombie!" next
-  "  ...Are you?" end
-027:
-  "@Oh, yeah? W-w-well..." next
-  "  You're a big stupid zombie head! Waaaah! Eek!" end
-028:
-  "@Are you really a human?" end
-029:
-  "@I'm amazed you made it this far." end
-02A:
-  "@I knew it..." end
-02B:
-  "@I'm so scared I'm about to wet my pants..." end
+  "  ...Are you?" linebreak
+  menu 2 {
+    "Yes": {
+      set(flags.guyThinksYoureAZombie)
+      "@Oh, yeah? W-w-well..." next
+      "@You're a big stupid zombie head! Waaaah! Eek!" wait
+      //TODO: movement code of the guy running offscreen, then disable the sprite
+    }
+    "No": {
+      "@Are you really a human?" linebreak
+      menu 2 {
+        "Yes": {
+          "@I'm amazed you made it this far." wait
+        }
+        "No": {
+          "@I knew it..." next
+          "@I'm so scared I'm about to wet my pants..." wait
+        }
+      }
+    }
+  }
+  eob
+
+DowntownOldLady:
+  "@It's nice that there's a machine on the first floor of the department store" next
+  "  that lets you withdraw cash from your bank account," next
+  "  but you need a PTA card or something to use it." next
+  "@That's not very convenient, if you ask me." end
+
+DowntownCanaryEnjoyer:
+  if flags.hasCanaryChick
+  {
+    "@Oh, that's a baby canary." next
+    "  Did you find it in Canary Village?" linebreak
+    menu 2 {
+      "Yes": {
+        "@Hmm. You don't say." wait
+      }
+      "No": {
+        "@The birds of Canary Village do sing such lovely songs." wait
+      }
+    }
+  }
+  else
+  {
+    "@I really admire the man living in Canary Village." wait
+  }
+  eob
+  
+
+  
 02C:
   "@Boy, that was scary..." end
 02D:
   "@ZOMBIE!" end
 02E:
   "@Heheheh...! You get to be a zombie too!" end
-02F:
-  "@There must be someone controlling the dead..." end
 030:
   "@Not too shabby, youngster!" end
-031:
-  "@Are the zombies going to take over our town too?" end
+
 036:
   "@The town mayor is looking for someone brave to help him." end
 037:
@@ -244,10 +339,7 @@ giegue:
   "@Say... You're not honestly thinking of going to the cemetery, are you?" end
 039:
   "@I thought you were a sensible boy." end
-03A:
-  "@Animals have suddenly turned violent," next
-  "  and the dead have have come back as zombies to attack us..." next
-  "@What are we supposed to do? I'm so scared I can hardly breathe... (gasp gasp)" end
+
 03B:
   "@You're so awesome!" end
 03D:
@@ -315,11 +407,7 @@ giegue:
   "@Whew, what a relief." end
 05B:
   "@Please visit us again for all your shopping needs! (giggle)" end
-05C:
-  "@It's nice that there's a machine on the first floor of the department store" next
-  "  that lets you withdraw cash from your bank account," next
-  "  but you need a PTA card or something to use it." next
-  "@That's not very convenient, if you ask me." end
+
 
 05E:
   "@It's such nice weather out." next
@@ -392,16 +480,6 @@ giegue:
 053:
   "@Say, how's that canary doing?" end
 
-032:
-  "@Oh, that's a baby canary." next
-  "  Did you find it in Canary Village?" end
-033:
-  "@Hmm. You don't say." end
-034:
-  "@The birds of Canary Village do sing such lovely songs." end
-035:
-  "@I really admire the man living in Canary Village." end
-
 05F:
   "@Oh, that canary is Laura the songbird's baby!" next
   "@Go take it to her!" end
@@ -412,12 +490,22 @@ giegue:
   "@Now where did I last see Laura...?" end
 062:
   "@It sounds like Laura the songbird has remembered her song." next
-  "@Have you learned her melody, too?" end
+  "@Have you learned her melody, too?" linebreak
+  menu 2 {
+    "Yes": {
+      "@Well, that's no good."
+    }
+    "No": {
+      "@In song there is strength." next
+      "  True words, indeed."
+    }
+  }
+  end
+  
 063:
-  "@Well, that's no good." end
+  
 064:
-  "@In song there is strength." next
-  "True words, indeed." end
+  
 
 //SECTION: MARTIAL LAW
 0F5:
@@ -2084,9 +2172,7 @@ giegue:
 2C4:
   "@I've heard about all the great things you've been up to." next
   "@You must really be brave, huh?" end
-2C5:
-  "@Canary Village is north and west of here." next
-  "@You should definitely go visit it - admission is free!" end
+
 2C6:
   "@There's this really pretty secretary at the town hall." next
   "@She's the first floor receptionist." end
@@ -2368,15 +2454,9 @@ giegue:
   "@[03 1B]: [03 1E] EXP." end
 346:
   "@Good luck." end
-347: 
 348:
   "@Touching the fountain's water revitalized you." end
 
-34A:
-  "@Pippi!" next
-  "@Oh, thank goodness! She's all right!" next
-  "@I think the mayor is looking for her too." next
-  "@You should probably go and see him." end
 34B:
   "@Someone's in here! ...Wait, this isn't a bathroom." next
   "@I have my hands full at the moment. Come back later." end
