@@ -1,2 +1,0 @@
-// Disable Attract Mode
-ROM[0xC422E4] = "[09]"

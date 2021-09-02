@@ -1,0 +1,45 @@
+// Intro and Title Screen modifications to replicate Mother 1's introduction sequence
+
+import asm65816
+
+/* LOGO screens modifications */
+
+//The "time" is performed in 1/60th of a second, so keep this in mind when changing the value.
+define NIN_TIME = 180	//0x00B4 in decimal.
+define APE_TIME = 120	//0x0078 in decimal.
+define HAL_TIME = 120	//0x0078 in decimal.
+
+//ROM override stuff below here. Do NOT touch if you don't know what you're doing.
+ROM[0xC0F029] = LDA_i (NIN_TIME)	// Value for the time spent on the Nintendo logo.
+ROM[0xC0F066] = LDA_i (APE_TIME)	// Value for the time spent on the APE logo.
+//ROM[0xC0F0A3] = LDA_i (HAL_TIME)	//Value for the time spent on the HALKEN logo.
+
+// Disable the HALKEN screen
+ROM[0xC0F09F] = {
+	NOP
+	NOP
+	NOP
+	NOP
+
+// Remove time spent on HALKEN logo (0xC0F0A3)
+	NOP
+	NOP
+	NOP
+}
+
+/* GAS STATION screen modifications */
+
+// Disable the Gas Station screen and go straight to static Title Screen
+ROM[0xC0F0A6] = {
+	NOP
+	NOP
+	NOP
+}
+
+/* TITLE SCREEN modifications */
+
+// Always play title animation
+//ROM[0xC3F3D0] = STZ_a (0x9F75)
+
+// Disable Attract Mode
+ROM[0xC422E4] = "[09]"

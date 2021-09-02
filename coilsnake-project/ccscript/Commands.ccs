@@ -11,5 +11,3 @@ command input_num (n) "[1F 52 {byte n}]"
 //n is the number of digits
 
 command inst_pack_loc (target) "[{byte[2] target} {byte[0] target} {byte[1] target}]"
-
-command adr16(a) "[{byte[0] a} {byte[1] a}]"
