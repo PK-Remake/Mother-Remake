@@ -1,0 +1,55 @@
+// ASM patch to always go directly to "final" title screen
+// This skips the animation of the letters flying in
+
+import asm65816
+import movscr_codes
+
+define EARTH_XPOS = 66
+define EARTH_YPOS = 100
+define NUM_FRAMES = 4
+define FRAME_WAIT = 12
+
+ROM[0xC3F3C5] = {
+	/* C5 */ REP(0x31)
+	/* C7 */ PHD
+	/* C8 */ TDC
+	/* C9 */ ADC_i(0xFFE4)
+	/* CC */ TCD
+	/* CD */ LDA_i(0x0001)
+	/* D0 */ STA_a(0x9F75)
+	/* D3 */ // Execution continues...
+}
+
+// Creates a movement object without a sprite.
+// Used for the title screen letters.
+command movasm_create_obj_no_sprite(obj) {
+	asmcall(0xC09E71)
+	short obj
+}
+
+// Movement Script 788: instantly spawn first two sprites and die
+ROM[0xC42290] = {
+	movasm_create_obj_no_sprite(0x0315)
+	movasm_create_obj_no_sprite(0x0316)
+	halt
+}
+
+// Movement Script 790: Animated Earth
+ROM[0xC422E9] = {
+	mov_jsr(0xC4220E)
+	mov_jml(TitleScreen_EarthMov)
+}
+
+TitleScreen_EarthMov:
+	setxpos(EARTH_XPOS)
+	setypos(EARTH_YPOS)
+TitleScreen_EarthMov_OuterLoop:
+	mov_var(0,0)
+	startloop(NUM_FRAMES)
+		setanim_var(0)
+		mov_wait(FRAME_WAIT)
+		var_add(0,1)
+	endloop
+	mov_jmp(TitleScreen_EarthMov_OuterLoop)
+	halt
+

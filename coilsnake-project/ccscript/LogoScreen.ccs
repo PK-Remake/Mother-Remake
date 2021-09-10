@@ -1,0 +1,95 @@
+// Simplify logo code.
+// It will:
+//   start playing a song immediately when the game is started (LOGO_SONG),
+//   show the first N logos you specify (LOGOS_TO_DISPLAY) for a certain amount of time (LOGO_WAIT_FRAMES),
+//   and then go to the final form of the title screen (without the flying letters) without interrupting the music.
+
+import asm65816
+
+define LOGO_SONG = 175
+define LOGOS_TO_DISPLAY = 2
+define LOGO_WAIT_FRAMES = 180
+
+define WaitForNextFrame = 0xC08756
+define ChangeMusic = 0xC4FBBD
+
+ROM[0xC0F009] = {
+	/* C0F009 */ JML(NewLogoScreen)
+	/* C0F00D */ JSR(0xC0EE68) RTL
+}
+define trampoline_LogoScreenLoad = 0xC0F00D
+
+
+NewLogoScreen:
+	REP(0x31)
+	PHD
+	TDC
+	ADC_i(0xFFF0)
+	TCD
+
+	// Play intro song
+	LDA_i(LOGO_SONG)
+	JSL(ChangeMusic)
+
+	// Start off displaying the first image
+	LDA_i(0x0000)
+NewLogoScreen_ShowImageLoop:
+	STA_d(0x0C)
+
+	// Load graphics
+	JSL(trampoline_LogoScreenLoad)
+
+	// Show graphics?
+	LDY_i(0x0000)
+	LDX_i(0x0002)
+	LDA_i(0x0001)
+	JSL(0xC087CE)
+
+	LDX_i(LOGO_WAIT_FRAMES)
+	STX_d(0x0E)
+NewLogoScreen_ShowImageLoop_WaitLoop:
+	JSL(WaitForNextFrame)
+	DEC_d(0x0E)
+	BNE_a(NewLogoScreen_ShowImageLoop_WaitLoop)
+
+	// Unshow graphics?
+	LDY_i(0x0000)
+	LDX_i(0x0002)
+	LDA_i(0x0001)
+	JSL(0xC08814)
+
+	// Loop if we still have other images
+	LDA_d(0x0C)
+	INC
+	CMP_i(LOGOS_TO_DISPLAY)
+	BNE_a(NewLogoScreen_ShowImageLoop)
+
+	// Return 1, indicating a button was pressed
+	LDA_i(0x0001)
+	PLD
+	RTL
+
+// Skip playing music before title screen - avoid interrupting
+ROM[0xC4DBA9] = {
+	// Old code:
+	// /* C4DBA9 */ LDA #$00AF
+	// /* C4DBAC */ JSL $C4FBBD
+	// /* C4DBB0 */ LDA #$0001
+	// /* C4DBB3 */ JSL $C3F3C5
+
+	// New code: just go directly to LDA to skip playing song
+	/* C4DBA9 */ BRA(5) // BRA $C4DBB0
+}
+
+// Skip stopping music after logos
+ROM[0xC4DB85] = {
+	// Old code:
+	// /* C4DB85 */ CMP #$0000
+	// /* C4DB88 */ BEQ UNKNOWN13
+	// /* C4DB8A */ LDA #$0002
+	// /* C4DB8D */ JSL $C0AC0C
+	// /* C4DB91 */ LDA $000D
+
+	// New code: jump past, straight to LDA
+	/* C4DB85 */ BRA(10) // BRA $C4DB91
+}

@@ -356,7 +356,7 @@
   Length: 16
   North/South Collision Height: 24
   North/South Collision Width: 24
-  Size: 64x80
+  Size: 64x64
   Swim Flags: [false, false, false, false, false, false, false, false, false, false,
     false, false, false, false, false, false]
 42:
@@ -390,7 +390,7 @@
   Length: 16
   North/South Collision Height: 8
   North/South Collision Width: 8
-  Size: 16x24
+  Size: 24x24
   Swim Flags: [false, false, false, false, false, false, false, false, false, false,
     false, false, false, false, false, false]
 46:

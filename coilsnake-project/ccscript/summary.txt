@@ -6,9 +6,9 @@ CCScript Compilation Summary
 Compilation statistics
 =================================================================
 Compilation start:           $f10000
-Compilation end:             $fae8b1
-Total compiled size:         649393 bytes
-Fragmented space:            646 bytes
+Compilation end:             $faeb19
+Total compiled size:         650009 bytes
+Fragmented space:            538 bytes
 -----------------------------------------------------------------
 
 
@@ -18,7 +18,7 @@ Name                         Address     Size
 -----------------------------------------------------------------
 data_17                      $f8cc62      8074   bytes
 data_26                      $f2b4d4      15361  bytes
-asm_diamond                  $fae7d7      218    bytes
+asm_diamond                  $faea3f      218    bytes
 data_53                      $f464c1      12560  bytes
 data_62                      $f1ffee      0      bytes
 data_06                      $f9d564      5878   bytes
@@ -45,6 +45,7 @@ data_43                      $f971a1      6644   bytes
 data_33                      $fa7f7d      4146   bytes
 ShortSongs                   $f1ffee      0      bytes
 naming_screen_table          $fae1ff      815    bytes
+msu1                         $fae7d7      616    bytes
 Sound_Stone                  $f3fb9e      992    bytes
 data_13                      $faaab5      3177   bytes
 InstrumentPacks2             $f10000      59165  bytes
@@ -87,15 +88,17 @@ data_31                      $f38ce2      15358  bytes
 asm_debug                    $f9fda7      601    bytes
 data_23                      $f60000      11131  bytes
 data_51                      $fa565c      5267   bytes
+movscr_codes                 $f1ffee      0      bytes
 ebpp_std                     $f2ff81      109    bytes
 data_11                      $f9ec5a      4429   bytes
 data_39                      $f80000      9213   bytes
+TitleScreen                  $f3ffd0      26     bytes
 data_56                      $f7e0e4      7834   bytes
 data_52                      $f98b95      6515   bytes
 data_60                      $fa0000      5725   bytes
 data_19                      $f1e71d      6307   bytes
-Title_Screen                 $f1ffee      0      bytes
 data_09                      $f90000      7695   bytes
+LogoScreen                   $f3ff7e      82     bytes
 stdarg                       $f1ffee      0      bytes
 std                          $f1ffee      0      bytes
 -----------------------------------------------------------------
@@ -319,11 +322,11 @@ l_0xc72a63                   $f2f0b9
 Labels in module asm_diamond
 Name                         Address
 -----------------------------------------------------------------
-Diamond_Table                $fae7d7
-Display_Diamond              $fae80e
-Display_Window_Graphics      $fae7db
-l_0xC10D60                   $fae85c
-l_0xC10FEA                   $fae87c
+Diamond_Table                $faea3f
+Display_Diamond              $faea76
+Display_Window_Graphics      $faea43
+l_0xC10D60                   $faeac4
+l_0xC10FEA                   $faeae4
 -----------------------------------------------------------------
 
 
@@ -2572,6 +2575,31 @@ main_capital                 $fae1ff
 main_small                   $fae29c
 player_capital               $fae339
 player_small                 $fae3d6
+-----------------------------------------------------------------
+
+
+Labels in module msu1
+Name                         Address
+-----------------------------------------------------------------
+endNMI                       $fae8b6
+endfast                      $fae8ea
+endflag                      $fae850
+endfull                      $fae92c
+endhalf                      $fae90a
+endsetflag                   $fae87f
+endslow                      $fae8c9
+fadefast                     $fae8da
+fadefull                     $fae91d
+fadehalf                     $fae8fb
+fadeslow                     $fae8bb
+loop                         $fae800
+msuTrack                     $fae7d7
+newTrackFlag                 $fae845
+nmi                          $fae88c
+playmsu                      $fae7eb
+playspc                      $fae83c
+setFadeFlag                  $fae874
+track_table                  $fae93f
 -----------------------------------------------------------------
 
 
@@ -6209,6 +6237,12 @@ l_0xc9ab53                   $fa6a44
 -----------------------------------------------------------------
 
 
+Labels in module movscr_codes
+Name                         Address
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+
+
 Labels in module ebpp_std
 Name                         Address
 -----------------------------------------------------------------
@@ -6424,6 +6458,14 @@ l_0xc87eee                   $f8225a
 l_0xc88000                   $f822c6
 l_0xc8807d                   $f8235e
 l_0xc880b9                   $f823b3
+-----------------------------------------------------------------
+
+
+Labels in module TitleScreen
+Name                         Address
+-----------------------------------------------------------------
+TitleScreen_EarthMov         $f3ffd0
+TitleScreen_EarthMov_OuterLoop $f3ffd6
 -----------------------------------------------------------------
 
 
@@ -6851,12 +6893,6 @@ l_0xc65efc                   $f1ff4d
 -----------------------------------------------------------------
 
 
-Labels in module Title_Screen
-Name                         Address
------------------------------------------------------------------
------------------------------------------------------------------
-
-
 Labels in module data_09
 Name                         Address
 -----------------------------------------------------------------
@@ -6960,6 +6996,15 @@ l_0xc5bbdc                   $f91dab
 l_0xc5bbe4                   $f91db3
 l_0xc5bbf2                   $f91dd0
 l_0xc5bbfb                   $f91de6
+-----------------------------------------------------------------
+
+
+Labels in module LogoScreen
+Name                         Address
+-----------------------------------------------------------------
+NewLogoScreen                $f3ff7e
+NewLogoScreen_ShowImageLoop  $f3ff90
+NewLogoScreen_ShowImageLoop_WaitLoop $f3ffa8
 -----------------------------------------------------------------
 
 
