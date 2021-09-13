@@ -6,7 +6,7 @@ import movscr_codes
 
 define EARTH_XPOS = 66
 define EARTH_YPOS = 100
-define NUM_FRAMES = 4
+define NUM_FRAMES = 6
 define FRAME_WAIT = 12
 
 ROM[0xC3F3C5] = {
