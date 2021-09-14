@@ -4,6 +4,7 @@
  * Generated using CCScriptWriter.
  */
 
+import asm65816
 command e(label) "{long label}"
 
 // Text Data
@@ -170,66 +171,245 @@ l_0xc57e1c:
 
 l_0xc58000:
     "{window_open(1)}" newline
-    "@NNW SMSK?[18 02]{open_hp}{open_wallet}{window_open(2)}[19 02]P-TiNStTI[02][19 02]GtZStTI[02][19 02]TKSyZyUTI[02][19 02]IDU[02][19 02]OKNNStTI[02][19 02]RBRAtP[02][19 02]MSYUNSKRPT[02][19 02]IBNT[02][19 02]HNTY[02][19 02]SUND[02][19 02]STMI[02][19 02]TRP-T[02][19 02]HNTTZ[02][1C 0C 02][11][1B 05]{window_closetop}{window_switch(1)}{clearline}" newline
-    "[1B 06][09 0D {e(l_0xc58103)} {e(l_0xc58262)} {e(l_0xc58718)} {e(data_07.l_0xc588cd)} {e(data_07.l_0xc58afb)} {e(data_07.l_0xc58a36)} {e(data_07.l_0xc58c88)} {e(data_08.l_0xc59895)} {e(data_07.l_0xc58e13)} {e(data_07.l_0xc58d09)} {e(data_09.l_0xc5a57f)} {e(data_07.l_0xc58e73)} {e(l_0xc580da)}]@YMMST." end
+    "{diam}Debug menu on." next
+    goto(debug_main)
+
+debug_main:
+    "{window_open(1)}" newline
+    "{diam}What shall you do?{wait}[18 02]{open_hp}{open_wallet}{window_open(2)}[19 02]Party Edit" eob
+
+l_0xc58023:
+    "[19 02]Goods Edit" eob
+
+l_0xc5802d:
+    "[19 02]Special Status" eob
+
+l_0xc58039:
+    "[19 02]Move to area" eob
+
+l_0xc5803f:
+    "[19 02]Money Edit" eob
+
+l_0xc5804a:
+    "[19 02]Level Up" eob
+
+l_0xc58053:
+    "[19 02]Unused Script" eob //Unused Script
+
+l_0xc58060:
+    "[19 02]Event" eob
+
+l_0xc58067:
+    "[19 02]Hint shop" eob
+
+l_0xc5806e:
+    "[19 02]Sound" eob
+
+l_0xc58075:
+    "[19 02]Item descriptions" eob
+
+l_0xc5807c:
+    "[19 02]Teleport" eob
+
+l_0xc58084:
+    "[19 02]Hint map" eob
+
+enemy_spawn:
+    "[19 02]Enemy spawn" eob
+
+l_0xc5808c:
+    "[1C 0C 02][11][1B 05]{window_closetop}{window_switch(1)}{window_clear}" newline
+    "[1B 06][09 0E {e(l_0xc58103)} {e(l_0xc58262)} {e(l_0xc58718)} {e(data_07.l_0xc588cd)} {e(data_07.l_0xc58afb)} {e(data_07.l_0xc58a36)} {e(data_07.l_0xc58c88)} {e(data_08.l_0xc59895)} {e(data_07.l_0xc58e13)} {e(data_07.l_0xc58d09)} {e(data_09.l_0xc5a57f)} {e(data_07.l_0xc58e73)} {e(l_0xc580da)} {e(data_07.l_0xc58dbf)} ]{diam}Debug mode off." end
 
 l_0xc580da:
     newline
-    "@HNTYW" linebreak
-    " TZNNSMS" next
-    "{set(flag 681)}{set(flag 682)}{set(flag 683)}{set(flag 684)}{set(flag 685)}{set(flag 686)}" goto(l_0xc58000)
+    "{diam}The hint shop has been marked in your map." next
+    "{set(flag 681)}{set(flag 682)}{set(flag 683)}{set(flag 684)}{set(flag 685)}{set(flag 686)}" goto(debug_main)
 
 l_0xc58103:
-    "@NNW SMSK?" linebreak
-    "[19 02]KWER[02][19 02]HZS[02][1C 07 02][11]{clearline}[09 02 {e(l_0xc5812f)} {e(l_0xc581ee)}]" goto(l_0xc58000)
+    newline
+    "{diam}What do you want to do?" linebreak
+    "[19 02]Add" eob
+
+l_0xc58115:
+    "[19 02]Remove" eob
+
+l_0xc5811b:
+    "[1C 07 02][11]{clearline}[09 02 {e(l_0xc5812f)} {e(l_0xc581ee)}]" goto(debug_main)
 
 l_0xc5812f:
-    "{open_hp}@KWER PR-Y-W" linebreak
-    " ERNDKDSI." goto(l_0xc58148)
+    newline
+    "{open_hp}{diam}Select your party member.{wait}" linebreak
+    goto(l_0xc58148)
 
 l_0xc58148:
-    "{window_open(8)}[19 02]NS[02][19 02]P-R[02][19 02]ZeF[02][19 02]P-[02][19 02]P-K-[02][19 02]PtK-[02][19 02]IN[02][19 02]TN-[02][19 02]BR-NMNK-[02][19 02]DNZyNMN[02][19 02]FRINGMN1[02][19 02]FRINGMN2[02][19 02]FRINGMN3[02][19 02]FRINGMN4[02][19 02]FRINGMN5[02][1C 0C 03][11][1B 05][19 04]{window_closetop}{window_switch(1)}[1B 06][1B 02 {e(l_0xc581e7)}]{swap}[1F 11 00]{open_hp}" goto(l_0xc58148)
+    "{window_open(8)}[19 02]Ness" eob
+
+l_0xc58150:
+    "[19 02]Paula" eob
+
+l_0xc58156:
+    "[19 02]Jeff" eob
+
+l_0xc5815c:
+    "[19 02]Poo" eob
+
+l_0xc58161:
+    "[19 02]Porky" eob
+
+l_0xc58168:
+    "[19 02]Picky" eob
+
+l_0xc5816f:
+    "[19 02]King" eob
+
+l_0xc58174:
+    "[19 02]Tony" eob
+
+l_0xc5817a:
+    "[19 02]Bubble Monkey" eob
+
+l_0xc58185:
+    "[19 02]Dungeon Man" eob
+
+l_0xc5818f:
+    "[19 02]Flying Man 1" eob
+
+l_0xc5819a:
+    "[19 02]Flying Man 2" eob
+
+l_0xc581a5:
+    "[19 02]Flying Man 3" eob
+
+l_0xc581b0:
+    "[19 02]Flying Man 4" eob
+
+l_0xc581bb:
+    "[19 02]Flying Man 5" eob
+
+l_0xc581c6:
+    "[1C 0C 03][11][1B 05][19 04]{window_closetop}{window_switch(1)}[1B 06][1B 02 {e(l_0xc581e7)}]{swap}[1F 11 00]{open_hp}" goto(l_0xc58148)
 
 l_0xc581e7:
-    "{window_closetop}" goto(l_0xc58000)
+    "{window_closetop}" goto(debug_main)
 
 l_0xc581ee:
-    "[19 10 02][1B 02 {e(l_0xc58250)}]@HZSPR-Y-NITW" linebreak
-    " NyURyKSTKDSI." linebreak
+    "[19 10 02][1B 02 {e(l_0xc58250)}]{diam}Which party member do you want to remove?{wait}" linebreak
     goto(l_0xc58214)
 
 l_0xc58214:
-    "[19 10 02][1B 02 {e(l_0xc5824b)}]  [1F 52 01][1B 02 {e(l_0xc5824b)}]{clearline}{swap}[19 10 00][1B 02 {e(l_0xc58214)}]{swap}[1F 12 00]@[1C 02 00]W HZSMS." linebreak
+    "[19 10 02][1B 02 {e(l_0xc5824b)}]  [1F 52 01][1B 02 {e(l_0xc5824b)}]{clearline}{swap}[19 10 00][1B 02 {e(l_0xc58214)}]{swap}[1F 12 00]{diam}[1C 02 00] was removed.{wait}" linebreak
     goto(l_0xc58214)
 
 l_0xc5824b:
-    goto(l_0xc58000)
+    goto(debug_main)
 
 l_0xc58250:
-    "@0NNNHDKMSN.{wait}" goto(l_0xc58000)
+    "{diam}You can't have a party of zero!" next
+    "{diam}The game will freeze if you do so.{wait}" goto(l_0xc58103)
 
 l_0xc58262:
-    newline
-    "@GtZNStTIWSMS.[18 02]{open_hp}{open_wallet}{window_open(7)}[19 02]GtZKWER[02][19 02]ZyUYUGtZ[02][19 02]GtZMNTN[02][19 02]GtZSKZy[02][19 02]AZKRSyMNTN[02][19 02]AZKRSyKR[02][19 02]SIKyUBK[02][1C 0C 01][11][1B 05]{window_closetop}[19 04]{window_switch(1)}" newline
-    "[1B 06][09 07 {e(l_0xc582f8)} {e(l_0xc58369)} {e(l_0xc58539)} {e(l_0xc58568)} {e(l_0xc585dc)} {e(l_0xc58614)} {e(l_0xc5863c)}]" goto(l_0xc58000)
+    newline //For Inventory debug
+    "{diam}Select your option.{wait}[18 02]{open_hp}{open_wallet}{window_open(7)}[19 02]Add goods" eob
+
+l_0xc58284:
+    "[19 02]Important goods" eob
+
+l_0xc5828f:
+    "[19 02]Max sandwiches" eob
+
+l_0xc58299:
+    "[19 02]Clear inventory" eob
+
+l_0xc582a3:
+    "[19 02]Maxed storage" eob
+
+l_0xc582b0:
+    "[19 02]Clear storage" eob
+
+l_0xc582bb:
+    "[19 02]Ultimate weapons" eob
+
+l_0xc582c5:
+    "[1C 0C 01][11][1B 05]{window_closetop}[19 04]{window_switch(1)}" newline
+    "[1B 06][09 07 {e(l_0xc582f8)} {e(l_0xc58369)} {e(l_0xc58539)} {e(l_0xc58568)} {e(l_0xc585dc)} {e(l_0xc58614)} {e(l_0xc5863c)}]" goto(debug_main)
 
 l_0xc582f8:
-    "@GtZIDW NyURyK" linebreak
-    "   [1F 52 03]{clearline}[1B 02 {e(l_0xc58364)}]{swap}[1D 03 FF][1B 02 {e(l_0xc58358)}]{store_registers}@[1C 05 00]DS." linebreak
-    " DRNSMSK?" call(data_14.l_0xc5e52e) linebreak
+    "{diam}Input goods ID:" linebreak
+    "   [1F 52 03]{clearline}[1B 02 {e(l_0xc58364)}]{swap}[1D 03 FF][1B 02 {e(l_0xc58358)}]{store_registers}{diam}[1C 05 00]?" linebreak
+    "  To whom?{wait}" call(data_14.l_0xc5e52e) linebreak
     "[1B 02 {e(l_0xc582f8)}][1D 0E 00 00]" newline
-    "@GtZRNN KWEMST." next
+    //"@GtZRNN KWEMST." next
+    "{diam}Item added to inventory." next
     goto(l_0xc582f8)
 
 l_0xc58358:
-    "@MTMNItPIDS." goto(l_0xc58364)
+    "{diam}Inventory full." linebreak
+    "{diam}Can't add more items.{wait}" goto(l_0xc58364)
 
 l_0xc58364:
-    goto(l_0xc58000)
+    goto(debug_main)
 
 l_0xc58369:
-    "[18 02]{window_open(12)}[19 02]TBGYNKG[02][19 02]ZySNDNW[02][19 02]TKKSMSN[02][19 02]FRNKRNBtZ[02][19 02]RUYNKG[02][19 02]STTB[02][19 02]TytTKGMSN[02][19 02]ZNBHIHI[02][19 02]DIYMND[02][19 02]GRMDUFMSN[02][19 02]HERGRFNKP-[02][19 02]TKNM[02][19 02]F-SNGM[02][19 02]MKTWNOSHN[02][19 02]BtSTXYZ[02][19 02]SINIRBNN[02][19 02]KKSKSMSN[02][19 02]GMDRAN[02][19 02]USGGNMNNZN[02][1C 0C 01][11][1B 05]{window_closetop}[19 04]{window_switch(1)}" newline
-    "[1B 06][1B 02 {e(l_0xc58364)}]{swap}@DRNSMSK." call(data_14.l_0xc5e52e) "[1B 02 {e(l_0xc58369)}]{swap}[1F C0 13 {e(l_0xc584b4)} {e(l_0xc584bb)} {e(l_0xc584c2)} {e(l_0xc584c9)} {e(l_0xc584d0)} {e(l_0xc584d7)} {e(l_0xc584de)} {e(l_0xc584e5)} {e(l_0xc584ec)} {e(l_0xc584f3)} {e(l_0xc584fa)} {e(l_0xc58501)} {e(l_0xc58508)} {e(l_0xc5850f)} {e(l_0xc58516)} {e(l_0xc5851d)} {e(l_0xc58524)} {e(l_0xc5852b)} {e(l_0xc58532)}]" goto(l_0xc58369)
+    "[18 02]{window_open(12)}[19 02]Key to the shack" eob
+
+l_0xc58378:
+    "[19 02]Receiver phone" eob
+
+l_0xc58382:
+    "[19 02]Pencil eraser" eob
+
+l_0xc5838c:
+    "[19 02]Franklin badge" eob
+
+l_0xc58398:
+    "[19 02]Key to the cabin" eob
+
+l_0xc583a1:
+    "[19 02]Suitcase of bills" eob
+
+l_0xc583a8:
+    "[19 02]Bad key machine" eob
+
+l_0xc583b4:
+    "[19 02]Zombie paper" eob
+
+l_0xc583be:
+    "[19 02]Diamond" eob
+
+l_0xc583c7:
+    "[19 02]Tofu machine" eob
+
+l_0xc583d3:
+    "[19 02]Hieroglyph copy" eob
+
+l_0xc583e0:
+    "[19 02]Hawk eye" eob
+
+l_0xc583e7:
+    "[19 02]Pack of bubble gum" eob
+
+l_0xc583f0:
+    "[19 02]Shyness book" eob
+
+l_0xc583fc:
+    "[19 02]Meteorite piece" eob
+
+l_0xc58406:
+    "[19 02]Signed banana" eob
+
+l_0xc58411:
+    "[19 02]Eraser eraser" eob
+
+l_0xc5841c:
+    "[19 02]Tendakraut" eob
+
+l_0xc58425:
+    "[19 02]Rabbits' carrot" eob
+
+l_0xc58432:
+    "[1C 0C 01][11][1B 05]{window_closetop}[19 04]{window_switch(1)}" newline
+    "[1B 06][1B 02 {e(l_0xc58364)}]{swap}{diam}To whom?{wait}" call(data_14.l_0xc5e52e) "[1B 02 {e(l_0xc58369)}]{swap}[1F C0 13 {e(l_0xc584b4)} {e(l_0xc584bb)} {e(l_0xc584c2)} {e(l_0xc584c9)} {e(l_0xc584d0)} {e(l_0xc584d7)} {e(l_0xc584de)} {e(l_0xc584e5)} {e(l_0xc584ec)} {e(l_0xc584f3)} {e(l_0xc584fa)} {e(l_0xc58501)} {e(l_0xc58508)} {e(l_0xc5850f)} {e(l_0xc58516)} {e(l_0xc5851d)} {e(l_0xc58524)} {e(l_0xc5852b)} {e(l_0xc58532)}]" goto(l_0xc58369)
 
 l_0xc584b4:
     "{swap}[1D 0E 00 AA]" eob
@@ -289,8 +469,8 @@ l_0xc58532:
     "{swap}[1D 0E 00 FD]" eob
 
 l_0xc58539:
-    "@GtZRNWMNTNNSMS." next
-    call(l_0xc58555) goto(l_0xc58000)
+    "{diam}Inventory maxed out with Skip Sandwiches DX." next
+    call(l_0xc58555) goto(data_06.debug_main)
 
 l_0xc58555:
     "[1D 03 FF][1B 02 {e(l_0xc58567)}][1D 0E 00 E1]" goto(l_0xc58555)
@@ -299,8 +479,14 @@ l_0xc58567:
     eob
 
 l_0xc58568:
-    "@GtZWSKZySMS." linebreak
-    "[19 02]ZNB[02][19 02]SNTK[02][1C 07 02][11]{clearline}[09 02 {e(l_0xc58597)} {e(l_0xc585c5)}]" goto(l_0xc58364)
+    "{diam}What items do you want to remove?" linebreak
+    "[19 02]All" eob
+
+l_0xc5857c:
+    "[19 02]By choice" eob
+
+l_0xc58583:
+    "[1C 07 02][11]{clearline}[09 02 {e(l_0xc58597)} {e(l_0xc585c5)}]" goto(data_06.l_0xc58364)
 
 l_0xc58597:
     "{counter(1)}" goto(l_0xc58599)
@@ -327,27 +513,27 @@ l_0xc585db:
     eob
 
 l_0xc585dc:
-    "@AZKRSyW" linebreak
-    " ItPIN SMS.{counter(20)}" goto(l_0xc585f2)
+    "{diam}Storage filled with" linebreak
+    "  upper tier weapons.{counter(20)}" goto(l_0xc585f2)
 
 l_0xc585f2:
     "{ctoarg}[1D 0C 01 01][18 07 02 00 00 00 00][1B 03 {e(l_0xc5860e)}][1D 18 00]{inc}" goto(l_0xc585f2)
 
 l_0xc5860e:
-    "{wait}" goto(l_0xc58000)
+    "{wait}" goto(data_06.debug_main)
 
 l_0xc58614:
-    "@AZKRZyW KRNSMS." goto(l_0xc58624)
+    "{diam}Storage cleared." goto(l_0xc58624)
 
 l_0xc58624:
     "[19 1A 01][1B 02 {e(l_0xc58636)}][19 1C FF 01]" goto(l_0xc58624)
 
 l_0xc58636:
-    "{wait}" goto(l_0xc58000)
+    "{wait}" goto(data_06.debug_main)
 
 l_0xc5863c:
-    "@SIKyUNBKW" linebreak
-    " KWEMS.[03]" call(l_0xc58659) goto(l_0xc58000)
+    "{diam}You now have been equipped" linebreak
+    "  with the ultimate weapons.[03]" call(l_0xc58659) goto(data_06.debug_main)
 
 l_0xc58659:
     "{counter(1)}" goto(l_0xc5865b)
@@ -365,26 +551,62 @@ l_0xc5869b:
     eob
 
 l_0xc5869c:
-    "[1D 0E 01 19][1F 83 00 00][1D 0E 01 3D][1F 83 00 00][1D 0E 01 48][1F 83 00 00][1D 0E 01 56][1F 83 00 00]" eob
+    "[1D 0E 01 1A][1F 83 00 00][1D 0E 01 3D][1F 83 00 00][1D 0E 01 48][1F 83 00 00][1D 0E 01 56][1F 83 00 00]" eob
 
 l_0xc586bd:
     "[1D 0E 02 22][1F 83 00 00][1D 0E 02 C2][1F 83 00 00][1D 0E 02 47][1F 83 00 00][1D 0E 02 DC][1F 83 00 00]" eob
 
 l_0xc586de:
-    "[1D 0E 03 2F][1F 83 00 00][1D 0E 03 3C][1F 83 00 00][1D 0E 03 46][1F 83 00 00][1D 0E 03 55][1F 83 00 00]" eob
+    "[1D 0E 03 30][1F 83 00 00][1D 0E 03 3C][1F 83 00 00][1D 0E 03 46][1F 83 00 00][1D 0E 03 55][1F 83 00 00]" eob
 
 l_0xc586ff:
-    "[1D 0E 04 3F][1F 83 00 00][1D 0E 04 49][1F 83 00 00][1D 0E 04 57][1F 83 00 00]" eob
+    "[1D 0E 04 23][1F 83 00 00][1D 0E 04 3F][1F 83 00 00][1D 0E 04 49][1F 83 00 00][1D 0E 04 57][1F 83 00 00]" eob
 
 l_0xc58718:
     newline
-    "@DRNSMSK?[1A 01 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 01][1B 02 {e(l_0xc587ee)}]{store_registers}" linebreak
-    "@DRNSR?" linebreak
-    "[18 02]{window_open(12)}[19 02]KNKU[02][19 02]KZT[02][19 02]DIY[02][19 02]SBR[02][19 02]HKK[02][19 02]MUDK[02][19 02]NtSyByU[02][19 02]KZ[02][19 02]KNK[02][19 02]TRTK[02][19 02]H-MStK[02][19 02]HPHRS[02][19 02]PPHRS[02][1C 0C 02][11][1B 05]{window_closetop}{window_switch(1)}[1B 06][09 0D {e(l_0xc587f3)} {e(data_07.l_0xc58813)} {e(data_07.l_0xc5882f)} {e(data_07.l_0xc58841)} {e(data_07.l_0xc5884e)} {e(data_07.l_0xc5885b)} {e(data_07.l_0xc58868)} {e(data_07.l_0xc58875)} {e(data_07.l_0xc58882)} {e(data_07.l_0xc5888f)} {e(data_07.l_0xc5889c)} {e(data_07.l_0xc588a9)} {e(data_07.l_0xc588bb)}]" goto(l_0xc58718)
+    "{diam}To whom?{wait}[1A 01 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 01][1B 02 {e(l_0xc587ee)}]{store_registers}" linebreak
+    "{diam}Which?{wait}" linebreak
+    "[18 02]{window_open(12)}[19 02]Heal" eob
+
+l_0xc58752:
+    "[19 02]Unconscious" eob
+
+l_0xc58758:
+    "[19 02]Diamondized" eob
+
+l_0xc5875e:
+    "[19 02]Paralyzed" eob
+
+l_0xc58764:
+    "[19 02]Nauseated" eob
+
+l_0xc5876a:
+    "[19 02]Poisoned" eob
+
+l_0xc58771:
+    "[19 02]Sunstroke" eob
+
+l_0xc5877b:
+    "[19 02]Cold" eob
+
+l_0xc58780:
+    "[19 02]Mushroomized" eob
+
+l_0xc58786:
+    "[19 02]Possessed" eob
+
+l_0xc5878d:
+    "[19 02]Homesick" eob
+
+l_0xc58796:
+    "[19 02]Decrease HP" eob
+
+l_0xc5879e:
+    "[19 02]Decrease PP" eob
+
+l_0xc587a6:
+    "[1C 0C 02][11][1B 05]{window_closetop}{window_switch(1)}[1B 06][09 0D {e(data_07.l_0xc587f3)} {e(data_07.l_0xc58813)} {e(data_07.l_0xc5882f)} {e(data_07.l_0xc58841)} {e(data_07.l_0xc5884e)} {e(data_07.l_0xc5885b)} {e(data_07.l_0xc58868)} {e(data_07.l_0xc58875)} {e(data_07.l_0xc58882)} {e(data_07.l_0xc5888f)} {e(data_07.l_0xc5889c)} {e(data_07.l_0xc588a9)} {e(data_07.l_0xc588bb)}]" goto(l_0xc58718)
 
 l_0xc587ee:
-    goto(l_0xc58000)
-
-l_0xc587f3:
-    "{load_registers}[19 05 00 01 01][19 05 00 02 01][19 05 00 06 01]{swap}[1E 00 00 64][1E 04 00 64]" goto(l_0xc58718)
+    goto(debug_main)
 

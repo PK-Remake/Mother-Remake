@@ -93,3 +93,20 @@ ROM[0xC4DB85] = {
 	// New code: jump past, straight to LDA
 	/* C4DB85 */ BRA(10) // BRA $C4DB91
 }
+
+/* Disable Music transitions */
+
+// Title Screen music stop
+ROM[0xC4DCB5] = {BRA(5) NOP NOP NOP NOP NOP}
+
+// Title Screen -> File Select
+ROM[0xC1F049] = {BRA(5) NOP NOP NOP NOP NOP}
+
+// File Select -> Naming
+ROM[0xC1F8FB] = {BRA(5) NOP NOP NOP NOP NOP}
+
+// Naming -> File Select
+ROM[0xC1F92C] = {BRA(5) NOP NOP NOP NOP NOP}
+
+// Naming confirmation sound
+ROM[0xc1fcda] = {BRA(5) NOP NOP NOP NOP NOP}

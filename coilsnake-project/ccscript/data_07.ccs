@@ -4,9 +4,13 @@
  * Generated using CCScriptWriter.
  */
 
+import asm65816
 command e(label) "{long label}"
 
 // Text Data
+l_0xc587f3:
+    "{load_registers}[19 05 00 01 01][19 05 00 02 01][19 05 00 06 01]{swap}[1E 00 00 64][1E 04 00 64]" goto(data_06.l_0xc58718)
+
 l_0xc58813:
     "{load_registers}[19 05 00 01 01][19 05 00 01 02]{swap}[1E 01 00 64][1E 05 00 64]" goto(data_06.l_0xc58718)
 
@@ -80,8 +84,68 @@ l_0xc588cc:
     eob
 
 l_0xc588cd:
-    "@DKN IDUSMSK?{window_open(8)}[19 02]ONtT[02][19 02]T-SN[02][19 02]HHMR[02][19 02]GFRDtD[02][19 02]SR-K[02][19 02]UiNT-Z[02][19 02]ST-NBR-[02][19 02]HMTKT[02][19 02]DKDKSBK[02][19 02]Fo-SID[02][19 02]M-NSID[02][19 02]SM-Z[02][19 02]RNM[02][19 02]SKRB[02][19 02]MKyU[02][19 02]GM[02][19 02]TTITIRK[02][19 02]MZKNT[02][19 02]GNZISITI[02][19 02]KKSITIKK[02][1C 0C 03][11][1B 05]{window_closetop}{window_switch(1)}" newline
-    "[1B 06][09 14 {e(l_0xc589e6)} {e(l_0xc589ea)} {e(l_0xc589ee)} {e(l_0xc589f2)} {e(l_0xc589f6)} {e(l_0xc589fa)} {e(l_0xc589fe)} {e(l_0xc58a02)} {e(l_0xc58a06)} {e(l_0xc58a0a)} {e(l_0xc58a0e)} {e(l_0xc58a12)} {e(l_0xc58a16)} {e(l_0xc58a1a)} {e(l_0xc58a1e)} {e(l_0xc58a22)} {e(l_0xc58a2e)} {e(l_0xc58a32)} {e(l_0xc58a26)} {e(l_0xc58a2a)}]" goto(data_06.l_0xc58000)
+    "{diam}To where?{wait}{window_open(8)}[19 02]Onett" eob
+
+l_0xc588e4:
+    "[19 02]Twoson" eob
+
+l_0xc588eb:
+    "[19 02]H. H. Village" eob
+
+l_0xc588f2:
+    "[19 02]G. D. Valley" eob
+
+l_0xc588fb:
+    "[19 02]Threek" eob
+
+l_0xc58902:
+    "[19 02]Winters" eob
+
+l_0xc5890b:
+    "[19 02]Saturn Valley" eob
+
+l_0xc58915:
+    "[19 02]Belch's Base" eob
+
+l_0xc5891d:
+    "[19 02]D. D. Desert" eob
+
+l_0xc58927:
+    "[19 02]Fourside" eob
+
+l_0xc58930:
+    "[19 02]Moonside" eob
+
+l_0xc58939:
+    "[19 02]Summers" eob
+
+l_0xc58940:
+    "[19 02]Dalaam" eob
+
+l_0xc58946:
+    "[19 02]Scarabia" eob
+
+l_0xc5894d:
+    "[19 02]Deep Darkness" eob
+
+l_0xc58954:
+    "[19 02]Tenda Village" eob
+
+l_0xc58959:
+    "[19 02]L. Underworld" eob
+
+l_0xc58963:
+    "[19 02]Magicant" eob
+
+l_0xc5896b:
+    "[19 02]Present Cave" eob
+
+l_0xc58976:
+    "[19 02]Cave of Past" eob
+
+l_0xc58981:
+    "[1C 0C 03][11][1B 05]{window_closetop}{window_switch(1)}" newline
+    "[1B 06][09 14 {e(l_0xc589e6)} {e(l_0xc589ea)} {e(l_0xc589ee)} {e(l_0xc589f2)} {e(l_0xc589f6)} {e(l_0xc589fa)} {e(l_0xc589fe)} {e(l_0xc58a02)} {e(l_0xc58a06)} {e(l_0xc58a0a)} {e(l_0xc58a0e)} {e(l_0xc58a12)} {e(l_0xc58a16)} {e(l_0xc58a1a)} {e(l_0xc58a1e)} {e(l_0xc58a22)} {e(l_0xc58a2e)} {e(l_0xc58a32)} {e(l_0xc58a26)} {e(l_0xc58a2a)}]" goto(data_06.debug_main)
 
 l_0xc589e6:
     "[1F 21 19]" eob
@@ -144,74 +208,90 @@ l_0xc58a32:
     "[1F 21 17]" eob
 
 l_0xc58a36:
-    "@DRNSMSK?" linebreak
-    "[19 02]ZNIN[02][19 02]HTR[02][1C 07 02][11]{clearline}[09 02 {e(l_0xc58a61)} {e(l_0xc58a93)}]" goto(data_06.l_0xc58000)
+    "{diam}Who will be leveled up?" linebreak
+    "[19 02]Whole team" eob
+
+l_0xc58a47:
+    "[19 02]One member" eob
+
+l_0xc58a4d:
+    "[1C 07 02][11]{clearline}[09 02 {e(l_0xc58a61)} {e(l_0xc58a93)}]" goto(data_06.debug_main)
 
 l_0xc58a61:
-    call(l_0xc58add) "[1B 02 {e(l_0xc58a8d)}]{swap}[1E 08 01 00][1E 08 02 00][1E 08 03 00][1E 08 04 00]@RBRWStTISMST.{wait}" goto(l_0xc58a8d)
+    call(l_0xc58add) "[1B 02 {e(l_0xc58a8d)}]{swap}[1E 08 01 00][1E 08 02 00][1E 08 03 00][1E 08 04 00]{diam}Team leveled up.{wait}" goto(l_0xc58a8d)
 
 l_0xc58a8d:
-    goto(data_06.l_0xc58000)
+    goto(data_06.debug_main)
 
 l_0xc58a92:
     eob
 
 l_0xc58a93:
     newline
-    "@PR-Y-WSNTKSTKDSI.[1A 01 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 01][1B 02 {e(l_0xc58ad7)}]{swap}" call(l_0xc58add) "[1B 02 {e(l_0xc58ad7)}]{swap}[1E 08 00 00]" goto(l_0xc58a93)
+    "{diam}Which party member will be leveled up?{wait}[1A 01 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 01][1B 02 {e(l_0xc58ad7)}]{swap}" call(l_0xc58add) "[1B 02 {e(l_0xc58ad7)}]{swap}[1E 08 00 00]" goto(l_0xc58a8d)
 
 l_0xc58ad7:
-    goto(data_06.l_0xc58000)
+    goto(data_06.debug_main)
 
 l_0xc58adc:
     eob
 
 l_0xc58add:
     newline
-    "@RBRW NyURyK" linebreak
-    " STKDSI." linebreak
+    "{diam}Select your level." linebreak
     "   [1F 52 02]{clearline}" eob
 
 l_0xc58afb:
     newline
-    "@OKNN SUSW SMS.[18 02]{open_hp}{open_wallet}{window_open(7)}[19 02]GNKU  MNTN[02][19 02]SyZKN MNTN[02][19 02]SyZKN StTI[02][19 02]SyZKN 0DR[02][1C 0C 01][11][1B 05]{window_closetop}{window_switch(1)}[1B 06]" newline
-    "[09 04 {e(l_0xc58b6c)} {e(l_0xc58bac)} {e(l_0xc58bd2)} {e(l_0xc58c30)}]" goto(data_06.l_0xc58000)
+    "{diam}Choose your operation.{wait}[18 02]{open_hp}{open_wallet}{window_open(7)}[19 02]Max bank account" eob
+
+l_0xc58b21:
+    "[19 02]Max cash" eob
+
+l_0xc58b2e:
+    "[19 02]Cash edit" eob
+
+l_0xc58b3b:
+    "[19 02]Zero cash" eob
+
+l_0xc58b47:
+    "[1C 0C 01][11][1B 05]{window_closetop}{window_switch(1)}[1B 06]" newline
+    "[09 04 {e(l_0xc58b6c)} {e(l_0xc58bac)} {e(l_0xc58bd2)} {e(l_0xc58c30)}]" goto(data_06.debug_main)
 
 l_0xc58b6c:
-    "@GNKUYKNW" linebreak
-    " 9999999DRNSMS.{wait}{counter(1)}" goto(l_0xc58b88)
+    "{diam}You now have $9999999" linebreak
+    "  in the bank.{wait}{counter(1)}" goto(l_0xc58b88)
 
 l_0xc58b88:
     "{ctoarg}{swap}{result_is(200)}[1B 03 {e(l_0xc58ba0)}][1D 06 50 C3 00 00]{inc}" goto(l_0xc58b88)
 
 l_0xc58ba0:
-    "[1D 06 4F C3 00 00]" goto(data_06.l_0xc58000)
+    "[1D 06 4F C3 00 00]" goto(data_06.debug_main)
 
 l_0xc58bab:
     eob
 
 l_0xc58bac:
-    "@SyZKNW" linebreak
-    " 99999DRNSMS.{wait}[1D 08 60 EA][1D 08 40 9C]{open_wallet}" goto(data_06.l_0xc58000)
+    "{diam}You now have $99999" linebreak
+    "  in your wallet.{wait}[1D 08 60 EA][1D 08 40 9C]{open_wallet}" goto(data_06.debug_main)
 
 l_0xc58bd1:
     eob
 
 l_0xc58bd2:
-    "@KNGKW StTIST" linebreak
-    " KDSI" linebreak
-    "[18 05 04 0A]&[18 05 04 02]$[1F 52 05]{clearline}[1B 02 {e(l_0xc58c2a)}]{store_registers}" call(l_0xc58c55) "{load_registers}{swap}[1D 08 00 00]{open_wallet}@PR-Y-NSyZKNW" linebreak
-    " [1C 0A 00 00 00 00]DRN SMST.{wait}" goto(l_0xc58c2a)
+    "{diam}Input your amount:" linebreak
+    "[18 05 04 0A]&[18 05 04 02]$[1F 52 05]{clearline}[1B 02 {e(l_0xc58c2a)}]{store_registers}" call(l_0xc58c55) "{load_registers}{swap}[1D 08 00 00]{open_wallet}{diam}You now have" linebreak
+    "  [1C 0A 00 00 00 00] in your wallet.{wait}" goto(l_0xc58c2a)
 
 l_0xc58c2a:
-    goto(data_06.l_0xc58000)
+    goto(data_06.debug_main)
 
 l_0xc58c2f:
     eob
 
 l_0xc58c30:
-    call(l_0xc58c55) "@PR-Y-NSyZKNW" linebreak
-    " 0DRN SMST.{wait}" goto(data_06.l_0xc58000)
+    call(l_0xc58c55) "{diam}You are now broke!" linebreak
+    "  Your wallet is empty!{wait}" goto(data_06.debug_main)
 
 l_0xc58c54:
     eob
@@ -232,66 +312,102 @@ l_0xc58c7d:
     "[1D 09 01 00][1B 02 {e(l_0xc58c7d)}]" eob
 
 l_0xc58c88:
-    "@MSYUN SKRPTW" linebreak
-    " HtSISSMS.[18 02]{open_hp}{open_wallet}{window_open(7)}[19 02]ESKRG OTDK[02][19 02]ESKRG AZKR[02][19 02]MtHPZ OTDK[02][19 02]YMDRY[02][19 02]E-G STtK[02][1C 0C 01][11][1B 05]{window_closetop}{window_switch(1)}" newline
-    "[1B 06][1F C0 05 {e(data_18.l_0xc642a3)} {e(data_18.l_0xc63eb0)} {e(data_18.l_0xc64bbf)} {e(data_19.l_0xc65243)} {e(data_19.l_0xc655b1)}]" eob
+    "{diam}Which script do you want to access?{wait}[18 02]{open_hp}{open_wallet}{window_open(7)}[19 02]Escargo delivery" eob
+
+l_0xc58cb6:
+    "[19 02]Escargo pickup" eob
+
+l_0xc58cc3:
+    "[19 02]M. Pizza delivery" eob
+
+l_0xc58cd0:
+    "[19 02]Cash dispenser" eob
+
+l_0xc58cd8:
+    "[19 02]Angrez Van" eob
+
+l_0xc58ce3:
+    "[1C 0C 01][11][1B 05]{window_closetop}{window_switch(1)}" newline
+    "[1B 06][1F C0 05 {e(data_18.l_0xc642a3)} {e(data_18.l_0xc63eb0)} {e(data_18.l_0xc64bbf)} {e(data_19.l_0xc65243)} {e(data_19.l_0xc655b1)}]" goto(data_06.debug_main)
 
 l_0xc58d09:
-    "[18 02]{open_hp}{open_wallet}{window_open(37)}[19 02]BGM[02][19 02]SE[02][19 02]EFFECT[02][1C 0C 01][11][1B 05]{window_closetop}{window_switch(1)}[1B 06][09 03 {e(l_0xc58d46)} {e(l_0xc58d70)} {e(l_0xc58d96)}]" goto(data_06.l_0xc58000)
+    "{diam}Select your option.{wait}[18 02]{open_hp}{open_wallet}{window_open(37)}[19 02]BGM" eob
+
+l_0xc58d18:
+    "[19 02]Sound Effects" eob
+
+l_0xc58d1d:
+    "[19 02]SPC Effects" eob
+
+l_0xc58d26:
+    "[1C 0C 01][11][1B 05]{window_closetop}{window_switch(1)}[1B 06][09 03 {e(l_0xc58d46)} {e(l_0xc58d70)} {e(l_0xc58d96)}]" goto(data_06.debug_main)
 
 l_0xc58d46:
     newline
-    "@BGMWSNTKSTKDSI." linebreak
+    "{diam}Which song would you like to hear?" linebreak
     goto(l_0xc58d58)
 
 l_0xc58d58:
-    "    [1F 52 03]{clearline}[1B 02 {e(data_06.l_0xc58000)}]{swap}{music(0)}" goto(l_0xc58d58)
+    "    [1F 52 03]{clearline}"
+    store_registers
+    if ("[18 07 C0 00 00 00 00]") {
+    "@Option 192 and above crash the game." next
+    goto(l_0xc58d58)    
+    }
+    load_registers
+    "[1B 02 {e(data_06.debug_main)}]{swap}{music(0)}" goto(l_0xc58d58)
+
 
 l_0xc58d70:
     newline
-    "@SEWSNTKSTKDSI" linebreak
+    "{diam}Which sound effect would you like to hear?" linebreak
     goto(l_0xc58d80)
 
 l_0xc58d80:
-    "     [1F 52 03]{clearline}[1B 02 {e(data_06.l_0xc58000)}]{swap}{sound(0)}" goto(l_0xc58d80)
+    "     [1F 52 03]{clearline}[1B 02 {e(data_06.debug_main)}]{swap}{sound(0)}" goto(l_0xc58d80)
 
 l_0xc58d96:
     newline
-    "@EFeKTWSNTKSTKDSI" linebreak
+    "{diam}Which SPC effect would you like to hear?{wait}" linebreak
     goto(l_0xc58da9)
 
 l_0xc58da9:
-    "     [1F 52 02]{clearline}[1B 02 {e(data_06.l_0xc58000)}]{swap}[1F 07 00]" goto(l_0xc58da9)
+    "     [1F 52 02]{clearline}[1B 02 {e(data_06.debug_main)}]{swap}[1F 07 00]" goto(l_0xc58da9)
 
 l_0xc58dbf:
-    "@MtPMNST-NStTI" linebreak
-    "[19 02]DS[02][19 02]KS[02][1C 07 02][11]{clearline}[09 02 {e(l_0xc58df1)} {e(l_0xc58e02)}]@MTNMMDS." eob
+    newline
+    "{diam}Toggle enemy spawn." linebreak
+    "[19 02]Enable" eob
+
+l_0xc58dd3:
+    "[19 02]Disable" eob
+
+l_0xc58dd8:
+    "[1C 07 02][11]{clearline}[09 02 {e(l_0xc58df1)} {e(l_0xc58e02)}]{diam}Enemies unchanged.{wait}" eob
 
 l_0xc58df1:
-    "@MNST-WDSMS.{wait}{unset(flag 11)}" eob
+    "{diam}Enemies enabled.{wait}{unset(flag 11)}" eob
 
 l_0xc58e02:
-    "@MNST-WKSMS.{wait}{set(flag 11)}" eob
+    "{diam}Enemies disabled.{wait}{set(flag 11)}" eob
 
 l_0xc58e13:
-    "@HNTYNMtS-ZDS." linebreak
-    " SUTW NyURyKST" linebreak
+    "{diam}Select hint.{wait}" linebreak
     goto(l_0xc58e31)
 
 l_0xc58e31:
-    "     [1F 52 02]{clearline}[1B 03 {e(l_0xc58e4a)}]@YMMST" next
-    goto(data_06.l_0xc58000)
+    "     [1F 52 02]{clearline}[1B 03 {e(l_0xc58e4a)}]{diam}Hint system off." next //Hints closing
+    goto(data_06.debug_main)
 
 l_0xc58e4a:
-    "{rtoarg}@[1C 0A 00 00 00 00]BNNMtS-ZW" linebreak
-    " HyUZSMS" linebreak
+    "{rtoarg}{diam}Hint #[1C 0A 00 00 00 00]{wait}" linebreak
     next
     call(data_25.l_0xc70000) linebreak
     goto(l_0xc58e31)
 
 l_0xc58e73:
-    "@TRP-TNTSTWSMS" linebreak
-    "  [1F 52 01]{clearline}[09 04 {e(l_0xc58e9f)} {e(l_0xc58ea6)} {e(l_0xc58ead)} {e(l_0xc58eb4)}]" goto(data_06.l_0xc58000)
+    "{diam}Select your teleportation." linebreak
+    "  [1F 52 01]{clearline}[09 04 {e(l_0xc58e9f)} {e(l_0xc58ea6)} {e(l_0xc58ead)} {e(l_0xc58eb4)}]" goto(data_06.debug_main)
 
 l_0xc58e9f:
     "{window_closeall}[1F 20 04 01]" eob
@@ -306,36 +422,83 @@ l_0xc58eb4:
     "{window_closeall}[1F 20 04 04]" eob
 
 l_0xc58ebb:
-    "@SKtPSNDWKWEMS.{wait}" call(data_06.l_0xc58555) eob
+    "{diam}Add a Skip Sandwich.{wait}" call(data_06.l_0xc58555) eob
+    //"@SKtPSNDWKWEMS.{wait}"
 
 l_0xc58ed1:
-    "@NNMDKMSN." end
+    /* ORIGINAL TEXT
+    "@Can't do anything." end
+    //"@NNMDKMSN." end //Debug option for Kirby Debug Menu - Option Banana */
+    "{diam}How far do you want to advance?" linebreak
+    goto(l_0xc58edd)
 
 l_0xc58edd:
-    "[18 02]{window_open(7)}[1C 0C 01][11][09 06 {e(l_0xc58f07)} {e(l_0xc58f37)} {e(l_0xc58f61)} {e(l_0xc58f93)} {e(l_0xc58fc1)} {e(l_0xc58feb)}]{window_closetop}{window_switch(1)}" newline
+    "[18 02]{window_open(50)}{diam}Area:" linebreak
+    "[19 02]Onett[02]"
+    "[19 02]Twoson[02]"
+    "[19 02]Threek[02]"
+    "[19 02]Fourside[02]"
+    "[19 02]Summers [5F] Scarabia[02]"
+    "[19 02]The Rest[02]"
+    "[1C 0C 01][11][09 06 {e(l_0xc58f07)} {e(l_0xc58f37)} {e(l_0xc58f61)} {e(l_0xc58f93)} {e(l_0xc58fc1)} {e(l_0xc58feb)}]{window_closetop}{window_switch(1)}" newline
+    "{diam}Finished." end
+
+l_0xc58f07: // Onett
+    "{window_open(13)}{diam}Scene:" linebreak
+    "[19 02]1. Porky joined[02]"
+    "[19 02]2. Buzz buzz appeared[02]"
+    "[19 02]3. Buzz buzz died[02]"
+    "[19 02]4. Defeated Frank[02]"
+    "[19 02]5. Cleared Onett[02]"
+    "[1C 0C 01]" call(data_08.l_0xc59070) "[1B 02 {e(l_0xc58f35)}][1F C0 05 {e(l_0xc59019)} {e(data_08.l_0xc5901c)} {e(data_08.l_0xc5901f)} {e(data_08.l_0xc59022)} {e(data_08.l_0xc59025)}]" call(data_08.l_0xc59082) eob
+
+l_0xc58f35: // Shared "end early" path
+    //newline "@Finished." end
     eob
 
-l_0xc58f07:
-    "{window_open(7)}[1C 0C 01]" call(data_08.l_0xc59070) "[1B 02 {e(l_0xc58f35)}][1F C0 05 {e(l_0xc59019)} {e(data_08.l_0xc5901c)} {e(data_08.l_0xc5901f)} {e(data_08.l_0xc59022)} {e(data_08.l_0xc59025)}]" call(data_08.l_0xc59082) eob
+l_0xc58f37: // Twoson
+    "{window_open(13)}{diam}Scene:" linebreak
+    "[19 02]1. Paula kidnapped[02]"
+    "[19 02]2. Got Franklin badge[02]"
+    "[19 02]3. Rescued Paula[02]"
+    "[19 02]4. Cleared Twoson[02]"
+    "[1C 0C 01]" call(data_08.l_0xc59070) "[1B 02 {e(l_0xc58f35)}][1F C0 04 {e(data_08.l_0xc59028)} {e(data_08.l_0xc5902b)} {e(data_08.l_0xc5902e)} {e(data_08.l_0xc59031)}]" call(data_08.l_0xc59082) eob
 
-l_0xc58f35:
-    newline
-    eob
+l_0xc58f61: // Threek
+    "{window_open(13)}{diam}Scene:" linebreak
+    "[19 02]1. Caught by zombies[02]"
+    "[19 02]2. Tessie appears[02]"
+    "[19 02]3. Dr. Andonuts[02]"
+    "[19 02]4. Jeff joined[02]"
+    "[19 02]5. Defeated zombies[02]"
+    "[19 02]6. Cleared Threek[02]"
+    "[1C 0C 01]" call(data_08.l_0xc59070) "[1B 02 {e(l_0xc58f35)}][1F C0 06 {e(data_08.l_0xc59034)} {e(data_08.l_0xc59037)} {e(data_08.l_0xc5903a)} {e(data_08.l_0xc5903d)} {e(data_08.l_0xc59040)} {e(data_08.l_0xc59043)}]" call(data_08.l_0xc59082) eob
 
-l_0xc58f37:
-    "{window_open(6)}[1C 0C 01]" call(data_08.l_0xc59070) "[1B 02 {e(l_0xc58f35)}][1F C0 04 {e(data_08.l_0xc59028)} {e(data_08.l_0xc5902b)} {e(data_08.l_0xc5902e)} {e(data_08.l_0xc59031)}]" call(data_08.l_0xc59082) eob
+l_0xc58f93: // Fourside
+    "{window_open(13)}{diam}Scene:" linebreak
+    "[19 02]1. Montague's big hole[02]"
+    "[19 02]2. Runaway Brothers freed[02]"
+    "[19 02]3. Everdred died[02]"
+    "[19 02]4. Beat Mani Mani[02]"
+    "[19 02]5. Cleared Fourside[02]"
+    "[1C 0C 01]" call(data_08.l_0xc59070) "[1B 02 {e(l_0xc58f35)}][1F C0 05 {e(data_08.l_0xc59046)} {e(data_08.l_0xc59049)} {e(data_08.l_0xc5904c)} {e(data_08.l_0xc5904f)} {e(data_08.l_0xc59052)}]" call(data_08.l_0xc59082) eob
 
-l_0xc58f61:
-    "{window_open(6)}[1C 0C 01]" call(data_08.l_0xc59070) "[1B 02 {e(l_0xc58f35)}][1F C0 06 {e(data_08.l_0xc59034)} {e(data_08.l_0xc59037)} {e(data_08.l_0xc5903a)} {e(data_08.l_0xc5903d)} {e(data_08.l_0xc59040)} {e(data_08.l_0xc59043)}]" call(data_08.l_0xc59082) eob
+l_0xc58fc1: // Summers/Scaraba
+    "{window_open(13)}{diam}Scene:" linebreak
+    "[19 02]1. Massage at Dalaam[02]"
+    "[19 02]2. Pink and Magnet[02]"
+    "[19 02]3. Sail to Scarabia[02]"
+    "[19 02]4. Dungeon Man[02]"
+    "[1C 0C 01]" call(data_08.l_0xc59070) "[1B 02 {e(l_0xc58f35)}][1F C0 04 {e(data_08.l_0xc59055)} {e(data_08.l_0xc59058)} {e(data_08.l_0xc5905b)} {e(data_08.l_0xc5905e)}]" call(data_08.l_0xc59082) eob
 
-l_0xc58f93:
-    "{window_open(6)}[1C 0C 01]" call(data_08.l_0xc59070) "[1B 02 {e(l_0xc58f35)}][1F C0 05 {e(data_08.l_0xc59046)} {e(data_08.l_0xc59049)} {e(data_08.l_0xc5904c)} {e(data_08.l_0xc5904f)} {e(data_08.l_0xc59052)}]" call(data_08.l_0xc59082) eob
-
-l_0xc58fc1:
-    "{window_open(6)}[1C 0C 01]" call(data_08.l_0xc59070) "[1B 02 {e(l_0xc58f35)}][1F C0 04 {e(data_08.l_0xc59055)} {e(data_08.l_0xc59058)} {e(data_08.l_0xc5905b)} {e(data_08.l_0xc5905e)}]" call(data_08.l_0xc59082) eob
-
-l_0xc58feb:
-    "{window_open(6)}[1C 0C 01]" call(data_08.l_0xc59070) "[1B 02 {e(l_0xc58f35)}][1F C0 05 {e(data_08.l_0xc59061)} {e(data_08.l_0xc59064)} {e(data_08.l_0xc59067)} {e(data_08.l_0xc5906a)} {e(data_08.l_0xc5906d)}]" call(data_08.l_0xc59082) eob
+l_0xc58feb: // The rest
+    "{window_open(13)}{diam}Scene:" linebreak
+    "[19 02]1. Barf and Poo[02]"
+    "[19 02]2. Lumine Hall[02]"
+    "[19 02]3. Finished Sound Stone[02]"
+    "[19 02]4. Magicant[02]"
+    "[19 02]5. The End[02]"
+    "[1C 0C 01]" call(data_08.l_0xc59070) "[1B 02 {e(l_0xc58f35)}][1F C0 05 {e(data_08.l_0xc59061)} {e(data_08.l_0xc59064)} {e(data_08.l_0xc59067)} {e(data_08.l_0xc5906a)} {e(data_08.l_0xc5906d)}]" call(data_08.l_0xc59082) eob
 
 l_0xc59019:
     "{counter(10)}" eob
