@@ -605,8 +605,10 @@ l_0xc5879e:
     "[19 02]Decrease PP" eob
 
 l_0xc587a6:
-    "[1C 0C 02][11][1B 05]{window_closetop}{window_switch(1)}[1B 06][09 0D {e(data_07.l_0xc587f3)} {e(data_07.l_0xc58813)} {e(data_07.l_0xc5882f)} {e(data_07.l_0xc58841)} {e(data_07.l_0xc5884e)} {e(data_07.l_0xc5885b)} {e(data_07.l_0xc58868)} {e(data_07.l_0xc58875)} {e(data_07.l_0xc58882)} {e(data_07.l_0xc5888f)} {e(data_07.l_0xc5889c)} {e(data_07.l_0xc588a9)} {e(data_07.l_0xc588bb)}]" goto(l_0xc58718)
+    "[1C 0C 02][11][1B 05]{window_closetop}{window_switch(1)}[1B 06][09 0D {e(l_0xc587f3)} {e(data_07.l_0xc58813)} {e(data_07.l_0xc5882f)} {e(data_07.l_0xc58841)} {e(data_07.l_0xc5884e)} {e(data_07.l_0xc5885b)} {e(data_07.l_0xc58868)} {e(data_07.l_0xc58875)} {e(data_07.l_0xc58882)} {e(data_07.l_0xc5888f)} {e(data_07.l_0xc5889c)} {e(data_07.l_0xc588a9)} {e(data_07.l_0xc588bb)}]" goto(l_0xc58718)
 
 l_0xc587ee:
     goto(debug_main)
 
+l_0xc587f3:
+    "{load_registers}[19 05 00 01 01][19 05 00 02 01][19 05 00 06 01]{swap}[1E 00 00 64][1E 04 00 64]" goto(l_0xc58718)

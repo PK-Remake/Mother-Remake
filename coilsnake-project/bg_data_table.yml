@@ -3732,28 +3732,28 @@
   Distortion 2: 0
   Distortion 3: 0
   Distortion 4: 0
-  Palette Cycle: '1'
-  Palette Cycle 1 Begin: 2
-  Palette Cycle 1 End: 15
+  Palette Cycle: none
+  Palette Cycle 1 Begin: 0
+  Palette Cycle 1 End: 0
   Palette Cycle 2 Begin: 0
   Palette Cycle 2 End: 0
-  Palette-changing speed: 5
-  Scrolling Movement 1: 100
-  Scrolling Movement 2: 101
-  Scrolling Movement 3: 102
-  Scrolling Movement 4: 103
+  Palette-changing speed: 0
+  Scrolling Movement 1: 0
+  Scrolling Movement 2: 0
+  Scrolling Movement 3: 0
+  Scrolling Movement 4: 0
 234:
   Colour depth: 4
   Distortion 1: 0
   Distortion 2: 0
   Distortion 3: 0
   Distortion 4: 0
-  Palette Cycle: 1 (reverse)
-  Palette Cycle 1 Begin: 2
-  Palette Cycle 1 End: 15
+  Palette Cycle: none
+  Palette Cycle 1 Begin: 0
+  Palette Cycle 1 End: 0
   Palette Cycle 2 Begin: 0
   Palette Cycle 2 End: 0
-  Palette-changing speed: 3
+  Palette-changing speed: 0
   Scrolling Movement 1: 43
   Scrolling Movement 2: 0
   Scrolling Movement 3: 0
