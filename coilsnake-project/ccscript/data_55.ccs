@@ -365,7 +365,7 @@ l_0xe10000:
 
 l_0xe10652:
     "[ 09 ][ 09 ]"
-    "[ 01 0C ]In the early 1900's, dark[ 09 ]"
+    "[ 01 0C ]In the early 1900's, a dark[ 09 ]"
     "[ 01 0C ]shadow fell over a rural town[ 09 ]"
     "[ 01 0C ]in America.[ 09 ]"
     "[ 09 ][ 09 ]"
@@ -388,7 +388,8 @@ l_0xe10652:
     "[ 01 0C ]She never returned.[ 09 ]"
     "[ 09 ][ 09 ][ 09 ][ 09 ][ 09 ][ 09 ][ 09 ]"
     "[ 01 0C ]1988, outside the town[ 09 ]"
-    "[ 01 0C ]of Mother's Day...[ 09 ][ 09 ][ 09 ][ 09 ][ 09 ][ 09 ][ 09 ][ 09 ] 09 ][ 00 ]"
+    "[ 01 0C ]of Mother's Day...[ 09 ]"
+    "[ 09 ][ 09 ][ 09 ][ 09 ][ 09 ][ 09 ][ 09 ] 09 ][ 00 ]"
 
 l_0xe10b86:
     "[ 02 0C ][ 01 32 ]The year is 199X[ 09 ][ 00 ]"
