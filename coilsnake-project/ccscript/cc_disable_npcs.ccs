@@ -1,0 +1,21 @@
+import asm65816
+import cc_asmcall
+
+command cc_disable_npcs cc_asmcall(asm_disable_npcs, RET_NONE)
+command cc_enable_npcs cc_asmcall(asm_enable_npcs, RET_NONE)
+command cc_check_npcs_disabled cc_asmcall(asm_check_npcs_disabled, RET_RESULT)
+
+asm_disable_npcs: {
+    LDA_i(0x0001)
+    STA_a(0x4A66)
+    RTL
+}
+asm_enable_npcs: {
+    LDA_i(0x0000)
+    STA_a(0x4A66)
+    RTL
+}
+asm_check_npcs_disabled: {
+    LDA_a(0x4A66)
+    RTL
+}

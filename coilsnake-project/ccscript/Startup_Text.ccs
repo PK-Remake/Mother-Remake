@@ -1,0 +1,73 @@
+/* New startup sequence (Tea Sequence + Flyover) */
+
+import asm65816
+import cc_disable_npcs
+import cc_asmcall
+
+setup_background(233)
+newgame_startup(new_startup)
+
+new_startup:
+    // Do tea
+    "[1F 41 02]"
+    // Disable NPC sprites
+    //cc_disable_npcs
+    // BUGFIX: Disable layer 2
+    cc_asmcall(ASM_FixLayer2, RET_NONE)
+
+    // Do flyover
+    set(flag 11)	// Disable "peaceful mode"
+    set(flag 469)	// Day 1 townsfolk
+    "[1F EB FF 06]"	// Invisible character sprite 
+    "[1F 15 6A 00 DC 01 01]"	// Movement code (camera movement?)
+    call(data_52.l_0xc9b4b8)	// Call for 1st Flyover text
+    "[1F 21 96]"	// Teleport to 2nd flyover sequence
+    "[1F E6 BA 00]"	// Freeze TPT 00E6 entry movement
+    "[1F 15 6A 00 DD 01 01]"	// Movement code (camera movement?)
+    call(data_52.l_0xc9b4b8)	// Call for 2nd Flyover text
+    "[1F 21 97]"	// Teleport to 3rd flyover sequence
+    "[1F 15 6A 00 DE 01 01]"	// Movement code (camera movement?)
+    call(data_52.l_0xc9b4b8)	// Call for 3rd Flyover text
+    set(flag 477)	// Ness head in his room
+    set(flag 532)	// Meteor sound in Ness' house
+    set(flag 749)	// No pajamas?
+    "[1F 21 0A]"	// Teleport to Ness' house
+    "[1F E9 1A 00]"	// Unfreeze TPT 001A movement
+    "[1F E9 1B 00]"	// Unfreeze Sprite 001B movement
+    "{pause(120)}{pause(120)}{pause(120)}{pause(120)}{pause(120)}{pause(60)}"	// Pauses before the Meteor strike
+    "[1F 1E 1B 00 06]"
+    "[1F 15 6A 00 24 00 01]"
+    unset(flag 532)	// No meteor sound in Ness' house
+    set(flag 533)	// Meteor sound in Ness' room
+    music_resume
+    "[1F 61]"
+    "[1F 1E 1A 00 06][1F EC FF 01][1F F2 6A 00 72 02][1F EF 6A 00][1F E8 FF][1F 61][1F ED]"	// Ness gets up of bed
+    set(flag 476)	// Onett roadblocks
+    unset(flag 477)	// Ness head not in his room
+    unset(flag 469)	// Suppresses the day 1 townsfolk
+    save
+
+    /*set(flag 20)    // Picky joined your party. Never unset
+    set(flag 34)    // Post Starman Jr / Picky left party. Never unset
+    set(flag 94)    // Seems to fix your mom
+    unset(flag 95)  // Makes phones work (might already be unset)
+    set(flag 98)    // Makes Ness's phone specifically work
+    set(flag 100)   // King doesn't want to go outside
+    set(flag 104)   // Pokey/Picky punished, first day events cleaned up
+    unset(flag 107) // When on, primes sunrise transition exiting Pokey's house
+    set(flag 199)   // Know how to call Ness's dad
+    set(flag 200)   // Know how to call Ness's mom
+    set(flag 209)   // Onett warp - necessary to have correct Mom text
+    set(flag 375)   // Most Onett townsfolk
+    set(flag 422)   // Onett daytime palette
+    set(flag 517)   // Ness's house's lights are on
+	*/
+    eob
+
+
+ASM_FixLayer2:
+    // Affects both main screen and subscreen
+    LDA_a(0x001A)
+    AND_i(0xFDFD)
+    STA_a(0x001A)
+    RTL

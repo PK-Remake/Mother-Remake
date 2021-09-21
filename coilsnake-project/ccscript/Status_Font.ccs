@@ -1,0 +1,21 @@
+/* Status Font Width Hack script for Font #3 */
+
+import asm65816
+
+ROM[0xC47D42] = JSL (StatusFont_WidthHack)
+
+StatusFont_WidthHack: {
+// Y is always the current character to be printed in this case
+    // Get the pointer to the status font width table in $06
+    LDA_al  (0xC3F06C)
+    STA_d   (0x06)
+    LDA_al  (0xC3F06E)
+    STA_d   (0x08)
+
+    LDA_dly (0x06)    // Get the width of this character
+    AND_i   (0x00FF)
+    STA_d   (0x22)    // Store in $22 (used in the original code as the width variable)
+
+    LDA_al  (0xC3F070) // Restore original code
+    RTL
+}

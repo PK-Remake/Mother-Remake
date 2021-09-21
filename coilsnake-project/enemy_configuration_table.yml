@@ -200,7 +200,7 @@
   Boss Flag: 'false'
   Death Sound: normal
   Death Text Pointer: data_56.l_0xef6d96
-  Defense: 104
+  Defense: 150
   Encounter Text Pointer: data_57.l_0xef78b8
   Experience points: 4108
   Final Action: 0
@@ -210,7 +210,7 @@
   Freeze vulnerability: 70%
   Gender: male
   Guts: 5
-  HP: 341
+  HP: 150
   Hypnosis/Brainshock vulnerability: 10%
   Initial Status: normal
   Item Dropped: 127
@@ -223,14 +223,14 @@
   Money: 172
   Movement pattern: 29
   Music: 102
-  Name: Bad Buffalo
-  Offense: 64
+  Name: Buffalo
+  Offense: 68
   Overworld Sprite: 311
   PP: 0
   Paralysis vulnerability: 100%
   Row: 0
   Run Flag: 'true'
-  Speed: 11
+  Speed: 43
   Type: normal
   Unknown: 2
 5:
@@ -2597,9 +2597,9 @@
   Boss Flag: 'false'
   Death Sound: normal
   Death Text Pointer: data_56.l_0xef6d96
-  Defense: 4
+  Defense: 8
   Encounter Text Pointer: data_57.l_0xef78b8
-  Experience points: 1
+  Experience points: 2
   Final Action: 0
   Final Action Argument: 0
   Fire vulnerability: 70%
@@ -2620,14 +2620,14 @@
   Money: 4
   Movement pattern: 20
   Music: 96
-  Name: Coil Snake
-  Offense: 3
+  Name: Snake
+  Offense: 6
   Overworld Sprite: 283
   PP: 0
   Paralysis vulnerability: 100%
   Row: 0
   Run Flag: 'true'
-  Speed: 2
+  Speed: 10
   Type: normal
   Unknown: 2
 56:
@@ -2644,7 +2644,7 @@
   Boss Flag: 'false'
   Death Sound: normal
   Death Text Pointer: data_56.l_0xef6d96
-  Defense: 80
+  Defense: 128
   Encounter Text Pointer: data_57.l_0xef78b8
   Experience points: 2786
   Final Action: 0
@@ -2654,7 +2654,7 @@
   Freeze vulnerability: 100%
   Gender: male
   Guts: 5
-  HP: 270
+  HP: 100
   Hypnosis/Brainshock vulnerability: 50%
   Initial Status: normal
   Item Dropped: 168
@@ -2667,14 +2667,14 @@
   Money: 276
   Movement pattern: 20
   Music: 96
-  Name: Thirsty Coil Snake
-  Offense: 52
+  Name: Rattlesnake
+  Offense: 65
   Overworld Sprite: 283
   PP: 0
   Paralysis vulnerability: 100%
   Row: 1
   Run Flag: 'true'
-  Speed: 18
+  Speed: 60
   Type: normal
   Unknown: 2
 57:
@@ -2691,7 +2691,7 @@
   Boss Flag: 'false'
   Death Sound: normal
   Death Text Pointer: data_56.l_0xef6d96
-  Defense: 5
+  Defense: 10
   Encounter Text Pointer: data_57.l_0xef78b8
   Experience points: 304
   Final Action: 0
@@ -2701,7 +2701,7 @@
   Freeze vulnerability: 70%
   Gender: male
   Guts: 4
-  HP: 86
+  HP: 20
   Hypnosis/Brainshock vulnerability: 0%
   Initial Status: normal
   Item Dropped: 123
@@ -2714,14 +2714,14 @@
   Money: 30
   Movement pattern: 25
   Music: 96
-  Name: Mr. Batty
-  Offense: 25
+  Name: Mr. Bat
+  Offense: 8
   Overworld Sprite: 274
   PP: 0
   Paralysis vulnerability: 100%
   Row: 0
   Run Flag: 'true'
-  Speed: 29
+  Speed: 5
   Type: normal
   Unknown: 1
 58:
@@ -2738,7 +2738,7 @@
   Boss Flag: 'false'
   Death Sound: normal
   Death Text Pointer: data_56.l_0xef6d96
-  Defense: 72
+  Defense: 64
   Encounter Text Pointer: data_57.l_0xef78b8
   Experience points: 4177
   Final Action: 0
@@ -2748,7 +2748,7 @@
   Freeze vulnerability: 70%
   Gender: male
   Guts: 8
-  HP: 294
+  HP: 50
   Hypnosis/Brainshock vulnerability: 0%
   Initial Status: normal
   Item Dropped: 233
@@ -2761,14 +2761,14 @@
   Money: 371
   Movement pattern: 25
   Music: 96
-  Name: Elder Batty
-  Offense: 66
+  Name: Bionic Bat
+  Offense: 34
   Overworld Sprite: 274
   PP: 0
   Paralysis vulnerability: 100%
   Row: 1
   Run Flag: 'true'
-  Speed: 33
+  Speed: 35
   Type: normal
   Unknown: 2
 59:
@@ -5699,7 +5699,7 @@
   Boss Flag: 'false'
   Death Sound: normal
   Death Text Pointer: data_56.l_0xef6d96
-  Defense: 5
+  Defense: 10
   Encounter Text Pointer: data_57.l_0xef78b8
   Experience points: 4
   Final Action: 0
@@ -5709,7 +5709,7 @@
   Freeze vulnerability: 100%
   Gender: male
   Guts: 0
-  HP: 21
+  HP: 16
   Hypnosis/Brainshock vulnerability: 100%
   Initial Status: normal
   Item Dropped: 103
@@ -5722,14 +5722,14 @@
   Money: 3
   Movement pattern: 22
   Music: 101
-  Name: Runaway Dog
-  Offense: 4
+  Name: Stray Dog
+  Offense: 8
   Overworld Sprite: 330
   PP: 0
   Paralysis vulnerability: 100%
   Row: 1
   Run Flag: 'true'
-  Speed: 26
+  Speed: 12
   Type: normal
   Unknown: 1
 122:
@@ -7485,7 +7485,7 @@
   Boss Flag: 'false'
   Death Sound: normal
   Death Text Pointer: data_56.l_0xef6d96
-  Defense: 3
+  Defense: 5
   Encounter Text Pointer: data_57.l_0xef78b8
   Experience points: 3
   Final Action: 0
@@ -7495,7 +7495,7 @@
   Freeze vulnerability: 100%
   Gender: male
   Guts: 0
-  HP: 24
+  HP: 22
   Hypnosis/Brainshock vulnerability: 50%
   Initial Status: normal
   Item Dropped: 88
@@ -7506,16 +7506,16 @@
   Mirror Success Rate: 50
   Miss Rate: 1
   Money: 5
-  Movement pattern: 25
+  Movement pattern: 21	# 25
   Music: 101
-  Name: Spiteful Crow
-  Offense: 5
+  Name: Crow
+  Offense: 8
   Overworld Sprite: 282
   PP: 0
   Paralysis vulnerability: 100%
   Row: 0
   Run Flag: 'true'
-  Speed: 77
+  Speed: 12
   Type: normal
   Unknown: 2
 160:
@@ -9929,7 +9929,7 @@
   Boss Flag: 'false'
   Death Sound: normal
   Death Text Pointer: data_56.l_0xef6d96
-  Defense: 5
+  Defense: 10
   Encounter Text Pointer: data_57.l_0xef78b8
   Experience points: 4
   Final Action: 0
@@ -9939,7 +9939,7 @@
   Freeze vulnerability: 100%
   Gender: male
   Guts: 0
-  HP: 21
+  HP: 16
   Hypnosis/Brainshock vulnerability: 100%
   Initial Status: normal
   Item Dropped: 103
@@ -9952,14 +9952,14 @@
   Money: 3
   Movement pattern: 22
   Music: 101
-  Name: Runaway Dog
-  Offense: 4
+  Name: Stray Dog
+  Offense: 8
   Overworld Sprite: 330
   PP: 0
   Paralysis vulnerability: 100%
   Row: 1
   Run Flag: 'true'
-  Speed: 26
+  Speed: 12
   Type: normal
   Unknown: 1
 212:
