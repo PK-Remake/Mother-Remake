@@ -8,7 +8,7 @@ Compilation statistics
 Compilation start:           $f10000
 Compilation end:             $fb59b6
 Total compiled size:         678326 bytes
-Fragmented space:            518 bytes
+Fragmented space:            488 bytes
 -----------------------------------------------------------------
 
 
@@ -52,7 +52,7 @@ naming_screen_table          $fb4ee7      815    bytes
 msu1                         $fb5216      616    bytes
 Sound_Stone                  $f3fb59      992    bytes
 data_13                      $fb1a54      3177   bytes
-Startup_Text                 $f3ff39      167    bytes
+Startup_Text                 $f3ff39      197    bytes
 InstrumentPacks2             $f10000      59165  bytes
 data_58                      $fae946      3588   bytes
 data_47                      $f70000      9979   bytes
@@ -2837,8 +2837,11 @@ l_0xc5e0a9                   $fb269a
 Labels in module Startup_Text
 Name                         Address
 -----------------------------------------------------------------
-ASM_FixLayer2                $f3ffd6
-new_startup                  $f3ff39
+ASM_FixLayer2                $f3fff4
+ASM_MusicEnable5DD8          $f3ff4e
+ASM_tea_dont_load_map        $f3ff39
+new_startup                  $f3ff52
+newgame_text_in_map          $f3ff5a
 -----------------------------------------------------------------
 
 

@@ -1,20 +1,62 @@
 /* New startup sequence (Tea Sequence + Flyover) */
 
 import asm65816
-import cc_disable_npcs
+//import cc_disable_npcs
 import cc_asmcall
 
 setup_background(233)
-newgame_startup(new_startup)
+newgame_startup(newgame_text_in_map)
+
+ROM[0xC1FEB2] = {
+    // We just call the new text block.
+    MText(new_startup)	// New game text before map
+    BRA(0) // 2-byte no-op
+    // This skips the following:
+    // - Set flag 11
+    // - Disable NPCs
+    // So if you want those things, make sure to do them yourselves!
+    // Specifically, if you want to disable/enable NPCs, try this:
+    // https://github.com/pk-hack/CoilSnake/wiki/CCScript-Library#enabledisable-all-npcs-by-cooprocks123e
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// Modify tea routine to not show map or load music afterwards
+
+// In COFFEETEA_SCENE: Overwrites JSL(0xC018F3)
+ROM[0xC49E71] = JSL(ASM_tea_dont_load_map)
+
+ASM_tea_dont_load_map: {
+    // Check whether we're doing tea (non-zero) or coffee (zero)
+    LDA_d(0x02)
+    BNE_a(teatime)
+    JML(0xC018F3)
+teatime:
+    // Turn off all layers of screen so that it's black when we fade in
+    // Also fixes layer 2 on subscreen issue (weird graphics during flyover)
+    STZ_a(0x001A)
+    // cooprocks123e: prevent music from changing until later (search for music_change2_enable)
+    LDA_i(0x0001)
+    STA_a(0x5DD8)
+    RTL
+}
+
+command music_change2_enable cc_asmcall(ASM_MusicEnable5DD8, RET_NONE)
+ASM_MusicEnable5DD8: {
+    STZ_a(0x5DD8)
+    RTL
+}
+///////////////////////////////////////////////////////////////////////////////
 
 new_startup:
     // Do tea
-    "[1F 41 02]"
-    // Disable NPC sprites
-    //cc_disable_npcs
+    music(92)
+    "[1F 41 02]"	// Enter Tea Sequence
     // BUGFIX: Disable layer 2
-    cc_asmcall(ASM_FixLayer2, RET_NONE)
+    // Not required since we fix in ASM_tea_dont_load_map
+    // cc_asmcall(ASM_FixLayer2, RET_NONE)
+    eob
 
+newgame_text_in_map:
     // Do flyover
     set(flag 11)	// Disable "peaceful mode"
     set(flag 469)	// Day 1 townsfolk
@@ -31,6 +73,12 @@ new_startup:
     set(flag 477)	// Ness head in his room
     set(flag 532)	// Meteor sound in Ness' house
     set(flag 749)	// No pajamas?
+
+    // cooprocks123e: Allow music to change again
+    // Needs to be before going to Ness' house, since
+    // that plays the pre-meteor crash music
+    music_change2_enable
+
     "[1F 21 0A]"	// Teleport to Ness' house
     "[1F E9 1A 00]"	// Unfreeze TPT 001A movement
     "[1F E9 1B 00]"	// Unfreeze Sprite 001B movement

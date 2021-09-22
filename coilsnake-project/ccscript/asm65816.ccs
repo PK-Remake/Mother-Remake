@@ -346,18 +346,32 @@ command XBA			"[eb]"
 command SWA 		XBA
 command XCE			"[fb]"
 
-command ASMLoadAddress0E(Address) {
-	LDA_i	(short[0] Address)
-	STA_d	(0x0E)
-	LDA_i	(short[1] Address)
-	STA_d	(0x10)
+
+//Displays text in battles
+command BText (text) {
+    LDA_i   (short[0] text)
+    STA_d   (0x0e)
+    LDA_i   (short[1] text)
+    STA_d   (0x10)
+    JSL (0xC1DC1C)
 }
 
-command ASMLoadAddress12(Address) {
-	LDA_i	(short[0] Address)
-	STA_d	(0x12)
-	LDA_i	(short[1] Address)
-	STA_d	(0x14)
+//Displays text outside battles
+command RText (text) {
+    LDA_i   (short[0] text)
+    STA_d   (0x0e)
+    LDA_i   (short[1] text)
+    STA_d   (0x10)
+    JSL (0xC1DC66)
+}
+
+// Displays text
+command MText (text) {
+	LDA_i	(short[0] text)
+	STA_d	(0x0E)
+	LDA_i	(short[1] text)
+	STA_d	(0x10)
+	JSL	(0xC186B1)
 }
 
 command ASMLoadAddress06(Address) {
@@ -372,6 +386,20 @@ command ASMLoadAddress0A(Address) {
 	STA_d	(0x0A)
 	LDA_i	(short[1] Address)
 	STA_d	(0x0C)
+}
+
+command ASMLoadAddress0E(Address) {
+	LDA_i	(short[0] Address)
+	STA_d	(0x0E)
+	LDA_i	(short[1] Address)
+	STA_d	(0x10)
+}
+
+command ASMLoadAddress12(Address) {
+	LDA_i	(short[0] Address)
+	STA_d	(0x12)
+	LDA_i	(short[1] Address)
+	STA_d	(0x14)
 }
 
 define Atk_Fail_Chk = 0xC2AB71
@@ -572,23 +600,6 @@ ROM [Set_Rolling_PP] = {
     RTL
 }
 
-//Displays text in battles
-command BText (text) {
-    LDA_i   (short[0] text)
-    STA_d   (0x0e)
-    LDA_i   (short[1] text)
-    STA_d   (0x10)
-    JSL (0xC1DC1C)
-}
-
-//Displays text outside battles
-command RText (text) {
-    LDA_i   (short[0] text)
-    STA_d   (0x0e)
-    LDA_i   (short[1] text)
-    STA_d   (0x10)
-    JSL (0xC1DC66)
-}
 
 // Prints out the diamond from Mother 2 instead of the white dot bullet
 command diam "[1C 08 03]"
