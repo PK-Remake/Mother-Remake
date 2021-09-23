@@ -1,4 +1,4 @@
-0:
+0:	#
   Action: 0
   Level learned by Ness: 0
   Level learned by Paula: 0
@@ -10,7 +10,7 @@
   Text Address: $0
   Type: []
   Usability Outside of Battle: ???
-1:
+1:	# PK Rockin 
   Action: 10
   Level learned by Ness: 8
   Level learned by Paula: 0
@@ -23,7 +23,7 @@
   Type:
   - offense
   Usability Outside of Battle: unusable
-2:
+2:	# PK Rockin
   Action: 11
   Level learned by Ness: 22
   Level learned by Paula: 0
@@ -36,7 +36,7 @@
   Type:
   - offense
   Usability Outside of Battle: unusable
-3:
+3:	# PK Rockin
   Action: 12
   Level learned by Ness: 49
   Level learned by Paula: 0
@@ -49,7 +49,7 @@
   Type:
   - offense
   Usability Outside of Battle: unusable
-4:
+4:	# PK Rockin
   Action: 13
   Level learned by Ness: 75
   Level learned by Paula: 0
@@ -62,7 +62,7 @@
   Type:
   - offense
   Usability Outside of Battle: unusable
-5:
+5:	# PK Fire
   Action: 14
   Level learned by Ness: 0
   Level learned by Paula: 3
@@ -75,7 +75,7 @@
   Type:
   - offense
   Usability Outside of Battle: unusable
-6:
+6:	# PK Fire
   Action: 15
   Level learned by Ness: 0
   Level learned by Paula: 19
@@ -88,7 +88,7 @@
   Type:
   - offense
   Usability Outside of Battle: unusable
-7:
+7:	# PK Fire
   Action: 16
   Level learned by Ness: 0
   Level learned by Paula: 37
@@ -101,7 +101,7 @@
   Type:
   - offense
   Usability Outside of Battle: unusable
-8:
+8:	# PK Fire
   Action: 17
   Level learned by Ness: 0
   Level learned by Paula: 64
@@ -114,7 +114,7 @@
   Type:
   - offense
   Usability Outside of Battle: unusable
-9:
+9:	# PK Freeze
   Action: 18
   Level learned by Ness: 0
   Level learned by Paula: 1
@@ -127,7 +127,7 @@
   Type:
   - offense
   Usability Outside of Battle: unusable
-10:
+10:	# PK Freeze
   Action: 19
   Level learned by Ness: 0
   Level learned by Paula: 11
@@ -140,7 +140,7 @@
   Type:
   - offense
   Usability Outside of Battle: unusable
-11:
+11:	# PK Freeze
   Action: 20
   Level learned by Ness: 0
   Level learned by Paula: 31
@@ -153,7 +153,7 @@
   Type:
   - offense
   Usability Outside of Battle: unusable
-12:
+12:	# PK Freeze
   Action: 21
   Level learned by Ness: 0
   Level learned by Paula: 46
@@ -166,7 +166,7 @@
   Type:
   - offense
   Usability Outside of Battle: unusable
-13:
+13:	# PK Thunder
   Action: 22
   Level learned by Ness: 0
   Level learned by Paula: 8
@@ -179,7 +179,7 @@
   Type:
   - offense
   Usability Outside of Battle: unusable
-14:
+14:	# PK Thunder
   Action: 23
   Level learned by Ness: 0
   Level learned by Paula: 25
@@ -192,7 +192,7 @@
   Type:
   - offense
   Usability Outside of Battle: unusable
-15:
+15:	# PK Thunder
   Action: 24
   Level learned by Ness: 0
   Level learned by Paula: 57
@@ -205,7 +205,7 @@
   Type:
   - offense
   Usability Outside of Battle: unusable
-16:
+16:	# PK Thunder
   Action: 25
   Level learned by Ness: 0
   Level learned by Paula: 0
@@ -218,7 +218,7 @@
   Type:
   - offense
   Usability Outside of Battle: unusable
-17:
+17:	# PK Flash
   Action: 26
   Level learned by Ness: 18
   Level learned by Paula: 0
@@ -231,7 +231,7 @@
   Type:
   - offense
   Usability Outside of Battle: unusable
-18:
+18:	# PK Flash
   Action: 27
   Level learned by Ness: 38
   Level learned by Paula: 0
@@ -244,7 +244,7 @@
   Type:
   - offense
   Usability Outside of Battle: unusable
-19:
+19:	# PK Flash
   Action: 28
   Level learned by Ness: 61
   Level learned by Paula: 0
@@ -257,7 +257,7 @@
   Type:
   - offense
   Usability Outside of Battle: unusable
-20:
+20:	# PK Flash
   Action: 29
   Level learned by Ness: 67
   Level learned by Paula: 0
@@ -270,7 +270,7 @@
   Type:
   - offense
   Usability Outside of Battle: unusable
-21:
+21:	# PK Starstorm
   Action: 30
   Level learned by Ness: 0
   Level learned by Paula: 0
@@ -283,7 +283,7 @@
   Type:
   - offense
   Usability Outside of Battle: unusable
-22:
+22:	# PK Starstorm
   Action: 31
   Level learned by Ness: 0
   Level learned by Paula: 0
@@ -296,7 +296,7 @@
   Type:
   - offense
   Usability Outside of Battle: unusable
-23:
+23:	# Lifeup
   Action: 32
   Level learned by Ness: 2
   Level learned by Paula: 0
@@ -309,7 +309,7 @@
   Type:
   - recovery
   Usability Outside of Battle: usable
-24:
+24:	# Lifeup
   Action: 33
   Level learned by Ness: 20
   Level learned by Paula: 0
@@ -322,7 +322,7 @@
   Type:
   - recovery
   Usability Outside of Battle: usable
-25:
+25:	# Lifeup
   Action: 34
   Level learned by Ness: 39
   Level learned by Paula: 0
@@ -335,7 +335,7 @@
   Type:
   - recovery
   Usability Outside of Battle: usable
-26:
+26:	# Lifeup
   Action: 35
   Level learned by Ness: 70
   Level learned by Paula: 0
@@ -348,7 +348,7 @@
   Type:
   - recovery
   Usability Outside of Battle: usable
-27:
+27:	# Healing
   Action: 36
   Level learned by Ness: 10
   Level learned by Paula: 0
@@ -361,7 +361,7 @@
   Type:
   - recovery
   Usability Outside of Battle: usable
-28:
+28:	# Healing
   Action: 37
   Level learned by Ness: 24
   Level learned by Paula: 0
@@ -374,7 +374,7 @@
   Type:
   - recovery
   Usability Outside of Battle: usable
-29:
+29:	# Healing
   Action: 38
   Level learned by Ness: 53
   Level learned by Paula: 0
@@ -387,7 +387,7 @@
   Type:
   - recovery
   Usability Outside of Battle: usable
-30:
+30:	# Healing
   Action: 39
   Level learned by Ness: 0
   Level learned by Paula: 0
@@ -400,7 +400,7 @@
   Type:
   - recovery
   Usability Outside of Battle: usable
-31:
+31:	# Shield
   Action: 40
   Level learned by Ness: 12
   Level learned by Paula: 0
@@ -413,25 +413,12 @@
   Type:
   - assist
   Usability Outside of Battle: unusable
-32:
-  Action: 42
-  Level learned by Ness: 0
-  Level learned by Paula: 0
-  Level learned by Poo: 15
-  PSI Menu position (X): 11
-  PSI Menu position (Y): 0
-  PSI Name: 8
-  Strength: sigma
-  Text Address: data_55.l_0xef5361
-  Type:
-  - assist
-  Usability Outside of Battle: unusable
-33:
+32:	# Shield
   Action: 41
   Level learned by Ness: 34
   Level learned by Paula: 0
   Level learned by Poo: 16
-  PSI Menu position (X): 13
+  PSI Menu position (X): 11
   PSI Menu position (Y): 0
   PSI Name: 8
   Strength: beta
@@ -439,7 +426,20 @@
   Type:
   - assist
   Usability Outside of Battle: unusable
-34:
+33:	# Shield
+  Action: 42
+  Level learned by Ness: 0
+  Level learned by Paula: 0
+  Level learned by Poo: 15
+  PSI Menu position (X): 13
+  PSI Menu position (Y): 0
+  PSI Name: 8
+  Strength: sigma
+  Text Address: data_55.l_0xef5361
+  Type:
+  - assist
+  Usability Outside of Battle: unusable
+34:	# Shield
   Action: 43
   Level learned by Ness: 0
   Level learned by Paula: 0
@@ -452,7 +452,7 @@
   Type:
   - assist
   Usability Outside of Battle: unusable
-35:
+35:	# PSI Shield
   Action: 44
   Level learned by Ness: 0
   Level learned by Paula: 6
@@ -465,25 +465,12 @@
   Type:
   - assist
   Usability Outside of Battle: unusable
-36:
-  Action: 46
-  Level learned by Ness: 0
-  Level learned by Paula: 27
-  Level learned by Poo: 0
-  PSI Menu position (X): 11
-  PSI Menu position (Y): 0
-  PSI Name: 9
-  Strength: sigma
-  Text Address: data_55.l_0xef54e6
-  Type:
-  - assist
-  Usability Outside of Battle: unusable
-37:
+36:	# PSI Shield
   Action: 45
   Level learned by Ness: 0
   Level learned by Paula: 51
   Level learned by Poo: 0
-  PSI Menu position (X): 13
+  PSI Menu position (X): 11
   PSI Menu position (Y): 0
   PSI Name: 9
   Strength: beta
@@ -491,7 +478,20 @@
   Type:
   - assist
   Usability Outside of Battle: unusable
-38:
+37:	# PSI Shield
+  Action: 46
+  Level learned by Ness: 0
+  Level learned by Paula: 27
+  Level learned by Poo: 0
+  PSI Menu position (X): 13
+  PSI Menu position (Y): 0
+  PSI Name: 9
+  Strength: sigma
+  Text Address: data_55.l_0xef54e6
+  Type:
+  - assist
+  Usability Outside of Battle: unusable
+38:	# PSI Shield
   Action: 47
   Level learned by Ness: 0
   Level learned by Paula: 60
@@ -504,7 +504,7 @@
   Type:
   - assist
   Usability Outside of Battle: unusable
-39:
+39:	# Offense up
   Action: 48
   Level learned by Ness: 0
   Level learned by Paula: 21
@@ -517,7 +517,7 @@
   Type:
   - assist
   Usability Outside of Battle: unusable
-40:
+40:	# Offense up
   Action: 49
   Level learned by Ness: 0
   Level learned by Paula: 40
@@ -530,7 +530,7 @@
   Type:
   - assist
   Usability Outside of Battle: unusable
-41:
+41:	# Defense down
   Action: 50
   Level learned by Ness: 0
   Level learned by Paula: 29
@@ -543,7 +543,7 @@
   Type:
   - assist
   Usability Outside of Battle: unusable
-42:
+42:	# Defense down
   Action: 51
   Level learned by Ness: 0
   Level learned by Paula: 54
@@ -556,7 +556,7 @@
   Type:
   - assist
   Usability Outside of Battle: unusable
-43:
+43:	# Hypnosis
   Action: 52
   Level learned by Ness: 4
   Level learned by Paula: 0
@@ -569,7 +569,7 @@
   Type:
   - assist
   Usability Outside of Battle: unusable
-44:
+44:	# Hypnosis
   Action: 53
   Level learned by Ness: 27
   Level learned by Paula: 0
@@ -582,7 +582,7 @@
   Type:
   - assist
   Usability Outside of Battle: unusable
-45:
+45:	# PSI Magnet
   Action: 54
   Level learned by Ness: 0
   Level learned by Paula: 15
@@ -595,7 +595,7 @@
   Type:
   - recovery
   Usability Outside of Battle: unusable
-46:
+46:	# PSI Magnet
   Action: 55
   Level learned by Ness: 0
   Level learned by Paula: 24
@@ -608,7 +608,7 @@
   Type:
   - recovery
   Usability Outside of Battle: unusable
-47:
+47:	# Paralysis
   Action: 56
   Level learned by Ness: 14
   Level learned by Paula: 0
@@ -621,7 +621,7 @@
   Type:
   - assist
   Usability Outside of Battle: unusable
-48:
+48:	# Paralysis
   Action: 57
   Level learned by Ness: 29
   Level learned by Paula: 0
@@ -634,7 +634,7 @@
   Type:
   - assist
   Usability Outside of Battle: unusable
-49:
+49:	# Brainshock
   Action: 58
   Level learned by Ness: 0
   Level learned by Paula: 0
@@ -647,7 +647,7 @@
   Type:
   - assist
   Usability Outside of Battle: unusable
-50:
+50:	# Brainshock
   Action: 59
   Level learned by Ness: 0
   Level learned by Paula: 0
@@ -660,7 +660,7 @@
   Type:
   - assist
   Usability Outside of Battle: unusable
-51:
+51:	# Teleport
   Action: 60
   Level learned by Ness: 0
   Level learned by Paula: 0
@@ -673,7 +673,7 @@
   Type:
   - other
   Usability Outside of Battle: other
-52:
+52:	# Teleport
   Action: 61
   Level learned by Ness: 0
   Level learned by Paula: 0

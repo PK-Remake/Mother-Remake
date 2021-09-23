@@ -79,3 +79,13 @@ IncMissRate:
 	ADC_i(0x0008)		//Add “8” to the enemy’s miss rate.
 	RTL
 }
+
+// Fixes a bug in Earthbound where guts saves are determined by the attacker's guts, rather than the defender's by jtolmar
+
+// Main damage-calculation routine
+// https://earthbound-rom-explorerr.herokuapp.com/address/$C27EAF
+// This is the guts save check
+// $C27F96            LDX $A970    ; pointer to current attacker
+// $C27F99            LDA $002C,X  ; index of guts stat
+// Record scratch. Wait what? Yep, was supposed to be the defender's guts. Honestly there's surprisingly few of these in this game. You should see the average Final Fantasy, woah nelly.
+ROM[0xC27F96] = LDX_a(0xA972)

@@ -243,25 +243,25 @@ l_0xc5812f:
     goto(l_0xc58148)
 
 l_0xc58148:
-    "{window_open(8)}[19 02]Ness" eob
+    "{window_open(8)}[19 02]Ninten" eob
 
 l_0xc58150:
-    "[19 02]Paula" eob
+    "[19 02]Anna" eob
 
 l_0xc58156:
-    "[19 02]Jeff" eob
+    "[19 02]Lloyd" eob
 
 l_0xc5815c:
-    "[19 02]Poo" eob
+    "[19 02]Teddy" eob
 
 l_0xc58161:
     "[19 02]Porky" eob
 
 l_0xc58168:
-    "[19 02]Picky" eob
+    "[19 02]Pippi" eob
 
 l_0xc5816f:
-    "[19 02]King" eob
+    "[19 02]Mick" eob
 
 l_0xc58174:
     "[19 02]Tony" eob
@@ -270,7 +270,7 @@ l_0xc5817a:
     "[19 02]Bubble Monkey" eob
 
 l_0xc58185:
-    "[19 02]Dungeon Man" eob
+    "[19 02]EVE" eob
 
 l_0xc5818f:
     "[19 02]Flying Man 1" eob
@@ -596,7 +596,7 @@ l_0xc58786:
     "[19 02]Possessed" eob
 
 l_0xc5878d:
-    "[19 02]Homesick" eob
+    "[19 02]Asthma" eob
 
 l_0xc58796:
     "[19 02]Decrease HP" eob
