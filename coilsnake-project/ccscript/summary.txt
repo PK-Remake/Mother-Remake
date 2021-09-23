@@ -1918,15 +1918,8 @@ BattleSwirlNormal            $f6a358
 BeinFriends                  $f69192
 EightMelodies                $f6a845
 GameOver                     $f6a007
+LearnMelodies                $f6a963
 LiveHouse                    $f6a61e
-MelodyCactus                 $f6abf3
-MelodyCanary                 $f6aa0b
-MelodyDoll                   $f6a963
-MelodyDragon                 $f6ac6f
-MelodyEVE                    $f6acf7
-MelodyMonkey                 $f6aa9c
-MelodyPiano                  $f6ab86
-MelodyXXStone                $f6ad8c
 MotherEarth                  $f68345
 NintenHouse                  $f69e76
 Pollyanna                    $f6865b
