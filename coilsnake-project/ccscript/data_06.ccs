@@ -565,7 +565,7 @@ l_0xc586ff:
 l_0xc58718:
     newline
     "{diam}To whom?{wait}[1A 01 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 01][1B 02 {e(l_0xc587ee)}]{store_registers}" linebreak
-    "{diam}Which?{wait}" linebreak
+    "{diam}Which status?{wait}" linebreak
     "[18 02]{window_open(12)}[19 02]Heal" eob
 
 l_0xc58752:
