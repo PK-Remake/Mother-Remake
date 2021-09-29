@@ -215,21 +215,31 @@ YouKeepPlaying:
   call(PhoneSlam)
   end
 
-188:
-  "@Say, could I speak to the person playing this game?" end
-189:
-  "@It's really important." end
-18A:
+DadTalksToThePlayer:
+  "@Say, could I speak to the person playing this game?" next
+  "@It's really important." linebreak
+  menu 2 {
+    "Yes": {
+      goto(HiDad)
+    }
+    "No": {
+      goto(ByeDad)
+    }
+  }
+
+HiDad:
   "@Hello, this is {name(1)}'s father. Thank you for always looking after him." next
   "@I thought it would be nice to at least know your name." next
-  "@So, if you could tell me, that'd be great." end
-18B:
+  "@So, if you could tell me, that'd be great." wait
+  //TODO: Put the name insertion thing here
   "@Thank you for your time." next
   "@I'm a busy man myself, so I must be going now. Goodbye!" end
 18C:
   "@{name(1)}... right?" end
-18D:
-  "@Come on, quit joking around." end
+ByeDad:
+  "@Come on, quit joking around." next
+  goto(HiDad)
+
 1EE:
   "@Please give my {name(1)} all the help you can." end
 1F4:
@@ -1776,15 +1786,37 @@ CastleGuardTelepathy:
   "@Oh! You collected ten ticket stubs!" next
   "@All right, then! I'll lend you my tank!" next
   "@Hahaha! You sure seem happy to hear that!" end
-1AB:
+
+PilotBlockingEntrance: //he appears in front of the Live House entrance, blocking the way
   "@You wrecked my tank. My precious, precious tank... (weep)" next
   "@You better pay me the money to have it fixed." next
-  "@It comes to $[03 1E]." next
-  "@Will you pay right now?" end
+  open_wallet
+  "@It comes to $200." next
+  "@Will you pay right now?" newline
+  menu 2 {
+    "Yes": {
+      goto(BrokenTankPayment)
+    }
+    "No": {
+      goto(BrokenTankBroke)
+    }
+  }
+  eob
 
-1AD:
-  "@Oh, that's great. Well, be seein' ya!" end
-1AE:
+BrokenTankPayment:
+  //TODO: If you don't have $200, goto(BrokenTankBroke)
+  //TODO: take the $200
+  if hasmoney(200) {
+    takemoney(200)
+    "@Oh, that's great. Well, be seein' ya!" wait
+    //TODO: he walks off to the left of the screen and disappears
+  }
+  else {
+    goto(BrokenTankBroke)
+  }
+  eob
+
+BrokenTankBroke:
   "@Now I'm mad! Grrrrrrr..." end
 
 1B0:
@@ -1800,8 +1832,8 @@ CastleGuardTelepathy:
   "@The Garricksons' baby is weird. Like, REALLY weird." end
 1B4:
   "@Let's see... Two plus three is five." next
-  "Eight minus four is four..." next
-  "I study all the time." end
+  "  Eight minus four is four..." next
+  "  I study all the time." end
 1B5:
   "@Mommy! I miss you!" end
 1B6:
@@ -1810,7 +1842,7 @@ CastleGuardTelepathy:
   "@A big flying ship took all the grownups away." end
 1B8:
   "@It's great having no grownups around!" next
-  "(sniffle sob)" end
+  "  (sniffle sob)" end
 1B9:
   "@I want milk!" end
 1BA:
@@ -1825,13 +1857,15 @@ CastleGuardTelepathy:
 1BE:
   "@Mommy told me this baby has a special power." end
 
-1C0:
+GarricksonBaby:
   "@Gaga googoo." end
-1C1:
+
+GarricksonBabyTelepathy:
   "@I am this baby's consciousness." next
   "@I have psychic powers, just as you do." next
   "@I possess the ability to teleport." next
   "@With it, you can return to anywhere you've been before." next
+  //TODO: Make them learn PK Teleport
   "@(The baby's mind taught {name(1)} how to use teleportation PSI.)" end
 
 1C6:
@@ -1856,29 +1890,45 @@ CastleGuardTelepathy:
 1CD:
   "@Everything's been nuts ever since black clouds appeared over the mountains." next
   "The town and its people have all started to go crazy." end
+
 1CE:
   "@Hey! You!" next
-  "@You two, there! Are you two sweethearts?" end
-1CF:
-  "@You love each other? Hurray!" end
-1D0:
-  "@I dunno, are you sure love isn't budding deep inside your hearts?" end
+  "@You two, there! Are you two sweethearts?" newline
+  menu 2 {
+    "Yes": {
+      "@You love each other? Hurray!"
+    }
+    "No": {
+      "@I dunno, are you sure love isn't budding deep inside your hearts?"
+    }
+  }
+  end
+
 1D1:
   "@Hey, I got concert tickets." next
-  "@They cost $[03 1E]. Want some?" end
+  "@They cost $[03 1E]. Want some?" end //TODO: use the item cost
 1D2:
   "@Here you go!" next
   "@You're lucky. They're all sold out at the department store." end
 1D3:
   "@Geez, you kids are cheap." end
+
 1D4:
   "@I have some secret info you might find interesting." next
-  "@Want to hear it?" end
-1D5:
-  "@The BB Gang's boss's full name is {name(4)} Junior the 3rd." next
-  "@It's only a rumor, though." end
-1D6:
-  "@I'm sure you'll regret it later." end
+  "@Want to hear it?" newline
+  menu 2 {
+    "Yes": {
+      window_clear
+      "@The BB Gang's boss's full name is {name(4)} Junior the 3rd." next
+      "@It's only a rumor, though."
+    }
+    "No": {
+      window_clear
+      "@I'm sure you'll regret it later."
+    }
+  }
+  end
+
 1D7:
   "@No peeking in the dressing room." next
   "@You'll wind up in a world of trouble if you do." end
@@ -1906,9 +1956,11 @@ CastleGuardTelepathy:
 1E0:
   "@You don't got enough money." next
   "@Grrrr..." end
-1E1:
+
+1E1: //lady in the Live House
   "@{name(4)}'s parents were killed by monsters in the mountains." next
   "@He had always been such a nice boy before then." end
+
 1E2:
   "@I wish {name(4)} would go back to his old, gentle self." end
 1E3:
@@ -1917,7 +1969,7 @@ CastleGuardTelepathy:
   "@All right! Do something with lots of pizzaz!" end
 1E5:
   "@I guess you're a shy kid, huh?" end
-1E6: 
+
 1E7:
   "@{name(2)}!" next
   "@Oh, nothing. I saw your name written on your hat, that's all." end
@@ -1940,8 +1992,7 @@ CastleGuardTelepathy:
   "@[03 3E] used the Phone Card." end
 1F0:
   "@Great! I'm sure we'll make a great team of punks! Cheers!" end
-1F1: 
-1F2: 
+
 1F3:
   "@Please! I know I can help you guys!" end
 1F5:
@@ -1949,7 +2000,7 @@ CastleGuardTelepathy:
   "@You're not cut out for fightin'." next
   "@Rest here and take it easy." next
   "@I'll take your stuff, too." end
-1F6: 
+
 1F7:
   "@There's no way we can beat 'em with brute strength alone." next
   "@But we CAN bring peace back to the world." next
@@ -1959,43 +2010,69 @@ CastleGuardTelepathy:
   "@Let's get goin' already!" end
 1F9:
   "@I'm changing my clothes! You pervert!" end
-1FA:
+
+LloydsDadTalksToThePlayer:
   "@I'm {name(3)}'s father." next
-  "@{name(1)}'s dad asked for your name earlier. Did you give him the right name?" end
-1FB:
+  "@{name(1)}'s dad asked for your name earlier." next
+  "@Did you give him the right name?" linebreak
+  menu 2 {
+    "Yes" { goto(YesLloydsDad) }
+    "No": { goto(NoLloydsDad) }
+  }
+
+YesLloydsDad:
   "@Okay, great." next
   "@Please keep {name(3)} safe, okay?" next
   "@He IS a weakling, after all..." end
-1FC:
-  "@Then let's go through the process again." end
+
+NoLloydsDad:
+  "@Then let's go through the process again." next
+  //TODO: name input screen goes here
+  eob
+
 1FD:
   "@You should visit the harbor before you go to {call(mtItoi)}." next
   "@I really mean it." end
-1FE: //TODO: look at how the menu works in-game and use that to bring the next few lines into this one
+
+TofuGuy:
+  //TODO: if you have tofu in your inventory, goto(TofuVictory)
+  if (flags.youTalkedToTheGuyAboutTofu)
+  {
+    goto(TastyTofu)
+  }
+
   if (flags.localization)
   {
-    "@...Have you ever had Trout Yogurt before?" end
+    "@...Have you ever had Trout Yogurt before?"
   }
   else
   {
-    "@...Have you ever had strawberry-flavored tofu before?" end
+    "@...Have you ever had strawberry-flavored tofu before?"
+  }
+  set(flags.youTalkedToTheGuyAboutTofu)
+  linebreak
+  menu 2 {
+    "Yes" { goto(TastyTofu) }
+    "No": { goto(KillerTofu) }
   }
   
-1FF:
+TastyTofu:
   "@If you ever find any more, could you bring it to me?" next
   "I'll give you something nice in return." end
-200:
+
+KillerTofu:
   "@Oh. I wish they'd start selling it out here..." end
-201:
+
+TofuVictory:
+  "@Oh, "
   if (flags.localization)
-  {
-    "@Oh, Trout Yogurt! Thank you!" next
-  }
+  { "Trout Yogurt!" }
   else
-  {
-    "@Oh, strawberry-flavored tofu! Thank you!" next
-  }
-  "@Now let me give you a nice gift in return." end
+  { "strawberry-flavored tofu!" }
+  " Thank you!" next
+  "@Now let me give you a nice gift in return." wait
+  //TODO: give the player whatever the gift is
+  eob
 
 204:
   "@Stop by if you ever get hurt." next
@@ -2181,37 +2258,47 @@ CastleGuardTelepathy:
   "@Oh, you don't seem to have enough money." end
 260:
   "@Oh, it looks like you can't carry any more things." end
-261:
+
+AssistantA:
+  //TODO: What do they say if you talk to them again! Probably gonna need an event flag
   "@I am the professor's Assistant A." next
   if (flags.localization)
   {
-    "@I, too, would love to try some Trout Yogurt." end
+    "@I, too, would love to try some Trout Yogurt." wait
   }
   else
   {
-    "@I, too, would love to try some strawberry-flavored tofu." end
+    "@I, too, would love to try some strawberry-flavored tofu." wait
   }
+  //TODO: if you have it in your inventory... goto(TofuVictoryA)
+  eob
   
-262:
+TofuVictoryA:
   "@Oh, it looks so good!" next
   "@Thanks, I appreciate it." next
   "As a token of my gratitude, I'll share some information I heard." next
   "@There's an amazing robot at the bottom of a lake on {call(mtItoi)}." next
   "@I bet it still works, too!" end
-263:
+
+AssistantB:
   "@I realize I look like Assistant A, but I'm actually Assistant B." next
   if (flags.localization)
   {
-    "@I really, truly want some Trout Yogurt too." end
+    "@I really, truly want some Trout Yogurt too." wait
   }
   else
   {
-    "@I really, truly want to try strawberry-flavored tofu too." end
+    "@I really, truly want to try strawberry-flavored tofu too." wait
   }
+  //TODO: if you have it in your inventory... goto(TofuVictoryB)
+  eob
   
-264:
+TofuVictoryB:
   "@Oh! Oh! I'm so happy!" next
-  "@Please, take these Curse Words with you." end
+  "@Please, take these Curse Words with you." wait
+  //TODO: give the player the Curse Words item
+  eob
+
 267:
   "@You're here for your Big Bag, right?" next
   "I've been expecting you." end
@@ -2227,10 +2314,10 @@ CastleGuardTelepathy:
 26B:
   "@Thank you for everything." next
   "@As a token of my gratitude..." next
-  "I'll be praying for your success." end
+  "  I'll be praying for your success." end
 270:
   "@Oh, my! It's {name(1)}, the hero!" next
-  "I never expected you to return all alone..." next
+  "  I never expected you to return all alone..." next
   "@Are you taking a break?" end
 271:
   "@Oh, little girl." next
@@ -2280,11 +2367,15 @@ CastleGuardTelepathy:
 281:
   "@Straight! Just walk straight!" next
   "The truth is somewhere straight ahead." end
-282:
+
+WeirdMonkey:
   "@I'm a lady, you know." next
   "@You shouldn't walk up to a lady so casually and start talking." next
-  "Don't you agree?" end
-283:
+  "Don't you agree?" newline
+  helpers.MenuNoChoice("Yes", "No", WeirdMonkeyAnswer)
+  eob
+
+WeirdMonkeyAnswer:
   "@Actually, I'm a man." end
 
 285:
@@ -2293,14 +2384,21 @@ CastleGuardTelepathy:
 286:
   "@How long has it taken you to get this far?" next
   "@Oh, I just thought I'd ask." end
+
 287:
-  "@I got some good information for you. You interested?" end
-288:
-  "@Well, basically... Treasure your friends." next
-  "@That's all I have to say." end
-289:
-  "@Fine, then!" next
-  "@You have no intellectual curiousity at all!" end
+  "@I got some good information for you. You interested?" newline
+  menu 2 {
+    "Yes": {
+      "@Well, basically... {pause(80)}Treasure your friends." next
+      "@That's all I have to say." wait
+    }
+    "No": {
+      "@Fine, then!" next
+      "@You have no intellectual curiousity at all!" wait
+    }
+  }
+  eob
+
 28A:
   "@Stop! You must not go this way!" end
 28B:
@@ -2349,7 +2447,7 @@ CastleGuardTelepathy:
   "@Could you get any lamer?!" end
 2A1: 
   "  -- Certificate --" next
-  "  This hereby certifies that: [03 14]" next
+  "  This hereby certifies that: [03 14]" next //TODO: should this be the player's name or the party leader? Decide with flag?
   "  has stepped on the land mine in the {call(yuccaDesert)}." next
   "  Please keep this location a secret from other players." next
   "    -Shigesato Itoi" end
@@ -2432,7 +2530,10 @@ CastleGuardTelepathy:
   "@It's me, Pippi!" next
   "@We really did meet again, {name(1)}!" next
   "@I went out to play again. That's why I'm here." next
-  "Don't tell my mom, though." end
+  "Don't tell my mom, though." next
+  //TODO: go to "You must be tired, why won't you stay the night?" *heals you* "Good morning!"
+  eob
+
 2BD:
   "@Oh, aren't you {name(1)}, that snot-nose kid who sat next to me in kindergarten?" next
   "@Or are you someone else?" end
