@@ -1,0 +1,108 @@
+/* This only appears to be used when first adding characters, not when moving between areas? */
+
+import asm65816
+
+//CHARACTER_INITIAL_ENTITY_DATA: // $C3E012
+ROM[0xC3E012] = {
+	// Ness
+	adr16(01)	// Normal overworld sprite
+	adr16(27)	// Lost Underworld sprite
+	adr16(02)	// Event Script #002
+	adr16(24)	// Unknown
+
+	// Paula
+	adr16(02)	// Normal overworld sprite
+	adr16(28)	// Lost Underworld sprite
+	adr16(02)	// Event Script #002
+	adr16(25)	// Unknown
+
+	// Jeff
+	adr16(03)	// Normal overworld sprite
+	adr16(29)	// Lost Underworld sprite
+	adr16(02)	// Event Script #002
+	adr16(26)	// Unknown
+
+	// Teddy
+	adr16(04)	// Normal overworld sprite
+	adr16(30)	// Lost Underworld sprite
+	adr16(02)	// Event Script #002
+	adr16(27)	// Unknown
+
+	// Pokey
+	adr16(44)	// Normal overworld sprite
+	adr16(0xFFFF)	// FFFF = Invalid Lost Underworld sprite
+	adr16(02)	// Event Script #002
+	adr16(28)	// Unknown
+
+	// Picky
+	adr16(45)	// Normal overworld sprite
+	adr16(0xFFFF)	// FFFF = Invalid Lost Underworld sprite
+	adr16(02)	// Event Script #002
+	adr16(28)	// Unknown
+
+	// King
+	adr16(40)	// Normal overworld sprite
+	adr16(0xFFFF)	// FFFF = Invalid Lost Underworld sprite
+	adr16(02)	// Event Script #002
+	adr16(28)	// Unknown
+
+	// Tony
+	adr16(182)	// Normal overworld sprite
+	adr16(0xFFFF)	// FFFF = Invalid Lost Underworld sprite
+	adr16(02)	// Event Script #002
+	adr16(28)	// Unknown
+
+	// Bubble Monkey
+	adr16(46)	// Normal overworld sprite
+	adr16(0xFFFF)	// FFFF = Invalid Lost Underworld sprite
+	adr16(03)	// Event Script #003
+	adr16(28)	// Unknown
+
+	// Dungeon Man
+	adr16(41)	// Normal overworld sprite
+	adr16(0xFFFF)	// FFFF = Invalid Lost Underworld sprite
+	adr16(02)	// Event Script #002
+	adr16(28)	// Unknown
+
+	// Flying Man #1
+	adr16(39)	// Normal overworld sprite
+	adr16(0xFFFF)	// FFFF = Invalid Lost Underworld sprite
+	adr16(02)	// Event Script #002
+	adr16(28)	// Unknown
+
+	// Flying Man #2
+	adr16(39)	// Normal overworld sprite
+	adr16(0xFFFF)	// FFFF = Invalid Lost Underworld sprite
+	adr16(02)	// Event Script #002
+	adr16(28)	// Unknown
+
+	// Flying Man #3
+	adr16(39)	// Normal overworld sprite
+	adr16(0xFFFF)	// FFFF = Invalid Lost Underworld sprite
+	adr16(02)	// Event Script #002
+	adr16(28)	// Unknown
+
+	// Flying Man #4
+	adr16(39)	// Normal overworld sprite
+	adr16(0xFFFF)	// FFFF = Invalid Lost Underworld sprite
+	adr16(02)	// Event Script #002
+	adr16(28)	// Unknown
+
+	// Flying Man #5
+	adr16(39)	// Normal overworld sprite
+	adr16(0xFFFF)	// FFFF = Invalid Lost Underworld sprite
+	adr16(02)	// Event Script #002
+	adr16(28)	// Unknown
+
+	// Teddy Bear
+	adr16(51)	// Normal overworld sprite
+	adr16(35)	// Lost Underworld sprite
+	adr16(02)	// Event Script #002
+	adr16(28)	// Unknown
+
+	// Super Teddy Bear?
+	adr16(52)	// Normal overworld sprite
+	adr16(35)	// Lost Underworld sprite
+	adr16(02)	// Event Script #002
+	adr16(28)	// Unknown
+}

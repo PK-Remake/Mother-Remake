@@ -1635,16 +1635,16 @@
   Sprite: 227
   Text Pointer 1: $0
   Text Pointer 2: $0
-  Type: object
+  Type: person
 182:
-  Direction: down
+  Direction: up
   Event Flag: 0x0
   Movement: 8
   Show Sprite: always
   Sprite: 227
   Text Pointer 1: $0
   Text Pointer 2: $0
-  Type: object
+  Type: person
 183:
   Direction: down
   Event Flag: 0x0
@@ -1653,7 +1653,7 @@
   Sprite: 227
   Text Pointer 1: $0
   Text Pointer 2: $0
-  Type: object
+  Type: person
 184:
   Direction: down
   Event Flag: 0x0
@@ -3176,7 +3176,7 @@
   Text Pointer 2: $0
   Type: object
 353:
-  Direction: down
+  Direction: up
   Event Flag: 0x0
   Movement: 8
   Show Sprite: always
@@ -3185,7 +3185,7 @@
   Text Pointer 2: $0
   Type: object
 354:
-  Direction: down
+  Direction: up
   Event Flag: 0x0
   Movement: 8
   Show Sprite: always
@@ -3194,7 +3194,7 @@
   Text Pointer 2: $0
   Type: object
 355:
-  Direction: down
+  Direction: up
   Event Flag: 0x0
   Movement: 8
   Show Sprite: always
@@ -3851,7 +3851,7 @@
   Text Pointer 2: $0
   Type: person
 428:
-  Direction: down
+  Direction: up
   Event Flag: 0x0
   Movement: 8
   Show Sprite: always
@@ -11384,7 +11384,7 @@
   Text Pointer 2: $0
   Type: object
 1265:
-  Direction: down
+  Direction: up
   Event Flag: 0x0
   Movement: 8
   Show Sprite: always
