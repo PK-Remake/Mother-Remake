@@ -6,9 +6,9 @@ CCScript Compilation Summary
 Compilation statistics
 =================================================================
 Compilation start:           $f10000
-Compilation end:             $fb7c36
-Total compiled size:         687158 bytes
-Fragmented space:            344 bytes
+Compilation end:             $fb7c5d
+Total compiled size:         687197 bytes
+Fragmented space:            337 bytes
 -----------------------------------------------------------------
 
 
@@ -22,7 +22,7 @@ asm_diamond                  $f9fee0      218    bytes
 data_53                      $f4aa4a      12560  bytes
 data_62                      $f2fff4      0      bytes
 data_06                      $fa19f4      6606   bytes
-asm65816                     $fb784c      376    bytes
+asm65816                     $f5fe41      422    bytes
 character_initial_entity_data$f2fff4      0      bytes
 data_00                      $f72920      10442  bytes
 data_30                      $f8d730      8431   bytes
@@ -53,7 +53,7 @@ naming_screen_table          $fb72b5      815    bytes
 msu1                         $fb75e4      616    bytes
 Sound_Stone                  $f8f81f      992    bytes
 data_13                      $fb3ce6      3177   bytes
-Startup_Text                 $fb7b04      197    bytes
+Startup_Text                 $fb7b2b      197    bytes
 InstrumentPacks2             $f10000      59165  bytes
 data_58                      $fb148e      3588   bytes
 data_47                      $f77917      9979   bytes
@@ -78,7 +78,7 @@ data_40                      $f477ff      12875  bytes
 data_27                      $f62cd4      11476  bytes
 data_50                      $f9b655      7011   bytes
 Logo_Screen                  $f6ffae      82     bytes
-Title_Window                 $fb79c4      320    bytes
+Title_Window                 $fb79eb      320    bytes
 data_42                      $f7a012      9931   bytes
 data_25                      $f3cd42      12918  bytes
 data_41                      $f751ea      10029  bytes
@@ -95,12 +95,12 @@ ebpp_mem                     $f8fbff      957    bytes
 data_48                      $f4db5a      9314   bytes
 data_61                      $f9fb40      928    bytes
 data_31                      $f43c01      15358  bytes
-ccexpand                     $f5fe41      415    bytes
+ccexpand                     $fb784c      415    bytes
 asm_debug                    $f7fd99      601    bytes
 data_23                      $f68628      11131  bytes
 data_51                      $fad704      5267   bytes
 movscr_codes                 $f2fff4      0      bytes
-ebpp_std                     $fb7bc9      109    bytes
+ebpp_std                     $fb7bf0      109    bytes
 data_11                      $f5ecf4      4429   bytes
 data_39                      $f86f2d      9213   bytes
 data_56                      $f95ee5      7834   bytes
@@ -634,43 +634,46 @@ l_0xc587f3                   $fa33a2
 Labels in module asm65816
 Name                         Address
 -----------------------------------------------------------------
-Abbott                       $fb7895
-AnnaDad                      $fb78b6
-BlueStarman                  $fb79a1
-Cactus                       $fb7969
-Canary                       $fb7950
-Careless                     $fb7872
-Chick                        $fb78aa
-Dad                          $fb7850
-Doll                         $fb794b
-Dragon                       $fb795e
-EVE                          $fb7965
-Escargo                      $fb7862
-Final                        $fb7936
-Flying                       $fb78fc
-Flying2                      $fb7907
-Flying3                      $fb7914
-George                       $fb798b
-Giygas                       $fb79bd
-Goodman                      $fb789c
-Gravestone                   $fb7970
-Janitor                      $fb78eb
-Laura                        $fb78b0
-Mary                         $fb7986
-Mimicker                     $fb78f3
-Mimmie                       $fb7854
-Minnie                       $fb785b
-Mom                          $fb784c
-Monkey                       $fb7957
-MrRosemary                   $fb78d0
-MrsRosemary                  $fb78dd
-Pippi                        $fb788f
-PippiMom                     $fb7883
-QueenMary                    $fb797b
-Return                       $fb7921
-StarmanDX                    $fb79ae
-StarmanJr                    $fb7992
-TomGarrickson                $fb78c1
+Abbott                       $f5fe8a
+AnnaDad                      $f5feab
+BlueStarman                  $f5ffc4
+Cactus                       $f5ff86
+Canary                       $f5ff6d
+Careless                     $f5fe67
+Chick                        $f5fe9f
+Dad                          $f5fe45
+Doll                         $f5ff68
+Dragon                       $f5ff7b
+EVE                          $f5ff82
+Escargo                      $f5fe57
+Final                        $f5ff53
+Flying                       $f5ff19
+Flying2                      $f5ff24
+Flying3                      $f5ff31
+GarricksonBaby               $f5fedb
+GarricksonGirl               $f5fec5
+George                       $f5ffae
+Giygas                       $f5ffe0
+Goodman                      $f5fe91
+Gravestone                   $f5ff8d
+Guard                        $f5ff98
+Janitor                      $f5ff08
+Laura                        $f5fea5
+Mary                         $f5ffa9
+Mimicker                     $f5ff10
+Mimmie                       $f5fe49
+Minnie                       $f5fe50
+Mom                          $f5fe41
+Monkey                       $f5ff74
+MrRosemary                   $f5feed
+MrsRosemary                  $f5fefa
+Pippi                        $f5fe84
+PippiMom                     $f5fe78
+QueenMary                    $f5ff9e
+Return                       $f5ff3e
+StarmanDX                    $f5ffd1
+StarmanJr                    $f5ffb5
+TomGarrickson                $f5feb6
 -----------------------------------------------------------------
 
 
@@ -2823,11 +2826,11 @@ l_0xc5e0a9                   $fb492c
 Labels in module Startup_Text
 Name                         Address
 -----------------------------------------------------------------
-ASM_FixLayer2                $fb7bbf
-ASM_MusicEnable5DD8          $fb7b19
-ASM_tea_dont_load_map        $fb7b04
-new_startup                  $fb7b1d
-newgame_text_in_map          $fb7b25
+ASM_FixLayer2                $fb7be6
+ASM_MusicEnable5DD8          $fb7b40
+ASM_tea_dont_load_map        $fb7b2b
+new_startup                  $fb7b44
+newgame_text_in_map          $fb7b4c
 -----------------------------------------------------------------
 
 
@@ -4730,10 +4733,10 @@ NewLogoScreen_ShowImageLoop_WaitLoop $f6ffd8
 Labels in module Title_Window
 Name                         Address
 -----------------------------------------------------------------
-Title_Char_Name              $fb7a26
-Title_Str_Name               $fb7aa2
-Win_Title                    $fb79c4
-r_0xC1866D                   $fb79f2
+Title_Char_Name              $fb7a4d
+Title_Str_Name               $fb7ac9
+Win_Title                    $fb79eb
+r_0xC1866D                   $fb7a19
 -----------------------------------------------------------------
 
 
@@ -6190,30 +6193,30 @@ l_0xc7c3c2                   $f47777
 Labels in module ccexpand
 Name                         Address
 -----------------------------------------------------------------
-CodeTable                    $f5fe41
-DoNothing                    $f5ffdf
-Original1A00                 $f5ff99
-Original1A01                 $f5ffa0
-Original1A04                 $f5ffa7
-Original1A05                 $f5ffae
-Original1A06                 $f5ffb5
-Original1A07                 $f5ffbc
-Original1A08                 $f5ffc3
-Original1A09                 $f5ffca
-Original1A0A                 $f5ffd1
-Original1A0B                 $f5ffd8
-R_Get_Argument_Memory        $f5ff35
-R_Get_Secondary_Memory       $f5ff43
-R_Get_Secondary_Memory_In_A  $f5ff71
-R_Get_Working_Memory         $f5ff3c
-R_Increment_Secondary_Memory $f5ff6a
-R_Read_Parameter_Bytes       $f5fec9
-R_Set_06_To_Argument_If_Zero $f5ff27
-R_Set_Argument_Memory        $f5ff53
-R_Set_Secondary_Memory       $f5ff61
-R_Set_Secondary_Memory_To_A  $f5ff78
-R_Set_Working_Memory         $f5ff5a
-TableJumpUsing7E00BC         $f5ff7f
+CodeTable                    $fb784c
+DoNothing                    $fb79ea
+Original1A00                 $fb79a4
+Original1A01                 $fb79ab
+Original1A04                 $fb79b2
+Original1A05                 $fb79b9
+Original1A06                 $fb79c0
+Original1A07                 $fb79c7
+Original1A08                 $fb79ce
+Original1A09                 $fb79d5
+Original1A0A                 $fb79dc
+Original1A0B                 $fb79e3
+R_Get_Argument_Memory        $fb7940
+R_Get_Secondary_Memory       $fb794e
+R_Get_Secondary_Memory_In_A  $fb797c
+R_Get_Working_Memory         $fb7947
+R_Increment_Secondary_Memory $fb7975
+R_Read_Parameter_Bytes       $fb78d4
+R_Set_06_To_Argument_If_Zero $fb7932
+R_Set_Argument_Memory        $fb795e
+R_Set_Secondary_Memory       $fb796c
+R_Set_Secondary_Memory_To_A  $fb7983
+R_Set_Working_Memory         $fb7965
+TableJumpUsing7E00BC         $fb798a
 -----------------------------------------------------------------
 
 
