@@ -402,6 +402,13 @@ command ASMLoadAddress12(Address) {
 	STA_d	(0x14)
 }
 
+command ASMLoadAddress18(Address) {
+	LDA_i	(short[0] Address)
+	STA_d	(0x18)
+	LDA_i	(short[1] Address)
+	STA_d	(0x1A)
+}
+
 define Atk_Fail_Chk = 0xC2AB71
 define Miss_Calc = 0xC2AB75
 define Smash = 0xC2AB79

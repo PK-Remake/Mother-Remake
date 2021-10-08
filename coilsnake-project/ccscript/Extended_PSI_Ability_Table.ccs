@@ -1,0 +1,228 @@
+/* Expanded PSI Ability Table:Notes (From Data Crystal)
+15 bytes 
+
+	Format: [AA BB CC DD EE EE FF GG HH II JJ KK KK KK KK]
+
+	[AA] – PSI name. Uses the PK Hack PSI Listing, without the Greek letter strength designation.
+
+	[BB] – The Greek letter used by the PSI spell.
+	01 - α (alpha).
+	02 - β (beta).
+	03 - γ (gamma).
+	04 - Σ (sigma).
+	05 - Ω (omega).
+
+	[CC] – Type of PSI spell.
+	01 - Offense.
+	02 - Recover.
+	04 - Assist.
+	08 - Other.
+
+	[DD] – Whom the PSI is targeted at. // Actually the usability
+	01 - No one (Teleport). // Overworld
+	02 - Enemies. // In_Battle
+	03 - Allies (Lifeup, Healing). // Everywhere
+
+	[EE EE] – Effect that the PSI uses.
+
+	[FF] – Level at which Ness learns this PSI spell.
+
+	[GG] – Level at which Paula learns this PSI spell.
+
+	[HH] – Level at which Poo learns this PSI spell.
+
+	[II] – Position to the right of the name where the Greek letter is placed (in the PSI selection menus).
+	09 - First position (typically α (alpha)).
+	0B - Second position (typically β (beta)).
+	0D - Third position (typically γ (gamma)).
+	0F - Fourth position (typically Ω (omega)).
+
+	[JJ] – Lines from the top of the PSI selection box to draw the name from, vertically.
+	00 - First line.
+	01 - Second line.
+	02 - Third line, and so forth.
+
+	[KK KK KK KK] – Pointer to the PSI description text. Uses the standard 4-byte reversed SNES pointer format.
+*/
+
+import asm65816
+
+// ROM Overwrites to make this script work.
+// Thanks again to the_kirby for providing the list!
+ROM[0xC1C4AA] = ASMLoadAddress06(Starstorm_Alpha)
+ROM[0xC1C548] = ASMLoadAddress06(Starstorm_Omega)
+
+ROM[0xC1B694] = ASMLoadAddress06(NewPSIAbility_Table)
+ROM[0xC1B7CF] = ASMLoadAddress06(NewPSIAbility_Table)
+ROM[0xC1B8F9] = ASMLoadAddress0A(NewPSIAbility_Table)
+ROM[0xC1BB34] = ASMLoadAddress0A(NewPSIAbility_Table)
+ROM[0xC1B8BB] = LDA_xl(NewPSIAbility_Table)
+ROM[0xC1B9CC] = LDA_xl(NewPSIAbility_Table)
+ROM[0xC1C243] = ASMLoadAddress06(NewPSIAbility_Table)
+ROM[0xC1C2AD] = ASMLoadAddress06(NewPSIAbility_Table)
+ROM[0xC1C6E4] = ASMLoadAddress06(NewPSIAbility_Table)
+ROM[0xC1C8D6] = ASMLoadAddress06(NewPSIAbility_Table)
+ROM[0xC1C9D6] = LDA_xl(NewPSIAbility_Table)
+ROM[0xC1CADF] = LDA_xl(NewPSIAbility_Table)
+ROM[0xC1CA12] = ASMLoadAddress06(NewPSIAbility_Table)
+ROM[0xC1CCB6] = LDA_xl(NewPSIAbility_Table)
+ROM[0xC1CD49] = LDA_xl(NewPSIAbility_Table)
+ROM[0xC1CD8F] = ASMLoadAddress06(NewPSIAbility_Table)
+ROM[0xC1CE3B] = LDA_xl(NewPSIAbility_Table)
+ROM[0xC1D7D6] = ASMLoadAddress06(NewPSIAbility_Table)
+ROM[0xC1D839] = ASMLoadAddress06(NewPSIAbility_Table)
+ROM[0xC1D89B] = ASMLoadAddress06(NewPSIAbility_Table)
+ROM[0xC45EFE] = LDA_xl(NewPSIAbility_Table)
+ROM[0xC45F1B] = LDA_xl(NewPSIAbility_Table)
+ROM[0xC45F38] = LDA_xl(NewPSIAbility_Table)
+
+
+/*
+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+
+The "PSI_Ability" command will allow you to add a PSI Ability to this table. The only limitation to this table is the space of your ROM.
+
+Parameters:
+	. Entry = The ID of the PSI Ability, the command will discard this parameter, but useful to identify which PSI Ability you're on or editing.
+	. Name [AA] = This uses the psi_name_table.yml file's numerical system to figure out what names are the PSIs. Although, it is easier to define them here and use the names instead of the numbers. See the "Name" comment below so you can see what I mean.
+	. Rank [BB] = Greek glyphs to (usually) denotate strength of the PSI
+	. Type [CC] = the PSI catagory which they're located in the PSI menu
+	. Direction [DD] = The targets of the PSI attack.
+	. Battle_Action [EE EE] = The type of battle action that's going to be used.
+	. Ness_Lvl [FF] = What level does Ness learn this PSI
+	. Paula_Lvl [GG] = What level does Paula learn this PSI
+	. Poo_Lvl [HH] = What level does Poo learn this PSI
+	. PSI_Rank_Pos [II] = The position of Greek glyphs on the row of the PSI
+	. PSI_Row_Pos [JJ] = The position of the PSI in a selected row in the PSI Menu
+	. Description [KK KK KK KK] = Pointer or Label of the PSI help description.
+*/
+
+//-----Name-----
+define null = 0
+define Rockin = 1	// Beam
+define Fire = 2
+define Freeze = 3
+define Thunder = 4
+define Flash = 5
+define Starstorm = 6
+define Lifeup = 7
+define Healing = 8
+define Shield = 9
+define PSI_Shield = 10
+define Offense_Up = 11
+define Defense_Down = 12
+define Hypnosis = 13
+define Magnet = 14
+define Paralysis = 15
+define Brainshock = 16
+define Teleport = 17
+define Telepathy = 18
+define Dimension_Warp = 19
+define PSI_Block = 20
+define Shield_Off = 21
+define Quick_Up = 22
+
+//-----Ranks-----
+define a = 0x01	// Alpha
+define b = 0x02	// Beta
+define g = 0x03	// Gamma
+define e = 0x04	// Sigma
+define o = 0x05	// Omega
+
+//-----Type-----
+define Offense = 0x01
+define Recover = 0x02
+define Assist = 0x04
+define Other = 0x08
+
+//-----Usability-----
+define Overworld = 0x01
+define In_Battle = 0x02
+define Everywhere = 0x03
+
+//-----PSI_Rank_Pos-----
+define First_Pos = 0x08
+define Second_Pos = 0x0A
+define Third_Pos = 0x0C
+define Fourth_Pos = 0x0E
+define Fifth_Pos = 0x10
+
+//-----PSI_Row_Pos-----
+define First_Row = 0x00
+define Second_Row = 0x01
+define Third_Row = 0x02
+define Fourth_Row = 0x03
+define Fifth_Row = 0x04
+define Sixth_Row = 0x05
+
+command PSI_Ability(Entry, Name, Rank, Type, Usability, Battle_Action, Ness_Lvl, Paula_Lvl, Poo_Lvl, PSI_Rank_Pos, PSI_Row_Pos, Description) "[{byte Name} {byte Rank} {byte Type} {byte Usability} {byte[0] Battle_Action} {byte[1] Battle_Action} {byte Ness_Lvl} {byte Paula_Lvl} {byte Poo_Lvl} {byte PSI_Rank_Pos} {byte PSI_Row_Pos} {byte[0] Description} {byte[1] Description} {byte[2] Description} 00]"
+
+NewPSIAbility_Table:
+//		   Entry, Name, Rank, Type, Use, Action, Ness, Paula, Poo, Rank, RowP, Description)
+	PSI_Ability(0, null, null, null, null, null, null, null, null, null, null, null)
+	PSI_Ability(1, Rockin, a, Offense, In_Battle, 10, 5, 0, 0, First_Pos, First_Row, PSI_Descriptions.BeamA)	// 6, Anna 5
+	PSI_Ability(2, Rockin, b, Offense, In_Battle, 11, 11, 0, 0, Second_Pos, First_Row, PSI_Descriptions.BeamB)	// 13, Anna 11
+	PSI_Ability(3, Rockin, g, Offense, In_Battle, 12, 25, 0, 0, Third_Pos, First_Row, PSI_Descriptions.BeamG)	// 27, Anna 25
+	PSI_Ability(4, Rockin, o, Offense, In_Battle, 13, 33, 0, 0, Fourth_Pos, First_Row, PSI_Descriptions.BeamO)	// 36, Anna 33
+	PSI_Ability(5, Fire, a, Offense, In_Battle, 14, 0, 17, 0, First_Pos, First_Row, PSI_Descriptions.FireA)
+	PSI_Ability(6, Fire, b, Offense, In_Battle, 15, 0, 27, 0, Second_Pos, First_Row, PSI_Descriptions.FireB)
+	PSI_Ability(7, Fire, g, Offense, In_Battle, 16, 0, 31, 0, Third_Pos, First_Row, PSI_Descriptions.FireG)
+	PSI_Ability(8, Fire, o, Offense, In_Battle, 17, 0, 35, 0, Fourth_Pos, First_Row, PSI_Descriptions.FireO)
+	PSI_Ability(9, Freeze, a, Offense, In_Battle, 18, 0, 2, 0, First_Pos, Second_Row, PSI_Descriptions.FreezeA)
+	PSI_Ability(10, Freeze, b, Offense, In_Battle, 19, 0, 8, 0, Second_Pos, Second_Row, PSI_Descriptions.FreezeB)
+	PSI_Ability(11, Freeze, g, Offense, In_Battle, 20, 0, 21, 0, Third_Pos, Second_Row, PSI_Descriptions.FreezeG)
+	PSI_Ability(12, Freeze, o, Offense, In_Battle, 21, 0, 29, 0, Fourth_Pos, Second_Row, PSI_Descriptions.FreezeO)
+	PSI_Ability(13, Thunder, a, Offense, In_Battle, 22, 0, 2, 0, First_Pos, Third_Row, PSI_Descriptions.ThunderA)
+	PSI_Ability(14, Thunder, b, Offense, In_Battle, 23, 0, 9, 0, Second_Pos, Third_Row, PSI_Descriptions.ThunderB)
+	PSI_Ability(15, Thunder, g, Offense, In_Battle, 24, 0, 28, 0, Third_Pos, Third_Row, PSI_Descriptions.ThunderG)
+	PSI_Ability(16, Thunder, o, Offense, In_Battle, 25, 0, 32, 0, Fourth_Pos, Third_Row, PSI_Descriptions.ThunderO)
+	PSI_Ability(17, Flash, a, Offense, In_Battle, 26, 18, 0, 0, First_Pos, Second_Row, PSI_Descriptions.FlashA)
+	PSI_Ability(18, Flash, b, Offense, In_Battle, 27, 36, 0, 0, Second_Pos, Second_Row, PSI_Descriptions.FlashB)
+	PSI_Ability(19, Flash, g, Offense, In_Battle, 28, 50, 0, 0, Third_Pos, Second_Row, PSI_Descriptions.FlashG)
+	PSI_Ability(20, Flash, o, Offense, In_Battle, 29, 56, 0, 0, Fourth_Pos, Second_Row, PSI_Descriptions.FlashO)
+Starstorm_Alpha:
+	PSI_Ability(21, Starstorm, a, Offense, In_Battle, 30, 0, 0, 0, First_Pos, First_Row, PSI_Descriptions.StarstormA)
+Starstorm_Omega:
+	PSI_Ability(22, Starstorm, o, Offense, In_Battle, 31, 0, 0, 0, Second_Pos, First_Row, PSI_Descriptions.StarstormO)
+	PSI_Ability(23, Lifeup, a, Recover, Everywhere, 32, 3, 0, 0, First_Pos, First_Row, PSI_Descriptions.LifeupA)
+	PSI_Ability(24, Lifeup, b, Recover, Everywhere, 33, 29, 1, 0, Second_Pos, First_Row, PSI_Descriptions.LifeupB)
+	PSI_Ability(25, Lifeup, g, Recover, Everywhere, 34, 33, 12, 0, Third_Pos, First_Row, PSI_Descriptions.LifeupG)
+	PSI_Ability(26, Lifeup, o, Recover, Everywhere, 35, 40, 34, 0, Fourth_Pos, First_Row, PSI_Descriptions.LifeupO)
+	PSI_Ability(27, Healing, a, Recover, Everywhere, 36, 5, 6, 0, First_Pos, Second_Row, PSI_Descriptions.HealingA)
+	PSI_Ability(28, Healing, b, Recover, Everywhere, 37, 16, 13, 0, Second_Pos, Second_Row, PSI_Descriptions.HealingB)
+	PSI_Ability(29, Healing, g, Recover, Everywhere, 38, 22, 15, 0, Third_Pos, Second_Row, PSI_Descriptions.HealingG)
+	PSI_Ability(30, Healing, o, Recover, Everywhere, 39, 35, 18, 0, Fourth_Pos, Second_Row, PSI_Descriptions.HealingO)
+	PSI_Ability(31, Shield, a, Assist, In_Battle, 40, 12, 4, 0, First_Pos, First_Row, PSI_Descriptions.ShieldA)
+	PSI_Ability(32, Shield, b, Assist, In_Battle, 41, 30, 9, 0, Second_Pos, First_Row, PSI_Descriptions.ShieldB)
+	PSI_Ability(33, Shield, e, Assist, In_Battle, 42, 23, 15, 0, Third_Pos, First_Row, PSI_Descriptions.ShieldP)
+	PSI_Ability(34, Shield, o, Assist, In_Battle, 43, 0, 34, 0, Fourth_Pos, First_Row, PSI_Descriptions.ShieldO)	// Power Shield?
+	PSI_Ability(35, PSI_Shield, a, Assist, In_Battle, 44, 13, 4, 0, First_Pos, Second_Row, PSI_Descriptions.PSI_ShieldA)
+	PSI_Ability(36, PSI_Shield, b, Assist, In_Battle, 45, 30, 9, 0, Second_Pos, Second_Row, PSI_Descriptions.PSI_ShieldB)
+	PSI_Ability(37, PSI_Shield, e, Assist, In_Battle, 46, 34, 24, 0, Third_Pos, Second_Row, PSI_Descriptions.PSI_ShieldP)
+	PSI_Ability(38, PSI_Shield, o, Assist, In_Battle, 47, 0, 30, 0, Fourth_Pos, Second_Row, PSI_Descriptions.PSI_ShieldO)
+	PSI_Ability(39, Offense_Up, a, Assist, In_Battle, 48, 18, 0, 0, First_Pos, Third_Row, PSI_Descriptions.Offense_UpA)
+	PSI_Ability(40, Offense_Up, o, Assist, In_Battle, 49, 30, 0, 0, Second_Pos, Third_Row, PSI_Descriptions.Offense_UpO)
+	PSI_Ability(41, Defense_Down, a, Assist, In_Battle, 50, 9, 0, 0, First_Pos, Fourth_Row, PSI_Descriptions.Defense_DownA)
+	PSI_Ability(42, Defense_Down, o, Assist, In_Battle, 51, 27, 0, 0, Second_Pos, Fourth_Row, PSI_Descriptions.Defense_DownO)
+	PSI_Ability(43, Hypnosis, a, Assist, In_Battle, 52, 4, 9, 0, First_Pos, Sixth_Row, PSI_Descriptions.HypnosisA)
+	PSI_Ability(44, Hypnosis, o, Assist, In_Battle, 53, 27, 33, 0, Second_Pos, Sixth_Row, PSI_Descriptions.HypnosisO)
+	PSI_Ability(45, Magnet, a, Recover, In_Battle, 54, 0, 7, 0, First_Pos, Third_Row, PSI_Descriptions.MagnetA)
+	PSI_Ability(46, Magnet, o, Recover, In_Battle, 55, 0, 16, 0, Second_Pos, Third_Row, PSI_Descriptions.MagnetO)
+	PSI_Ability(47, Paralysis, a, Assist, In_Battle, 56, 0, 15, 0, First_Pos, Sixth_Row, PSI_Descriptions.ParalysisA)
+	PSI_Ability(48, Paralysis, o, Assist, In_Battle, 57, 0, 30, 0, Second_Pos, Sixth_Row, PSI_Descriptions.ParalysisO)
+	PSI_Ability(49, Brainshock, a, Assist, In_Battle, 58, 0, 3, 0, First_Pos, Fourth_Row, PSI_Descriptions.BrainshockA)
+	PSI_Ability(50, Brainshock, o, Assist, In_Battle, 59, 0, 26, 0, Second_Pos, Fourth_Row, PSI_Descriptions.BrainshockO)
+	PSI_Ability(51, Teleport, a, Other, Overworld, 60, 0, 0, 0, First_Pos, Third_Row, PSI_Descriptions.TeleportA)
+	PSI_Ability(52, Teleport, b, Other, Overworld, 61, 0, 0, 0, Second_Pos, Third_Row, PSI_Descriptions.TeleportB)
+	
+	// Add your own PSI under here.
+	PSI_Ability(53, Telepathy, a, Other, Overworld, 60, 1, 1, 0, First_Pos, Fourth_Row, PSI_Descriptions.Telepathy)
+	PSI_Ability(54, Dimension_Warp, a, Other, In_Battle, 60, 11, 0, 0, Second_Pos, Fifth_Row, PSI_Descriptions.Dimension_Warp)
+	PSI_Ability(55, Shield_Off, a, Assist, In_Battle, 320, 0, 19, 0, First_Pos, Fifth_Row, PSI_Descriptions.Shield_Off)
+	PSI_Ability(56, PSI_Block, a, Assist, In_Battle, 321, 0, 8, 0, First_Pos, Third_Row, PSI_Descriptions.PSI_Block)
+	PSI_Ability(57, Quick_Up, a, Assist, In_Battle, 322, 2, 0, 0, First_Pos, First_Row, PSI_Descriptions.Quick_UpA)		// 14
+	PSI_Ability(58, Quick_Up, o, Assist, In_Battle, 323, 3, 0, 0, Second_Pos, First_Row, PSI_Descriptions.Quick_UpO)	// 26
+
+	// And before here
+	PSI_Ability(9999, null, null, null, null, null, null, null, null, null, null, null)
+

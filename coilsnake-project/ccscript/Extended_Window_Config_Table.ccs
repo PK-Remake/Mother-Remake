@@ -1,0 +1,91 @@
+/*
+0xC3E250 = Window Configuration Table, look in routines to find which routines load this address.
+0xC105C9 = ASMLoadAddress06(Window_Config_Table)
+*/
+
+import asm65816
+
+/* Each entry is very similar to the window_configuration_table.yml file. The "number" parameter is there to keep track of which window entry is which. */
+command Window_Entry(number, height, width, x, y) "[{byte x} 00 {byte y} 00 {byte width} 00 {byte height} 00]"
+ROM[0xC105C9] = ASMLoadAddress06(Window_Config_Table)
+
+Window_Config_Table:{	// Max windows is 255 (probably)
+	Window_Entry(0, 8, 13, 1, 1)	// Gameplay menu
+	Window_Entry(1, 8, 30, 1, 19)	// Dialogue box
+	Window_Entry(2, 16, 24, 7, 1)	// Inventory window
+	Window_Entry(3, 10, 6, 1, 1)	// Use/Give/Drop/Help item menu
+	Window_Entry(4, 6, 11, 1, 3)	// PSI "PP Cost"  window
+	Window_Entry(5, 16, 11, 20, 1)	// Telephone contacts and Teleport destinations menu
+	Window_Entry(6, 10, 20, 8, 1)	// Equip menu
+	Window_Entry(7, 12, 13, 18, 1)	// List of equippable items - 16, 13, 18, 1
+	Window_Entry(8, 18, 30, 1, 1)	// Status window
+	Window_Entry(9, 18, 19, 12, 1)	// Shop windows
+	Window_Entry(10, 4, 8, 1, 10)	// Cash on hand window
+	Window_Entry(11, 4, 11, 1, 15)	// ??? (Unknown, unused?)
+	Window_Entry(12, 16, 19, 12, 1)	// Store window / Debug menu status effects menu
+	Window_Entry(13, 16, 24, 7, 1)	// Escargo Express inventory (Taking items)
+	Window_Entry(14, 6, 24, 4, 1)	// Battle message window
+	Window_Entry(15, 6, 21, 1, 1)	// Standard-width battle menu
+	Window_Entry(16, 8, 8, 4, 1)	// Offense/Defense/Assist PSI selection menu
+	Window_Entry(17, 4, 12, 12, 1)	// PSI Name when selected in battle
+	Window_Entry(18, 6, 14, 1, 1)	// Jeff's battle menu
+	Window_Entry(19, 8, 30, 1, 2)	// File selection menu
+	Window_Entry(20, 4, 22, 5, 9)	// Continue/Copy/Delete file menu
+	Window_Entry(21, 8, 12, 10, 16)	// Copy file menu, 2 slots
+	Window_Entry(22, 6, 12, 10, 16)	// Copy file menu, 1 slot
+	Window_Entry(23, 10, 21, 6, 17)	// Delete file confirmation menu
+	Window_Entry(24, 10, 16, 3, 14)	// Text speed selection menu
+	Window_Entry(25, 8, 18, 8, 15)	// Sound mode selection menu
+	Window_Entry(26, 4, 8, 5, 4)	// Character name input
+	Window_Entry(27, 4, 17, 13, 4)	// "Name this X" message
+	Window_Entry(28, 16, 30, 1, 9)	// Letter selection window
+	Window_Entry(29, 4, 7, 7, 3)	// Confirmation box: Ness' name
+	Window_Entry(30, 4, 7, 7, 7)	// Confirmation box: Paula's name
+	Window_Entry(31, 4, 7, 7, 11)	// Confirmation box: Jeff's name
+	Window_Entry(32, 4, 7, 7, 15)	// Confirmation box: Poo's name
+	Window_Entry(33, 4, 8, 20, 3)	// Confirmation box: King's name
+	Window_Entry(34, 6, 13, 15, 7)	// Confirmation box: Favorite food
+	Window_Entry(35, 6, 13, 15, 13)	// Confirmation box: Favorite thing
+	Window_Entry(36, 4, 24, 4, 21)	// Confirmation box: "Are you sure?"
+	Window_Entry(37, 8, 13, 18, 6)	// Healer / Mach Pizza window (3 choices)
+	Window_Entry(38, 4, 12, 12, 1)	// PSI Name when selecting a single target or single row
+	Window_Entry(39, 6, 26, 3, 3)	// "Register your name, please" window above Player's name input window on Scarabi
+	Window_Entry(40, 4, 7, 1, 1)	// Menu helper window (Who?, Whom?, Where?, etc)
+	Window_Entry(41, 4, 15, 16, 8)	// Character select window with 2 characters  
+	Window_Entry(42, 4, 21, 10, 8)	// Character select window with 3 characters  
+	Window_Entry(43, 4, 27, 4, 8)	// Character select window with 4 characters  
+	Window_Entry(44, 16, 24, 8, 2)	// Give items to other characters window
+	Window_Entry(45, 12, 14, 1, 13)	// Equip menu Offense/Defense listing - 6, 15, 3, 11
+	Window_Entry(46, 10, 8, 4, 1)	// Offense/Defense/Assist/Other PSI menu
+	Window_Entry(47, 10, 30, 1, 9)	// Save game corrupted, PSI Information windows
+	Window_Entry(48, 6, 28, 1, 1)	// Party leader battle menu
+	Window_Entry(49, 4, 20, 10, 4)	// "To: Enemy" battle window
+	Window_Entry(50, 16, 15, 14, 11)	// Flavor chooser window
+	Window_Entry(51, 4, 9, 22, 8)	// Character select window with 1 character (Debug menu)
+	Window_Entry(52, 14, 16, 15, 13)	// ??? (Unknown, unused)-- 18, 18, 7, 9
+
+
+	// Add your own windows below
+	// Window_Entry(number, height, width, x, y)
+	Window_Entry(53, 15, 19, 12, 1)	// Custom PSI List window
+	//Window_Entry(54, 10, 30, 1, 17)	// Custom PSI Description window, same as dialogue one (#1)
+	//Window_Entry(55, 8, 8, 4, 1)	// Custom Offense/Defense/Assist PSI selection menu, same as the original one (#16)
+}
+
+//ROM[0xC1CB0E] = LDA_i (53)	// Load PSI Table (in battle) with Window 53
+//ROM[0xC1CC6F] = LDA_i (53)	// Close PSI Table (in battle) with Window 53
+//ROM[0xC1CD2C] = CPX_i (53)	// ???
+//ROM[0xC1CD6C] = LDA_i (53)	// Close PSI Table (in battle) with Window 53
+//ROM[0xC1CDEF] = LDA_i (53)	// Close PSI Table (in battle) with Window 53
+//ROM[0xC1CE73] = LDA_i (53)	// Close PSI Table (in battle) with Window 53
+
+//ROM[0xC1C860] = LDA_i (53)	// Load PSI Table (out of battle) with Window 53
+//ROM[0xC1C875] = LDA_i (53)	// Load PSI Table (out of battle) with Window 53
+//ROM[0xC1C8A1] = LDA_i (53)	// Close PSI Table (out of battle) with Window 53?
+
+//ROM[0XC1CBDD] = LDA_i (46)	// Make the full PSI menu appear in battle? (Lacks Other)
+//ROM[0xC1CC2A] = LDA_i (46)	// Make the full PSI menu close in battle?
+//ROM[0xC1CD5E] = LDA_i (46)	// Make the full PSI menu close in battle?
+//ROM[0xC1CDE1] = LDA_i (46)	// Make the full PSI menu close in battle?
+//ROM[0XC1CE7A] = LDA_i (46)	// Make the full PSI menu close in battle?
+

@@ -1,0 +1,34 @@
+Mother 1 PSI List
+
+This lists the whole PSIs from Mother 1 and gives probable equivalents in EB that could be used in their place for the Remake.
+PSI with direct equivalents in EB won't be mentioned.
+
+// ASSIST PSI
+* 4th-D Slip	- Assist PSI. "Dimension Warp" Guarantees a flee from battle. (Should be a new PSI altogether)
+* BrainCyclone	- Assist PSI. Confuses all opponents. Similar to Brainshock O.
+* BrainShock	- Assist PSI. Confuses one opponent. Brainshock A? (Strangeness in EB)
+* Darkness	- Assist PSI. Blinds one opponent. Flash A.? (Uncontrollable crying in EB)
+* Defense Down	- Assist PSI. Lowers defense to one opponent
+* Defense Up	- Assist PSI. Raises defense to one party member
+* Hypnosis	- Assist PSI. Inflicts Sleep to one opponent
+* Offense Up	- Assist PSI. Raises offense to one party member
+* Power Shield	- Assist PSI. Reflects offensive PSI and non-PSI attacks off one ally with no damage dealt. (Possibly Shield from EB?)
+* PSI Block	- Assist PSI. Prevents opponent from using PSI
+* PSI Shield	- Assist PSI. Halves damage from PSI moves
+* Quick Up	- Assist PSI. Raises speed of one party member. (Should be a new PSI)
+* Shield Off	- Assist PSI. Removes any shield from one opponent
+
+// RECOVER PSI
+* Healing	- Recover PSI. Heals one status ailment
+* Life Up	- Recover PSI. Recovers HP to one party member
+* Super Healing	- Recover PSI. Revives one party member with full HP (Life Up B.?)
+
+// OTHER PSI
+* Telepathy	- Other PSI. Can read the minds of NPCs. Should be a new PSI.
+* Teleport	- Other PSI. 
+
+// OFFENSE PSI
+* PK Beam	- Offense PSI. Has no immunities with pendants, except mechanical enemies take half damage from it, and bosses and mechanical enemies are immune to Gamma. Franklin Badge reflects it (possibly repurposing PK Rockin with it?)
+* PK Fire	- Offense PSI
+* PK Freeze	- Offense PSI
+* PK Thunder	- Offense PSI

@@ -458,10 +458,10 @@ l_0xc77df0:
     "[19 1F]{swap}@{user} could not" linebreak
     "  equip the [1C 05 00]." next
     "@Since there was no alternative," linebreak
-    "  " call(data_33.l_0xc7e602) " fought with " call(data_33.l_0xc7e66e) " revious weapon.[03]" eob newline
+    "  " call(data_33.l_0xc7e602) " fought with " call(data_33.l_0xc7e66e) " previous weapon.[03]" eob newline
     "[19 1F]{swap}@{user} tried" linebreak
     "  to equip the [1C 05 00]." next
-    "@ but [1C 05 00] wasn't meant for " linebreak
+    "@but [1C 05 00] wasn't meant for " linebreak
     "  {user}.[03]" eob goto(l_0xc77eb6)
 
 l_0xc77eb6:
@@ -469,7 +469,8 @@ l_0xc77eb6:
     "[19 1F]{swap}@{user} tried" linebreak
     "  to use the [1C 05 00]." next
     "@but {user} could not use" linebreak
-    "  the [1C 05 00] very well.[03][02]@{user} could not use" linebreak
+    "  the [1C 05 00] very well.[03][02]"
+    "@{user} could not use" linebreak
     "  the [1C 05 00] very well.[03]" eob
 
 l_0xc77eff:

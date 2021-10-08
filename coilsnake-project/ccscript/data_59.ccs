@@ -62,7 +62,7 @@ l_0xef8568:
     "[19 1F]{swap}  [1C 12 00]![03]" goto(l_0xef857e)
 
 l_0xef857e:
-    "{swap}[1F C0 32 {e(l_0xef864c)} {e(l_0xef866e)} {e(l_0xef8698)} {e(l_0xef86e2)} {e(l_0xef874a)} {e(l_0xef875f)} {e(l_0xef8777)} {e(l_0xef878f)} {e(l_0xef87ac)} {e(l_0xef87c3)} {e(l_0xef87da)} {e(l_0xef87f4)} {e(l_0xef8813)} {e(l_0xef8813)} {e(l_0xef8813)} {e(l_0xef8813)} {e(l_0xef883d)} {e(l_0xef8847)} {e(l_0xef8851)} {e(l_0xef8868)} {e(l_0xef8882)} {e(l_0xef88b8)} {e(l_0xef88e9)} {e(l_0xef88e9)} {e(l_0xef88e9)} {e(l_0xef88e9)} {e(l_0xef88e9)} {e(l_0xef88e9)} {e(l_0xef88e9)} {e(l_0xef88e9)} {e(l_0xef88ec)} {e(l_0xef88f6)} {e(l_0xef8900)} {e(l_0xef890a)} {e(l_0xef8914)} {e(l_0xef891e)} {e(l_0xef8928)} {e(l_0xef8932)} {e(l_0xef88e9)} {e(l_0xef88e9)} {e(l_0xef893c)} {e(l_0xef894c)} {e(l_0xef895c)} {e(l_0xef896c)} {e(l_0xef897c)} {e(l_0xef898c)} {e(l_0xef899c)} {e(l_0xef89ac)} {e(l_0xef89bc)} {e(l_0xef89ce)}]" eob goto(l_0xef864c)
+    "{swap}[1F C0 3A {e(l_0xef864c)} {e(l_0xef866e)} {e(l_0xef8698)} {e(l_0xef86e2)} {e(l_0xef874a)} {e(l_0xef875f)} {e(l_0xef8777)} {e(l_0xef878f)} {e(l_0xef87ac)} {e(l_0xef87c3)} {e(l_0xef87da)} {e(l_0xef87f4)} {e(l_0xef8813)} {e(l_0xef8813)} {e(l_0xef8813)} {e(l_0xef8813)} {e(l_0xef883d)} {e(l_0xef8847)} {e(l_0xef8851)} {e(l_0xef8868)} {e(l_0xef8882)} {e(l_0xef88b8)} {e(l_0xef88e9)} {e(l_0xef88e9)} {e(l_0xef88e9)} {e(l_0xef88e9)} {e(l_0xef88e9)} {e(l_0xef88e9)} {e(l_0xef88e9)} {e(l_0xef88e9)} {e(l_0xef88ec)} {e(l_0xef88f6)} {e(l_0xef8900)} {e(l_0xef890a)} {e(l_0xef8914)} {e(l_0xef891e)} {e(l_0xef8928)} {e(l_0xef8932)} {e(l_0xef88e9)} {e(l_0xef88e9)} {e(l_0xef893c)} {e(l_0xef894c)} {e(l_0xef895c)} {e(l_0xef896c)} {e(l_0xef897c)} {e(l_0xef898c)} {e(l_0xef899c)} {e(l_0xef89ac)} {e(l_0xef89bc)} {e(l_0xef89ce)} {e(TeleportA_Use)} {e(TeleportB_Use)} {e(Telepathy_Use)} {e(Dimension_Wrap_Use)}  {e(Shield_Off_Use)} {e(PSI_Block_Use)} {e(Quick_UpA_Use)} {e(Quick_UpO_Use)}]" eob goto(l_0xef864c)
 
 l_0xef864c:
     "[1C 13 00 13]{pause(10)}{sound(48)}{pause(32)}{sound(74)}{pause(2)}{sound(48)}[1C 13 2A 00]{pause(32)}{sound(74)}{pause(14)}{sound(91)}" eob
@@ -186,6 +186,20 @@ l_0xef89bc:
 
 l_0xef89ce:
     "{pause(20)}{sound(80)}[1C 13 00 03]{pause(40)}[1C 13 2F 00]{pause(128)}" eob
+
+TeleportA_Use:
+TeleportB_Use:
+Telepathy_Use:
+Dimension_Wrap_Use:
+Shield_Off_Use:
+PSI_Block_Use:
+	"{pause(30)}" eob
+Quick_UpA_Use:
+	newline
+	"{pause(30)}@TestQuickA" eob
+Quick_UpO_Use:
+	newline
+	"{pause(30)}@TestQuickB" eob
 
 l_0xef89e0:
     newline

@@ -1,14 +1,14 @@
 Ailments:
   Ailment 01: Unconscious
-  Ailment 02: Diamondized
+  Ailment 02: Stoned
   Ailment 03: Paralyzed
   Ailment 04: Nauseous
   Ailment 05: Poisoned
   Ailment 06: Sunstroke
-  Ailment 07: Sniffling
-  Ailment 08: Mashroomized
+  Ailment 07: Cold
+  Ailment 08: Mushroomized
   Ailment 09: Possessed
-  Ailment 10: Homesick
+  Ailment 10: Asthma
 Battle Menu:
   Auto Fight: Auto Fight
   Bash: Bash
@@ -17,7 +17,7 @@ Battle Menu:
   Goods: Goods
   Mirror: Mirror
   PSI: PSI
-  Pray: Pray
+  Pray: Sing
   Run Away: Run Away
   Shoot: Shoot
   Spy: Spy
@@ -79,11 +79,11 @@ PSI Types:
   Other: Other
   Recover: Recover
 Starting Text:
-  Ask Name 1: Please name him.
-  Ask Name 2: Name her, too.
-  Ask Name 3: Name your friend.
-  Ask Name 4: Name another friend.
-  Ask Name Food: Favorite homemade food?
+  Ask Name 1: Please name this boy.
+  Ask Name 2: Name this girl, too.
+  Ask Name 3: Name this friend.
+  Ask Name 4: Name this other friend.
+  Ask Name Food: What's your favorite homemade food?
   Ask Name PSI: What's your favorite thing?
   Ask Name Pet: Name your pet.
   Confirm All: Are you sure?

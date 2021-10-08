@@ -1,0 +1,110 @@
+/* QUICK UP ASM ROUTINE */
+
+import asm65816
+
+define SPEED		= 0x002A
+define BASE_SPEED	= 0x0034
+define CURRENT_TARGET	= 0xA972
+define ATK_FAIL_CHK 	= 0xC27CFD
+define DISPLAY_TEXT_WAIT = 0xC1DC66
+
+QUICK_UP: {
+	REP (0x31)
+	PHD
+	TDC
+	ADC_i (0xFFE8)
+	TCD
+	//JSR (0x7CFD)	// Check if attack/PSI failed (Original)
+	JSL (ATK_FAIL_CHK)		// Check if attack failed
+	CMP_i (0x0000)
+	BNE (0x35)	// UNKNOWN0
+	LDX_a (CURRENT_TARGET)		// Current target
+	LDY_x (SPEED)			// Load battler's speed (0x26 for offense, 28 for defense)
+	STY_d (0x16)
+	LDA_a (CURRENT_TARGET)		// Current target
+	JSR (INCREASE_SPEED_16TH)	// Increase speed 16th (0x7D28 for Offense)
+
+	ASMLoadAddress0E(data_43.l_0xc8f82f)	// Speed went up text address
+
+	LDY_d (0x16)
+	STY_d (0x02)
+	LDX_a (0xA972)
+	LDA_x (SPEED)
+	SEC
+	SBC_d (0x02)
+	STA_d (0x06)
+	STZ_d (0x08)
+	LDA_d (0x06)
+	STA_d (0x12)
+	LDA_d (0x08)
+	STA_d (0x14)
+	JSL (DISPLAY_TEXT_WAIT)
+
+//UNKNOWN0: 
+	PLD
+	RTL
+}
+
+/* REDIRECT QUICKUP (FOR QUICKUP OMEGA) */
+REDIRECT_QUICKUP: {
+	REP (0x31)
+	JSL (QUICK_UP)
+	RTL
+}
+
+/* INCREASE SPEED STAT */
+INCREASE_SPEED_16TH: {
+	REP (0x31)
+	PHD
+	PHA
+	TDC
+	ADC_i (0xFFEE)
+	TCD
+	PLA
+	STA_d (0x02)
+	CLC
+	ADC_i (SPEED)
+	TAY
+	LDA_y (0x0000)	// LOWORD(RAM),Y
+	LSR
+	LSR
+	LSR
+	LSR
+	BEQ (0x03)	// UNKNOWN2
+	TAX
+	BRA (0x03)	// UNKNOWN3
+//UNKNOWN2:
+	LDX_i (0x0001)
+//UNKNOWN3:
+	STX_d (0x04)
+	LDA_y (0x0000)	// LOWORD(RAM),Y
+	CLC
+	ADC_d (0x04)
+	STA_y (0x0000)	// LOWORD(RAM),Y
+	LDA_d (0x02)
+	CLC
+	ADC_i (SPEED)		// Add to battler's speed
+	TAX
+	STX_d (0x10)
+	LDX_d (0x02)
+	LDA_x (BASE_SPEED)	// Load base battler's speed,X
+	AND_i (0x00FF)
+	STA_d (0x04)
+	ASL
+	ASL
+	ADC_d (0x04)
+	LSR
+	LSR
+	STA_d (0x0E)
+	STA_d (0x02)
+	LDX_d (0x10)
+	LDA_x (0x0000)	// LOWORD(RAM),X
+	CMP_d (0x02)
+	BCC (0x07)	// UNKNOWN4
+	BEQ (0x05)	// UNKNOWN4
+	LDA_d (0x0E)
+	STA_x (0x0000)	// LOWORD(RAM),X
+//UNKNOWN4:
+	PLD
+	RTS
+}

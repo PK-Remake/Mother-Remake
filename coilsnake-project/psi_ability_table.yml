@@ -19,7 +19,7 @@
   PSI Menu position (Y): 0
   PSI Name: 0
   Strength: alpha
-  Text Address: data_55.l_0xef4e20
+  Text Address: PSI_Descriptions.BeamA
   Type:
   - offense
   Usability Outside of Battle: unusable
@@ -32,7 +32,7 @@
   PSI Menu position (Y): 0
   PSI Name: 0
   Strength: beta
-  Text Address: data_55.l_0xef4e38
+  Text Address: PSI_Descriptions.BeamB
   Type:
   - offense
   Usability Outside of Battle: unusable
@@ -45,7 +45,7 @@
   PSI Menu position (Y): 0
   PSI Name: 0
   Strength: gamma
-  Text Address: data_55.l_0xef4e51
+  Text Address: PSI_Descriptions.BeamG
   Type:
   - offense
   Usability Outside of Battle: unusable
@@ -58,163 +58,163 @@
   PSI Menu position (Y): 0
   PSI Name: 0
   Strength: omega
-  Text Address: data_55.l_0xef4e6a
+  Text Address: PSI_Descriptions.BeamO
   Type:
   - offense
   Usability Outside of Battle: unusable
 5:	# PK Fire
   Action: 14
   Level learned by Ness: 0
-  Level learned by Paula: 3
+  Level learned by Paula: 17
   Level learned by Poo: 0
   PSI Menu position (X): 9
   PSI Menu position (Y): 0
   PSI Name: 1
   Strength: alpha
-  Text Address: data_55.l_0xef4e83
+  Text Address: PSI_Descriptions.FireA
   Type:
   - offense
   Usability Outside of Battle: unusable
 6:	# PK Fire
   Action: 15
   Level learned by Ness: 0
-  Level learned by Paula: 19
+  Level learned by Paula: 27
   Level learned by Poo: 0
   PSI Menu position (X): 11
   PSI Menu position (Y): 0
   PSI Name: 1
   Strength: beta
-  Text Address: data_55.l_0xef4e99
+  Text Address: PSI_Descriptions.FireB
   Type:
   - offense
   Usability Outside of Battle: unusable
 7:	# PK Fire
   Action: 16
   Level learned by Ness: 0
-  Level learned by Paula: 37
+  Level learned by Paula: 31
   Level learned by Poo: 0
   PSI Menu position (X): 13
   PSI Menu position (Y): 0
   PSI Name: 1
   Strength: gamma
-  Text Address: data_55.l_0xef4eb0
+  Text Address: PSI_Descriptions.FireG
   Type:
   - offense
   Usability Outside of Battle: unusable
 8:	# PK Fire
   Action: 17
   Level learned by Ness: 0
-  Level learned by Paula: 64
+  Level learned by Paula: 35
   Level learned by Poo: 0
   PSI Menu position (X): 15
   PSI Menu position (Y): 0
   PSI Name: 1
   Strength: omega
-  Text Address: data_55.l_0xef4ec7
+  Text Address: PSI_Descriptions.FireO
   Type:
   - offense
   Usability Outside of Battle: unusable
 9:	# PK Freeze
   Action: 18
   Level learned by Ness: 0
-  Level learned by Paula: 1
-  Level learned by Poo: 1
+  Level learned by Paula: 2
+  Level learned by Poo: 0
   PSI Menu position (X): 9
   PSI Menu position (Y): 1
   PSI Name: 2
   Strength: alpha
-  Text Address: data_55.l_0xef4ede
+  Text Address: PSI_Descriptions.FreezeA
   Type:
   - offense
   Usability Outside of Battle: unusable
 10:	# PK Freeze
   Action: 19
   Level learned by Ness: 0
-  Level learned by Paula: 11
-  Level learned by Poo: 1
+  Level learned by Paula: 8
+  Level learned by Poo: 0
   PSI Menu position (X): 11
   PSI Menu position (Y): 1
   PSI Name: 2
   Strength: beta
-  Text Address: data_55.l_0xef4f06
+  Text Address: PSI_Descriptions.FreezeB
   Type:
   - offense
   Usability Outside of Battle: unusable
 11:	# PK Freeze
   Action: 20
   Level learned by Ness: 0
-  Level learned by Paula: 31
-  Level learned by Poo: 33
+  Level learned by Paula: 21
+  Level learned by Poo: 0
   PSI Menu position (X): 13
   PSI Menu position (Y): 1
   PSI Name: 2
   Strength: gamma
-  Text Address: data_55.l_0xef4f2e
+  Text Address: PSI_Descriptions.FreezeG
   Type:
   - offense
   Usability Outside of Battle: unusable
 12:	# PK Freeze
   Action: 21
   Level learned by Ness: 0
-  Level learned by Paula: 46
+  Level learned by Paula: 29
   Level learned by Poo: 0
   PSI Menu position (X): 15
   PSI Menu position (Y): 1
   PSI Name: 2
   Strength: omega
-  Text Address: data_55.l_0xef4f56
+  Text Address: PSI_Descriptions.FreezeO
   Type:
   - offense
   Usability Outside of Battle: unusable
 13:	# PK Thunder
   Action: 22
   Level learned by Ness: 0
-  Level learned by Paula: 8
-  Level learned by Poo: 1
+  Level learned by Paula: 2
+  Level learned by Poo: 0
   PSI Menu position (X): 9
   PSI Menu position (Y): 2
   PSI Name: 3
   Strength: alpha
-  Text Address: data_55.l_0xef4f7e
+  Text Address: PSI_Descriptions.ThunderA
   Type:
   - offense
   Usability Outside of Battle: unusable
 14:	# PK Thunder
   Action: 23
   Level learned by Ness: 0
-  Level learned by Paula: 25
-  Level learned by Poo: 1
+  Level learned by Paula: 9
+  Level learned by Poo: 0
   PSI Menu position (X): 11
   PSI Menu position (Y): 2
   PSI Name: 3
   Strength: beta
-  Text Address: data_55.l_0xef4fa6
+  Text Address: PSI_Descriptions.ThunderB
   Type:
   - offense
   Usability Outside of Battle: unusable
 15:	# PK Thunder
   Action: 24
   Level learned by Ness: 0
-  Level learned by Paula: 57
-  Level learned by Poo: 41
+  Level learned by Paula: 28
+  Level learned by Poo: 0
   PSI Menu position (X): 13
   PSI Menu position (Y): 2
   PSI Name: 3
   Strength: gamma
-  Text Address: data_55.l_0xef4fdc
+  Text Address: PSI_Descriptions.ThunderG
   Type:
   - offense
   Usability Outside of Battle: unusable
 16:	# PK Thunder
   Action: 25
   Level learned by Ness: 0
-  Level learned by Paula: 0
-  Level learned by Poo: 55
+  Level learned by Paula: 32
+  Level learned by Poo: 0
   PSI Menu position (X): 15
   PSI Menu position (Y): 2
   PSI Name: 3
   Strength: omega
-  Text Address: data_55.l_0xef5013
+  Text Address: PSI_Descriptions.ThunderO
   Type:
   - offense
   Usability Outside of Battle: unusable
@@ -227,7 +227,7 @@
   PSI Menu position (Y): 1
   PSI Name: 4
   Strength: alpha
-  Text Address: data_55.l_0xef5049
+  Text Address: PSI_Descriptions.FlashA
   Type:
   - offense
   Usability Outside of Battle: unusable
@@ -240,7 +240,7 @@
   PSI Menu position (Y): 1
   PSI Name: 4
   Strength: beta
-  Text Address: data_55.l_0xef506b
+  Text Address: PSI_Descriptions.FlashB
   Type:
   - offense
   Usability Outside of Battle: unusable
@@ -253,7 +253,7 @@
   PSI Menu position (Y): 1
   PSI Name: 4
   Strength: gamma
-  Text Address: data_55.l_0xef50af
+  Text Address: PSI_Descriptions.FlashG
   Type:
   - offense
   Usability Outside of Battle: unusable
@@ -266,7 +266,7 @@
   PSI Menu position (Y): 1
   PSI Name: 4
   Strength: omega
-  Text Address: data_55.l_0xef50e1
+  Text Address: PSI_Descriptions.FlashO
   Type:
   - offense
   Usability Outside of Battle: unusable
@@ -279,7 +279,7 @@
   PSI Menu position (Y): 0
   PSI Name: 5
   Strength: alpha
-  Text Address: data_55.l_0xef5131
+  Text Address: PSI_Descriptions.StarstormA
   Type:
   - offense
   Usability Outside of Battle: unusable
@@ -292,397 +292,397 @@
   PSI Menu position (Y): 0
   PSI Name: 5
   Strength: omega
-  Text Address: data_55.l_0xef5152
+  Text Address: PSI_Descriptions.StarstormO
   Type:
   - offense
   Usability Outside of Battle: unusable
 23:	# Lifeup
   Action: 32
-  Level learned by Ness: 2
+  Level learned by Ness: 3
   Level learned by Paula: 0
-  Level learned by Poo: 1
+  Level learned by Poo: 0
   PSI Menu position (X): 9
   PSI Menu position (Y): 0
   PSI Name: 6
   Strength: alpha
-  Text Address: data_55.l_0xef5173
+  Text Address: PSI_Descriptions.LifeupA
   Type:
   - recovery
   Usability Outside of Battle: usable
 24:	# Lifeup
   Action: 33
-  Level learned by Ness: 20
-  Level learned by Paula: 0
-  Level learned by Poo: 1
+  Level learned by Ness: 29
+  Level learned by Paula: 1
+  Level learned by Poo: 0
   PSI Menu position (X): 11
   PSI Menu position (Y): 0
   PSI Name: 6
   Strength: beta
-  Text Address: data_55.l_0xef5189
+  Text Address: PSI_Descriptions.LifeupB
   Type:
   - recovery
   Usability Outside of Battle: usable
 25:	# Lifeup
   Action: 34
-  Level learned by Ness: 39
-  Level learned by Paula: 0
-  Level learned by Poo: 46
+  Level learned by Ness: 33
+  Level learned by Paula: 12
+  Level learned by Poo: 0
   PSI Menu position (X): 13
   PSI Menu position (Y): 0
   PSI Name: 6
   Strength: gamma
-  Text Address: data_55.l_0xef519f
+  Text Address: PSI_Descriptions.LifeupG
   Type:
   - recovery
   Usability Outside of Battle: usable
 26:	# Lifeup
   Action: 35
-  Level learned by Ness: 70
-  Level learned by Paula: 0
+  Level learned by Ness: 40
+  Level learned by Paula: 34
   Level learned by Poo: 0
   PSI Menu position (X): 15
   PSI Menu position (Y): 0
   PSI Name: 6
-  Strength: omega
-  Text Address: data_55.l_0xef51bb
+  Strength: omega	# Sigma-Omega (Some-All HP)
+  Text Address: PSI_Descriptions.LifeupO
   Type:
   - recovery
   Usability Outside of Battle: usable
 27:	# Healing
   Action: 36
-  Level learned by Ness: 10
-  Level learned by Paula: 0
-  Level learned by Poo: 1
+  Level learned by Ness: 5
+  Level learned by Paula: 6
+  Level learned by Poo: 0
   PSI Menu position (X): 9
   PSI Menu position (Y): 1
   PSI Name: 7
   Strength: alpha
-  Text Address: data_55.l_0xef51cf
+  Text Address: PSI_Descriptions.HealingA
   Type:
   - recovery
   Usability Outside of Battle: usable
 28:	# Healing
   Action: 37
-  Level learned by Ness: 24
-  Level learned by Paula: 0
-  Level learned by Poo: 1
+  Level learned by Ness: 16
+  Level learned by Paula: 13
+  Level learned by Poo: 0
   PSI Menu position (X): 11
   PSI Menu position (Y): 1
   PSI Name: 7
   Strength: beta
-  Text Address: data_55.l_0xef51f0
+  Text Address: PSI_Descriptions.HealingB
   Type:
   - recovery
   Usability Outside of Battle: usable
 29:	# Healing
   Action: 38
-  Level learned by Ness: 53
-  Level learned by Paula: 0
-  Level learned by Poo: 36
+  Level learned by Ness: 22
+  Level learned by Paula: 15
+  Level learned by Poo: 0
   PSI Menu position (X): 13
   PSI Menu position (Y): 1
   PSI Name: 7
   Strength: gamma
-  Text Address: data_55.l_0xef5239
+  Text Address: PSI_Descriptions.HealingG
   Type:
   - recovery
   Usability Outside of Battle: usable
 30:	# Healing
   Action: 39
-  Level learned by Ness: 0
-  Level learned by Paula: 0
-  Level learned by Poo: 52
+  Level learned by Ness: 35
+  Level learned by Paula: 18
+  Level learned by Poo: 0
   PSI Menu position (X): 15
   PSI Menu position (Y): 1
   PSI Name: 7
-  Strength: omega
-  Text Address: data_55.l_0xef52a5
+  Strength: omega	# Sigma, Super Healing
+  Text Address: PSI_Descriptions.HealingO
   Type:
   - recovery
   Usability Outside of Battle: usable
 31:	# Shield
   Action: 40
   Level learned by Ness: 12
-  Level learned by Paula: 0
-  Level learned by Poo: 14
+  Level learned by Paula: 4
+  Level learned by Poo: 0
   PSI Menu position (X): 9
   PSI Menu position (Y): 0
   PSI Name: 8
   Strength: alpha
-  Text Address: data_55.l_0xef5301
+  Text Address: PSI_Descriptions.ShieldA
   Type:
   - assist
   Usability Outside of Battle: unusable
 32:	# Shield
   Action: 41
-  Level learned by Ness: 34
-  Level learned by Paula: 0
-  Level learned by Poo: 16
+  Level learned by Ness: 30
+  Level learned by Paula: 9
+  Level learned by Poo: 0
   PSI Menu position (X): 11
   PSI Menu position (Y): 0
   PSI Name: 8
   Strength: beta
-  Text Address: data_55.l_0xef53c0
+  Text Address: PSI_Descriptions.ShieldB
   Type:
   - assist
   Usability Outside of Battle: unusable
 33:	# Shield
   Action: 42
-  Level learned by Ness: 0
-  Level learned by Paula: 0
-  Level learned by Poo: 15
+  Level learned by Ness: 23
+  Level learned by Paula: 15
+  Level learned by Poo: 0
   PSI Menu position (X): 13
   PSI Menu position (Y): 0
   PSI Name: 8
   Strength: sigma
-  Text Address: data_55.l_0xef5361
+  Text Address: PSI_Descriptions.ShieldP
   Type:
   - assist
   Usability Outside of Battle: unusable
-34:	# Shield
+34:	# Shield (Power Shield?)
   Action: 43
-  Level learned by Ness: 0
-  Level learned by Paula: 0
-  Level learned by Poo: 51
+  Level learned by Ness: 34
+  Level learned by Paula: 24
+  Level learned by Poo: 0
   PSI Menu position (X): 15
   PSI Menu position (Y): 0
   PSI Name: 8
   Strength: omega
-  Text Address: data_55.l_0xef5428
+  Text Address: PSI_Descriptions.ShieldO
   Type:
   - assist
   Usability Outside of Battle: unusable
 35:	# PSI Shield
   Action: 44
-  Level learned by Ness: 0
-  Level learned by Paula: 6
+  Level learned by Ness: 13
+  Level learned by Paula: 4
   Level learned by Poo: 0
   PSI Menu position (X): 9
   PSI Menu position (Y): 0
   PSI Name: 9
   Strength: alpha
-  Text Address: data_55.l_0xef548f
+  Text Address: PSI_Descriptions.PSI_ShieldA
   Type:
   - assist
   Usability Outside of Battle: unusable
 36:	# PSI Shield
   Action: 45
-  Level learned by Ness: 0
-  Level learned by Paula: 51
+  Level learned by Ness: 30
+  Level learned by Paula: 9
   Level learned by Poo: 0
   PSI Menu position (X): 11
   PSI Menu position (Y): 0
   PSI Name: 9
   Strength: beta
-  Text Address: data_55.l_0xef553c
+  Text Address: PSI_Descriptions.PSI_ShieldB
   Type:
   - assist
   Usability Outside of Battle: unusable
 37:	# PSI Shield
   Action: 46
-  Level learned by Ness: 0
-  Level learned by Paula: 27
+  Level learned by Ness: 34
+  Level learned by Paula: 24
   Level learned by Poo: 0
   PSI Menu position (X): 13
   PSI Menu position (Y): 0
   PSI Name: 9
   Strength: sigma
-  Text Address: data_55.l_0xef54e6
+  Text Address: PSI_Descriptions.PSI_ShieldP
   Type:
   - assist
   Usability Outside of Battle: unusable
 38:	# PSI Shield
   Action: 47
   Level learned by Ness: 0
-  Level learned by Paula: 60
+  Level learned by Paula: 30
   Level learned by Poo: 0
   PSI Menu position (X): 15
   PSI Menu position (Y): 0
   PSI Name: 9
   Strength: omega
-  Text Address: data_55.l_0xef55a0
+  Text Address: PSI_Descriptions.PSI_ShieldO
   Type:
   - assist
   Usability Outside of Battle: unusable
 39:	# Offense up
   Action: 48
-  Level learned by Ness: 0
-  Level learned by Paula: 21
+  Level learned by Ness: 18
+  Level learned by Paula: 0
   Level learned by Poo: 0
   PSI Menu position (X): 9
   PSI Menu position (Y): 1
   PSI Name: 10
   Strength: alpha
-  Text Address: data_55.l_0xef5603
+  Text Address: PSI_Descriptions.Offense_UpA
   Type:
   - assist
   Usability Outside of Battle: unusable
 40:	# Offense up
   Action: 49
-  Level learned by Ness: 0
-  Level learned by Paula: 40
+  Level learned by Ness: 30
+  Level learned by Paula: 0
   Level learned by Poo: 0
   PSI Menu position (X): 11
   PSI Menu position (Y): 1
   PSI Name: 10
   Strength: omega
-  Text Address: data_55.l_0xef562e
+  Text Address: PSI_Descriptions.Offense_UpO
   Type:
   - assist
   Usability Outside of Battle: unusable
 41:	# Defense down
   Action: 50
-  Level learned by Ness: 0
-  Level learned by Paula: 29
+  Level learned by Ness: 9
+  Level learned by Paula: 0
   Level learned by Poo: 0
   PSI Menu position (X): 9
   PSI Menu position (Y): 2
   PSI Name: 11
   Strength: alpha
-  Text Address: data_55.l_0xef5658
+  Text Address: PSI_Descriptions.Defense_DownA
   Type:
   - assist
   Usability Outside of Battle: unusable
 42:	# Defense down
   Action: 51
-  Level learned by Ness: 0
-  Level learned by Paula: 54
+  Level learned by Ness: 27
+  Level learned by Paula: 0
   Level learned by Poo: 0
   PSI Menu position (X): 11
   PSI Menu position (Y): 2
   PSI Name: 11
   Strength: omega
-  Text Address: data_55.l_0xef5687
+  Text Address: PSI_Descriptions.Defense_DownO
   Type:
   - assist
   Usability Outside of Battle: unusable
 43:	# Hypnosis
   Action: 52
   Level learned by Ness: 4
-  Level learned by Paula: 0
+  Level learned by Paula: 9
   Level learned by Poo: 0
   PSI Menu position (X): 9
   PSI Menu position (Y): 1
   PSI Name: 12
   Strength: alpha
-  Text Address: data_55.l_0xef56b9
+  Text Address: PSI_Descriptions.HypnosisA
   Type:
   - assist
   Usability Outside of Battle: unusable
 44:	# Hypnosis
   Action: 53
   Level learned by Ness: 27
-  Level learned by Paula: 0
+  Level learned by Paula: 33
   Level learned by Poo: 0
   PSI Menu position (X): 11
   PSI Menu position (Y): 1
   PSI Name: 12
   Strength: omega
-  Text Address: data_55.l_0xef56d0
+  Text Address: PSI_Descriptions.HypnosisO
   Type:
   - assist
   Usability Outside of Battle: unusable
 45:	# PSI Magnet
   Action: 54
   Level learned by Ness: 0
-  Level learned by Paula: 15
-  Level learned by Poo: 21
+  Level learned by Paula: 7
+  Level learned by Poo: 0
   PSI Menu position (X): 9
   PSI Menu position (Y): 2
   PSI Name: 13
   Strength: alpha
-  Text Address: data_55.l_0xef56eb
+  Text Address: PSI_Descriptions.MagnetA
   Type:
   - recovery
   Usability Outside of Battle: unusable
 46:	# PSI Magnet
   Action: 55
   Level learned by Ness: 0
-  Level learned by Paula: 24
-  Level learned by Poo: 27
+  Level learned by Paula: 16
+  Level learned by Poo: 0
   PSI Menu position (X): 11
   PSI Menu position (Y): 2
   PSI Name: 13
   Strength: omega
-  Text Address: data_55.l_0xef5712
+  Text Address: PSI_Descriptions.MagnetO
   Type:
   - recovery
   Usability Outside of Battle: unusable
 47:	# Paralysis
   Action: 56
-  Level learned by Ness: 14
-  Level learned by Paula: 0
+  Level learned by Ness: 0
+  Level learned by Paula: 15
   Level learned by Poo: 0
   PSI Menu position (X): 9
   PSI Menu position (Y): 2
   PSI Name: 14
   Strength: alpha
-  Text Address: data_55.l_0xef5739
+  Text Address: PSI_Descriptions.ParalysisA
   Type:
   - assist
   Usability Outside of Battle: unusable
 48:	# Paralysis
   Action: 57
-  Level learned by Ness: 29
-  Level learned by Paula: 0
+  Level learned by Ness: 0
+  Level learned by Paula: 30
   Level learned by Poo: 0
   PSI Menu position (X): 11
   PSI Menu position (Y): 2
   PSI Name: 14
   Strength: omega
-  Text Address: data_55.l_0xef574e
+  Text Address: PSI_Descriptions.ParalysisO
   Type:
   - assist
   Usability Outside of Battle: unusable
 49:	# Brainshock
   Action: 58
   Level learned by Ness: 0
-  Level learned by Paula: 0
-  Level learned by Poo: 24
+  Level learned by Paula: 3
+  Level learned by Poo: 0
   PSI Menu position (X): 9
   PSI Menu position (Y): 1
   PSI Name: 15
   Strength: alpha
-  Text Address: data_55.l_0xef5766
+  Text Address: PSI_Descriptions.BrainshockA
   Type:
   - assist
   Usability Outside of Battle: unusable
 50:	# Brainshock
   Action: 59
   Level learned by Ness: 0
-  Level learned by Paula: 0
-  Level learned by Poo: 44
+  Level learned by Paula: 26
+  Level learned by Poo: 0
   PSI Menu position (X): 11
   PSI Menu position (Y): 1
   PSI Name: 15
   Strength: omega
-  Text Address: data_55.l_0xef5777
+  Text Address: PSI_Descriptions.BrainshockO
   Type:
   - assist
   Usability Outside of Battle: unusable
 51:	# Teleport
   Action: 60
-  Level learned by Ness: 0
-  Level learned by Paula: 0
-  Level learned by Poo: 17
+  Level learned by Ness: 1
+  Level learned by Paula: 1
+  Level learned by Poo: 0
   PSI Menu position (X): 9
   PSI Menu position (Y): 2
   PSI Name: 16
   Strength: alpha
-  Text Address: data_55.l_0xef578b
+  Text Address: PSI_Descriptions.TeleportA
   Type:
   - other
   Usability Outside of Battle: other
 52:	# Teleport
   Action: 61
-  Level learned by Ness: 0
+  Level learned by Ness: 20
   Level learned by Paula: 0
   Level learned by Poo: 18
   PSI Menu position (X): 11
   PSI Menu position (Y): 2
   PSI Name: 16
   Strength: beta
-  Text Address: data_55.l_0xef57ae
+  Text Address: PSI_Descriptions.TeleportB
   Type:
   - other
   Usability Outside of Battle: other
