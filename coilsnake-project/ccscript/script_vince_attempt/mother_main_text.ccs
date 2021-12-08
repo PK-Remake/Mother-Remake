@@ -5,10 +5,10 @@
 
 //SECTION: COOL STRINGS
 partyLeader:
-  "(insert code to print the party leader's name here)" eob
+  "[19 10 01]" eob
 
 favoriteFood:
-  "(insert code to print the favorite food here)" eob
+  "[1C 01 04]" eob
 
 podunk:
   helpers.PrintLocalizedText("Podunk", "Mother's Day") eob
@@ -38,10 +38,10 @@ giegue:
   helpers.PrintLocalizedText("Giegue", "Giygas") eob
 
 moneyEarned:
-  "$(money earned)" //TODO: figure out how to print this value
+  "$[1D 24 01]" //TODO: figure out how to print this value
   
 moneyTotal:
-  "$(money total)" //TODO: figure out how to print this value
+  "$[1C 01 07]" //TODO: figure out how to print this value
 
 //SECTION: NINTEN'S HOME
 NintensDoor:
@@ -231,7 +231,7 @@ HiDad:
   "@Hello, this is {name(1)}'s father. Thank you for always looking after him." next
   "@I thought it would be nice to at least know your name." next
   "@So, if you could tell me, that'd be great." wait
-  //TODO: Put the name insertion thing here
+  "[03]{window_closeall}[1F 07 02]{pause(30)}{music(2)}[1F 41 03]{window_open(1)}" next
   "@Thank you for your time." next
   "@I'm a busy man myself, so I must be going now. Goodbye!" end
 18C:
@@ -1865,7 +1865,7 @@ GarricksonBabyTelepathy:
   "@I have psychic powers, just as you do." next
   "@I possess the ability to teleport." next
   "@With it, you can return to anywhere you've been before." next
-  //TODO: Make them learn PK Teleport
+  "@[1F 71 01 01]" next //TODO: Make them learn PSI Teleport
   "@(The baby's mind taught {name(1)} how to use teleportation PSI.)" end
 
 1C6:
@@ -2028,6 +2028,7 @@ YesLloydsDad:
 NoLloydsDad:
   "@Then let's go through the process again." next
   //TODO: name input screen goes here
+  "[03]{window_closeall}[1F 07 02]{pause(30)}{music(2)}[1F 41 03]{window_open(1)}" next
   eob
 
 1FD:
