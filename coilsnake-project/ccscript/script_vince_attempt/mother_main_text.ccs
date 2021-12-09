@@ -37,11 +37,11 @@ mtItoi:
 giegue:
   helpers.PrintLocalizedText("Giegue", "Giygas") eob
 
-moneyEarned:
-  "$[1D 24 01]" //TODO: figure out how to print this value
+// moneyEarned:
+//  "$[1D 24 01]" //TODO: figure out how to print this value
   
-moneyTotal:
-  "$[1C 01 07]" //TODO: figure out how to print this value
+// moneyTotal:
+//  "$[1C 01 07]" //TODO: figure out how to print this value
 
 pronounCheck:
     "{result_is(2)}[1B 03 {e(l_0xc7e66b)}]his" eob
