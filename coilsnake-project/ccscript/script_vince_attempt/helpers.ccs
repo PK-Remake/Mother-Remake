@@ -100,3 +100,7 @@ command Remember(melodynum)
   //if it doesn't, then maybe it'd be necessary to pass in the music number of the song to resume back to
   eob
 }
+
+command get_dad_deposit_money_base(n) "[1D 24 {byte n}]"
+command get_dad_deposit_money get_dad_deposit_money_base(1)
+command clear_dad_deposit_money get_dad_deposit_money_base(2)
