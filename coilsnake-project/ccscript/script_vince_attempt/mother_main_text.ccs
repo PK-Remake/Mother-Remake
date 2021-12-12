@@ -5,10 +5,10 @@
 
 //SECTION: COOL STRINGS
 partyLeader:
-  "(insert code to print the party leader's name here)" eob
+  "[19 10 01]" eob
 
 favoriteFood:
-  "(insert code to print the favorite food here)" eob
+  "[1C 01 04]" eob
 
 podunk:
   helpers.PrintLocalizedText("Podunk", "Mother's Day") eob
@@ -37,11 +37,11 @@ mtItoi:
 giegue:
   helpers.PrintLocalizedText("Giegue", "Giygas") eob
 
-moneyEarned:
-  "$(money earned)" //TODO: figure out how to print this value
+// moneyEarned:
+//  "$[1D 24 01]" //TODO: figure out how to print this value
   
-moneyTotal:
-  "$(money total)" //TODO: figure out how to print this value
+// moneyTotal:
+//  "$[1C 01 07]" //TODO: figure out how to print this value
 
 //SECTION: NINTEN'S HOME
 NintensDoor:
@@ -109,7 +109,7 @@ MomFirstLines:
   "@I'll make you some {call(favoriteFood)}, {name(1)}." next
   "@Eat some and scoot up to bed." wait
   healall
-  "  TODO: FADE TO BLACK AND PLAY SONG" next
+  "{call(0xC91693)}" next // TODO(alt): Check if this actually fades to black AND plays the music
   "@Come back home whenever you want some more {call(favoriteFood)}." end
 
 
@@ -163,16 +163,37 @@ PhoneSlam:
   "@(Click! Beep-beep-beep...)" eob
 
 YouEarnedMoney:
-  //TODO: a check that looks at if you've earned money or not
-  "@I've deposited {call(moneyEarned)} into your bank account." next
-  "@Taking away what you've spent, you should now have {call(moneyTotal)} in the bank." next
-  "@Use it wisely." next
+  if helpers.get_dad_deposit_money {
+    swap
+    "@I've deposited ${number(0)} into your bank account." next
+    "@Taking away what you've spent, you should now have @${stat(7)} in the bank." next
+    "@Use it wisely." next
+    helpers.clear_dad_deposit_money
+  }
   eob
 
-YouEarnedExperience:
-  //TODO: a check that looks at if you've earned any experience or not
-  "@Let's see... To get to the next level, you need..." next
-  //TODO: find out how to print the level up stuff
+YouEarnedExperience:  
+  counter(1)
+  "Let's see... To get to the next level, you need...[03]"
+YouEarnedExperience_loop:
+  ctoarg
+  if not party_size_smaller_than(0) and get_char_at_pos(0) {
+    rtoarg
+    if get_levelup_exp(0) {
+      newline
+      "@{name(0)}...{swap}{number(0)}.[03]"
+    } else {
+      newline
+      "@{name(0)}..." linebreak
+      "  has already reached {swap}{call(0xC7E660)} maximum level." next
+      "@That's just fine, but..." next
+      next
+      next
+    }
+    inc
+    goto(YouEarnedExperience_loop)
+  }
+  eob
    
 StopBuggingMeDad:
   "@I realize this isn't any of my business, but why don't you take a little break?" linebreak
@@ -203,7 +224,7 @@ DadSavesTheGame:
       "@We're a great team, aren't we?" next
       "@Well, you should turn the power OFF now." next
       "@All right?" wait
-      //TODO: lock player input
+      "[1F 50]" // Lock player input
     }
     goto(YouKeepPlaying) //B Button default
   }
@@ -231,7 +252,7 @@ HiDad:
   "@Hello, this is {name(1)}'s father. Thank you for always looking after him." next
   "@I thought it would be nice to at least know your name." next
   "@So, if you could tell me, that'd be great." wait
-  //TODO: Put the name insertion thing here
+  "[03]{window_closeall}[1F 07 02]{pause(30)}{music(2)}[1F 41 03]{window_open(1)}" next
   "@Thank you for your time." next
   "@I'm a busy man myself, so I must be going now. Goodbye!" end
 18C:
@@ -489,7 +510,7 @@ MayorPippiIsFound:
   "@And for you, {name(1)}... {pause(40)}{open_wallet}A $[03 1E] reward. Here." wait
   //TODO: movement code - mayor walks down to the table, and the party goes to the other side
   givemoney(100)
-  //TODO: sound effect for getting money
+  sound(SND_KACHING)
   set(flags.pippiSavedByTheMayor)
   goto(MayorZooRequest)
   eob
@@ -1865,7 +1886,7 @@ GarricksonBabyTelepathy:
   "@I have psychic powers, just as you do." next
   "@I possess the ability to teleport." next
   "@With it, you can return to anywhere you've been before." next
-  //TODO: Make them learn PK Teleport
+  "[1F 71 01 01]" next //TODO: Make them learn PSI Teleport
   "@(The baby's mind taught {name(1)} how to use teleportation PSI.)" end
 
 1C6:
@@ -2028,6 +2049,7 @@ YesLloydsDad:
 NoLloydsDad:
   "@Then let's go through the process again." next
   //TODO: name input screen goes here
+  "[03]{window_closeall}[1F 07 02]{pause(30)}{music(2)}[1F 41 03]{window_open(1)}" next
   eob
 
 1FD:
