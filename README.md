@@ -74,7 +74,7 @@ You can find a copy of the license in the LICENSE file.
 * **Herringway:**	For the on-going EarthBound disassembly project.
 * **Crafty++:**	For the script and work done towards making a proper boot-up to title screen transition alongside the animated Earth feature.
 * **cooprocks123e:**	For the documentation and research towards several ASM for the project.
-* **Gabbi (Rickisthe1):**	For her sprite work and some maps.
+* **Gabbi (Rickisthe1):**	For her sprite work, maps, events, and PSI animations.
 * **PhoenixBound:**	For documentation and research towards several aspects of EarthBound.
 
 And last, and most importantly:
