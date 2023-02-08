@@ -68,7 +68,7 @@ You can find a copy of the license in the LICENSE file.
 
 ## Credits
 
-* **Vince94 & Pinci:**	For providing the music files from the Remake project.
+* **livvy94 & Pinci:**	For providing the music files from the Remake project.
 * **Messianic:**	For providing the sprites for overworld and enemies from the Remake project.
 * **Catador:**	For the documentation and research towards several ASM for the project.
 * **Herringway:**	For the on-going EarthBound disassembly project.
